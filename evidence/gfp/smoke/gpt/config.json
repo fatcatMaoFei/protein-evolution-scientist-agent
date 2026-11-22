@@ -1,0 +1,32 @@
+{
+  "domain": "gfp_fluorescence",
+  "backend": "gpt",
+  "seeds": [
+    7
+  ],
+  "rounds": 1,
+  "budget": 5,
+  "arms": [
+    "C_llm",
+    "D_knowledge_llm"
+  ],
+  "mode": "smoke",
+  "split_counts": {
+    "initial": 96,
+    "validation": 120,
+    "pool": 384,
+    "test": 120
+  },
+  "max_mutations": 4,
+  "menu": {
+    "rf_elite": 24,
+    "seeded_non_elite": 24
+  },
+  "metric": "maximum measured GFP assay score",
+  "primary": "gain in incumbent from shared initial best",
+  "secondary_hit": "measured assay score strictly higher than the measured wild-type anchor",
+  "predictor": "fixed random forest refit on each arm's own observations before every choice",
+  "validation": "initial diagnostic; held-out final scoring only after acquisition",
+  "prediction_top_k": "precision and recall at 10 for the measured upper decile of the target split",
+  "protocol_sha256": "8fdabf883c7815d0f2c6c2c6ba1b798f7db84e6f3a8ebdda4cbcb51acfa1a405"
+}
