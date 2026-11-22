@@ -244,11 +244,14 @@ def main(argv: list[str] | None = None) -> None:
     parser.add_argument("--profile-dir", type=Path)
     parser.add_argument("--with-controls", action="store_true")
     parser.add_argument("--baseline-only", action="store_true")
+    parser.add_argument("--quality", action="store_true", help="Include the separate GFP quality analyses in the PDF")
     args = parser.parse_args(args_in)
     if args.workers < 1:
         parser.error("--workers must be positive")
     if args.output is None and args.stage != "demo":
         parser.error("--output is required outside the demo")
+    if args.quality and args.stage != "report":
+        parser.error("--quality applies to the GFP report")
     if args.allow_novel and (args.stage not in ("init", "continue") or not (args.use_llm or args.model_profile)):
         parser.error("--allow-novel requires gfp init or continue with --model-profile or --use-llm")
     default_output = ROOT / "runs" / f"gfp-demo-{datetime.now(timezone.utc):%Y%m%dT%H%M%S%f}"
@@ -270,7 +273,7 @@ def main(argv: list[str] | None = None) -> None:
 
     if args.stage == "report":
         from gfp_report import render
-        render(run_dir, output)
+        render(run_dir, output, quality=args.quality)
         return
     if args.stage == "aggregate":
         finish_aggregate(load_dataset(args.data_cache), run_dir / "formal", output)

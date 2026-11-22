@@ -14,6 +14,7 @@ from gfp_data import GFP_WT, make_variant
 ASSAY = "GFP_AEQVI_Sarkisyan_2016"
 MEASURED_COLUMNS = ("mutant", "fitness")
 RECOMMENDATION_COLUMNS = ("mutation", "sequence", "predicted_fitness", "measured_fitness", "status", "decision")
+RECOMMENDATION_OPTIONAL = ("origin", "archive_status")
 
 
 @dataclass(frozen=True)
@@ -82,9 +83,11 @@ def _load_state(path: Path) -> tuple[dict, str]:
 
 
 def _propose(dataset, output: Path, observations: dict[str, Measurement], *, prior: Path | None,
-             candidates: Path | None, backend: str, use_llm: bool, transport=None, allow_novel=False) -> dict:
+             candidates: Path | None, backend: str, use_llm: bool, transport=None, allow_novel=False,
+             primary_from_menu=False) -> dict:
     from gfp_data import fit_predictor
     from gfp_evolution import build_menu, make_agent_request
+    from gfp_hypothesis import evaluate_hypotheses, make_hypothesis_plan
 
     if output.exists() and any(output.iterdir()):
         raise FileExistsError(f"Use a fresh output directory: {output}")
@@ -95,6 +98,9 @@ def _propose(dataset, output: Path, observations: dict[str, Measurement], *, pri
     if set(existing) & set(observations):
         raise ValueError("An imported measurement duplicates an existing observation")
     visible = existing | observations
+    observed_scores = {key: value.fitness for key, value in visible.items()}
+    hypotheses = list(previous.get("hypotheses", [])) if previous else []
+    history_feedback = evaluate_hypotheses(hypotheses, observed_scores)
     if len(visible) < 4:
         raise ValueError("At least four distinct measured GFP variants are required")
     outstanding = set(previous["outstanding"]) if previous else set()
@@ -124,7 +130,7 @@ def _propose(dataset, output: Path, observations: dict[str, Measurement], *, pri
         novel_observed = {key: make_variant(key) for key in visible if key not in dataset.variants}
         descriptors = replace(dataset, variants={**dataset.variants, **novel_observed}) if novel_observed else dataset
         request = make_agent_request(
-            descriptors, {key: value.fitness for key, value in visible.items()}, menu,
+            descriptors, observed_scores, menu,
             seed=17, round_number=round_number, budget=budget, knowledge=True,
             latest_feedback_ids=list(observations)[:5] if previous else [],
         )
@@ -133,6 +139,11 @@ def _propose(dataset, output: Path, observations: dict[str, Measurement], *, pri
 
         if allow_novel:
             request["pending_ids"] = sorted(outstanding)
+            request["hypothesis_feedback"] = history_feedback[-5:]
+            if primary_from_menu:
+                if not menu:
+                    raise ValueError("The archive primary-test demonstration requires a nonempty candidate menu")
+                request["primary_from_menu"] = True
         selector = "openai_compatible" if transport else backend
         _write_json(output / "agent_request.json", request)
         picks = select_candidates(request, backend=selector, log_path=output / "agent.json", transport=transport,
@@ -140,6 +151,8 @@ def _propose(dataset, output: Path, observations: dict[str, Measurement], *, pri
         artifacts += ["agent_request.json", "agent.json"]
         if allow_novel:
             log = json.loads((output / "agent.json").read_text())
+            hypotheses.append(make_hypothesis_plan(round_number=round_number, decision=log["decision"],
+                              observations=observed_scores, decision_sha256=_sha((output / "agent.json").read_bytes())))
             for row in log["decision"]["selected_candidates"]:
                 if row["source"] == "llm_off_menu":
                     key = row["id"]
@@ -150,8 +163,10 @@ def _propose(dataset, output: Path, observations: dict[str, Measurement], *, pri
         picks = sorted(eligible, key=lambda key: (-scores[key], key))[:budget]
     if len(picks) != budget or len(set(picks)) != budget or not set(picks) <= eligible.keys():
         raise ValueError("The selector returned an invalid next batch")
-    _write_csv(output / "recommendations.csv", (*RECOMMENDATION_COLUMNS, "origin"),
-               [(key, eligible[key].sequence, scores[key], "", "prediction_only", selector, origins[key])
+    from_archive = getattr(dataset, "variants", {})
+    _write_csv(output / "recommendations.csv", (*RECOMMENDATION_COLUMNS, *RECOMMENDATION_OPTIONAL),
+               [(key, eligible[key].sequence, scores[key], "", "prediction_only", selector, origins[key],
+                 "listed_in_public_archive" if key in from_archive else "not_listed_in_public_archive")
                 for key in picks])
     _write_csv(output / "imported_measurements.csv", MEASURED_COLUMNS,
                [(item.mutant, item.fitness) for item in observations.values()])
@@ -169,6 +184,9 @@ def _propose(dataset, output: Path, observations: dict[str, Measurement], *, pri
         "proposed": picks,
         "score_units": "ProteinGym DMS_score on the Sarkisyan fluorescence scale",
     }
+    if hypotheses:
+        state["hypotheses"] = hypotheses
+        state["hypothesis_evaluations"] = evaluate_hypotheses(hypotheses, observed_scores)
     _write_json(output / "state.json", state)
     return state
 

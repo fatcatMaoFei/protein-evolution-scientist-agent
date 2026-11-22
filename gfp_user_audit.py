@@ -7,8 +7,9 @@ import math
 import re
 from pathlib import Path
 
-from gfp_continue import RECOMMENDATION_COLUMNS, _load_state, _sha, load_csv
+from gfp_continue import RECOMMENDATION_COLUMNS, RECOMMENDATION_OPTIONAL, _load_state, _sha, load_csv
 from gfp_data import make_variant
+from gfp_hypothesis import evaluate_hypotheses, make_hypothesis_plan
 from llm_agent import _digest
 
 _ARTIFACTS = {"recommendations.csv", "imported_measurements.csv", "agent_request.json", "agent.json"}
@@ -88,7 +89,7 @@ def _files(path: Path, state: dict) -> dict[str, Path]:
 def _recommendations(path: Path, proposed: list[str]) -> list[dict]:
     with path.open(newline="", encoding="utf-8") as stream:
         reader = csv.DictReader(stream)
-        schema = set(RECOMMENDATION_COLUMNS) | {"origin"}
+        schema = set(RECOMMENDATION_COLUMNS) | set(RECOMMENDATION_OPTIONAL)
         required = {"mutation", "sequence", "predicted_fitness", "measured_fitness", "status", "decision"}
         fields = reader.fieldnames or []
         if not required <= set(fields) <= schema or len(fields) != len(set(fields)):
@@ -140,6 +141,10 @@ def _agent_trace(files: dict[str, Path], state: dict, observed: dict[str, float]
                 or request["latest_feedback_ids"] != trace["latest_feedback_ids"]
                 or request["round_number"] != state["round"] or request["budget"] != trace["budget"]):
             raise ValueError("GFP pre-decision request does not match its log or visible observation history")
+        if "hypothesis_feedback" in request and request["hypothesis_feedback"] != evaluate_hypotheses(
+            [plan for plan in state.get("hypotheses", []) if plan["round"] < state["round"]], observed
+        )[-5:]:
+            raise ValueError("GFP request includes inconsistent historical hypothesis feedback")
     scored_calls = [call["result"] for call in trace["tool_calls"] if call["tool"] == "score_gfp_designs"]
     if len(scored_calls) != 1:
         raise ValueError("Missing or repeated score tool record in GFP decision")
@@ -150,6 +155,12 @@ def _agent_trace(files: dict[str, Path], state: dict, observed: dict[str, float]
         for choice in selected
     )):
         raise ValueError("GFP selected predictions differ from the native score tool record")
+    rationales = decision.get("design_rationales", [])
+    if "hypothesis_test" in decision:
+        visible_ids = {row["id"] for row in aliases_to_rows.values()}
+        if ([row["id"] for row in rationales] != [row["mutations"] for row in scored_calls[0]]
+                or any(row["evidence_id"] not in visible_ids or not row["rationale"].strip() for row in rationales)):
+            raise ValueError("GFP design rationale does not refer to displayed evidence or the scored designs")
     return {
         "status": "VERIFIED_REQUEST" if "agent_request.json" in files else "VERIFIED_LOGGED_EVIDENCE",
         "model": trace["model"], "backend": trace["backend"],
@@ -157,6 +168,8 @@ def _agent_trace(files: dict[str, Path], state: dict, observed: dict[str, float]
         "citations": [{"mutant": key, "fitness": observed[key], "new_in_round": key in feedback} for key in ids],
         "feedback_in_prompt": trace["latest_feedback_ids"],
         "scored_designs": scored_calls[0],
+        "feedback_adjustment": decision.get("feedback_adjustment"),
+        "design_rationales": rationales,
     }
 
 
@@ -185,6 +198,20 @@ def _trace(states: list[tuple[Path, dict]]) -> list[dict]:
             receipt = load_csv(files["imported_measurements.csv"], measured=True)
             if {key: row.fitness for key, row in receipt.items()} != {key: observed[key] for key in new}:
                 raise ValueError("GFP measurement receipt does not match the imported state delta")
+        plans = state.get("hypotheses", [])
+        historical = [plan for plan in plans if plan["round"] < state["round"]]
+        if previous is not None and previous.get("hypotheses", []) != historical:
+            raise ValueError("GFP prospective hypotheses were changed after their decisions")
+        expected_plans = historical.copy()
+        if "agent.json" in files:
+            log_bytes = files["agent.json"].read_bytes()
+            decision = json.loads(log_bytes)["decision"]
+            if "hypothesis_test" in decision:
+                expected_plans.append(make_hypothesis_plan(round_number=state["round"], decision=decision,
+                                      observations=observed, decision_sha256=_sha(log_bytes)))
+        hypothesis_results = evaluate_hypotheses(plans, observed)
+        if plans != expected_plans or state.get("hypothesis_evaluations", []) != hypothesis_results:
+            raise ValueError("GFP state does not reproduce its predeclared hypothesis tests")
         returned = []
         for key in state["new_measurements"]:
             record = {"mutant": key, "fitness": observed[key]}
@@ -215,6 +242,7 @@ def _trace(states: list[tuple[Path, dict]]) -> list[dict]:
             "recommendation_log_available": "recommendations.csv" in files,
             "pending_measurements": state["outstanding"], "change_vs_previous_round": comparison,
             "decision": _agent_trace(files, state, observed, recommendations),
+            "hypothesis_evaluations": hypothesis_results,
         })
         previous, previous_observations = state, observed
     return traces
@@ -244,6 +272,11 @@ def run_user_audit(state_path: Path, output: Path) -> dict:
         "paired_status": "NOT EVALUABLE", "feedback_gain": None,
         "paired_reason": "No matched counterfactual selection and outcome recorded in the user workflow.",
     }
+    tests = traces[-1]["hypothesis_evaluations"]
+    if tests:
+        result["hypothesis_tests"] = {
+            status: sum(test["status"] == status for test in tests) for status in ("pending", "supported", "refuted")
+        }
     with (output / "decision_traces.jsonl").open("x", encoding="utf-8") as stream:
         for trace in traces:
             stream.write(json.dumps(trace, ensure_ascii=False, allow_nan=False) + "\n")
@@ -265,6 +298,10 @@ def run_user_audit(state_path: Path, output: Path) -> dict:
         )
     if not complete:
         lines.extend(["", "历史记录不完整。" + (missing or "部分轮次缺少推荐导出或决策日志。")])
+    if tests:
+        counts = result["hypothesis_tests"]
+        lines.extend(["", f"前瞻假设检验有 {counts['supported']} 条支持、{counts['refuted']} 条反驳、"
+                      f"{counts['pending']} 条待测。逐条阈值、预测和实测见结构化轨迹。"])
     lines.extend([
         "", "反馈收益为 **NOT EVALUABLE**。记录中没有受控反事实和对应结果。连续推荐集会因为待测排除规则而改变，"
         "引用与推荐变化只描述记录中的行为。", "",

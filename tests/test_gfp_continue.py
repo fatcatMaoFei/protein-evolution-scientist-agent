@@ -95,7 +95,9 @@ def test_configured_init_and_continue_score_open_designs_without_archive_truth(t
                 })}
             designs = [f"NEW {mutant(position)}" for position in range(10 * self.round, 10 * self.round + 6)]
             draft = {"analyst": "Review known fluorescence.", "hypothesis": "Substitutions differ in brightness.",
-                     "evidence_ids": ["O1"], "designs": designs}
+                     "evidence_ids": ["O1"], "designs": designs, "target_reference": "O1", "target_design": 1,
+                     "design_reasons": ["O1 use the best observed fluorescence as the threshold"] * 6,
+                     "feedback_adjustment": "Use the returned measurement where available."}
             return {**base, "finish_reason": "tool_calls", "text": "", "tool_calls": [
                 {"type": "function", "id": "unit-novel-tool", "function": {
                     "name": "score_gfp_designs", "arguments": json.dumps(draft),
@@ -127,9 +129,17 @@ def test_configured_init_and_continue_score_open_designs_without_archive_truth(t
     request = json.loads((second / "agent_request.json").read_text())
     assert request["latest_feedback_ids"] == [mutant(10)]
     assert request["pending_ids"] == sorted(mutant(i) for i in range(11, 15))
+    assert request["hypothesis_feedback"][0]["status"] == "supported"
     assert state["new_measurements"] == [mutant(10)]
+    assert [test["status"] for test in state["hypothesis_evaluations"]] == ["supported", "pending"]
     assert state["prior_state_path"] == "../first/state.json"
     assert set(state["artifacts"]) == {"agent.json", "agent_request.json", "imported_measurements.csv", "recommendations.csv"}
+    assert adapter.calls == 4
+    audit = tmp_path / "audit"
+    main(["audit", "--state", str(second / "state.json"), "--output", str(audit)])
+    result = json.loads((audit / "audit_summary.json").read_text())
+    assert result["hypothesis_tests"] == {"pending": 1, "supported": 1, "refuted": 0}
+    assert result["paired_status"] == "NOT EVALUABLE"
     assert adapter.calls == 4
 
 

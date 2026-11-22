@@ -1,0 +1,92 @@
+{
+  "status": "complete",
+  "primary": {
+    "round": 1,
+    "hypothesis": "Brightness collapse in multi-edit variants (O4, O5) tracks buried/non-conservative polar swaps rather than edit count; conservative surface charge-plus-repacking combinations (D21N:K101R:I123V) will therefore exceed the O4 level (1.30) and approach the O1-O3 regime.",
+    "reference_id": "F46L:I152N:K156E",
+    "threshold": 1.3004326428200002,
+    "candidate_ids": [
+      "D21N:K101R:I123V"
+    ],
+    "min_exceed": 1,
+    "evidence_ids": [
+      "V93I:L221Q",
+      "F46L:I152N:K156E",
+      "Q69R:F71S:I128F:N170S"
+    ],
+    "predictions": {
+      "D21N:K101R:I123V": 3.0769739390126274
+    },
+    "decision_sha256": "5b82bcaaf966cc213273e532fb6e4fe743015cbd9b8f9b8d4e542ecf568e6cdb",
+    "status": "supported",
+    "n_measured": 1,
+    "n_exceed": 1,
+    "candidate_results": [
+      {
+        "id": "D21N:K101R:I123V",
+        "predicted_fitness": 3.0769739390126274,
+        "measured_fitness": 3.5620245824400003,
+        "residual": 0.4850506434273729,
+        "forecast_exceeds_threshold": true,
+        "measurement_exceeds_threshold": true,
+        "forecast_outcome": "agreement"
+      }
+    ]
+  },
+  "second_hypothesis": {
+    "round": 2,
+    "hypothesis": "Brightness collapse tracks non-conservative buried/polar swaps rather than edit count, so conservative surface charge-plus-repacking designs (C02) will strictly exceed the O4 level (1.30) and remain in the bright O1-O3 regime.",
+    "reference_id": "F46L:I152N:K156E",
+    "threshold": 1.3004326428200002,
+    "candidate_ids": [
+      "T97I:D117G:K166R"
+    ],
+    "min_exceed": 1,
+    "evidence_ids": [
+      "F46L:I152N:K156E",
+      "Q69R:F71S:I128F:N170S",
+      "D21N:K101R:I123V"
+    ],
+    "predictions": {
+      "T97I:D117G:K166R": 3.104128642841258
+    },
+    "decision_sha256": "88316028559848b19a8248ace08661735926529a448cc4c0e1ae159bc3c05e71",
+    "status": "pending",
+    "n_measured": 0,
+    "n_exceed": 0,
+    "candidate_results": [
+      {
+        "id": "T97I:D117G:K166R",
+        "predicted_fitness": 3.104128642841258,
+        "measured_fitness": null,
+        "residual": null,
+        "forecast_exceeds_threshold": true,
+        "measurement_exceeds_threshold": null,
+        "forecast_outcome": null
+      }
+    ]
+  },
+  "audit": {
+    "status": "complete",
+    "history_gap": null,
+    "rounds": [
+      1,
+      2
+    ],
+    "subsequent_measurements": 1,
+    "returned_recommendations": 1,
+    "external_measurements": 0,
+    "prediction_residuals": 1,
+    "verified_citations": 6,
+    "recommendation_comparisons": 1,
+    "recommendation_sets_changed": 1,
+    "paired_status": "NOT EVALUABLE",
+    "feedback_gain": null,
+    "paired_reason": "No matched counterfactual selection and outcome recorded in the user workflow.",
+    "hypothesis_tests": {
+      "pending": 1,
+      "supported": 1,
+      "refuted": 0
+    }
+  }
+}

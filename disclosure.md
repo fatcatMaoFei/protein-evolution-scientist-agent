@@ -47,3 +47,7 @@ The compatibility profile used for the demonstration is stored locally. Its publ
 ## GFP user workflow refinement after c594170
 
 Codex extended the optional user research policy to score off-menu GFP proposals, verified the user-state audit, and revised the report from existing batch measurements. The OpenAI-compatible user demonstration used actual DeepSeek outputs and imported one matching published GFP measurement after selection. Pending candidates have prediction values only. A response-limit failure remains in the product demonstration log. The formal experiments, original paired audit, and original report were not rerun or changed. [Product acceptance and tool records](evidence/gfp/product-refinement/acceptance.md)
+
+## GFP scientific quality supplement
+
+Codex implemented the archived headroom diagnosis, validation-only model comparison, prospectively frozen twelve-block acquisition ablation, and user hypothesis ledger. The ablation used no model APIs. DeepSeek generated the two accepted prospective design decisions in the separate mixed-menu demonstration. The archive supplied only the designated primary measurement after its decision and threshold were recorded. The first continuation attempt remains in the evidence with its tool validation errors. The frozen formal study and all earlier reports were retained. [Supplemental protocol](gfp_quality_protocol.md) · [Quality acceptance and raw evidence](evidence/gfp/quality/acceptance.md)

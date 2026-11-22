@@ -1,0 +1,662 @@
+{
+  "format_version": 1,
+  "mode": "live",
+  "backend": "openai_compatible",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "domain": "gfp_fluorescence",
+  "config": {
+    "backend": "OpenAI-compatible Chat Completions",
+    "protocol": "openai",
+    "profile": "gfp-third-party",
+    "proposal_tool_choice": "forced_native",
+    "final_format": "json_object",
+    "api_base": "https://codeflow.sh/v1",
+    "proposal_max_tokens": 3000,
+    "final_max_tokens": 1400,
+    "rate_limit_backoff_s": [
+      15,
+      35
+    ]
+  },
+  "seed": 17,
+  "round": 1,
+  "budget": 5,
+  "knowledge_augmented": true,
+  "input_sha256": "5b69b6fd7fef2d18e2b99acd178528f7ef78167dac215d11513766b92888c213",
+  "reference_sha256": "9be57dbaa8e6d8b324cd1a84684901808c38b3b84f940c08e00a0323f4215e9f",
+  "menu": [
+    {
+      "id": "D21N:K101R:I123V",
+      "mutations": "D21N:K101R:I123V",
+      "sequence": "MSKGEELFTGVVPILVELDGNVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFRDDGNYKTRAEVKFEGDTLVNRVELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+      "edits": [
+        "D21N",
+        "K101R",
+        "I123V"
+      ],
+      "alias": "C01",
+      "prediction": 3.0769739390126274,
+      "uncertainty": 0.31849182494202305,
+      "rank": 1,
+      "source": "rf_elite"
+    },
+    {
+      "id": "K131R:N159D:K166E",
+      "mutations": "K131R:N159D:K166E",
+      "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFREDGNILGHKLEYNYNSHNVYIMADKQKDGIKVNFEIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+      "edits": [
+        "K131R",
+        "N159D",
+        "K166E"
+      ],
+      "alias": "C02",
+      "prediction": 3.0769739390126274,
+      "uncertainty": 0.31849182494202305,
+      "rank": 2,
+      "source": "rf_elite"
+    },
+    {
+      "id": "K26R:N121S:F130L:S175T",
+      "mutations": "K26R:N121S:F130L:S175T",
+      "sequence": "MSKGEELFTGVVPILVELDGDVNGHRFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVSRIELKGIDLKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEDGTVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+      "edits": [
+        "K26R",
+        "N121S",
+        "F130L",
+        "S175T"
+      ],
+      "alias": "C03",
+      "prediction": 2.982881893446894,
+      "uncertainty": 0.48525347086839926,
+      "rank": 3,
+      "source": "rf_elite"
+    }
+  ],
+  "observed_evidence": {
+    "O1": {
+      "id": "V93I:L221Q",
+      "mutations": "V93I:L221Q",
+      "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYIQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLQEFVTAAGITHGMDELYK",
+      "edits": [
+        "V93I",
+        "L221Q"
+      ],
+      "fitness": 3.89651251107
+    },
+    "O2": {
+      "id": "K156E:K214E",
+      "mutations": "K156E:K214E",
+      "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADEQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEERDHMVLLEFVTAAGITHGMDELYK",
+      "edits": [
+        "K156E",
+        "K214E"
+      ],
+      "fitness": 3.862432867375
+    },
+    "O3": {
+      "id": "I128N:D197V",
+      "mutations": "I128N:D197V",
+      "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGNDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPVNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+      "edits": [
+        "I128N",
+        "D197V"
+      ],
+      "fitness": 3.85311011936
+    },
+    "O4": {
+      "id": "F46L:I152N:K156E",
+      "mutations": "F46L:I152N:K156E",
+      "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKLICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYNMADEQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+      "edits": [
+        "F46L",
+        "I152N",
+        "K156E"
+      ],
+      "fitness": 1.3004326428200002
+    },
+    "O5": {
+      "id": "Q69R:F71S:I128F:N170S",
+      "mutations": "Q69R:F71S:I128F:N170S",
+      "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVRCSSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGFDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHSIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+      "edits": [
+        "Q69R",
+        "F71S",
+        "I128F",
+        "N170S"
+      ],
+      "fitness": 1.30080123183
+    }
+  },
+  "latest_feedback_ids": [],
+  "calls": [
+    {
+      "stage": "proposal",
+      "attempt": 1,
+      "request": {
+        "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+        "messages": [
+          {
+            "role": "system",
+            "content": "You are analyzing historical measurements for avGFP fluorescence. Larger log brightness is better. Only observations have measured fluorescence. Menu values and tool scores are fitted predictions. Use the observed evidence, state a testable short hypothesis, and specify edits that match displayed candidate identities on the pinned GFP reference. The reference menu is optional. The scoring tool can construct and score legal off-menu edits. Do not estimate or cite measurements for candidates. Keep all text fields concise and evidence-specific."
+          },
+          {
+            "role": "user",
+            "content": "Call score_gfp_designs immediately with a short analyst summary, a short hypothesis, 1\u20133 observed O aliases and exactly 6 designs. Write each design as a C alias followed by its exact edits, or NEW followed by a space and 1\u20134 colon-separated substitutions. Include at least one NEW design. Exclude observed IDs and pending_ids from NEW. The tool assigns N aliases to valid off-menu edits. Give one short design_reasons entry per design in the same order, starting with a cited O alias and a space. State a testable fluorescence hypothesis. Predeclare target_design as its 1-based design index and target_reference as one of your cited measured O aliases. The primary design predicts its measured fluorescence will strictly exceed that observation. When using the menu as a measured comparison, nominate a menu design that tests the hypothesis. The primary design must be in your final batch. In feedback_adjustment, state a concrete decision change based on the available test result, or note the available evidence if no test has returned. Keep all explanations brief. GFP reference: MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK. For this archive demonstration only, nominate a displayed C design as the primary test.\n{\"budget\":5,\"gfp_knowledge\":{\"amino_acid_classes\":{\"acidic\":\"DE\",\"aliphatic nonpolar\":\"AVILM\",\"aromatic\":\"FWY\",\"basic or protonation dependent\":\"KRH\",\"polar uncharged\":\"STNQ\",\"special\":\"CGP\"},\"coarse_conservative_edits_in_menu\":[\"I123V\",\"K101R\",\"K131R\",\"K26R\",\"N121S\",\"S175T\"],\"interpretation\":\"Conservative means the same coarse nonspecial class, not a fitness prediction. Histidine charge is pH-dependent. Scores for multi-edit GFP are context dependent. A count of overlapping edits does not give a causal effect.\",\"number_of_observed_combinations_sharing_each_listed_edit\":{\"K166E\":1,\"N121S\":2,\"N159D\":1},\"observed_single_scores_matching_menu\":{}},\"latest_feedback_aliases\":[],\"menu\":[[\"C01\",\"D21N:K101R:I123V\",3.077],[\"C02\",\"K131R:N159D:K166E\",3.077],[\"C03\",\"K26R:N121S:F130L:S175T\",2.983]],\"mutation_limit\":4,\"observations\":[[\"O1\",\"V93I:L221Q\",3.8965],[\"O2\",\"K156E:K214E\",3.8624],[\"O3\",\"I128N:D197V\",3.8531],[\"O4\",\"F46L:I152N:K156E\",1.3004],[\"O5\",\"Q69R:F71S:I128F:N170S\",1.3008]],\"pending_ids\":[],\"round\":1,\"shortlist_size\":6}"
+          }
+        ],
+        "tools": [
+          {
+            "type": "function",
+            "function": {
+              "name": "score_gfp_designs",
+              "description": "Build and predict GFP variants from C aliases and their exact edits, or NEW followed by off-menu colon-separated edits. The tool assigns N aliases to accepted new designs.",
+              "parameters": {
+                "type": "object",
+                "properties": {
+                  "analyst": {
+                    "type": "string"
+                  },
+                  "hypothesis": {
+                    "type": "string"
+                  },
+                  "evidence_ids": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "designs": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "target_reference": {
+                    "type": "string"
+                  },
+                  "target_design": {
+                    "type": "integer"
+                  },
+                  "design_reasons": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "feedback_adjustment": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "analyst",
+                  "hypothesis",
+                  "evidence_ids",
+                  "designs",
+                  "target_reference",
+                  "target_design",
+                  "design_reasons",
+                  "feedback_adjustment"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        ],
+        "tool_choice": {
+          "type": "function",
+          "function": {
+            "name": "score_gfp_designs"
+          }
+        },
+        "temperature": 0.0,
+        "max_tokens": 3000
+      },
+      "request_sha256": "6f0313478f62128a2a560d395e441e08f01cc5a2484cb7acfd9e9e50065226a6",
+      "response": {
+        "text": "",
+        "finish_reason": "tool_calls",
+        "tool_calls": [
+          {
+            "id": "call-ab587125-dfa9-44e0-82a6-ccd0b178bb20",
+            "function": {
+              "arguments": "{\"analyst\":\"gfp-variant-analyst\",\"hypothesis\":\"Brightness collapse in multi-edit variants (O4, O5) tracks buried/non-conservative polar swaps rather than edit count; conservative surface charge-plus-repacking combinations (D21N:K101R:I123V) will therefore exceed the O4 level (1.30) and approach the O1-O3 regime.\",\"evidence_ids\":[\"O1\",\"O4\",\"O5\"],\"designs\":[\"C01 D21N:K101R:I123V\",\"C02 K131R:N159D:K166E\",\"C03 K26R:N121S:F130L:S175T\",\"NEW D21N:K101R:I123V:S175T\",\"NEW K26R:K131R:N159D:K166E\",\"NEW D21N:I123V:K131R:S175T\"],\"target_reference\":\"O4\",\"target_design\":1,\"design_reasons\":[\"O4 C01 uses only conservative surface/repacking edits (K101R, I123V) plus D21N, avoiding buried polar swaps, so it should clear the O4 level.\",\"O5 C02 pairs basic-class K131R with N159D and K166E, testing charge rebalancing without polar burial.\",\"O1 C03 combines conservative K26R and S175T with N121S and F130L to probe whether mild polar changes stay near O1-O3 brightness.\",\"O4 adds S175T to the primary set to test whether a fourth conservative polar-uncharged edit preserves the predicted gain over O4.\",\"O5 swaps in K26R to test whether the charge-rebalancing theme holds when the acidic cluster partner changes.\",\"O4 tests a D21N-free variant with K131R added, isolating whether D21N is required for the predicted improvement over O4.\"],\"feedback_adjustment\":\"No test result has returned; decision rule: if C01 scores at or below O4 (1.30), drop the conservative-repacking hypothesis and shift to charge-cluster edits (C02 theme) in round 2.\"}",
+              "name": "score_gfp_designs"
+            },
+            "type": "function"
+          }
+        ],
+        "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+        "response_id": "chatcmpl-a8d0d7a0-d5b6-406d-8039-a410f3f76340",
+        "id": "chatcmpl-a8d0d7a0-d5b6-406d-8039-a410f3f76340",
+        "request_id": null,
+        "created": 1795314409,
+        "usage": {
+          "input_tokens": 1317,
+          "output_tokens": 1537
+        },
+        "provider_usage": {
+          "completion_tokens": 1537,
+          "prompt_tokens": 1317,
+          "total_tokens": 2854,
+          "completion_tokens_details": {
+            "reasoning_tokens": 1505
+          },
+          "prompt_tokens_details": {
+            "cached_tokens": 256
+          }
+        },
+        "runtime": {
+          "openai": "2.28.0"
+        }
+      },
+      "response_sha256": "c28c289da68d6929e2f705fbdb7b95ce0e8da77988593274b0f740c8c586c716",
+      "elapsed_s": 7.767,
+      "validated": true
+    },
+    {
+      "stage": "final_selection",
+      "attempt": 1,
+      "request": {
+        "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+        "messages": [
+          {
+            "role": "system",
+            "content": "You are analyzing historical measurements for avGFP fluorescence. Larger log brightness is better. Only observations have measured fluorescence. Menu values and tool scores are fitted predictions. Use the observed evidence, state a testable short hypothesis, and specify edits that match displayed candidate identities on the pinned GFP reference. The reference menu is optional. The scoring tool can construct and score legal off-menu edits. Do not estimate or cite measurements for candidates. Keep all text fields concise and evidence-specific."
+          },
+          {
+            "role": "user",
+            "content": "Call score_gfp_designs immediately with a short analyst summary, a short hypothesis, 1\u20133 observed O aliases and exactly 6 designs. Write each design as a C alias followed by its exact edits, or NEW followed by a space and 1\u20134 colon-separated substitutions. Include at least one NEW design. Exclude observed IDs and pending_ids from NEW. The tool assigns N aliases to valid off-menu edits. Give one short design_reasons entry per design in the same order, starting with a cited O alias and a space. State a testable fluorescence hypothesis. Predeclare target_design as its 1-based design index and target_reference as one of your cited measured O aliases. The primary design predicts its measured fluorescence will strictly exceed that observation. When using the menu as a measured comparison, nominate a menu design that tests the hypothesis. The primary design must be in your final batch. In feedback_adjustment, state a concrete decision change based on the available test result, or note the available evidence if no test has returned. Keep all explanations brief. GFP reference: MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK. For this archive demonstration only, nominate a displayed C design as the primary test.\n{\"budget\":5,\"gfp_knowledge\":{\"amino_acid_classes\":{\"acidic\":\"DE\",\"aliphatic nonpolar\":\"AVILM\",\"aromatic\":\"FWY\",\"basic or protonation dependent\":\"KRH\",\"polar uncharged\":\"STNQ\",\"special\":\"CGP\"},\"coarse_conservative_edits_in_menu\":[\"I123V\",\"K101R\",\"K131R\",\"K26R\",\"N121S\",\"S175T\"],\"interpretation\":\"Conservative means the same coarse nonspecial class, not a fitness prediction. Histidine charge is pH-dependent. Scores for multi-edit GFP are context dependent. A count of overlapping edits does not give a causal effect.\",\"number_of_observed_combinations_sharing_each_listed_edit\":{\"K166E\":1,\"N121S\":2,\"N159D\":1},\"observed_single_scores_matching_menu\":{}},\"latest_feedback_aliases\":[],\"menu\":[[\"C01\",\"D21N:K101R:I123V\",3.077],[\"C02\",\"K131R:N159D:K166E\",3.077],[\"C03\",\"K26R:N121S:F130L:S175T\",2.983]],\"mutation_limit\":4,\"observations\":[[\"O1\",\"V93I:L221Q\",3.8965],[\"O2\",\"K156E:K214E\",3.8624],[\"O3\",\"I128N:D197V\",3.8531],[\"O4\",\"F46L:I152N:K156E\",1.3004],[\"O5\",\"Q69R:F71S:I128F:N170S\",1.3008]],\"pending_ids\":[],\"round\":1,\"shortlist_size\":6}"
+          },
+          {
+            "role": "assistant",
+            "content": null,
+            "tool_calls": [
+              {
+                "id": "call-ab587125-dfa9-44e0-82a6-ccd0b178bb20",
+                "function": {
+                  "arguments": "{\"analyst\":\"gfp-variant-analyst\",\"hypothesis\":\"Brightness collapse in multi-edit variants (O4, O5) tracks buried/non-conservative polar swaps rather than edit count; conservative surface charge-plus-repacking combinations (D21N:K101R:I123V) will therefore exceed the O4 level (1.30) and approach the O1-O3 regime.\",\"evidence_ids\":[\"O1\",\"O4\",\"O5\"],\"designs\":[\"C01 D21N:K101R:I123V\",\"C02 K131R:N159D:K166E\",\"C03 K26R:N121S:F130L:S175T\",\"NEW D21N:K101R:I123V:S175T\",\"NEW K26R:K131R:N159D:K166E\",\"NEW D21N:I123V:K131R:S175T\"],\"target_reference\":\"O4\",\"target_design\":1,\"design_reasons\":[\"O4 C01 uses only conservative surface/repacking edits (K101R, I123V) plus D21N, avoiding buried polar swaps, so it should clear the O4 level.\",\"O5 C02 pairs basic-class K131R with N159D and K166E, testing charge rebalancing without polar burial.\",\"O1 C03 combines conservative K26R and S175T with N121S and F130L to probe whether mild polar changes stay near O1-O3 brightness.\",\"O4 adds S175T to the primary set to test whether a fourth conservative polar-uncharged edit preserves the predicted gain over O4.\",\"O5 swaps in K26R to test whether the charge-rebalancing theme holds when the acidic cluster partner changes.\",\"O4 tests a D21N-free variant with K131R added, isolating whether D21N is required for the predicted improvement over O4.\"],\"feedback_adjustment\":\"No test result has returned; decision rule: if C01 scores at or below O4 (1.30), drop the conservative-repacking hypothesis and shift to charge-cluster edits (C02 theme) in round 2.\"}",
+                  "name": "score_gfp_designs"
+                },
+                "type": "function"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "tool_call_id": "call-ab587125-dfa9-44e0-82a6-ccd0b178bb20",
+            "content": "[{\"alias\":\"C01\",\"mutations\":\"D21N:K101R:I123V\",\"prediction\":3.0769739390126274,\"roster_match\":true,\"uncertainty\":0.31849182494202305},{\"alias\":\"C02\",\"mutations\":\"K131R:N159D:K166E\",\"prediction\":3.0769739390126274,\"roster_match\":true,\"uncertainty\":0.31849182494202305},{\"alias\":\"C03\",\"mutations\":\"K26R:N121S:F130L:S175T\",\"prediction\":2.982881893446894,\"roster_match\":true,\"uncertainty\":0.48525347086839926},{\"alias\":\"N01\",\"mutations\":\"D21N:K101R:I123V:S175T\",\"prediction\":2.974630521819395,\"roster_match\":false,\"uncertainty\":0.4783591756589344},{\"alias\":\"N02\",\"mutations\":\"K26R:K131R:N159D:K166E\",\"prediction\":3.08869812581957,\"roster_match\":false,\"uncertainty\":0.40484058464081557},{\"alias\":\"N03\",\"mutations\":\"D21N:I123V:K131R:S175T\",\"prediction\":2.974630521819395,\"roster_match\":false,\"uncertainty\":0.4783591756589344}]"
+          },
+          {
+            "role": "user",
+            "content": "Return JSON with candidate_ids, critic and selection_rationale. Select exactly 5 evaluated aliases ordered by test priority. Give reasons that refer to the estimates and identify a weakness. New fluorescence measurements are unavailable until after submission. Reply with bare JSON. Limit critic and selection_rationale to 25 words each. Include C01, the primary design with a predeclared fluorescence threshold."
+          }
+        ],
+        "tools": [
+          {
+            "type": "function",
+            "function": {
+              "name": "score_gfp_designs",
+              "description": "Build and predict GFP variants from C aliases and their exact edits, or NEW followed by off-menu colon-separated edits. The tool assigns N aliases to accepted new designs.",
+              "parameters": {
+                "type": "object",
+                "properties": {
+                  "analyst": {
+                    "type": "string"
+                  },
+                  "hypothesis": {
+                    "type": "string"
+                  },
+                  "evidence_ids": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "designs": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "target_reference": {
+                    "type": "string"
+                  },
+                  "target_design": {
+                    "type": "integer"
+                  },
+                  "design_reasons": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "feedback_adjustment": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "analyst",
+                  "hypothesis",
+                  "evidence_ids",
+                  "designs",
+                  "target_reference",
+                  "target_design",
+                  "design_reasons",
+                  "feedback_adjustment"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        ],
+        "tool_choice": "none",
+        "temperature": 0.0,
+        "max_tokens": 1400,
+        "response_format": {
+          "type": "json_object"
+        }
+      },
+      "request_sha256": "363380b074088dd41f14e77e7747dd7b345036752d70e543b61e8bb35325e33b",
+      "response": {
+        "text": "{\"candidate_ids\":[\"C01\",\"N02\",\"C02\",\"C03\",\"N01\"],\"critic\":\"Predictions cluster 2.97\u20133.09 with wide uncertainty; cited observations span 1.30\u20133.90, so within-batch ranking is weakly powered.\",\"selection_rationale\":\"C01 primary, predeclared threshold >1.3004 (O4); N02 tops predictions at 3.089; C02 ties C01; C03 and N01 diversify.\"}",
+        "finish_reason": "stop",
+        "tool_calls": [],
+        "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+        "response_id": "chatcmpl-16271505-1570-4862-b2e5-dde535f91632",
+        "id": "chatcmpl-16271505-1570-4862-b2e5-dde535f91632",
+        "request_id": null,
+        "created": 1795314416,
+        "usage": {
+          "input_tokens": 1894,
+          "output_tokens": 375
+        },
+        "provider_usage": {
+          "completion_tokens": 375,
+          "prompt_tokens": 1894,
+          "total_tokens": 2269,
+          "completion_tokens_details": {
+            "reasoning_tokens": 267
+          },
+          "prompt_tokens_details": {
+            "cached_tokens": 256
+          }
+        },
+        "runtime": {
+          "openai": "2.28.0"
+        }
+      },
+      "response_sha256": "bec91251039f9ee79fe4439616e7c0e18d55c41a3e1883c912be50a0b3da1942",
+      "elapsed_s": 2.139,
+      "validated": true
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "score_gfp_designs",
+      "trigger": "model_tool_call",
+      "call_id": "call-ab587125-dfa9-44e0-82a6-ccd0b178bb20",
+      "arguments": {
+        "analyst": "gfp-variant-analyst",
+        "hypothesis": "Brightness collapse in multi-edit variants (O4, O5) tracks buried/non-conservative polar swaps rather than edit count; conservative surface charge-plus-repacking combinations (D21N:K101R:I123V) will therefore exceed the O4 level (1.30) and approach the O1-O3 regime.",
+        "evidence_ids": [
+          "O1",
+          "O4",
+          "O5"
+        ],
+        "designs": [
+          "C01 D21N:K101R:I123V",
+          "C02 K131R:N159D:K166E",
+          "C03 K26R:N121S:F130L:S175T",
+          "NEW D21N:K101R:I123V:S175T",
+          "NEW K26R:K131R:N159D:K166E",
+          "NEW D21N:I123V:K131R:S175T"
+        ],
+        "target_reference": "O4",
+        "target_design": 1,
+        "design_reasons": [
+          "O4 C01 uses only conservative surface/repacking edits (K101R, I123V) plus D21N, avoiding buried polar swaps, so it should clear the O4 level.",
+          "O5 C02 pairs basic-class K131R with N159D and K166E, testing charge rebalancing without polar burial.",
+          "O1 C03 combines conservative K26R and S175T with N121S and F130L to probe whether mild polar changes stay near O1-O3 brightness.",
+          "O4 adds S175T to the primary set to test whether a fourth conservative polar-uncharged edit preserves the predicted gain over O4.",
+          "O5 swaps in K26R to test whether the charge-rebalancing theme holds when the acidic cluster partner changes.",
+          "O4 tests a D21N-free variant with K131R added, isolating whether D21N is required for the predicted improvement over O4."
+        ],
+        "feedback_adjustment": "No test result has returned; decision rule: if C01 scores at or below O4 (1.30), drop the conservative-repacking hypothesis and shift to charge-cluster edits (C02 theme) in round 2."
+      },
+      "result": [
+        {
+          "alias": "C01",
+          "mutations": "D21N:K101R:I123V",
+          "prediction": 3.0769739390126274,
+          "uncertainty": 0.31849182494202305,
+          "roster_match": true,
+          "sequence": "MSKGEELFTGVVPILVELDGNVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFRDDGNYKTRAEVKFEGDTLVNRVELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK"
+        },
+        {
+          "alias": "C02",
+          "mutations": "K131R:N159D:K166E",
+          "prediction": 3.0769739390126274,
+          "uncertainty": 0.31849182494202305,
+          "roster_match": true,
+          "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFREDGNILGHKLEYNYNSHNVYIMADKQKDGIKVNFEIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK"
+        },
+        {
+          "alias": "C03",
+          "mutations": "K26R:N121S:F130L:S175T",
+          "prediction": 2.982881893446894,
+          "uncertainty": 0.48525347086839926,
+          "roster_match": true,
+          "sequence": "MSKGEELFTGVVPILVELDGDVNGHRFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVSRIELKGIDLKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEDGTVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK"
+        },
+        {
+          "alias": "N01",
+          "mutations": "D21N:K101R:I123V:S175T",
+          "prediction": 2.974630521819395,
+          "uncertainty": 0.4783591756589344,
+          "roster_match": false,
+          "sequence": "MSKGEELFTGVVPILVELDGNVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFRDDGNYKTRAEVKFEGDTLVNRVELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEDGTVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK"
+        },
+        {
+          "alias": "N02",
+          "mutations": "K26R:K131R:N159D:K166E",
+          "prediction": 3.08869812581957,
+          "uncertainty": 0.40484058464081557,
+          "roster_match": false,
+          "sequence": "MSKGEELFTGVVPILVELDGDVNGHRFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFREDGNILGHKLEYNYNSHNVYIMADKQKDGIKVNFEIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK"
+        },
+        {
+          "alias": "N03",
+          "mutations": "D21N:I123V:K131R:S175T",
+          "prediction": 2.974630521819395,
+          "uncertainty": 0.4783591756589344,
+          "roster_match": false,
+          "sequence": "MSKGEELFTGVVPILVELDGNVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRVELKGIDFREDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEDGTVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK"
+        }
+      ]
+    },
+    {
+      "tool": "gfp_critic",
+      "result": {
+        "legal": true,
+        "unique": true,
+        "n": 5
+      }
+    }
+  ],
+  "usage": {
+    "input_tokens": 3211,
+    "output_tokens": 1912
+  },
+  "live_generation_count": 2,
+  "started_utc": "2026-11-22T02:26:47.639981+00:00",
+  "decision": {
+    "analyst": "gfp-variant-analyst",
+    "hypothesis": "Brightness collapse in multi-edit variants (O4, O5) tracks buried/non-conservative polar swaps rather than edit count; conservative surface charge-plus-repacking combinations (D21N:K101R:I123V) will therefore exceed the O4 level (1.30) and approach the O1-O3 regime.",
+    "evidence_ids": [
+      "V93I:L221Q",
+      "F46L:I152N:K156E",
+      "Q69R:F71S:I128F:N170S"
+    ],
+    "designs": [
+      "C01 D21N:K101R:I123V",
+      "C02 K131R:N159D:K166E",
+      "C03 K26R:N121S:F130L:S175T",
+      "NEW D21N:K101R:I123V:S175T",
+      "NEW K26R:K131R:N159D:K166E",
+      "NEW D21N:I123V:K131R:S175T"
+    ],
+    "target_reference": "O4",
+    "target_design": 1,
+    "design_reasons": [
+      "O4 C01 uses only conservative surface/repacking edits (K101R, I123V) plus D21N, avoiding buried polar swaps, so it should clear the O4 level.",
+      "O5 C02 pairs basic-class K131R with N159D and K166E, testing charge rebalancing without polar burial.",
+      "O1 C03 combines conservative K26R and S175T with N121S and F130L to probe whether mild polar changes stay near O1-O3 brightness.",
+      "O4 adds S175T to the primary set to test whether a fourth conservative polar-uncharged edit preserves the predicted gain over O4.",
+      "O5 swaps in K26R to test whether the charge-rebalancing theme holds when the acidic cluster partner changes.",
+      "O4 tests a D21N-free variant with K131R added, isolating whether D21N is required for the predicted improvement over O4."
+    ],
+    "feedback_adjustment": "No test result has returned; decision rule: if C01 scores at or below O4 (1.30), drop the conservative-repacking hypothesis and shift to charge-cluster edits (C02 theme) in round 2.",
+    "candidate_ids": [
+      "C01",
+      "N02",
+      "C02",
+      "C03",
+      "N01"
+    ],
+    "critic": "Predictions cluster 2.97\u20133.09 with wide uncertainty; cited observations span 1.30\u20133.90, so within-batch ranking is weakly powered.",
+    "selection_rationale": "C01 primary, predeclared threshold >1.3004 (O4); N02 tops predictions at 3.089; C02 ties C01; C03 and N01 diversify.",
+    "evidence_aliases": [
+      "O1",
+      "O4",
+      "O5"
+    ],
+    "selected_ids": [
+      "D21N:K101R:I123V",
+      "K26R:K131R:N159D:K166E",
+      "K131R:N159D:K166E",
+      "K26R:N121S:F130L:S175T",
+      "D21N:K101R:I123V:S175T"
+    ],
+    "selected_candidates": [
+      {
+        "id": "D21N:K101R:I123V",
+        "mutations": "D21N:K101R:I123V",
+        "sequence": "MSKGEELFTGVVPILVELDGNVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFRDDGNYKTRAEVKFEGDTLVNRVELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+        "edits": [
+          "D21N",
+          "K101R",
+          "I123V"
+        ],
+        "alias": "C01",
+        "prediction": 3.0769739390126274,
+        "uncertainty": 0.31849182494202305,
+        "rank": 1,
+        "source": "rf_elite"
+      },
+      {
+        "alias": "N02",
+        "id": "K26R:K131R:N159D:K166E",
+        "mutations": "K26R:K131R:N159D:K166E",
+        "sequence": "MSKGEELFTGVVPILVELDGDVNGHRFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFREDGNILGHKLEYNYNSHNVYIMADKQKDGIKVNFEIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+        "edits": [
+          "K26R",
+          "K131R",
+          "N159D",
+          "K166E"
+        ],
+        "prediction": 3.08869812581957,
+        "uncertainty": 0.40484058464081557,
+        "rank": null,
+        "source": "llm_off_menu"
+      },
+      {
+        "id": "K131R:N159D:K166E",
+        "mutations": "K131R:N159D:K166E",
+        "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFREDGNILGHKLEYNYNSHNVYIMADKQKDGIKVNFEIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+        "edits": [
+          "K131R",
+          "N159D",
+          "K166E"
+        ],
+        "alias": "C02",
+        "prediction": 3.0769739390126274,
+        "uncertainty": 0.31849182494202305,
+        "rank": 2,
+        "source": "rf_elite"
+      },
+      {
+        "id": "K26R:N121S:F130L:S175T",
+        "mutations": "K26R:N121S:F130L:S175T",
+        "sequence": "MSKGEELFTGVVPILVELDGDVNGHRFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVSRIELKGIDLKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEDGTVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+        "edits": [
+          "K26R",
+          "N121S",
+          "F130L",
+          "S175T"
+        ],
+        "alias": "C03",
+        "prediction": 2.982881893446894,
+        "uncertainty": 0.48525347086839926,
+        "rank": 3,
+        "source": "rf_elite"
+      },
+      {
+        "alias": "N01",
+        "id": "D21N:K101R:I123V:S175T",
+        "mutations": "D21N:K101R:I123V:S175T",
+        "sequence": "MSKGEELFTGVVPILVELDGNVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFRDDGNYKTRAEVKFEGDTLVNRVELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEDGTVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+        "edits": [
+          "D21N",
+          "K101R",
+          "I123V",
+          "S175T"
+        ],
+        "prediction": 2.974630521819395,
+        "uncertainty": 0.4783591756589344,
+        "rank": null,
+        "source": "llm_off_menu"
+      }
+    ],
+    "hypothesis_test": {
+      "reference_id": "F46L:I152N:K156E",
+      "candidate_ids": [
+        "D21N:K101R:I123V"
+      ],
+      "min_exceed": 1
+    },
+    "design_rationales": [
+      {
+        "id": "D21N:K101R:I123V",
+        "evidence_id": "F46L:I152N:K156E",
+        "rationale": "C01 uses only conservative surface/repacking edits (K101R, I123V) plus D21N, avoiding buried polar swaps, so it should clear the O4 level."
+      },
+      {
+        "id": "K131R:N159D:K166E",
+        "evidence_id": "Q69R:F71S:I128F:N170S",
+        "rationale": "C02 pairs basic-class K131R with N159D and K166E, testing charge rebalancing without polar burial."
+      },
+      {
+        "id": "K26R:N121S:F130L:S175T",
+        "evidence_id": "V93I:L221Q",
+        "rationale": "C03 combines conservative K26R and S175T with N121S and F130L to probe whether mild polar changes stay near O1-O3 brightness."
+      },
+      {
+        "id": "D21N:K101R:I123V:S175T",
+        "evidence_id": "F46L:I152N:K156E",
+        "rationale": "adds S175T to the primary set to test whether a fourth conservative polar-uncharged edit preserves the predicted gain over O4."
+      },
+      {
+        "id": "K26R:K131R:N159D:K166E",
+        "evidence_id": "Q69R:F71S:I128F:N170S",
+        "rationale": "swaps in K26R to test whether the charge-rebalancing theme holds when the acidic cluster partner changes."
+      },
+      {
+        "id": "D21N:I123V:K131R:S175T",
+        "evidence_id": "F46L:I152N:K156E",
+        "rationale": "tests a D21N-free variant with K131R added, isolating whether D21N is required for the predicted improvement over O4."
+      }
+    ]
+  },
+  "status": "ok",
+  "elapsed_s": 9.924
+}

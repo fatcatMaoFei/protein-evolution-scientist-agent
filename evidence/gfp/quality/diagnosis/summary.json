@@ -1,0 +1,66 @@
+{
+  "scope": "retrospective diagnosis of frozen GFP decisions; no LLM calls or model training",
+  "budget_per_arm": 15,
+  "seed_headroom": [
+    {
+      "seed": 17,
+      "initial_count": 96,
+      "pool_count": 384,
+      "initial_best": 3.86700614934,
+      "pool_best": 3.94397804767,
+      "wild_type": 3.7192121319,
+      "pool_best_minus_initial": 0.07697189833000007,
+      "max_incumbent_gain": 0.07697189833000007,
+      "above_initial_count": 4,
+      "above_wt_count": 54,
+      "random_query_budget": 15,
+      "random_hit_probability": 0.14787560717043158
+    },
+    {
+      "seed": 29,
+      "initial_count": 96,
+      "pool_count": 384,
+      "initial_best": 4.02921560982,
+      "pool_best": 3.94893156252,
+      "wild_type": 3.7192121319,
+      "pool_best_minus_initial": -0.08028404729999972,
+      "max_incumbent_gain": 0.0,
+      "above_initial_count": 0,
+      "above_wt_count": 45,
+      "random_query_budget": 15,
+      "random_hit_probability": 0.0
+    },
+    {
+      "seed": 43,
+      "initial_count": 96,
+      "pool_count": 384,
+      "initial_best": 3.90148288056,
+      "pool_best": 4.0152175125,
+      "wild_type": 3.7192121319,
+      "pool_best_minus_initial": 0.11373463193999944,
+      "max_incumbent_gain": 0.11373463193999944,
+      "above_initial_count": 3,
+      "above_wt_count": 45,
+      "random_query_budget": 15,
+      "random_hit_probability": 0.11295247631676075
+    }
+  ],
+  "overlapping_pool_ids": {
+    "17/29": 5,
+    "17/43": 9,
+    "29/43": 5
+  },
+  "arms": 30,
+  "rounds": 90,
+  "queries": 450,
+  "arms_that_improved": 1,
+  "arms_with_above_initial_in_random_forest_top5": 0,
+  "llm_arms": 24,
+  "llm_arms_exposed_to_improvement": 3,
+  "llm_arms_exposed_via_rf_elite": 0,
+  "llm_arms_that_converted_exposure": 0,
+  "source": {
+    "assay": "GFP_AEQVI_Sarkisyan_2016",
+    "frozen_protocol_sha256": "ee62965c05c45d2e0cecaa0218dc30ee48899cd7a67c2ea3ef10cbbb4be7c359"
+  }
+}

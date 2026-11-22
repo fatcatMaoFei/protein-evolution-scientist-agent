@@ -477,6 +477,10 @@ def _page_reproduction(book: Manuscript, root: Path) -> None:
             "All measurements come from public GFP archives. No wet-lab experiment was performed.",
             "note",
         )
+    _primary_sources(book)
+
+
+def _primary_sources(book: Manuscript) -> None:
     book.para("Primary sources", "section")
     for entry in (
         '[1] Sarkisyan et al. (2016), <i>Local fitness landscape of the green fluorescent protein</i>. '
@@ -489,8 +493,270 @@ def _page_reproduction(book: Manuscript, root: Path) -> None:
         book.para(entry, "note")
 
 
-def render(run_dir: Path, output: Path) -> None:
-    """Create a five-page research PDF and a sibling GFP figure from evidence on disk."""
+def _quality_headroom(book: Manuscript, root: Path, summary: pd.DataFrame) -> None:
+    diagnostic = _json(root / "quality/diagnosis/summary.json")
+    rounds = pd.read_csv(root / "formal/deepseek/rounds.csv")
+    book.page()
+    book.para("Could the original pools beat the starting best?", "headline")
+    book.para(
+        "Each method started with the same measurements within a seed and queried 15 previously hidden "
+        "measurements in three rounds. Model-Only took the five highest predicted scores from an RF fitted "
+        "to that arm's observations. The LLM menu held those leaders, 19 more RF-ranked candidates, and "
+        "24 seeded alternatives. The following diagnosis uses labels after the formal run."
+    )
+    book.table(
+        ["Seed", "Initial best", "Pool best", "> Initial", "> WT", "Random hit in 15"],
+        [[str(row["seed"]), _number(row["initial_best"], 4), _number(row["pool_best"], 4),
+          f"{row['above_initial_count']}/{row['pool_count']}", str(row["above_wt_count"]),
+          f"{row['random_hit_probability']:.2%}"] for row in diagnostic["seed_headroom"]],
+        [61, 89, 85, 80, 64, 114],
+    )
+    book.para(
+        "<b>Table 2.</b> Random hit probability is exact for uniform sampling without replacement. "
+        "The three original candidate pools share some IDs across seeds. "
+        "Source: evidence/gfp/quality/diagnosis/seed_headroom.csv.", "note",
+    )
+    book.para(
+        f"One of {diagnostic['arms']} arms improved its starting best. No improving variant appeared in an "
+        "RF top-five or RF-elite list along the logged decisions. Seeded alternatives exposed an eligible "
+        f"improvement to {diagnostic['llm_arms_exposed_to_improvement']}/{diagnostic['llm_arms']} LLM arms, "
+        "and none of those arms selected one. The logged opportunities depend on each arm's past decisions."
+    )
+    book.para("What the newly queried measurements showed", "section")
+    batches = _matched_batches(rounds)
+    rows = []
+    for arm, label in ARMS.items():
+        part = batches.loc[arm]
+        method = _cohort(summary, "deepseek", arm)
+        rows.append([label, *(
+            f"{_number(row.batch_best)} / {_number(row.batch_mean)}" for row in part.itertuples()
+        ), f"{_delta(part['batch_best_delta'].mean())} / {_delta(part['batch_mean_delta'].mean())}",
+                     _delta(method["mean_gain_vs_initial_best"], 4)])
+    book.table(["Policy", "R1 best/mean", "R2 best/mean", "R3 best/mean", "vs RF best/mean", "Final gain"],
+               rows, [95, 80, 80, 80, 96, 62])
+    book.para(
+        "<b>Table 3.</b> New measured batch best and mean, averaged over three seeds. The RF contrast matches "
+        "seed and round. Final gain compares the final incumbent with the initial best. "
+        "Source: evidence/gfp/formal/deepseek/rounds.csv.", "note",
+    )
+    book.para(
+        "The scarce above-incumbent candidates limited separation on final gain. The DeepSeek knowledge "
+        "arm had a higher average batch best and a lower average batch mean than Model-Only. These are "
+        "distinct, descriptive findings under the archived budget."
+    )
+
+
+def _quality_validation(book: Manuscript, root: Path, summary: pd.DataFrame) -> None:
+    validation = root / "quality/model_validation"
+    diagnostics = _json(validation / "summary.json")
+    means = pd.read_csv(validation / "validation_means.csv")
+    ranks = means.set_index(["model", "criterion", "top_k"]).sort_index()
+
+    book.page()
+    book.para("Where the predictor and the policy differ", "headline")
+    book.para(
+        f"Post hoc validation refit the two existing estimators on each original initial set. Scoring used "
+        f"{diagnostics['validation_rows']} validation rows ({diagnostics['unique_validation_variants']} "
+        "unique variants). The acquisition pools and final holdouts provided no labels for this analysis."
+    )
+    rows = []
+    for model, label in (("rf", "Random Forest"), ("ridge", "Ridge")):
+        wt = ranks.loc[model, "above_wild_type"]
+        decile = ranks.loc[model, "upper_decile"]
+        rows.append([label, *(_number(wt.loc[5, metric]) for metric in ("spearman", "pearson", "mse")),
+                     *[f"{_number(values.loc[5, 'top_k_precision'])} / {_number(values.loc[10, 'top_k_precision'])}"
+                       for values in (wt, decile)], _number(decile.loc[5, "ap_high"])])
+    book.table(["Predictor", "Spearman", "Pearson", "MSE", ">WT P@5/10", "Top 10% P@5/10", "Top 10% AP"],
+               rows, [92, 62, 57, 53, 74, 81, 74])
+    book.para(
+        "<b>Table 4.</b> Precision at K uses uniform allocation of tied predictions at the selection cutoff. "
+        "AP is average precision. Source: evidence/gfp/quality/model_validation/validation_means.csv.", "note",
+    )
+    spread = diagnostics["rf_spread"]
+    low_mae = mean(next(row["mae"] for row in fold["risk_at_coverage"] if row["retained_fraction"] == 0.25)
+                   for fold in spread)
+    full_mae = mean(fold["mae"] for fold in spread)
+    coverage = mean(fold["fraction_abs_error_within_1_96_spreads"] for fold in spread)
+    book.para(
+        f"Ridge ranked better globally and at P@5. RF ranked better at P@10 for both thresholds. For RF, "
+        f"the lowest-disagreement quarter had MAE {_number(low_mae)} versus {_number(full_mae)} overall. "
+        f"Mean prediction ±1.96 tree SD covered {coverage:.1%}, so the interval has no demonstrated "
+        "95% calibration. This screen measures predictive error, leaving exploration value untested."
+    )
+    book.para("What changed when knowledge was enabled", "section")
+    rows = []
+    for backend, name in BACKENDS.items():
+        off = _cohort(summary, backend, "C_llm")
+        on = _cohort(summary, backend, "D_knowledge_llm")
+        rows.append([name, f"{int(off['above_wild_type_hits'])}/{int(off['measurements'])}",
+                     f"{int(on['above_wild_type_hits'])}/{int(on['measurements'])}",
+                     _delta(on["mean_best_so_far"] - off["mean_best_so_far"], 4)])
+    book.table(["Backend", "Hits > WT, OFF", "Hits > WT, ON", "Final best ON - OFF"],
+               rows, [135, 108, 108, 142])
+    overlap = pd.read_csv(root / "aggregate/knowledge_selection_overlap.csv")
+    first = overlap[overlap["round"] == 1]
+    book.para(
+        f"<b>Table 5.</b> First-round top-five membership changed in {int(first['set_changed'].sum())}/{len(first)} "
+        "same-menu comparisons. Terminal best stayed unchanged across all four models. "
+        "Sources: evidence/gfp/aggregate/method_summary.csv and knowledge_selection_overlap.csv.", "note",
+    )
+    failures = pd.read_csv(root / "aggregate/failure_examples.csv")
+    over, under = (failures.loc[index] for index in (failures["residual"].idxmin(), failures["residual"].idxmax()))
+    book.para(
+        f"Among measured recommendations, <b>{escape(over['mutations'])}</b> scored "
+        f"{_number(over['fitness'], 4)} after a {_number(over['prediction'], 4)} forecast. "
+        f"<b>{escape(under['mutations'])}</b> scored {_number(under['fitness'], 4)} after a "
+        f"{_number(under['prediction'], 4)} forecast. Source: evidence/gfp/aggregate/failure_examples.csv.", "note",
+    )
+
+
+def _quality_contrasts_figure(paired: pd.DataFrame, contrasts: pd.DataFrame, output: Path) -> None:
+    figure, axis = plt.subplots(figsize=(7.5, 2.1), layout="constrained")
+    styles = {"ridge": "Ridge", "rf": "RF", "random": "Random"}
+    labels = []
+    for index, row in enumerate(contrasts.itertuples()):
+        labels.append(f"{styles[row.policy]} - {styles[row.control]}")
+        points = paired[(paired["policy"] == row.policy) & (paired["control"] == row.control)].sort_values("block")
+        positions = [index + 0.13 + (offset % 3 - 1) * 0.09 for offset in range(len(points))]
+        axis.scatter(points["new_best"], positions, s=13, color="#78949E", alpha=0.78, zorder=3)
+        axis.hlines(index - 0.18, row.new_best_ci_low, row.new_best_ci_high, color="#175B6D", linewidth=2)
+        axis.plot(row.new_best, index - 0.18, marker="D", color="#175B6D", markersize=4)
+    axis.axvline(0, color="#A34C36", linewidth=0.9, linestyle="--")
+    axis.set(yticks=range(len(labels)), yticklabels=labels,
+             xlabel="Difference in best new measured fluorescence (log10)")
+    axis.invert_yaxis()
+    axis.grid(axis="x", color="#E6ECF0", linewidth=0.7)
+    axis.spines[["right", "top"]].set_visible(False)
+    axis.tick_params(axis="both", labelsize=8)
+    figure.savefig(output, dpi=200)
+    plt.close(figure)
+
+
+def _quality_acquisition(book: Manuscript, root: Path, figures: Path) -> None:
+    folder = root / "quality/acquisition"
+    status, config = (_json(folder / name) for name in ("status.json", "config.json"))
+    if status.get("status") != "complete" or status.get("api_calls") != 0:
+        raise ValueError("The quality report requires the completed zero-API supplemental acquisition")
+    methods = pd.read_csv(folder / "methods.csv")
+    contrasts = pd.read_csv(folder / "contrasts.csv")
+    book.page()
+    book.para("Prospective predictor acquisition comparison", "headline")
+    book.para(
+        f"A separate protocol fixed {status['paired_blocks']} paired blocks before execution. Except shared "
+        "WT, variants are disjoint across blocks and from the original study splits. Blocks were "
+        f"assigned without fluorescence labels. Each policy began with {config['initial_size']} observations "
+        f"and had {config['rounds']} rounds of {config['budget']} measured queries from a {config['pool_size']}-item "
+        f"pool. All {status['queries']} queries were completed with zero API calls. Estimator parameters stayed fixed."
+    )
+    means = methods.groupby("policy").mean(numeric_only=True)
+    book.table(
+        ["Policy", "Best new", "Mean new", "Hits > WT", "Incumbent gain"],
+        [[label, *(_number(means.loc[key, metric], 4) for metric in ("new_best", "new_mean")),
+          _number(means.loc[key, "above_wt"], 2), _delta(means.loc[key, "incumbent_gain"], 4)]
+         for key, label in (("random", "Random"), ("rf", "Random Forest"), ("ridge", "Ridge"))],
+        [133, 91, 91, 84, 94],
+    )
+    book.para(
+        "<b>Table 6.</b> Means across blocks. The primary outcome is the best of 15 <i>new</i> measured "
+        "variants. Incumbent gain is shown separately. Source: evidence/gfp/quality/acquisition/methods.csv.", "note",
+    )
+    plot = figures / "gfp-acquisition-contrasts.png"
+    _quality_contrasts_figure(pd.read_csv(folder / "paired.csv"), contrasts, plot)
+    book.story.append(Image(str(plot), width=486, height=136))
+    book.story.append(Spacer(1, 4))
+    book.para(
+        "<b>Figure 1.</b> Dots are paired blocks. Diamonds and lines show the mean difference and descriptive "
+        "95% percentile intervals from 10,000 block resamples. "
+        "Source: evidence/gfp/quality/acquisition/paired.csv.", "note",
+    )
+    labels = {"ridge": "Ridge", "rf": "RF", "random": "Random"}
+    book.table(
+        ["Paired contrast", "Best new difference [95% interval]", "Win/loss/tie", "Mean new diff."],
+        [[f"{labels[row.policy]} - {labels[row.control]}",
+          f"{_delta(row.new_best, 4)} [{_delta(row.new_best_ci_low, 4)}, {_delta(row.new_best_ci_high, 4)}]",
+          f"{row.new_best_wins}/{row.new_best_losses}/{row.new_best_ties}", _delta(row.new_mean, 4)]
+         for row in contrasts.itertuples()], [120, 180, 95, 98],
+    )
+    book.para(
+        "<b>Table 7.</b> Contrasts are within blocks. Intervals quantify variation over the sampled blocks in "
+        "one assay. Freeze: gfp_quality_protocol.md. Source: evidence/gfp/quality/acquisition/contrasts.csv.", "note",
+    )
+    book.para(
+        "Both predictive policies improved the mean new score versus Random in these blocks. The primary "
+        "best-new intervals all span zero. The study measures predictive ranking policies and contains no LLM arm."
+    )
+
+
+def _quality_audit(book: Manuscript, root: Path, audit: dict) -> None:
+    book.page()
+    book.para("Feedback, hypothesis tests and claims", "headline")
+    paired = audit["paired"]
+    book.para("Archived feedback perturbation", "section")
+    book.para(
+        f"The four fixed-condition checkpoints changed {paired['sets_changed']}/{paired['pairs']} top-five sets. "
+        f"With-feedback minus no-feedback averaged {_delta(paired['mean_best_delta'], 4)} in batch best. "
+        f"The with-feedback arm averaged {_delta(paired['mean_best_vs_greedy'], 4)} versus fixed Model-Only. "
+        "Improvement versus the no-feedback copy occurred at one checkpoint. Each condition used one draw per checkpoint. "
+        "Source: evidence/gfp/audit/paired_feedback_results.csv."
+    )
+    _quality_hypothesis(book, root / "quality/hypothesis", _json(root / "benchmark/source.json")["wild_type_measurement"])
+    book.para("Reproduction and scope", "section")
+    book.para(
+        "The verified archive supplies all replay measurements. The four LLM backends made actual native "
+        "tool calls in the original study. The supplemental comparison and post hoc validation used no "
+        "model APIs. The project has no wet-lab results. Codex assisted with code, analysis and this report."
+    )
+    book.para(
+        "The report renderer reads the frozen evidence and the separate quality outputs. The README "
+        "documents the cached assay and checksum, single-provider CLI, CSV imports and audits. "
+        "Hypothesis records link the pre-measurement decision hash to a threshold, predictions and imported assay values.",
+        "note",
+    )
+    _primary_sources(book)
+
+
+def _quality_hypothesis(book: Manuscript, folder: Path, wild_type: float) -> None:
+    book.para("Prospective test in the user workflow", "section")
+    trail = folder / "audit/decision_traces.jsonl"
+    traces = [json.loads(line) for line in trail.read_text(encoding="utf-8").splitlines()]
+    evaluations = traces[-1]["hypothesis_evaluations"]
+    finished = next(test for test in evaluations if test["status"] in ("supported", "refuted"))
+    origin = next(row for row in traces if row["round"] == finished["round"])
+    pending = next(test for test in origin["hypothesis_evaluations"] if test["round"] == finished["round"])
+    if pending["status"] != "pending" or pending["decision_sha256"] != finished["decision_sha256"]:
+        raise ValueError("The GFP quality report requires a verified pending-to-measured hypothesis trace")
+    book.para(
+        f"The configured model ({escape(origin['decision']['model'])}) locked a round {finished['round']} "
+        f"test of at least {finished['min_exceed']} of "
+        f"{len(finished['candidate_ids'])} designs exceeding measured {escape(finished['reference_id'])} "
+        f"({_number(finished['threshold'], 4)}). The test was pending before measurements. On import, "
+        f"{finished['n_exceed']}/{finished['n_measured']} exceeded the threshold and the locked criterion "
+        f"was <b>{escape(finished['status'])}</b> in this replay."
+    )
+    book.table(
+        ["GFP variant", "Predicted", "Measured", "Residual", "Forecast outcome"],
+        [[row["id"], _number(row["predicted_fitness"], 4), _number(row["measured_fitness"], 4),
+          _delta(row["residual"], 4), row["forecast_outcome"].replace("_", " ")]
+         for row in finished["candidate_results"]], [172, 71, 71, 69, 110],
+    )
+    book.para(
+        "<b>Table 8.</b> Forecast outcome compares prediction and measurement with the same locked threshold. "
+        "Residual is measured minus predicted. Only the selected archive comparison was imported. "
+        "The user audit has no matched counterfactual for a feedback gain estimate. "
+        "Source: evidence/gfp/quality/hypothesis/audit/decision_traces.jsonl.", "note",
+    )
+    n_pending = sum(row["status"] == "pending" for row in evaluations)
+    above_wt = sum(row["measured_fitness"] > wild_type for row in finished["candidate_results"])
+    pending_label = "hypothesis" if n_pending == 1 else "hypotheses"
+    book.para(
+        f"{above_wt}/{finished['n_measured']} tested variants exceeded WT ({_number(wild_type, 4)}). The locked test "
+        "evaluates its stated comparator and leaves any biochemical mechanism untested. "
+        f"The audit retains {n_pending} pending {pending_label}."
+    )
+
+
+def render(run_dir: Path, output: Path, *, quality: bool = False) -> None:
+    """Create a five-page research PDF and its figure from evidence on disk."""
     source = _json(run_dir / "benchmark/source.json")
     if source.get("assay") != "GFP_AEQVI_Sarkisyan_2016":
         raise ValueError("Expected the verified GFP benchmark source manifest")
@@ -501,10 +767,21 @@ def render(run_dir: Path, output: Path) -> None:
     audit = _json(run_dir / "audit/audit_summary.json")
     book = Manuscript()
     _page_benchmark(book, run_dir, source, summary)
-    _page_experiment(book, run_dir, source, output.parent)
-    _page_factorial(book, run_dir, summary)
-    _page_audit(book, run_dir, audit)
-    _page_reproduction(book, run_dir)
+    if quality:
+        book.para(
+            "Evidence in this edition includes the original frozen study, follow-up diagnosis and validation, "
+            "and a prospectively frozen supplemental exploration of predictive acquisition policies. "
+            "All assay comparisons use measured log10 fluorescence.", "note",
+        )
+        _quality_headroom(book, run_dir, summary)
+        _quality_validation(book, run_dir, summary)
+        _quality_acquisition(book, run_dir, output.parent)
+        _quality_audit(book, run_dir, audit)
+    else:
+        _page_experiment(book, run_dir, source, output.parent)
+        _page_factorial(book, run_dir, summary)
+        _page_audit(book, run_dir, audit)
+        _page_reproduction(book, run_dir)
 
     def footer(canvas, document):
         canvas.setStrokeColor(book.gray)

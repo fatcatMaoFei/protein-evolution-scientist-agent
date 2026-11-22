@@ -53,6 +53,17 @@ TOOLS = [{
         "parameters": SCHEMA,
     },
 }]
+RESEARCH_FIELDS = {
+    "target_reference": STRING,
+    "target_design": {"type": "integer"},
+    "design_reasons": ARRAY_STR,
+    "feedback_adjustment": STRING,
+}
+RESEARCH_SCHEMA = {
+    **SCHEMA,
+    "properties": SCHEMA["properties"] | RESEARCH_FIELDS,
+    "required": SCHEMA["required"] + list(RESEARCH_FIELDS),
+}
 SYSTEM = (
     "You are analyzing historical measurements for avGFP fluorescence. Larger log brightness is better. "
     "Only observations have measured fluorescence. Menu values and tool scores are fitted predictions. "
@@ -119,12 +130,15 @@ class QwenGFP(QwenTransport):
             return encoded
         payload = _payload(request)
         known = [row[0] for row in payload["observations"]]
+        argument_fields = "analyst, hypothesis, evidence_ids, designs"
         format_instruction = "one C alias, a space and the exact substitutions from its menu row"
         if "pending_ids" in payload:
+            argument_fields += ", target_reference, target_design, design_reasons, feedback_adjustment"
             format_instruction += " or NEW followed by legal off-menu edits, including at least one NEW design"
         encoded["assistant_prefill"] = f'<tool_call>\n{{"name":"{TOOL}","arguments":'
         encoded["structural_contract"] = (
-            "Write the four argument fields analyst, hypothesis, evidence_ids, designs. "
+            (f"Write the argument fields {argument_fields}. " if "pending_ids" in payload else
+             f"Write the four argument fields {argument_fields}. ") +
             f"evidence_ids must be one to three distinct O aliases from {', '.join(known)}. "
             f"designs must be exactly {payload['shortlist_size']} distinct strings, each consisting of "
             f"{format_instruction}. Do not put a C alias in evidence_ids. "
@@ -263,21 +277,35 @@ def _messages(request, menu, evidence, shortlist_size, *, allow_novel=False):
             f"and exactly {shortlist_size} designs. Write each design as a C alias followed by its exact edits, "
             "or NEW followed by a space and 1–4 colon-separated substitutions. Include at least one NEW design. "
             "Exclude observed IDs and pending_ids from NEW. The tool assigns N aliases to valid off-menu edits. "
-            "Keep the analyst and hypothesis under 15 words each. "
+            "Give one short design_reasons entry per design in the same order, starting with a displayed O alias "
+            "and a space. Each reason must be under 15 words. "
+            "State a testable fluorescence hypothesis. Predeclare target_design as its 1-based design index "
+            "and target_reference as one of your cited measured O aliases. The primary design predicts its "
+            "measured fluorescence will strictly exceed that observation. When using the menu as a measured "
+            "comparison, nominate a menu design that tests the hypothesis. The primary design must be in your final batch. "
+            "In feedback_adjustment, state a concrete decision change based on the available test result, or note "
+            "the available evidence if no test has returned. Keep all explanations brief. "
             f"GFP reference: {GFP_WT}."
         )
         payload["pending_ids"] = request["pending_ids"]
+        if request.get("primary_from_menu"):
+            instructions += " For this archive demonstration only, nominate a displayed C design as the primary test."
+        if request.get("hypothesis_feedback"):
+            payload["hypothesis_feedback"] = request["hypothesis_feedback"]
     return [{"role": "system", "content": system},
             {"role": "user", "content": instructions + "\n" + _json(payload)}]
 
 
-def _proposal(response, menu, evidence, count, limit, *, excluded=None):
+def _proposal(response, menu, evidence, count, limit, *, excluded=None, research=False, primary_from_menu=False):
     calls = response.get("tool_calls", [])
     if (len(calls) != 1 or calls[0].get("type") != "function" or not calls[0].get("id")
             or calls[0]["function"]["name"] != TOOL):
         raise AgentError("Expected one native score_gfp_designs call")
     draft = _parse_object(calls[0]["function"]["arguments"])
-    _check_fields(draft, SCHEMA["required"], ("analyst", "hypothesis"))
+    if research:
+        _check_fields(draft, RESEARCH_SCHEMA["required"], ("analyst", "hypothesis", "feedback_adjustment"))
+    else:
+        _check_fields(draft, SCHEMA["required"], ("analyst", "hypothesis"))
     references = draft["evidence_ids"]
     if not isinstance(references, list) or not 1 <= len(references) <= 3:
         raise AgentError("Cite one to three measured O aliases")
@@ -285,6 +313,17 @@ def _proposal(response, menu, evidence, count, limit, *, excluded=None):
     designs = draft["designs"]
     if not isinstance(designs, list) or len(designs) != count:
         raise AgentError(f"Expected exactly {count} design strings")
+    if research:
+        target = draft["target_design"]
+        reasons = draft["design_reasons"]
+        if type(target) is not int or not 1 <= target <= count or draft["target_reference"] not in references:
+            raise AgentError("The primary test needs a 1-based design index and one cited observed reference")
+        if not isinstance(reasons, list) or len(reasons) != count:
+            raise AgentError("Provide one reason prefixed by a displayed O alias for each design")
+        for reason in reasons:
+            alias, _, explanation = reason.strip().partition(" ") if isinstance(reason, str) else (None, None, "")
+            if alias not in evidence or not explanation.strip():
+                raise AgentError("Each design reason must start with a displayed O alias and contain an explanation")
     aliases = []
     novel = {}
     novel_ids = set()
@@ -318,6 +357,8 @@ def _proposal(response, menu, evidence, count, limit, *, excluded=None):
         aliases.append(alias)
     if excluded is not None and not novel:
         raise AgentError("Include at least one validated NEW design in the shortlist")
+    if primary_from_menu and aliases[draft["target_design"] - 1] not in menu:
+        raise AgentError("The primary test in this archive demonstration must be a displayed C design")
     scientific_critic(aliases, menu.keys() | novel.keys(), count=count)
     return draft, aliases, novel
 
@@ -342,7 +383,7 @@ def select_candidates(request: dict, *, log_path: Path, backend="deepseek", repl
         function = {**TOOLS[0]["function"], "description": (
             "Build and predict GFP variants from C aliases and their exact edits, or NEW followed by "
             "off-menu colon-separated edits. The tool assigns N aliases to accepted new designs."
-        )}
+        ), "parameters": RESEARCH_SCHEMA}
         tools = [{"type": "function", "function": function}]
     adapter = _transport(backend) if transport is None else transport
     log_path = Path(log_path)
@@ -361,7 +402,7 @@ def select_candidates(request: dict, *, log_path: Path, backend="deepseek", repl
     )
     final_cap = 840 if transport is not None or backend in {"deepseek", "sonnet"} else FINAL_TOKEN_CAP
     if allows_novel:
-        proposal_cap, final_cap = (768, 440) if backend == "qwen" else (2304, 1400)
+        proposal_cap, final_cap = (1152, 440) if backend == "qwen" else (3000, 1400)
     log = {
         "format_version": 1, "mode": "replay" if archive else "live", "backend": backend,
         "model": adapter.model, "domain": "gfp_fluorescence",
@@ -446,7 +487,8 @@ def select_candidates(request: dict, *, log_path: Path, backend="deepseek", repl
         if allows_novel:
             excluded = {row["id"] for row in request["observed"] + request["menu"]} | set(request["pending_ids"])
         (draft, aliases, novel), native = complete("proposal", messages, lambda response: _proposal(
-            response, menu, evidence, shortlist_size, request["max_mutations"], excluded=excluded
+            response, menu, evidence, shortlist_size, request["max_mutations"], excluded=excluded,
+            research=allows_novel, primary_from_menu=request.get("primary_from_menu", False)
         ))
         candidates = dict(menu)
         if novel:
@@ -466,6 +508,9 @@ def select_candidates(request: dict, *, log_path: Path, backend="deepseek", repl
             "arguments": draft, "result": [{**row, "sequence": candidates[row["alias"]]["sequence"]} for row in scored],
         })
         ending = " Reply with bare JSON. Limit critic and selection_rationale to 25 words each." if transport is not None or backend in {"deepseek", "sonnet"} else ""
+        target_alias = aliases[draft["target_design"] - 1] if allows_novel else None
+        if target_alias:
+            ending += f" Include {target_alias}, the primary design with a predeclared fluorescence threshold."
         final_messages = [
             *messages,
             {"role": "assistant", "content": native["text"] or None, "tool_calls": [tool_call]},
@@ -476,11 +521,13 @@ def select_candidates(request: dict, *, log_path: Path, backend="deepseek", repl
                 "weakness. New fluorescence measurements are unavailable until after submission." + ending
             )},
         ]
-        final, _ = complete(
-            "final_selection", final_messages,
-            lambda response: _parse_gfp_final(response["text"], set(aliases), request["budget"]),
-            native=native.get("native_content"),
-        )
+        def parse_selection(response):
+            decision = _parse_gfp_final(response["text"], set(aliases), request["budget"])
+            if target_alias and target_alias not in decision["candidate_ids"]:
+                raise AgentError(f"The final batch must include the predeclared primary design {target_alias}")
+            return decision
+
+        final, _ = complete("final_selection", final_messages, parse_selection, native=native.get("native_content"))
         selected = [candidates[alias] for alias in final["candidate_ids"]]
         resolved = [row["id"] for row in selected]
         log["tool_calls"].append({"tool": "gfp_critic", "result": {"legal": True, "unique": True, "n": len(selected)}})
@@ -490,6 +537,15 @@ def select_candidates(request: dict, *, log_path: Path, backend="deepseek", repl
             "evidence_ids": [evidence[alias]["id"] for alias in draft["evidence_ids"]],
             "selected_ids": resolved, "selected_candidates": selected,
         }
+        if target_alias:
+            log["decision"]["hypothesis_test"] = {"reference_id": evidence[draft["target_reference"]]["id"],
+                                                  "candidate_ids": [candidates[target_alias]["id"]], "min_exceed": 1}
+            design_rationales = []
+            for alias, reason in zip(aliases, draft["design_reasons"], strict=True):
+                evidence_alias, _, rationale = reason.strip().partition(" ")
+                design_rationales.append({"id": candidates[alias]["id"], "evidence_id": evidence[evidence_alias]["id"],
+                                          "rationale": rationale.strip()})
+            log["decision"]["design_rationales"] = design_rationales
         if archive is not None and (len(archive["calls"]) != len(log["calls"]) or archive["decision"] != log["decision"]):
             raise AgentError("Replay failed to reproduce the archived GFP decision")
         log["status"] = "ok"

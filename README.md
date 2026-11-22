@@ -2,7 +2,7 @@
 
 面向普通 GFP 的荧光定向进化代理。它从公开荧光实验中训练预测器，提出候选的明确氨基酸替换并重建完整序列，调用评分工具，审核批次，随后才从实测档案揭示所选变体的荧光。附带 CSV 用户工作流和独立反馈审计。
 
-正式实验使用 ProteinGym 1.3 的 `GFP_AEQVI_Sarkisyan_2016`，固定 GFP 参考序列。官方 51,714 条变体全部通过序列重建检查，35,584 条符合 1–4 点替换范围。野生型参照由原始实测档案补充，分数为 3.7192121319。目标使用档案的 log10 荧光分数，值越高表示在同一测定下越亮。[数据来源与许可](gfp-source.md) · [冻结协议](gfp_protocol.md) · [精修科研报告](output/pdf/gfp-scientific-agent-refined.pdf)
+正式实验使用 ProteinGym 1.3 的 `GFP_AEQVI_Sarkisyan_2016`，固定 GFP 参考序列。官方 51,714 条变体全部通过序列重建检查，35,584 条符合 1–4 点替换范围。野生型参照由原始实测档案补充，分数为 3.7192121319。目标使用档案的 log10 荧光分数，值越高表示在同一测定下越亮。[数据来源与许可](gfp-source.md) · [冻结协议](gfp_protocol.md) · [科研报告与补充验证](output/pdf/gfp-scientific-agent-quality.pdf)
 
 ## 从克隆到首份 GFP 结果
 
@@ -64,9 +64,27 @@ uv pip sync --python .venv/bin/python --require-hashes requirements-full.txt
 
 `--allow-novel` 是可选开关。开启时，LLM 可提出菜单外的 1–4 点 GFP 替换，程序重建完整序列，并用当前实测数据拟合的 RF 评分。每轮评分清单至少有一条菜单外提案，最终推荐按模型决策产生。入选的菜单外候选在 `recommendations.csv` 中标记为 `origin=llm_off_menu`，所有新推荐均为 `prediction_only`，`measured_fitness` 留空。进入下一轮时，可导入已返回的部分实测，其余推荐继续待测。菜单外表示未出现在当轮菜单中，可以通过实测档案单独核对其是否已有公开测量。
 
+开启时，每个提案记录一条已观测的 GFP 证据和理由。Agent 在提交前锁定一个主检候选及其已观测参照，判据为主检荧光严格超过参照。导入后，程序按原阈值给出支持、反驳或待测，保留原预测和残差，将历史检验结果和最新观测交给下一轮。`archive_status` 只标记是否存在于公开档案，平台仍需显式导入实测。证据来源可在 `agent.json` 查看，判定见 `state.json` 和用户审计。
+
 可用 `--candidate-file` 提交候选 CSV，必需字段为 `mutant`，可选 `sequence`。开启菜单外提案时，此文件提供菜单种子。关闭开关时，候选限定在所提供的范围。`demo`、`evolve` 和正式归档回放继续使用原有闭合候选模式。
 
 保留每轮整个输出目录及其相对位置。用户审计读取最新 `state.json` 及前序记录，交叉核验推荐序列、预测、证据来源与实测导入，把已返回实测与原预测关联，记录前后推荐变化。命令不调用 API。用户轨迹没有受控反事实时，`audit_report.md` 将反馈收益标记为 `NOT EVALUABLE`。[菜单外实跑与用户验收](evidence/gfp/product-refinement/acceptance.md)
+
+## 科学质量补充验证
+
+原实验各池中有 4、0、3 条实测超过初始最佳。种子 29 的池内最高值仍比起点低 0.0803。均匀抽 15 条命中超起点变体的理论概率分别为 14.79%、0%、11.30%。这类变体从未进入 RF Top-5，24 个 LLM 实验臂中只有 3 个通过探索位看到过，均未选中。终局最佳受起点约束。新批次最佳反映少量测试找到的最亮变体，批均值反映总体推荐质量，高于野生型命中率以固定参照衡量发现频率。[零 API 诊断](evidence/gfp/quality/diagnosis/diagnosis.md)
+
+独立验证上 Ridge 的 Spearman 为 0.430，RF 为 0.342。上十分位 P@5 是 0.200 对 0.133，P@10 则是 0.133 对 0.163。RF 的树间离散度可标记相对高误差样本，±1.96 倍离散度只覆盖 75.3% 的验证值。原正式 RF 和参数继续用于冻结回放。[模型验证与全部指标](evidence/gfp/quality/model_validation/)
+
+独立补充实验事先冻结 12 个配对区块，各方法三轮共 15 次，共 540 次档案查询，API 调用为 0。主指标为新发现的最佳实测值。Ridge 相对 RF 的配对均值差为 +0.0226 log10，描述性 95% 区间 [−0.0219, +0.0719]，12 个配对中 6 胜、3 负、3 平。此预算下没有足够证据判定哪种预测排序能稳定发现更亮的候选。[冻结补充协议](gfp_quality_protocol.md) · [配对结果](evidence/gfp/quality/acquisition/contrasts.csv) · [验收与证据](evidence/gfp/quality/acceptance.md)
+
+~~~bash
+.venv/bin/python gfp_diagnose.py --output runs/gfp-diagnosis
+.venv/bin/python gfp_model_validation.py --output runs/gfp-model-validation
+.venv/bin/python gfp_acquisition_ablation.py --output runs/gfp-acquisition
+.venv/bin/python gfp_hypothesis_example.py --model-profile default --output runs/gfp-hypothesis
+.venv/bin/python run.py gfp report --quality --run-dir evidence/gfp --output runs/gfp-quality-report.pdf
+~~~
 
 ## 研究与工程证据
 
