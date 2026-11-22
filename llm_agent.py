@@ -322,7 +322,7 @@ def choose_candidates(
     *, eligible: Mapping[str, dict], observed: Mapping[str, dict], scores: Mapping[str, float],
     k: int, seed: int, round_number: int, augmented: bool, log_path: Path,
     uncertainty: Mapping[str, float] | None = None, model: str | None = None,
-    replay_path: Path | None = None,
+    replay_path: Path | None = None, transport=None,
 ) -> list[str]:
     """Return validated IDs chosen by a real LLM, or replay and verify a recorded decision."""
     _check_inputs(eligible, observed, scores, uncertainty, k)
@@ -333,9 +333,14 @@ def choose_candidates(
     previous = json.loads(Path(replay_path).read_text()) if replay_path is not None else None
     if previous is not None and (previous.get("status") != "ok" or previous.get("mode") != "live"):
         raise AgentError("Replay requires a successful original live trace")
-    requested_model = model or (previous["model"] if previous is not None else os.environ.get("CODEFLOW_MODEL", MODEL))
-    endpoint = previous["config"]["api_base"] if previous is not None else _endpoint()
-    config = {**MODEL_CONFIG, "api_base": endpoint, "model": requested_model}
+    default_model = os.environ.get("CODEFLOW_MODEL", MODEL) if transport is None else transport.model
+    requested_model = model or (previous["model"] if previous is not None else default_model)
+    if previous is None:
+        endpoint = _endpoint() if transport is None else transport.endpoint
+    else:
+        endpoint = previous["config"]["api_base"]
+    model_config = MODEL_CONFIG if transport is None else transport.config
+    config = {**model_config, "api_base": endpoint, "model": requested_model}
     menu = _ordered_menu(eligible, scores, uncertainty, seed, round_number)
     aliases = {row["alias"]: row["id"] for row in menu}
     analysis = data_analyst(observed)
@@ -351,7 +356,7 @@ def choose_candidates(
     }
     started = time.monotonic()
 
-    def complete(stage, messages, parser):
+    def complete(stage, messages, parser, native_continuation=None):
         for attempt in (1, 2, 3):
             request = {
                 "model": requested_model, "messages": messages, "tools": TOOLS,
@@ -363,12 +368,14 @@ def choose_candidates(
             else:
                 request["tool_choice"] = "none"
                 request["response_format"] = {"type": "json_object"}
+            if transport is not None:
+                request = transport.encode(request, native_continuation=native_continuation)
             key = _digest(request)
             call = {"stage": stage, "attempt": attempt, "request_sha256": key, "request": request}
             log["calls"].append(call)
             mark = time.monotonic()
             if previous is None:
-                response = _generate(endpoint, request)
+                response = _generate(endpoint, request) if transport is None else transport.generate(endpoint, request)
                 log["live_generation_count"] += 1
             else:
                 index = len(log["calls"]) - 1
@@ -409,7 +416,10 @@ def choose_candidates(
             {"role": "assistant", "content": proposal["text"] or None, "tool_calls": [tool_call]},
             {"role": "tool", "tool_call_id": tool_id, "content": _json(evaluations)},
         ]
-        final, _ = complete("final_selection", final_messages, lambda reply: _parse_final(reply["text"], set(draft["candidate_ids"]), k))
+        final, _ = complete(
+            "final_selection", final_messages, lambda reply: _parse_final(reply["text"], set(draft["candidate_ids"]), k),
+            native_continuation=proposal.get("native_content"),
+        )
         resolved = [aliases[key] for key in final["candidate_ids"]]
         scientific_critic(resolved, set(eligible), count=k)
         log["tool_calls"].append({"tool": "scientific_critic", "trigger": "pipeline", "result": {"eligible_unique_budget_verified": True, "evidence_ids": draft["evidence_ids"]}})

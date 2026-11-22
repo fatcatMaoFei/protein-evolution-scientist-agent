@@ -1,0 +1,21 @@
+# Frozen design for the two-model validation
+
+This extension preserves the completed primary DeepSeek four-arm experiment. It adds two Claude Sonnet arms, leaving the random and Random Forest greedy controls paired and unchanged. The extension was specified after the main DeepSeek run and before the formal Sonnet run. The Sonnet smoke seed is 7 and excluded from the formal contrasts.
+
+## Design and estimands
+
+- The model-by-knowledge cells are DeepSeek OFF, DeepSeek ON, Sonnet OFF and Sonnet ON. Model families are DeepSeek V4.1 Flash and Anthropic Claude Sonnet 5.5, both through CodeFlow. The benchmark identifies effects for the tested model/serving configurations. The two models use different provider-native transport and decoding settings.
+- Freeze the DeepSeek study's exact data SHA-256, per-seed observation order and split manifests. Reuse seeds 17, 29 and 43, the 48/96/176/96 initial/validation/candidate/test partition, menus of 24 RF leaders and 24 seeded alternatives, the 3 × 5 test budget and the incumbent endpoint.
+- Keep analyst, predictor, uncertainty definition, evidence schema, shortlist tool parameters, response constraints, critic, reward oracle, refits and reporting rules. Within a model, only the extra knowledge context and corresponding instructions differ. Post-feedback RF schedules and candidate lists may vary with observations. Require an accepted model-issued scoring tool call and final validated batch, with bounded repairs and a traced stop on exhaustion.
+- Per seed and metric, compute knowledge effects as ON minus OFF within each model. Compute model effects as Sonnet minus DeepSeek with knowledge fixed. Estimate interaction as (Sonnet ON − Sonnet OFF) − (DeepSeek ON − DeepSeek OFF). Compare every model cell with the archived greedy arm using the same seed.
+- The primary outcome is improvement over the shared initial best strength at 15 measurements. Secondary outcomes include top-decile hits, first-hit effort and censoring, overlap with the arm's current greedy top five, mean rank/distance/water-to-binder and seeded-alternative selections. Report all paired outcomes and the arithmetic mean across three seeds. Treat seed-to-seed variation descriptively, because the splits can share mixes.
+- Invisible pool, validation and final-test outcomes stay outside the policy. Each oracle validates an entire round before releasing any selected value. The replay evidence includes the ordered selections, scores, revealed results and provider-reported usage, plus unsuccessful transport or schema attempts. Provider use charges are left unknown without a bill.
+- End each complete arm after the fixed third round or preserve its failure trace. Keep the seed-7 smoke separate. Do not choose a replacement provider using formal results.
+
+## Exploratory model and acquisition ablation
+
+This optional analysis uses the exact same archived splits, budget, outcomes and oracle. Run four prediction-only policies with estimator and selection as separate two-level factors. Estimator levels are RF and a 50:50 arithmetic mean of the existing RF and Ridge predictions. Selection levels are greedy score and score plus 1.0 times the contemporaneous RF tree standard deviation. The tree deviation is a heuristic uncertainty signal. It is held identical for both estimator levels given the same state. Use the full eligible pool, do not call an LLM, and keep outputs separate from the model-by-knowledge comparison. Report the paired 15-query outcomes and top-decile hit counts without changing either formal study.
+
+## Sonnet execution settings
+
+Request `claude-sonnet-5-5` via CodeFlow's native Anthropic Messages endpoint using Anthropic SDK 2.12.0. Set 512 output tokens, `between_tools` thinking, and low effort. The initial scoring tool is available as a strict native tool, with a single tool call accepted by the shared policy. The final response uses the same internal JSON decision fields and validators with Sonnet's native structured-output schema. Preserve original assistant blocks and the matching tool-use ID in the follow-up. The provider controls sampling and the decoder protocol. The shared policy allows at most three schema validation attempts per stage. Retain provider-reported cached and uncached input accounting. Preliminary transport checks use seed 7 or independent trivial requests.
