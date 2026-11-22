@@ -1,0 +1,15 @@
+# GFP prospective supplemental protocol
+
+The original study, four-model comparison, and feedback audit are frozen. This protocol fixes a separate, zero-API predictive acquisition study before its results are examined. The triggering diagnosis is that the original three measured pools contain four, zero, and three variants above their own starting incumbents. New measurements per batch can distinguish policies even when the incumbent stays fixed.
+
+## Data and policies
+
+- Use the same verified Sarkisyan fluorescence archive, GFP sequence validation, and ≤4-substitution eligibility. Exclude every non-WT ID in the original DeepSeek formal and smoke split files and the configured smoke split. The other formal providers shared the same seed splits. Retain the common measured WT in the initial observations only.
+- Fix twelve paired blocks indexed 101–112. Sort remaining eligible variant IDs and make one deterministic permutation with Python `random.Random(713803).shuffle`. Walk the permuted list once. Each block uses its first 95 IDs as initial measurements and its next 384 as the measured oracle pool. All non-WT IDs used by these blocks are disjoint. Use all twelve blocks, regardless of their realized headroom. The assignment uses IDs without reading fluorescence. There is no hyperparameter selection in these blocks.
+- Compare uniform random sampling, greedy Random Forest, and greedy Ridge. Reuse the frozen feature encoder and estimator hyperparameters for RF and Ridge. Use the block number for RF and uniformly sample five eligible IDs per round with a stream seeded by that block. Break prediction ties by ID. Each policy has its own ledger and oracle. Fit the decision model to the initial observations and newly returned measurements in that policy only. Use three rounds of five distinct queries, then stop. Persist per-round scores and predictions for prediction-based decisions and the exact selections and measurements. There are no model API calls.
+
+## Outcomes and analysis
+
+- Primary endpoint is the maximum of the 15 new measured log10 fluorescence values by policy and block. It measures the best discovery within the fixed query budget. Initial observations are excluded from that statistic.
+- Secondary endpoints are the mean of the 15 new scores, counts strictly above measured WT, incumbent gain from the starting best, and new batch maxima and means by round. Compare all three identically. Record the number of available variants above the incumbent and the pool maximum after all decisions are committed. These are diagnostic, separate from selector inputs.
+- Report matched differences for Ridge minus RF, RF minus Random, and Ridge minus Random across all 12 blocks. For primary endpoint differences, show all 12 paired values and their mean with a descriptive percentile bootstrap interval using 10,000 block resamples and NumPy RNG seed 80177. Secondary contrasts are descriptive. Report both directions of the differences and ties. This single-assay supplemental ablation tests ranking policies. It cannot establish an LLM effect on its own.
