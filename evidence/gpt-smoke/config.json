@@ -1,0 +1,49 @@
+{
+  "mode": "smoke",
+  "seeds": [
+    7
+  ],
+  "rounds": 1,
+  "budget": 5,
+  "arms": [
+    "C_llm",
+    "D_knowledge_llm"
+  ],
+  "python": "3.12.13",
+  "numpy": "2.4.3",
+  "pandas": "3.0.1",
+  "scipy": "1.17.1",
+  "scikit_learn": "1.8.0",
+  "predictor": "RandomForest",
+  "rf_parameters": {
+    "n_estimators": 128,
+    "min_samples_leaf": 2,
+    "max_features": 0.8,
+    "n_jobs": 1
+  },
+  "ridge_alpha": 10.0,
+  "target_age_days": 28,
+  "primary_endpoint": "final incumbent strength minus shared initial best in MPa",
+  "high_threshold": "linear 0.9 quantile within the initial eligible pool for each seed, used only in evaluation",
+  "first_hit_effort": "count through the first threshold hit in recorded batch order, right censored at total budget",
+  "stopping_condition": "fixed complete rounds for every arm",
+  "rank_ties": "lexical mix ID",
+  "study": "paired LLM family by knowledge factorial",
+  "model": "gpt-6-luna",
+  "baseline_model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "baseline_evidence": "../smoke",
+  "baseline_file_sha256": {
+    "config.json": "bdd97cbe1c3d244e897d3099ac40488258354dd476965475b52240442f41fcf9",
+    "source.json": "f76af8041f63634f0c632281ed3a2e1f207c90aaf7d0089f71d98947afbd8ab8",
+    "status.json": "60accc260cfd50e2981f795d5ebbaea38da79c9d2fc3c5928401a07696d3f40a",
+    "splits/seed-7.json": "911173a6dc34a45d4de8bd6b87a4078e1292bd2e066b881d90a4b800f7df6106",
+    "arms/seed-7/A_random/initial_observed.json": "9eba29b4c00739635fde7af5dbea66f7fada29d487f67a9b66163cf6b55b6b42",
+    "arms/seed-7/B_greedy/initial_observed.json": "9eba29b4c00739635fde7af5dbea66f7fada29d487f67a9b66163cf6b55b6b42",
+    "arms/seed-7/C_llm/initial_observed.json": "9eba29b4c00739635fde7af5dbea66f7fada29d487f67a9b66163cf6b55b6b42",
+    "arms/seed-7/C_llm/round-01-agent.json": "80ce9cb24b7afc93ef90967efcb8a42f98b04542c7462d527bc5e26ca23b11fe",
+    "arms/seed-7/D_knowledge_llm/initial_observed.json": "9eba29b4c00739635fde7af5dbea66f7fada29d487f67a9b66163cf6b55b6b42",
+    "arms/seed-7/D_knowledge_llm/round-01-agent.json": "9c43dd217c54e84513a339f734e582cbb6d5335637768fed444460d8599e4982"
+  },
+  "frozen_protocol_file": "protocol-freeze.md",
+  "frozen_protocol_sha256": "752031bfa1c3cc1a7216d0c93f8f7ab8b741c404ec02866c68b4b41b43cb1f00"
+}
