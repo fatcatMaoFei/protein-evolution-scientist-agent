@@ -45,15 +45,49 @@ def _paired_figure(frame: pd.DataFrame, figure_dir: Path) -> None:
     fig, ax = plt.subplots(figsize=(7.7, 3.8), layout="constrained")
     cells = ["No new feedback", "With real feedback", "Model only"]
     colors = ("#776587", "#326477", "#A55840", "#57794B")
-    for color, row in zip(colors, frame.itertuples(), strict=True):
+    for color, marker, style, row in zip(colors, ("o", "D", "x", "s"), ("-", "--", ":", "-"),
+                                         frame.itertuples(), strict=True):
         ax.plot(cells, [row.no_feedback_best_mpa, row.with_feedback_best_mpa, row.model_only_best_mpa],
-                "-o", color=color, label=f"Seed {row.seed}, {'knowledge ON' if row.arm.startswith('D') else 'knowledge OFF'}")
+                marker=marker, linestyle=style, color=color,
+                label=f"Seed {row.seed}, {'knowledge ON' if row.arm.startswith('D') else 'knowledge OFF'}")
     ax.set_ylabel("Best measured strength (MPa)")
     ax.grid(axis="y", color="#E5E9EC")
     ax.spines[["right", "top"]].set_visible(False)
-    ax.legend(loc="best", frameon=False, ncol=2, fontsize=8)
+    fig.legend(loc="outside upper center", frameon=False, ncol=2, fontsize=8)
     fig.savefig(figure_dir / "paired-feedback.png", dpi=180)
     plt.close(fig)
+
+
+def _check_replay(original_dir: Path, output: Path, replayed: pd.DataFrame) -> None:
+    original = pd.read_csv(original_dir / "paired_feedback_results.csv")
+    for row in original.itertuples():
+        for label in ("no_feedback", "with_feedback"):
+            source_dir = (original_dir / "paired").resolve()
+            source_trace = (source_dir / getattr(row, f"{label}_trace")).resolve()
+            if not source_trace.is_relative_to(source_dir):
+                raise ValueError("Archived trace reference escapes the audit")
+            expected = getattr(row, f"{label}_trace_sha256")
+            if hashlib.sha256(source_trace.read_bytes()).hexdigest() != expected:
+                raise ValueError("Archived trace digest differs from its recorded digest")
+    # Replay logs have different execution timestamps and execution mode. Response digests are
+    # checked in the policy replay, and the selected data and all paired outcomes must agree.
+    log_hash_columns = ["no_feedback_trace_sha256", "with_feedback_trace_sha256"]
+    pd.testing.assert_frame_equal(original.drop(columns=log_hash_columns), replayed.drop(columns=log_hash_columns),
+                                  check_exact=False, rtol=1e-10, atol=1e-10)
+    pd.testing.assert_frame_equal(pd.read_csv(original_dir / "paired/selections.csv"),
+                                  pd.read_csv(output / "paired/selections.csv"),
+                                  check_exact=False, rtol=1e-10, atol=1e-10)
+
+
+def _batch_mean_comparison(output: Path) -> dict:
+    selections = pd.read_csv(output / "paired/selections.csv")
+    means = selections.groupby(["seed", "arm", "feedback_branch"]).strength_mpa.mean().unstack()
+    gain = means.with_feedback - means.no_feedback
+    return {
+        "mean_batch_strength_gain_mpa": float(gain.mean()),
+        "mean_batch_strength_gain_range_mpa": [float(gain.min()), float(gain.max())],
+        "mean_batch_strength_gain_versus_model_only_mpa": float((means.with_feedback - means.greedy).mean()),
+    }
 
 
 def _write_report(output: Path, summary: dict, records: list[dict], paired: pd.DataFrame | None) -> None:
@@ -91,6 +125,8 @@ def _write_report(output: Path, summary: dict, records: list[dict], paired: pd.D
         delta = paired.delta_best_mpa
         direct = paired.with_feedback_best_mpa - paired.model_only_best_mpa
         eligible = len(paired)
+        secondary = summary["paired_metrics"]
+        selections = pd.read_csv(output / "paired/selections.csv")
         sections += [
             f"在 RF 权重、候选菜单、模型和预算相同的 {eligible} 个配对检查点，"
             f"提供上一轮真实测量后，{changed}/{eligible} 个 Top-5 集合发生变化。"
@@ -99,6 +135,8 @@ def _write_report(output: Path, summary: dict, records: list[dict], paired: pd.D
             f"范围 [{delta.min():+.2f}, {delta.max():+.2f}] MPa。"
             f"有反馈减直接 RF 推荐的平均差为 {direct.mean():+.2f} MPa。"
             "每个条件只测一次模型决策，差异可能含单次响应变动。",
+            f"作为次要指标，整批平均强度的反馈差为 {secondary['mean_batch_strength_gain_mpa']:+.2f} MPa，"
+            f"相对 RF 直排的差值为 {secondary['mean_batch_strength_gain_versus_model_only_mpa']:+.2f} MPa。",
             f"有反馈的推荐理由在 {int((paired.new_feedback_evidence_count > 0).sum())}/{eligible} 个检查点"
             "引用了可追溯的新测量。"
             f"有反馈 Agent 与直接 RF 直排平均重叠 {paired.with_feedback_greedy_overlap.mean()/5:.0%}。"
@@ -115,11 +153,20 @@ def _write_report(output: Path, summary: dict, records: list[dict], paired: pd.D
                 f"{row.model_only_best_mpa:.2f} | {row.delta_best_mpa:+.2f} | {row.selection_overlap}/5 |"
             )
         weakest = paired.assign(gap=direct).sort_values(["gap", "seed"]).iloc[0]
+        case = selections[(selections.seed == weakest.seed) & (selections.arm == weakest.arm)]
+        greedy = case[case.feedback_branch == "greedy"].sort_values("strength_mpa").iloc[-1]
+        picked = case[case.feedback_branch == "with_feedback"]
         sections += [
             "",
             f"有反馈相对 RF 最弱的检查点是种子 {weakest.seed}、知识"
-            f"{'开' if weakest.arm.startswith('D') else '关'}，差值 {weakest.gap:+.2f} MPa。"
-            "该格的理由、测量误差、候选和遗憾值可复核。",
+            f"{'开' if weakest.arm.startswith('D') else '关'}，差值 {weakest.gap:+.2f} MPa。",
+        ]
+        if greedy.id not in set(picked.id):
+            sections.append(
+                f"有反馈的选择漏掉了 RF 排名第 {greedy.rf_rank} 的 {greedy.id}，"
+                f"其存档实测为 {greedy.strength_mpa:.2f} MPa。"
+            )
+        sections += [
             "",
             "[配对结果与遗憾值](paired_feedback_results.csv) · [逐候选测量](paired/selections.csv) · "
             "[配对曲线](figures/paired-feedback.png)",
@@ -186,8 +233,7 @@ def run(run_dir: Path, output: Path, *, paired: bool = False, replay: Path | Non
         if result["status"] == "complete":
             table = pd.read_csv(pair_dir / "pairs.csv")
             if replay:
-                original = pd.read_csv(replay / "paired_feedback_results.csv")
-                pd.testing.assert_frame_equal(original, table, check_exact=False, rtol=1e-10, atol=1e-10)
+                _check_replay(replay, output, table)
             table.to_csv(output / "paired_feedback_results.csv", index=False, lineterminator="\n")
             delta = table.delta_best_mpa
             summary["paired_metrics"] = {
@@ -203,6 +249,7 @@ def run(run_dir: Path, output: Path, *, paired: bool = False, replay: Path | Non
                 "mean_gain_versus_model_only_mpa": float((table.with_feedback_best_mpa - table.model_only_best_mpa).mean()),
                 "pairs_with_traceable_new_evidence_in_reasoning": int((table.new_feedback_evidence_count > 0).sum()),
             }
+            summary["paired_metrics"].update(_batch_mean_comparison(output))
             _paired_figure(table, figure_dir)
         else:
             summary["paired_reason"] = result.get("reason", "配对决策没有通过校验。")
