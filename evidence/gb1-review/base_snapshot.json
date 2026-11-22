@@ -1,0 +1,134 @@
+{
+  "schema_version": 1,
+  "baseline_ref": "0e52dd8",
+  "baseline_commit": "0e52dd8882c7c542f24357a0623b6bbb197908be",
+  "baseline_tree": "54338c4cc96e4dc7f104f3add640e9155524ba5b",
+  "head_when_verified": "0e52dd8882c7c542f24357a0623b6bbb197908be",
+  "local_origin_main_when_verified": "0e52dd8882c7c542f24357a0623b6bbb197908be",
+  "tracked_worktree_files_verified_byte_identical": 872,
+  "hash_method": {
+    "inputs": "All tracked blobs returned by git ls-tree -r -z at baseline_commit. Read each object through git cat-file --batch, not from the mutable worktree.",
+    "path_order": "Ascending bytewise order of raw repository-relative paths.",
+    "record_bytes": "ASCII ls-tree mode, TAB, lowercase SHA-256 hex of raw blob bytes, TAB, raw path bytes, LF.",
+    "group_digest": "SHA-256 hex of concatenated record bytes in path order; byte count covers raw blob bytes, excluding manifest separators.",
+    "groups": {
+      "gb1_benchmark_evidence": "evidence/gb1/",
+      "other_historical_evidence": "evidence/ except evidence/gb1/",
+      "historical_reports_and_figures": "output/",
+      "documentation_and_protocols": "Remaining tracked paths ending .md",
+      "code_and_configuration": "Remaining tracked paths"
+    }
+  },
+  "groups": {
+    "code_and_configuration": {
+      "file_count": 41,
+      "blob_bytes": 770447,
+      "manifest_sha256": "e39823d8c144227a0cab5c6e13d9a87886a614927b2e70791e639c243f902a56"
+    },
+    "documentation_and_protocols": {
+      "file_count": 9,
+      "blob_bytes": 36456,
+      "manifest_sha256": "8e628fbce867c8c060e0947f2d38fb33fc7c8d2a8d543f3db1db198e194721bb"
+    },
+    "gb1_benchmark_evidence": {
+      "file_count": 9,
+      "blob_bytes": 9109,
+      "manifest_sha256": "2341bcc861ea8a97d92b00fecdd6137f53efb47bdee5c0d3eba5404ef18c14d1"
+    },
+    "historical_reports_and_figures": {
+      "file_count": 4,
+      "blob_bytes": 267736,
+      "manifest_sha256": "2cc76fa90970375280b9f159d715840880611a3c8cb6bac47de04ae4c5e00d6c"
+    },
+    "other_historical_evidence": {
+      "file_count": 809,
+      "blob_bytes": 13653988,
+      "manifest_sha256": "16e245a109d0decde639af05e5b4563f3eeee5a24c073ab18d071dc3df9f1992"
+    }
+  },
+  "key_artifacts": {
+    "evidence/across-models/cell_summary.csv": {
+      "sha256": "c50bc817b77458f4264ac483a8ddba05a7f1b7a4734877a6d33ebf8c76f69277",
+      "bytes": 1243
+    },
+    "evidence/concrete/source.json": {
+      "sha256": "f76af8041f63634f0c632281ed3a2e1f207c90aaf7d0089f71d98947afbd8ab8",
+      "bytes": 1129
+    },
+    "evidence/decision-audit/audit_summary.json": {
+      "sha256": "6a11ce208aeb502c03c179cbfad05cd9744c2e9435cf6d100b02138f55828d6e",
+      "bytes": 51548
+    },
+    "evidence/decision-audit/paired_feedback_results.csv": {
+      "sha256": "1c2f11907b43f650be816cb9d2725b3b91fcf9010c4b31a0b2ab8c7c959ec08d",
+      "bytes": 5253
+    },
+    "evidence/gb1/audit.json": {
+      "sha256": "659ed029cafdd04e819793dc8a8edb90fb217bd67218bbee2e07b10fd0c003d1",
+      "bytes": 1291
+    },
+    "evidence/gb1/error_strata.csv": {
+      "sha256": "1010e99575ad3f2840e70a580eb67bf65a77391cc5e955780fc88bc35bf5ebc2",
+      "bytes": 1225
+    },
+    "evidence/gb1/exploratory_single_effect_transfer.csv": {
+      "sha256": "919c725a9e73324544a293c132d4af6ba7e7495889e33eceb5d4e616979a0749",
+      "bytes": 792
+    },
+    "evidence/gb1/metrics.csv": {
+      "sha256": "0aecaccf4aa692ab4e1435dc538f5bce136021c3ac08b9fbf64beba467f8713a",
+      "bytes": 1369
+    },
+    "evidence/gb1/position_ablation.csv": {
+      "sha256": "a13b70bbcbe48db72e174f2d1fd00fa2a5d35eb9758f02c12530d95fb50dae9a",
+      "bytes": 896
+    },
+    "evidence/gb1/provenance.json": {
+      "sha256": "1b8d6288610428704fcd455e228950ea4e0044423a132f4edb4c8bed93811222",
+      "bytes": 665
+    },
+    "evidence/gb1/single_effect_transfer.json": {
+      "sha256": "d126b1f1545ce8f202fdc60b1dcbbeb9af4ef468914227d77d4ea3cff51a1d33",
+      "bytes": 456
+    },
+    "evidence/gb1/training_config.json": {
+      "sha256": "05058032db7163a8488910682a402e1062a0c626619d001c7d49b170c7923df1",
+      "bytes": 516
+    },
+    "evidence/gb1/validation_grid.csv": {
+      "sha256": "8a68e46407e503c72cc59d1ec74f45e9a537b2b2152a0d592d7b0c78524b9307",
+      "bytes": 1899
+    },
+    "evidence/tests.txt": {
+      "sha256": "7998a602e002caf66730412c9aee2288141fc2bf8086f1863601fd4ac22e6d0c",
+      "bytes": 519
+    },
+    "output/pdf/concrete_trajectories.png": {
+      "sha256": "0582310b82a57c8c98070393353a75f5063f26c693eef5f647c8cc3a8e022329",
+      "bytes": 30014
+    },
+    "output/pdf/factorial_trajectories.png": {
+      "sha256": "b576f17130691a91af3e44e24d9739c1d868456ead9324f8efde2f2c644dd8e5",
+      "bytes": 39491
+    },
+    "output/pdf/gb1_prediction.png": {
+      "sha256": "ef31013c2769e3664fbb66742053e0ed7ddac9cf24bb5ea42b742ba390267dac",
+      "bytes": 45759
+    },
+    "output/pdf/scientific-agent-assessment.pdf": {
+      "sha256": "2f39998a56ab534a9ae7fd6d2d9a67dec3819ca83fbb172ed46741e5c24011b3",
+      "bytes": 152472
+    }
+  },
+  "official_gb1_source": {
+    "source_url": "https://raw.githubusercontent.com/J-SNACKKB/FLIP/62cace8735f5610e2743cf06ce0f944b37fffaa6/splits/gb1/splits.zip",
+    "source_revision": "62cace8735f5610e2743cf06ce0f944b37fffaa6",
+    "cached_archive_path": ".cache/gb1/splits.zip",
+    "archive_bytes": 1241473,
+    "archive_sha256": "00a3c3d5be56ce35adfbec838db8ff549be369525e151a6978133da34b9fd86f",
+    "csv_member": "splits/three_vs_rest.csv",
+    "member_bytes": 2503831,
+    "member_sha256": "b8aa60cc061013a5c2e6f4070593c82976b1d9e5c9058a66ad57c6e9c3cec023",
+    "matches_prior_provenance": true
+  }
+}

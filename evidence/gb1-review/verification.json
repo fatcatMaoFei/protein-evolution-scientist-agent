@@ -1,0 +1,180 @@
+{
+  "base_commit": "0e52dd8882c7c542f24357a0623b6bbb197908be",
+  "recorded_date_melbourne": "2026-11-22",
+  "benchmark_command": ".venv/bin/python run.py gb1 --output tmp/gb1-review-rerun",
+  "benchmark_stdout": "FLIP GB1 aggregate evaluation completed",
+  "benchmark_exit_code": 0,
+  "benchmark_reproduced": true,
+  "artifact_comparison": {
+    "baseline_directory": "evidence/gb1",
+    "baseline_files_match_git_commit": true,
+    "files_checked": 9,
+    "byte_identical_files": 8,
+    "files": {
+      "audit.json": {
+        "baseline_sha256": "659ed029cafdd04e819793dc8a8edb90fb217bd67218bbee2e07b10fd0c003d1",
+        "reproduced_sha256": "659ed029cafdd04e819793dc8a8edb90fb217bd67218bbee2e07b10fd0c003d1",
+        "byte_identical": true,
+        "comparison": "byte-identical"
+      },
+      "error_strata.csv": {
+        "baseline_sha256": "1010e99575ad3f2840e70a580eb67bf65a77391cc5e955780fc88bc35bf5ebc2",
+        "reproduced_sha256": "1010e99575ad3f2840e70a580eb67bf65a77391cc5e955780fc88bc35bf5ebc2",
+        "byte_identical": true,
+        "comparison": "byte-identical"
+      },
+      "exploratory_single_effect_transfer.csv": {
+        "baseline_sha256": "919c725a9e73324544a293c132d4af6ba7e7495889e33eceb5d4e616979a0749",
+        "reproduced_sha256": "919c725a9e73324544a293c132d4af6ba7e7495889e33eceb5d4e616979a0749",
+        "byte_identical": true,
+        "comparison": "byte-identical"
+      },
+      "metrics.csv": {
+        "baseline_sha256": "0aecaccf4aa692ab4e1435dc538f5bce136021c3ac08b9fbf64beba467f8713a",
+        "reproduced_sha256": "0aecaccf4aa692ab4e1435dc538f5bce136021c3ac08b9fbf64beba467f8713a",
+        "byte_identical": true,
+        "comparison": "byte-identical"
+      },
+      "position_ablation.csv": {
+        "baseline_sha256": "a13b70bbcbe48db72e174f2d1fd00fa2a5d35eb9758f02c12530d95fb50dae9a",
+        "reproduced_sha256": "a13b70bbcbe48db72e174f2d1fd00fa2a5d35eb9758f02c12530d95fb50dae9a",
+        "byte_identical": true,
+        "comparison": "byte-identical"
+      },
+      "provenance.json": {
+        "baseline_sha256": "1b8d6288610428704fcd455e228950ea4e0044423a132f4edb4c8bed93811222",
+        "reproduced_sha256": "0f38ad6b52b01976e483f427389a09336021e85676c5936dca51f9a6bbf4b125",
+        "byte_identical": false,
+        "comparison": "same source metadata except retrieval method and server date"
+      },
+      "single_effect_transfer.json": {
+        "baseline_sha256": "d126b1f1545ce8f202fdc60b1dcbbeb9af4ef468914227d77d4ea3cff51a1d33",
+        "reproduced_sha256": "d126b1f1545ce8f202fdc60b1dcbbeb9af4ef468914227d77d4ea3cff51a1d33",
+        "byte_identical": true,
+        "comparison": "byte-identical"
+      },
+      "training_config.json": {
+        "baseline_sha256": "05058032db7163a8488910682a402e1062a0c626619d001c7d49b170c7923df1",
+        "reproduced_sha256": "05058032db7163a8488910682a402e1062a0c626619d001c7d49b170c7923df1",
+        "byte_identical": true,
+        "comparison": "byte-identical"
+      },
+      "validation_grid.csv": {
+        "baseline_sha256": "8a68e46407e503c72cc59d1ec74f45e9a537b2b2152a0d592d7b0c78524b9307",
+        "reproduced_sha256": "8a68e46407e503c72cc59d1ec74f45e9a537b2b2152a0d592d7b0c78524b9307",
+        "byte_identical": true,
+        "comparison": "byte-identical"
+      }
+    }
+  },
+  "environment": {
+    "python": "3.12.13",
+    "platform": "Darwin",
+    "platform_release": "25.0.0",
+    "architecture": "arm64",
+    "dependencies": {
+      "numpy": "2.4.3",
+      "pandas": "3.0.1",
+      "scipy": "1.17.1",
+      "scikit-learn": "1.8.0",
+      "threadpoolctl": "3.6.0",
+      "pytest": "9.0.2"
+    }
+  },
+  "source": {
+    "source_url": "https://raw.githubusercontent.com/J-SNACKKB/FLIP/62cace8735f5610e2743cf06ce0f944b37fffaa6/splits/gb1/splits.zip",
+    "source_revision": "62cace8735f5610e2743cf06ce0f944b37fffaa6",
+    "archive_file": "splits.zip",
+    "archive_sha256": "00a3c3d5be56ce35adfbec838db8ff549be369525e151a6978133da34b9fd86f",
+    "archive_bytes": 1241473,
+    "csv_member": "splits/three_vs_rest.csv",
+    "csv_sha256": "b8aa60cc061013a5c2e6f4070593c82976b1d9e5c9058a66ad57c6e9c3cec023",
+    "csv_bytes": 2503831,
+    "license_flip": "AFL-3.0",
+    "license_original": "CC-BY-4.0",
+    "baseline_retrieval": "downloaded and verified",
+    "baseline_retrieval_server_date": "Sun, 22 Nov 2026 00:07:46 GMT",
+    "rerun_retrieval": "verified cached archive",
+    "rerun_retrieval_server_date": null,
+    "official_description": "https://github.com/J-SNACKKB/FLIP/blob/62cace8735f5610e2743cf06ce0f944b37fffaa6/splits/gb1/README.md",
+    "assay_paper": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4985287/",
+    "representation_metadata": "https://www.rcsb.org/structure/5LDE"
+  },
+  "dimensions": {
+    "records": 8733,
+    "train": 2691,
+    "validation": 299,
+    "final_test": 5743,
+    "duplicate_sequences": 0,
+    "malformed_sequences": 0,
+    "missing_or_nonfinite_targets": 0,
+    "partition_intersection_count": 0,
+    "final_test_four_substitutions": 5743
+  },
+  "wt_reference": {
+    "basis": "Unique score-one training row and official split depth consistency",
+    "independent_native_identity_established": false,
+    "note": "FLIP's prepared representation is derived from PDB 5LDE chain A. RCSB annotates the 265-residue entity as chimeric."
+  },
+  "test_metrics": {
+    "train_mean": {
+      "setting": null,
+      "n": 5743.0,
+      "spearman": null,
+      "pearson": null,
+      "mse": 1.689748455148608,
+      "target_above_wt_prevalence": 0.37454292181786525,
+      "ap_above_wt": 0.37454292181786525,
+      "top_k": 288.0,
+      "top_k_precision_above_wt": 0.37454292181786525,
+      "top_k_recall_above_wt": 0.050148006268500786
+    },
+    "ridge_additive": {
+      "setting": 0.1,
+      "n": 5743.0,
+      "spearman": 0.7500238797067291,
+      "pearson": 0.6406575450125264,
+      "mse": 1.042616136344615,
+      "target_above_wt_prevalence": 0.37454292181786525,
+      "ap_above_wt": 0.7014835422908677,
+      "top_k": 288.0,
+      "top_k_precision_above_wt": 0.7951388888888888,
+      "top_k_recall_above_wt": 0.10646211064621107
+    },
+    "ridge_pairwise": {
+      "setting": 1.0,
+      "n": 5743.0,
+      "spearman": 0.7967408966413181,
+      "pearson": 0.8011101991070183,
+      "mse": 0.6645837838174478,
+      "target_above_wt_prevalence": 0.37454292181786525,
+      "ap_above_wt": 0.8368556820077274,
+      "top_k": 288.0,
+      "top_k_precision_above_wt": 0.9548611111111112,
+      "top_k_recall_above_wt": 0.1278475127847513
+    },
+    "random_forest": {
+      "setting": 3.0,
+      "n": 5743.0,
+      "spearman": 0.7572153367382365,
+      "pearson": 0.6735009031278083,
+      "mse": 0.9160332601735668,
+      "target_above_wt_prevalence": 0.37454292181786525,
+      "ap_above_wt": 0.7264868862342359,
+      "top_k": 288.0,
+      "top_k_precision_above_wt": 0.8194444444444444,
+      "top_k_recall_above_wt": 0.1097164109716411
+    }
+  },
+  "four_edit_single_effect_transfer_coverage": {
+    "covered": 0,
+    "test": 5743
+  },
+  "local_tests": {
+    "command": ".venv/bin/python -m pytest -q",
+    "passed": 33,
+    "exit_code": 0,
+    "stdout_summary": "33 passed in 3.51s"
+  },
+  "scope": "Frozen retrospective prediction benchmark and aggregate diagnostics. No optimization rounds, model-service calls, or per-variant outputs."
+}

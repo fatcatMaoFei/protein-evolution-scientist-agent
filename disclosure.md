@@ -30,3 +30,7 @@ The endpoint identifies the served model alias. The gateway does not provide ind
 ## Scientific Decision Auditor
 
 The user requested a separate audit after the main model experiments. Codex implemented the archive-linked trace reconstruction, four paired DeepSeek feedback checkpoints and a model-only comparator. The auditor adapts the separation of acquired information, action changes and realized outcome studied in [LLMDictator](https://github.com/fatcatMaoFei/LLMDictator/tree/b5e221cb69d7c395d47f6f19e7a0f89bc62d6894). The audit uses the concrete benchmark's frozen artifacts and independent tool traces. Its requests and measurements are recorded separately from the 450 formal main-study queries.
+
+## GB1 retrospective verification at review baseline 0e52dd8
+
+Codex audited the fixed FLIP data provenance, reran the existing regression benchmark, and drafted a standalone GB1 retrospective report from aggregate outputs. The verification ran no LLM providers and collected no new measurements. All previous model-adapter logs, materials results, decision audit outputs, and GB1 benchmark artifacts were retained. The acceptance record specifies the boundary of the GB1 evidence and distinguishes it from the historical materials results. [Frozen baseline](evidence/gb1-review/base_snapshot.json) · [Verification receipt](evidence/gb1-review/verification.json)
