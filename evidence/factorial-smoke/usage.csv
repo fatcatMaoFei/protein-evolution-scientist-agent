@@ -1,0 +1,5 @@
+model,knowledge,decisions,provider_responses,input_tokens,output_tokens,requested_models,returned_models,generation_settings
+deepseek,off,1,2,8239,368,deepseek-ai/DeepSeek-V4.1-Flash,deepseek-ai/DeepSeek-V4.1-Flash,"{""backend"": ""CodeFlow Chat Completions"", ""max_tokens"": 512, ""temperature"": 0.0, ""thinking"": {""type"": ""disabled""}}"
+deepseek,on,1,2,9693,416,deepseek-ai/DeepSeek-V4.1-Flash,deepseek-ai/DeepSeek-V4.1-Flash,"{""backend"": ""CodeFlow Chat Completions"", ""max_tokens"": 512, ""temperature"": 0.0, ""thinking"": {""type"": ""disabled""}}"
+sonnet,off,1,2,4306,283,claude-sonnet-5-5,claude-sonnet-5-5,"{""backend"": ""CodeFlow Anthropic Messages"", ""effort"": ""low"", ""max_tokens"": 512, ""proposal_tool_choice"": ""auto"", ""thinking"": {""type"": ""between_tools""}}"
+sonnet,on,1,2,5293,266,claude-sonnet-5-5,claude-sonnet-5-5,"{""backend"": ""CodeFlow Anthropic Messages"", ""effort"": ""low"", ""max_tokens"": 512, ""proposal_tool_choice"": ""auto"", ""thinking"": {""type"": ""between_tools""}}"

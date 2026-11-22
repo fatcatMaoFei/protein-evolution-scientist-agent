@@ -1,0 +1,96 @@
+{
+  "status": "complete",
+  "models": [
+    "deepseek",
+    "sonnet",
+    "gpt",
+    "qwen"
+  ],
+  "knowledge_levels": [
+    "off",
+    "on"
+  ],
+  "measured_dataset_sha256": "8d4b15b6fc68cd932d745cbd663d5ceae66dd54422e99c1e4865f2936ab7e2af",
+  "ordered_splits_sha256": {
+    "17": "8243097ec79d328d33825a9f9ea081975cb770addbd42eb6b8c8bdcf0f92352a",
+    "29": "646ef96e21684eae3e80e4e9107e76088bcacb282574eeab3ee5ab70182eceb3",
+    "43": "77ae748f7a5423eab2061cce8550bdd467218f85c746c17c300c3f057b70d759"
+  },
+  "initial_menu_match": "same ordered candidate IDs, covariates, ranks and model estimates",
+  "initial_prompt_and_tool_match": "equal instructions and input schema within each knowledge condition after transport normalization",
+  "shared_controls": [
+    "random",
+    "greedy"
+  ],
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "rounds_per_arm": 3,
+  "budget_per_round": 5,
+  "primary_endpoint": "final incumbent strength minus shared initial best in MPa",
+  "interaction_sign": "(add-on on - add-on off) - (DeepSeek on - DeepSeek off)",
+  "inference_scope": "Paired descriptive comparisons across seed blocks of one finite catalog. Model levels include their native transports, generation settings and runtime.",
+  "source_status": {
+    "deepseek": {
+      "status": "complete",
+      "mode": "formal",
+      "arms": 12,
+      "measurements": 180
+    },
+    "sonnet": {
+      "status": "complete",
+      "mode": "formal",
+      "arms": 6,
+      "measurements": 90
+    },
+    "gpt": {
+      "status": "complete",
+      "mode": "formal",
+      "arms": 6,
+      "measurements": 90
+    },
+    "qwen": {
+      "status": "complete",
+      "mode": "formal",
+      "arms": 6,
+      "measurements": 90
+    }
+  },
+  "source_file_sha256": {
+    "deepseek": {
+      "config.json": "35af161ba68f09b3d492e18577a90f8accfbe0287be9f6a8c3df38fb7cebaf42",
+      "rounds.csv": "376d1f4b9d8499621f18cb5ef5680f5a866511075258206c5641bc97c6b1e075",
+      "selections.csv": "53e6431f092fcba4bb660587078731741984dbe35b847ad988215da6564f2078",
+      "status.json": "38d99b145f700439b070eddd125bac7f4334fb344c80044fd9df5d194505d494"
+    },
+    "sonnet": {
+      "config.json": "68f0926a3414952479a9e003e16e6c4cd4f36fcc40c1de20596ffa98d3708e0d",
+      "rounds.csv": "1f344ef818b0871d6426c43486b65e7e5830909733a85f606eec22ff9fc6ec8b",
+      "selections.csv": "1dd8ad7186a3c6f7cb65330643636637cdce721c5063dbf79e87674f44d73519",
+      "status.json": "25480369ef4ca9b99ceaef6b49f6dc074dac95c6dceda9dace2863f3470c1e0c"
+    },
+    "gpt": {
+      "config.json": "ee867f09ec63856b4fa3c333e84f95f4fb6d05f03a782db46f8625d47a85fb25",
+      "rounds.csv": "0a280e79cfde709a9e0a0b12c9bb70d58077a871e55c607cd21410a596a924c0",
+      "selections.csv": "f674bb8bcfb3eca6a72534a1228cf14db7c231325c6e3c0c46c9d6f9ba71db39",
+      "status.json": "25480369ef4ca9b99ceaef6b49f6dc074dac95c6dceda9dace2863f3470c1e0c"
+    },
+    "qwen": {
+      "config.json": "4a5f4cb3148eae666a237bddce5c2231deb15e69af877e1717771f48bcd96bda",
+      "rounds.csv": "f5e5b91ad3a612583a4330f907c8fb623643e669d984bafe301fb1a7f35b8342",
+      "selections.csv": "570f5809d4a12219ecbf2782d195c52f2b71db59d35cc11762c5e142bd92127e",
+      "status.json": "25480369ef4ca9b99ceaef6b49f6dc074dac95c6dceda9dace2863f3470c1e0c"
+    }
+  },
+  "usage_units": {
+    "input_tokens": "Cache-inclusive model input as normalized by each runtime.",
+    "provider_primary_input_tokens": "Native primary input counter, excluding cache additions for Messages.",
+    "recorded_model_responses": "Logged live remote responses or local generations.",
+    "references": [
+      "https://platform.claude.com/docs/en/api/typescript/messages",
+      "https://api-docs.deepseek.com/api/create-chat-completion/"
+    ]
+  }
+}

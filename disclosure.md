@@ -13,3 +13,16 @@ The LLM policy itself is an experimental intervention. The requested CodeFlow al
 - DeepSeek. [Native tool calling](https://api-docs.deepseek.com/guides/tool_calls/), [Chat Completions](https://api-docs.deepseek.com/api/create-chat-completion/), [CodeFlow gateway](https://codeflow.sh). Gateway-returned model IDs are recorded directly. A weight snapshot is unavailable.
 
 Before submission, the human author should review protocol choices, validate the result-to-claim links, and approve the interpretation and disclosure. This document records actual participation and makes no claim of completed author review.
+
+## Added validation and execution history
+
+The user requested additional models after the primary DeepSeek run. The two-model extension introduced Claude Sonnet 5.5 through CodeFlow's Anthropic Messages endpoint. A subsequent extension introduced CodeFlow GPT-6 Luna through OpenAI Responses and a local Qwen3-4B-4bit MLX checkpoint. Original seeds, splits, budgets, Python tools and comparison endpoints were retained. Per-model source and protocol freezes precede their own formal execution. Relative chronology is recorded in the Git history and each evidence directory.
+
+CodeFlow throttled GPT late in the initial formal run. The failed attempt is archived under evidence/gpt-rate-limited. The recovery ledger identifies successful rounds and provider responses reused under matching digests and the missing calls that ran live. The accepted formal records incorporate each provider response once. Qwen's unforced seed-7 variant failed its tool contract in one arm. The corrected smoke used the prefilled native evaluator envelope in protocol-qwen.md. The first formal attempt then stopped at another schema failure. The transport amendment in protocol-qwen-structural.md adds field-domain restatements before restarting the formal arms. The generated tool arguments and decisions remain model outputs.
+
+The endpoint identifies the served model alias. The gateway does not provide independently checkable remote weights. Qwen's local weights use a pinned model revision and verified file hash. Token usage follows each model/runtime's native tokenizer and cache accounting. No cross-provider dollar cost is inferred from token counts.
+
+- Anthropic [native tool use](https://platform.claude.com/docs/en/agents-and-tools/tool-use/define-tools) and [Messages API](https://platform.claude.com/docs/en/api/messages).
+- OpenAI [GPT-6 Luna](https://developers.openai.com/api/docs/models/gpt-6-luna) and [Responses API](https://developers.openai.com/api/reference/resources/responses/methods/create).
+- Alibaba Qwen [base Qwen3-4B checkpoint](https://huggingface.co/Qwen/Qwen3-4B), [pinned MLX 4-bit conversion](https://huggingface.co/mlx-community/Qwen3-4B-4bit/tree/4dcb3d101c2a062e5c1d4bb173588c54ea6c4d25) (Apache-2.0), and [MLX LM](https://github.com/ml-explore/mlx-lm).
+- Federal Highway Administration materials heuristics [FHWA-HRT-04-150 Chapter 9](https://www.fhwa.dot.gov/publications/research/infrastructure/pavements/pccp/04150/chapt9.cfm) and [FHWA-HRT-04-122 Chapter 5](https://www.fhwa.dot.gov/publications/research/infrastructure/pavements/pccp/05042/05.cfm). Observation-derived knowledge is recalculated from each arm's revealed history.

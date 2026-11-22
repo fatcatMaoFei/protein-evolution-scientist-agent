@@ -1,0 +1,80 @@
+{
+  "status": "complete",
+  "baseline_mode": "formal",
+  "sonnet_mode": "formal",
+  "dataset_sha256": "8d4b15b6fc68cd932d745cbd663d5ceae66dd54422e99c1e4865f2936ab7e2af",
+  "ordered_split_sha256_by_seed": {
+    "17": "8243097ec79d328d33825a9f9ea081975cb770addbd42eb6b8c8bdcf0f92352a",
+    "29": "646ef96e21684eae3e80e4e9107e76088bcacb282574eeab3ee5ab70182eceb3",
+    "43": "77ae748f7a5423eab2061cce8550bdd467218f85c746c17c300c3f057b70d759"
+  },
+  "matched_schedule": {
+    "seeds": [
+      17,
+      29,
+      43
+    ],
+    "rounds": 3,
+    "budget": 5,
+    "predictor": "RandomForest",
+    "rf_parameters": {
+      "n_estimators": 128,
+      "min_samples_leaf": 2,
+      "max_features": 0.8,
+      "n_jobs": 1
+    },
+    "ridge_alpha": 10.0,
+    "python": "3.12.13",
+    "numpy": "2.4.3",
+    "pandas": "3.0.1",
+    "scipy": "1.17.1",
+    "scikit_learn": "1.8.0",
+    "target_age_days": 28,
+    "primary_endpoint": "final incumbent strength minus shared initial best in MPa",
+    "high_threshold": "linear 0.9 quantile within the initial eligible pool for each seed, used only in evaluation",
+    "first_hit_effort": "count through the first threshold hit in recorded batch order, right censored at total budget",
+    "stopping_condition": "fixed complete rounds for every arm",
+    "rank_ties": "lexical mix ID"
+  },
+  "source_status": {
+    "deepseek": {
+      "status": "complete",
+      "mode": "formal",
+      "arms": 12,
+      "measurements": 180
+    },
+    "sonnet": {
+      "status": "complete",
+      "mode": "formal",
+      "arms": 6,
+      "measurements": 90
+    }
+  },
+  "source_file_sha256": {
+    "deepseek": {
+      "config.json": "35af161ba68f09b3d492e18577a90f8accfbe0287be9f6a8c3df38fb7cebaf42",
+      "source.json": "f76af8041f63634f0c632281ed3a2e1f207c90aaf7d0089f71d98947afbd8ab8",
+      "selections.csv": "53e6431f092fcba4bb660587078731741984dbe35b847ad988215da6564f2078",
+      "rounds.csv": "376d1f4b9d8499621f18cb5ef5680f5a866511075258206c5641bc97c6b1e075",
+      "status.json": "38d99b145f700439b070eddd125bac7f4334fb344c80044fd9df5d194505d494"
+    },
+    "sonnet": {
+      "config.json": "68f0926a3414952479a9e003e16e6c4cd4f36fcc40c1de20596ffa98d3708e0d",
+      "source.json": "f76af8041f63634f0c632281ed3a2e1f207c90aaf7d0089f71d98947afbd8ab8",
+      "selections.csv": "1dd8ad7186a3c6f7cb65330643636637cdce721c5063dbf79e87674f44d73519",
+      "rounds.csv": "1f344ef818b0871d6426c43486b65e7e5830909733a85f606eec22ff9fc6ec8b",
+      "status.json": "25480369ef4ca9b99ceaef6b49f6dc074dac95c6dceda9dace2863f3470c1e0c"
+    }
+  },
+  "checked": [
+    "matched recorded assay conditions and splits",
+    "ordered initial observations",
+    "ledger target, budget, threshold and incumbent",
+    "live response model and usage",
+    "common round-1 menu across four cells",
+    "matching round-1 messages and tools within knowledge level"
+  ],
+  "inference": "Descriptive paired contrasts across seed blocks of the same finite recipe catalog",
+  "interaction_direction": "(Sonnet on - Sonnet off) - (DeepSeek on - DeepSeek off)",
+  "usage_provenance": "Recorded provider response usage. Includes all logged responses."
+}

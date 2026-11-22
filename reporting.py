@@ -153,7 +153,9 @@ def build_report(evidence: Path, output: Path) -> None:
     gb1 = pd.read_csv(gb / "metrics.csv")
     gbtest = gb1[gb1.partition == "test"]
     interaction = load_json(gb / "single_effect_transfer.json")
-    check = load_json(evidence / "verification.json") if (evidence / "verification.json").exists() else None
+    model_summary = evidence / "across-models/validation.json"
+    factorial = model_summary.exists()
+    addon_models = set(load_json(model_summary).get("models", [])) - {"deepseek"} if factorial else set()
     small = pd.read_csv(gb / "exploratory_single_effect_transfer.csv")
     small = small[small.partition == "validation"].sort_values("mutation_depth")
     transfer_errors = list(zip(small.observed_not_above_wt_expected_above_wt, small.covered_by_training_singles))
@@ -182,6 +184,15 @@ def build_report(evidence: Path, output: Path) -> None:
         f"{', '.join(map(signed, d_c))} MPa. In the separate GB1 task, {NAMES[leader.model]} "
         f"reached the highest held-out Spearman ({leader.spearman:.3f})."
     )
+    if factorial:
+        contrasts = pd.read_csv(evidence / "across-models/contrasts_by_seed.csv")
+        effects = contrasts[contrasts.contrast.str.endswith("_knowledge_on_minus_off")].gain_vs_initial_best_mpa
+        improved, declined = int((effects > 1e-9).sum()), int((effects < -1e-9).sum())
+        m.para(
+            f"Across {len(effects)} model-seed pairs, knowledge increased the final gain in {improved}, "
+            f"decreased it in {declined}, and tied in {len(effects) - improved - declined}. "
+            "The model-by-knowledge analysis tracks both changes in terminal strength and repeated finds."
+        )
     m.para("Four-substitution GB1 prediction", "section")
     m.para(
         "Wu et al. experimentally characterized the relative enrichment of a four-site GB1 library [1]. "
@@ -283,8 +294,8 @@ def build_report(evidence: Path, output: Path) -> None:
         f"{int(exploratory.top_hit.sum())} cleared the top-decile threshold. This establishes that the LLM "
         "policies changed what was tested, while the paired endpoint differences quantify realized improvement."
     )
-    if check is not None:
-        sampled = sum(d["selected_from_non_elite_menu"] for d in check["formal"]["selection_diagnostics"].values())
+    if not llm.empty:
+        sampled = int((llm.rf_rank > 24).sum())
         m.para(
             f"The seeded non-elite menu contributed {sampled}/{len(llm)} LLM picks. Departures from the "
             "greedy top five remained within the model's high-ranked menu in this run. Evidence: per-round "
@@ -310,11 +321,12 @@ def build_report(evidence: Path, output: Path) -> None:
         "Evidence: Concrete predictive.csv."
     )
     m.para("GB1 site dependence and upper-tail error", "section")
-    top = ablation.sort_values("spearman_change_from_full").iloc[0]
+    top = list(ablation.sort_values("spearman_change_from_full").head(2).itertuples())
     rf_high = errors[(errors.model == "random_forest") & (errors.measured_score_band == "above_wt")].iloc[0]
     m.para(
-        f"On validation, removing construct coordinate {int(top.omitted_position)} reduced RF Spearman "
-        f"by {abs(top.spearman_change_from_full):.3f}, the largest of the four one-site ablations. "
+        f"On validation, removing construct coordinates {int(top[0].omitted_position)} and "
+        f"{int(top[1].omitted_position)} produced the largest RF Spearman drops, both "
+        f"approximately {abs(top[0].spearman_change_from_full):.3f}. "
         f"On held-out records above WT, RF mean prediction error was "
         f"{rf_high.mean_error_predicted_minus_measured:+.3f}. "
         "These diagnostics describe predictive reliance and calibration. "
@@ -322,11 +334,15 @@ def build_report(evidence: Path, output: Path) -> None:
     )
     m.page()
 
+    if factorial:
+        from reporting_factorial import add_factorial_page
+        add_factorial_page(m, evidence, output)
+        m.page()
     m.para("Interpretation and reproducibility", "headline")
     c_hits = int(methods.loc[methods.arm == "C_llm", "top_hits"].sum())
     d_hits = int(methods.loc[methods.arm == "D_knowledge_llm", "top_hits"].sum())
     m.para(
-        f"The knowledge arm measured {d_hits}/45 top-decile hits versus {c_hits}/45 for the plain LLM. "
+        f"In the primary DeepSeek study, the knowledge arm measured {d_hits}/45 top-decile hits versus {c_hits}/45 for the plain LLM. "
         f"Their terminal best-strength differences by seed were {', '.join(map(signed, d_c))} MPa. "
         "The hit count and the top outcome can therefore respond differently to a policy change."
     )
@@ -342,10 +358,20 @@ def build_report(evidence: Path, output: Path) -> None:
         "split. That prediction benchmark addresses a different question from the fixed-budget search on "
         "concrete. The policy results apply to the measured concrete catalog."
     )
+    exploratory_path = evidence / "exploratory/summary.csv"
+    if exploratory_path.exists():
+        exploratory = pd.read_csv(exploratory_path)
+        m.para("Exploratory prediction-only ablation", "section")
+        m.para(
+            "The 50:50 RF/Ridge ensemble and a score-plus-tree-disagreement acquisition rule ran independently. "
+            "Mean gains for RF greedy, RF uncertainty, ensemble greedy, and ensemble uncertainty were "
+            f"{', '.join(f'{v:.2f}' for v in exploratory.mean_final_gain_mpa)} MPa. "
+            "The heuristic used uncalibrated RF tree disagreement. Evidence: exploratory/summary.csv."
+        )
     m.para("Execution and measurement interface", "section")
     m.para(
         "The validator checks source hashes and split assignments. Each concrete arm owns its experimental "
-        "state and budget. The policy builds a shortlist and an observed-data summary. DeepSeek issues a "
+        "state and budget. The policy builds a shortlist and an observed-data summary. The LLM issues a "
         "native score tool call and then submits an ordered JSON decision. The critic checks order, "
         "IDs, membership and budget before the oracle returns labels."
     )
@@ -357,8 +383,15 @@ def build_report(evidence: Path, output: Path) -> None:
     m.para("AI use and author review", "section")
     m.para(
         "OpenAI Codex specified the concrete replay under the assessment brief, implemented and ran both "
-        "studies, and drafted this report. The two experimental agent arms used CodeFlow DeepSeek V4.1 Flash. "
-        "Each log records the exact non-secret request, returned model ID, tool interactions, "
+        "studies, and drafted this report. The primary agent study used CodeFlow DeepSeek V4.1 Flash. "
+        + (
+            "The extensions cover " + ", ".join(
+                name for key, name in (
+                    ("sonnet", "CodeFlow Sonnet"), ("gpt", "CodeFlow GPT-6 Luna"), ("qwen", "a pinned local Qwen checkpoint")
+                ) if key in addon_models
+            ) + ". " if addon_models else ""
+        )
+        + "Each log records the exact non-secret request, returned model ID, tool interactions, "
         "validation, timing and token use. Human author review remains pending. "
         "See protocol.md and disclosure.md."
     )
@@ -373,6 +406,9 @@ def build_report(evidence: Path, output: Path) -> None:
         '[4] <link href="https://api-docs.deepseek.com/guides/tool_calls">DeepSeek function calling</link> '
         'and the <link href="https://codeflow.sh">CodeFlow</link> gateway. '
         'Endpoint and observed model IDs are in the execution traces.',
-    ):
+        '[5] <link href="https://platform.claude.com/docs/en/agents-and-tools/tool-use/define-tools">Anthropic tool use</link>, '
+        '<link href="https://developers.openai.com/api/docs/models/gpt-6-luna">OpenAI GPT-6 Luna</link>, '
+        'and <link href="https://huggingface.co/mlx-community/Qwen3-4B-4bit/tree/4dcb3d101c2a062e5c1d4bb173588c54ea6c4d25">pinned Qwen checkpoint</link>.'
+    )[:5 if factorial else 4]:
         m.para(reference, "note")
     m.build(output)

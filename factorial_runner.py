@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import argparse
 import hashlib
 import json
 import math
@@ -261,3 +262,36 @@ def run(
     }
     write_json(status_path, status)
     return status
+
+
+def main() -> None:
+    from sonnet_transport import SONNET_MODEL, choose_sonnet_candidates
+
+    cli = argparse.ArgumentParser(description=__doc__)
+    mode = cli.add_mutually_exclusive_group(required=True)
+    mode.add_argument("--smoke", action="store_true", help="Use the original seed-7 smoke split for one round.")
+    mode.add_argument("--formal", action="store_true", help="Use the original three formal seeds and rounds.")
+    cli.add_argument("--baseline", type=Path, required=True, help="Completed original DeepSeek evidence directory.")
+    cli.add_argument("--output", type=Path, required=True, help="New directory for the Sonnet evidence.")
+    cli.add_argument("--freeze", type=Path, required=True, help="Document recording the frozen add-on protocol.")
+    cli.add_argument("--replay", type=Path, help="Read decisions from a completed live Sonnet run.")
+    cli.add_argument("--workers", type=int, default=2)
+    args = cli.parse_args()
+    output = args.output.resolve()
+    replay = args.replay.resolve() if args.replay is not None else None
+    if replay is not None and (output == replay or replay in output.parents):
+        cli.error("Replay output must be outside the live Sonnet archive.")
+
+    def select(**kwargs):
+        original = replay / kwargs["log_path"].relative_to(output) if replay is not None else None
+        return choose_sonnet_candidates(**kwargs, replay_path=original)
+
+    status = run(
+        output, baseline=args.baseline, selector=select, treatment_model=SONNET_MODEL,
+        freeze_path=args.freeze, smoke=args.smoke, workers=args.workers,
+    )
+    print(json.dumps(status))
+
+
+if __name__ == "__main__":
+    main()

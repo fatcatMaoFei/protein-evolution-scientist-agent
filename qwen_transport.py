@@ -8,6 +8,7 @@ import re
 from concurrent.futures import ThreadPoolExecutor
 from functools import lru_cache
 from importlib.metadata import version
+from pathlib import Path
 
 from llm_agent import MAX_TOKENS, AgentError, choose_candidates
 
@@ -18,6 +19,7 @@ LOCAL_ENDPOINT = "local:mlx-lm"
 INFERENCE = ThreadPoolExecutor(max_workers=1, thread_name_prefix="concrete-mlx")
 TOOL_CALL = re.compile(r"\s*<tool_call>\s*(\{.*\})\s*</tool_call>\s*", re.DOTALL)
 TOOL_PREFILL = '<tool_call>\n{"name":"evaluate_concrete_shortlist","arguments":'
+CONTRACT_VERSION = "explicit-alias-domains-v1"
 
 
 @lru_cache(maxsize=1)
@@ -37,10 +39,41 @@ def _load_model():
     return load(snapshot, tokenizer_config={"trust_remote_code": False})
 
 
+def _observation_payload(messages):
+    instruction = next(message["content"] for message in messages if message["role"] == "user")
+    return json.loads(instruction.split("\n", 1)[1])
+
+
+def _structural_contract(request):
+    payload = _observation_payload(request["messages"])
+    budget = payload["budget"]
+    if request["tool_choice"] == "none":
+        tool_response = next(message["content"] for message in request["messages"] if message["role"] == "tool")
+        evaluated = sorted(row["alias"] for row in json.loads(tool_response))
+        return (
+            f"FINAL OUTPUT FORMAT. Write one JSON object containing candidate_ids, critic, and selection_rationale. "
+            f"candidate_ids must contain exactly {budget} distinct aliases from the evaluated set: {', '.join(evaluated)}. "
+            "The list above defines membership only. Order your selected aliases by your chosen test priority. "
+            "Return JSON only, with no Markdown or tool call."
+        )
+    observed = payload["observation_summary"]
+    measured_ids = sorted(observed["strongest"].keys() | observed["weakest"].keys())
+    candidates = sorted(row[0] for row in payload["menu"])
+    shortlist = min(budget + 2, len(candidates))
+    return (
+        "PROPOSAL TOOL ARGUMENT FORMAT. The object has four fields: analyst, hypothesis, evidence_ids, candidate_ids. "
+        "The two ID fields have different meanings. For evidence_ids, cite one to three distinct MEASURED recipe IDs "
+        f"from this set: {', '.join(measured_ids)}. Every evidence_ids value starts with mix-. "
+        f"For candidate_ids, propose exactly {shortlist} distinct UNMEASURED candidate aliases from this set: {', '.join(candidates)}. "
+        "Every candidate_ids value starts with C. The lists above only define permissible values and carry no preference. "
+        "Finish the single evaluate_concrete_shortlist tool call."
+    )
+
+
 def _rendered_messages(encoded):
     messages = []
-    instruction = next(message["content"] for message in encoded["messages"] if message["role"] == "user")
-    budget = json.loads(instruction.split("\n", 1)[1])["budget"]
+    budget = _observation_payload(encoded["messages"])["budget"]
+    structural_contract = encoded.get("structural_contract")
     for message in encoded["messages"]:
         item = dict(message)
         if item["role"] == "assistant" and "tool_calls" in item:
@@ -51,8 +84,10 @@ def _rendered_messages(encoded):
                 }} for tool in item["tool_calls"]
             ]
         messages.append(item)
-        if item["role"] == "tool":
+        if item["role"] == "tool" and structural_contract is None:
             messages.append({"role": "user", "content": f"Use the tool result for the final decision. Return the required JSON object with exactly {budget} distinct evaluated candidate aliases, without Markdown or a tool call."})
+    if structural_contract is not None:
+        messages.append({"role": "user", "content": structural_contract})
     return messages
 
 
@@ -94,21 +129,30 @@ def _parse_native_call(raw):
 class QwenTransport:
     model = QWEN_MODEL
     endpoint = LOCAL_ENDPOINT
-    config = {
+    base_config = {
         "backend": "local MLX via mlx_lm.stream_generate", "revision": QWEN_REVISION,
         "max_tokens": MAX_TOKENS, "enable_thinking": False, "temperature": 0.0,
         "proposal_tool_choice": "native named tool-call prefill, model-generated arguments schema validated in Python",
         "continuation_tool_choice": "tools omitted, JSON validated in Python",
     }
 
+    def __init__(self, *, explicit_contract=True):
+        self.explicit_contract = explicit_contract
+        self.config = dict(self.base_config)
+        if explicit_contract:
+            self.config["structural_contract"] = CONTRACT_VERSION
+
     def encode(self, request, *, native_continuation):
-        return {
+        encoded = {
             "model": request["model"], "revision": QWEN_REVISION, "messages": request["messages"],
             "tools": request["tools"] if request["tool_choice"] != "none" else None,
             "assistant_prefill": TOOL_PREFILL if request["tool_choice"] != "none" else "",
             "enable_thinking": self.config["enable_thinking"], "temperature": self.config["temperature"],
             "max_tokens": request["max_tokens"], "tool_choice": request["tool_choice"],
         }
+        if self.explicit_contract:
+            encoded["structural_contract"] = _structural_contract(request)
+        return encoded
 
     def generate(self, endpoint, request):
         if endpoint != LOCAL_ENDPOINT or request["model"] != QWEN_MODEL or request["revision"] != QWEN_REVISION:
@@ -127,6 +171,10 @@ class QwenTransport:
         }
 
 
-def choose_qwen_candidates(**kwargs):
+def choose_qwen_candidates(*, replay_path=None, **kwargs):
     """Select concrete mixtures with the pinned local Qwen language model."""
-    return choose_candidates(**kwargs, transport=QwenTransport())
+    explicit = True
+    if replay_path is not None:
+        config = json.loads(Path(replay_path).read_text())["config"]
+        explicit = config.get("structural_contract") == CONTRACT_VERSION
+    return choose_candidates(**kwargs, replay_path=replay_path, transport=QwenTransport(explicit_contract=explicit))

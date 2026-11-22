@@ -1,0 +1,7 @@
+# Qwen field-domain transport amendment
+
+The formal Qwen attempt under protocol-qwen.md was stopped after an initial proposal confused measured evidence IDs with candidate aliases. The oracle had rejected that decision. The original run is archived under evidence/qwen-rejected-structural-attempt and excluded as an entire transport version from the outcome comparison.
+
+The revised transport keeps the model snapshot, native evaluator envelope, canonical proposal and scoring interface, rank menu, budget, output cap and shared validators. It explicitly restates the field domains and cardinalities at the end of the rendered Qwen prompt. Proposal evidence names come from the observed records already in context. Proposed aliases come from the existing eligible shortlist. Final aliases come from the actual result of the issued tool call. The structural instructions disclose no measurements and specify no preferred values. All candidate choices and substantive text remain model-generated.
+
+The new version was checked with archived pre-reveal proposal inputs and an actual follow-up using the shared evaluator. These capability checks used no new oracle measurements. Formal execution then restarts both knowledge conditions from the same paired initial observations, with all three seeds and the original stopping rule. The archive continues to log every malformed output and repair on the accepted version.

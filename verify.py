@@ -101,7 +101,7 @@ def verify_concrete(folder: Path, *, expected_seeds: list[int], expected_rounds:
             "llm_usage": dict(counts), "selection_diagnostics": {key: dict(value) for key, value in per_arm.items()}}
 
 
-def compare_replay(original: Path, replay: Path) -> None:
+def compare_replay(original: Path, replay: Path, *, extra_models: tuple[str, ...] = ()) -> None:
     for stage in ("smoke", "concrete"):
         for table in TABLES:
             observed, regenerated = (pd.read_csv(root / stage / f"{table}.csv") for root in (original, replay))
@@ -109,6 +109,11 @@ def compare_replay(original: Path, replay: Path) -> None:
     for path in ("metrics", "error_strata", "position_ablation", "validation_grid", "exploratory_single_effect_transfer"):
         observed, regenerated = (pd.read_csv(root / "gb1" / f"{path}.csv") for root in (original, replay))
         pd.testing.assert_frame_equal(observed, regenerated, check_exact=False, rtol=1e-10, atol=1e-10)
+    for model in extra_models:
+        for stage in (model, f"{model}-smoke"):
+            for table in (name for name in TABLES if name != "comparisons"):
+                observed, regenerated = (pd.read_csv(root / stage / f"{table}.csv") for root in (original, replay))
+                pd.testing.assert_frame_equal(observed, regenerated, check_exact=False, rtol=1e-10, atol=1e-10)
     print("Archived decisions replayed and aggregate outputs reproduced.")
 
 

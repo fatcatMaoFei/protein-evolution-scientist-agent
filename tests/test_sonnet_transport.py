@@ -29,6 +29,7 @@ def _views():
 
 
 def test_native_tool_continuation_json_and_credential_free_replay(monkeypatch, tmp_path):
+    pytest.importorskip("anthropic")
     tool_args = {
         "analyst": "The one observed mix is the reference.", "hypothesis": "Nearby binder change might help.",
         "evidence_ids": ["known"], "candidate_ids": ["C01", "C02", "C03", "C04"],
