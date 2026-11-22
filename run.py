@@ -1,4 +1,4 @@
-"""Run the archival GB1 prediction and measured concrete comparisons."""
+"""Run the GFP Fluorescence Directed Evolution Scientist."""
 from __future__ import annotations
 
 import argparse
@@ -67,12 +67,30 @@ def run_aggregate(output, archive=None):
 
 
 def main() -> None:
+    if sys.argv[1:] in ([], ["-h"], ["--help"]):
+        argparse.ArgumentParser(
+            description=__doc__,
+            usage="%(prog)s {demo,setup,gfp} ...",
+            formatter_class=argparse.RawDescriptionHelpFormatter,
+            epilog=(
+                "GFP commands\n"
+                "  python run.py demo --dataset gfp --output runs/gfp-first\n"
+                "      Run the two-round demonstration without an API key.\n"
+                "  python run.py setup\n"
+                "      Configure an OpenAI-compatible model profile.\n"
+                "  python run.py gfp --help\n"
+                "      See GFP prediction, evolution, audit and report commands.\n\n"
+                "Historical studies\n"
+                "  GB1 and concrete study commands remain available. See historical-materials.md."
+            ),
+        ).print_help()
+        return
     if sys.argv[1:2] in (["gfp"], ["setup"], ["demo"]):
         from gfp import main as run_gfp
         command, *args = sys.argv[1:]
         run_gfp(args if command == "gfp" else [command, *args])
         return
-    cli = argparse.ArgumentParser(description=__doc__)
+    cli = argparse.ArgumentParser(description="Run a historical GB1 prediction or concrete comparison.")
     cli.add_argument("study", choices=("smoke", "gb1", "concrete", "report", "audit", "all", "full", "replay", "replay-full", *BACKENDS))
     cli.add_argument("--output", type=Path, required=True)
     cli.add_argument("--evidence", type=Path, default=ROOT / "evidence")

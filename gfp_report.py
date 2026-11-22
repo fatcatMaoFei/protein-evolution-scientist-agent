@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+from io import BytesIO
 from pathlib import Path
 from statistics import mean
 from xml.sax.saxutils import escape
@@ -497,12 +498,12 @@ def _quality_headroom(book: Manuscript, root: Path, summary: pd.DataFrame) -> No
     diagnostic = _json(root / "quality/diagnosis/summary.json")
     rounds = pd.read_csv(root / "formal/deepseek/rounds.csv")
     book.page()
-    book.para("Could the original pools beat the starting best?", "headline")
+    book.para("Three rounds from the starting best", "headline")
     book.para(
-        "Each method started with the same measurements within a seed and queried 15 previously hidden "
-        "measurements in three rounds. Model-Only took the five highest predicted scores from an RF fitted "
-        "to that arm's observations. The LLM menu held those leaders, 19 more RF-ranked candidates, and "
-        "24 seeded alternatives. The following diagnosis uses labels after the formal run."
+        f"The original study completed {diagnostic['queries']} measured archive queries. Within each seed, "
+        "all methods started with the same measurements and queried five variants per round. Model-Only "
+        "took the top five RF scores. The LLM menu contained 24 RF-ranked and 24 seeded alternatives. "
+        "Pool headroom was calculated after the formal run."
     )
     book.table(
         ["Seed", "Initial best", "Pool best", "> Initial", "> WT", "Random hit in 15"],
@@ -520,7 +521,14 @@ def _quality_headroom(book: Manuscript, root: Path, summary: pd.DataFrame) -> No
         f"One of {diagnostic['arms']} arms improved its starting best. No improving variant appeared in an "
         "RF top-five or RF-elite list along the logged decisions. Seeded alternatives exposed an eligible "
         f"improvement to {diagnostic['llm_arms_exposed_to_improvement']}/{diagnostic['llm_arms']} LLM arms, "
-        "and none of those arms selected one. The logged opportunities depend on each arm's past decisions."
+        "and none selected one. These opportunities depend on each arm's past decisions."
+    )
+    book.story.append(Image(_incumbent_trajectories(rounds), width=486, height=154))
+    book.story.append(Spacer(1, 4))
+    book.para(
+        "<b>Figure 1.</b> Original four-policy trajectories of the best measured gain from baseline. "
+        "The 5, 10 and 15 measurements are the ends of rounds 1, 2 and 3. Overlapping curves show ties. "
+        "Source: evidence/gfp/formal/deepseek/rounds.csv.", "note",
     )
     book.para("What the newly queried measurements showed", "section")
     batches = _matched_batches(rounds)
@@ -544,6 +552,36 @@ def _quality_headroom(book: Manuscript, root: Path, summary: pd.DataFrame) -> No
         "arm had a higher average batch best and a lower average batch mean than Model-Only. These are "
         "distinct, descriptive findings under the archived budget."
     )
+
+
+def _incumbent_trajectories(rounds: pd.DataFrame) -> BytesIO:
+    image = BytesIO()
+    with plt.rc_context({
+        "font.family": "DejaVu Sans", "font.size": 8.5, "axes.spines.top": False,
+        "axes.spines.right": False, "axes.edgecolor": "#B0BEC5",
+    }):
+        figure, axes = plt.subplots(1, 3, figsize=(7.75, 2.45), sharey=True, layout="constrained")
+        handles = [
+            Line2D([0], [0], color=COLORS[arm], marker=MARKERS[arm], linestyle=LINE_STYLES[arm], label=name)
+            for arm, name in ARMS.items()
+        ]
+        for seed, axis in zip((17, 29, 43), axes, strict=True):
+            seed_rows = rounds[rounds["seed"] == seed]
+            for arm in ARMS:
+                part = seed_rows[seed_rows["arm"] == arm].sort_values("round")
+                if not part.empty:
+                    axis.step([0, *part["n_revealed_total"]], [0, *part["gain_vs_initial_best"]],
+                              where="post", color=COLORS[arm], alpha=0.91, linewidth=1.3,
+                              marker=MARKERS[arm], markersize=3.4, linestyle=LINE_STYLES[arm])
+            axis.grid(axis="y", color="#E6ECF0", linewidth=0.7)
+            axis.set(title=f"Seed {seed}", xticks=[0, 5, 10, 15], xlabel="Measured variants")
+            axis.yaxis.set_major_locator(MaxNLocator(nbins=4))
+        axes[0].set_ylabel("Incumbent gain (log10 score)")
+        figure.legend(handles=handles, loc="outside upper center", frameon=False, ncol=4, fontsize=8)
+        figure.savefig(image, format="png", dpi=190)
+        plt.close(figure)
+    image.seek(0)
+    return image
 
 
 def _quality_validation(book: Manuscript, root: Path, summary: pd.DataFrame) -> None:
@@ -665,7 +703,7 @@ def _quality_acquisition(book: Manuscript, root: Path, figures: Path) -> None:
     book.story.append(Image(str(plot), width=486, height=136))
     book.story.append(Spacer(1, 4))
     book.para(
-        "<b>Figure 1.</b> Dots are paired blocks. Diamonds and lines show the mean difference and descriptive "
+        "<b>Figure 2.</b> Dots are paired blocks. Diamonds and lines show the mean difference and descriptive "
         "95% percentile intervals from 10,000 block resamples. "
         "Source: evidence/gfp/quality/acquisition/paired.csv.", "note",
     )
@@ -707,9 +745,11 @@ def _quality_audit(book: Manuscript, root: Path, audit: dict) -> None:
         "model APIs. The project has no wet-lab results. Codex assisted with code, analysis and this report."
     )
     book.para(
-        "The report renderer reads the frozen evidence and the separate quality outputs. The README "
-        "documents the cached assay and checksum, single-provider CLI, CSV imports and audits. "
-        "Hypothesis records link the pre-measurement decision hash to a threshold, predictions and imported assay values.",
+        "Render this report from archived results with "
+        "<font name='Bold'>python run.py gfp report --quality --run-dir evidence/gfp "
+        "--output runs/gfp-quality-report.pdf</font>. The README documents the assay checksum, single-provider "
+        "CLI, CSV imports and audits. Hypothesis records link the pre-measurement decision hash to the threshold, "
+        "predictions and imported assay values.",
         "note",
     )
     _primary_sources(book)
@@ -727,11 +767,11 @@ def _quality_hypothesis(book: Manuscript, folder: Path, wild_type: float) -> Non
         raise ValueError("The GFP quality report requires a verified pending-to-measured hypothesis trace")
     book.para(
         f"The configured model ({escape(origin['decision']['model'])}) locked a round {finished['round']} "
-        f"test of at least {finished['min_exceed']} of "
-        f"{len(finished['candidate_ids'])} designs exceeding measured {escape(finished['reference_id'])} "
-        f"({_number(finished['threshold'], 4)}). The test was pending before measurements. On import, "
-        f"{finished['n_exceed']}/{finished['n_measured']} exceeded the threshold and the locked criterion "
-        f"was <b>{escape(finished['status'])}</b> in this replay."
+        f"criterion of at least {finished['min_exceed']} of {len(finished['candidate_ids'])} designs "
+        f"exceeding the low fluorescence of the measured comparator {escape(finished['reference_id'])} "
+        f"({_number(finished['threshold'], 4)}). The test was pending before measurement. On import, "
+        f"{finished['n_exceed']}/{finished['n_measured']} exceeded that threshold. The archived status "
+        f"<b>{escape(finished['status'])}</b> applies only to this predeclared fluorescence comparison."
     )
     book.table(
         ["GFP variant", "Predicted", "Measured", "Residual", "Forecast outcome"],
@@ -742,16 +782,16 @@ def _quality_hypothesis(book: Manuscript, folder: Path, wild_type: float) -> Non
     book.para(
         "<b>Table 8.</b> Forecast outcome compares prediction and measurement with the same locked threshold. "
         "Residual is measured minus predicted. Only the selected archive comparison was imported. "
-        "The user audit has no matched counterfactual for a feedback gain estimate. "
         "Source: evidence/gfp/quality/hypothesis/audit/decision_traces.jsonl.", "note",
     )
-    n_pending = sum(row["status"] == "pending" for row in evaluations)
-    above_wt = sum(row["measured_fitness"] > wild_type for row in finished["candidate_results"])
-    pending_label = "hypothesis" if n_pending == 1 else "hypotheses"
+    best_measured = max(row["measured_fitness"] for row in finished["candidate_results"])
+    relation = "below" if best_measured < wild_type else "equal to" if best_measured == wild_type else "above"
+    pending_rounds = ", ".join(str(row["round"]) for row in evaluations if row["status"] == "pending")
     book.para(
-        f"{above_wt}/{finished['n_measured']} tested variants exceeded WT ({_number(wild_type, 4)}). The locked test "
-        "evaluates its stated comparator and leaves any biochemical mechanism untested. "
-        f"The audit retains {n_pending} pending {pending_label}."
+        f"The measured value {_number(best_measured, 4)} was {relation} wild type ({_number(wild_type, 4)}). "
+        "The proposed biochemical mechanism remains untested. "
+        f"The round {pending_rounds} hypothesis is pending. "
+        "Feedback gain in the user workflow is <b>NOT EVALUABLE</b> without a matched counterfactual."
     )
 
 
@@ -768,6 +808,13 @@ def render(run_dir: Path, output: Path, *, quality: bool = False) -> None:
     book = Manuscript()
     _page_benchmark(book, run_dir, source, summary)
     if quality:
+        book.para("Agent workflow", "section")
+        book.para(
+            "The agent proposes explicit substitutions and calls the scoring tool, which validates and reconstructs "
+            "each sequence and returns fitted predictions. The agent chooses a batch from scored variants. "
+            "The replay releases archive fluorescence after commitment. The next round fits the predictor "
+            "to each arm's own observations."
+        )
         book.para(
             "Evidence in this edition includes the original frozen study, follow-up diagnosis and validation, "
             "and a prospectively frozen supplemental exploration of predictive acquisition policies. "

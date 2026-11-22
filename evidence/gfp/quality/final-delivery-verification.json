@@ -1,0 +1,93 @@
+{
+  "baseline_commit": "914384fa73f79844fd81d38815170fc1783914bd",
+  "method": "Compared SHA-256 of each current file with its Git baseline blob. Group digests hash sorted '<sha256>  <path>\\n' lines as UTF-8.",
+  "editable_baseline_paths": [
+    "README.md",
+    "disclosure.md",
+    "evidence/gfp/quality/acceptance.md",
+    "gfp_report.py",
+    "output/pdf/gfp-scientific-agent-quality.pdf",
+    "run.py"
+  ],
+  "protected_groups": {
+    "all_protected_baseline_files": {
+      "files": 1699,
+      "manifest_sha256": "909d8e2e155c8a4b446b86a2c3730d5ad72032a3cb3b7dbde8e6b86e89892a3b"
+    },
+    "formal_gfp_study": {
+      "files": 460,
+      "manifest_sha256": "a06b85221344739b96a4d23b7bb56dc9360eaadf7fe8f36946d601ef034f68a2"
+    },
+    "quality_supplement": {
+      "files": 20,
+      "manifest_sha256": "4dab9711deecea8dd752a4a179c861869c9aa39e6cb94b33d16df08963e4c723"
+    },
+    "gfp_audits_and_hypothesis": {
+      "files": 36,
+      "manifest_sha256": "dc7e78fe3ab21231b115edd3a925435a0746f9d2214edccb4374d99a664e6ba5"
+    },
+    "protocols": {
+      "files": 33,
+      "manifest_sha256": "23ad754fc22d4e7674cf8c84fd1ecf470655656bef72be042a2e2d61e46c961f"
+    }
+  },
+  "pinned_cached_input_sha256": {
+    ".cache/gfp/GFP_AEQVI_Sarkisyan_2016.csv": "05b97d36a23363331b271edc56f1496b9a539109fd006e65532f91e9903a0838",
+    ".cache/gfp/sarkisyan-brightness.tsv": "5581230b9888f9960708a4769ce1c9b4453561f0b5f0374525445b4a984d54d5"
+  },
+  "experiments": {
+    "formal_archive_queries": 450,
+    "supplemental_archive_queries": 540,
+    "frozen_experiments_rerun": false,
+    "model_api_calls_in_delivery_review": 0,
+    "primary_hypothesis_status": "supported",
+    "predeclared_threshold": 1.3004326428200002,
+    "round_2_hypothesis_status": "pending",
+    "user_feedback_gain": "NOT EVALUABLE"
+  },
+  "tests": {
+    "command": ".venv/bin/python -m pytest -q",
+    "passed": 83
+  },
+  "onboarding": {
+    "demo_command": ".venv/bin/python run.py demo --dataset gfp --output tmp/gfp-final-delivery/first-run",
+    "demo_status": {
+      "status": "complete",
+      "scope": "published measurements formatted as user data",
+      "assay": "GFP_AEQVI_Sarkisyan_2016",
+      "initial_observations": 96,
+      "imported_after_selection": 5,
+      "total_observations": 101,
+      "second_batch_prediction_only": 5,
+      "backend": "rf"
+    },
+    "help_commands_checked": [
+      "run.py --help",
+      "run.py demo --help",
+      "run.py setup --help",
+      "run.py gfp --help",
+      "run.py gb1 --help"
+    ],
+    "local_links_checked": [
+      "README.md",
+      "disclosure.md",
+      "evidence/gfp/quality/acceptance.md"
+    ]
+  },
+  "main_report": {
+    "path": "output/pdf/gfp-scientific-agent-quality.pdf",
+    "pages": 5,
+    "page_size": "A4",
+    "render_dpi": 130,
+    "pages_visually_checked": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "formal_evolution_trajectories_page": 2,
+    "archived_inputs_rebuild_text_byte_equal": true,
+    "sha256": "17db9aeefdaeb157af5d52dee98b81543abebcaf99c68a8b159f9ac20a7eb2b1"
+  }
+}

@@ -1,20 +1,28 @@
 # GFP Fluorescence Directed Evolution Scientist
 
-面向普通 GFP 的荧光定向进化代理。它从公开荧光实验中训练预测器，提出候选的明确氨基酸替换并重建完整序列，调用评分工具，审核批次，随后才从实测档案揭示所选变体的荧光。附带 CSV 用户工作流和独立反馈审计。
+GFP 荧光定向进化科研智能体。从公开实测训练预测器，提出突变、重建完整序列并评分，在提交候选后读取档案实测。支持导入自己的荧光测量和独立决策审计。
 
-正式实验使用 ProteinGym 1.3 的 `GFP_AEQVI_Sarkisyan_2016`，固定 GFP 参考序列。官方 51,714 条变体全部通过序列重建检查，35,584 条符合 1–4 点替换范围。野生型参照由原始实测档案补充，分数为 3.7192121319。目标使用档案的 log10 荧光分数，值越高表示在同一测定下越亮。[数据来源与许可](gfp-source.md) · [冻结协议](gfp_protocol.md) · [科研报告与补充验证](output/pdf/gfp-scientific-agent-quality.pdf)
+**核心结果**　正式研究完成三轮、共 450 次档案查询。核心四组中，随机组在一个种子刷新初始最佳，Model-Only、LLM 和 Knowledge-LLM 均持平。独立补充研究完成 540 次查询，Ridge 与 RF 的新测最佳值配对差异区间跨零。
+
+[五页主报告](output/pdf/gfp-scientific-agent-quality.pdf) · [结果表](evidence/gfp/aggregate/method_summary.csv) · [交付验收与复现](evidence/gfp/quality/acceptance.md)
 
 ## 从克隆到首份 GFP 结果
 
-使用 Python 3.12。下载的数据字节会按固定 SHA-256 校验，随后使用本地缓存。
+使用 `uv` 和 Python 3.12。以下两轮演示无需 API 密钥。首次下载的 GFP 数据会校验 SHA-256，随后使用本地缓存。
 
 ~~~bash
 git clone https://github.com/fatcatMaoFei/protein-evolution-scientist-agent.git
 cd protein-evolution-scientist-agent
 uv venv --python 3.12 .venv
 uv pip sync --python .venv/bin/python --require-hashes requirements.txt
+.venv/bin/python run.py demo --dataset gfp --output runs/gfp-first
+~~~
+
+## 接入自己的模型
+
+~~~bash
 .venv/bin/python run.py setup
-.venv/bin/python run.py demo --dataset gfp --model-profile default --output runs/gfp-first
+.venv/bin/python run.py demo --dataset gfp --model-profile default --output runs/gfp-first-llm
 ~~~
 
 配置向导输入 profile、OpenAI 兼容 Chat Completions Base URL 和 Model ID，例如 API 服务商提供的 `https://…/v1`。可指定已设置的环境变量名，或在隐藏输入中输入 API Key。向导会发出真实的原生函数调用请求，并把工具结果发送回模型，验证模型能以 JSON 消费该结果后才保存 profile。服务必须支持命名工具调用、工具结果消息和结构化 JSON。远程接口使用 HTTPS，HTTP 仅允许字面回环地址。本地 profile 和密钥文件在 Git 忽略的 `.gfp-local/` 下，密钥文件权限为 `0600`，实验日志不含授权头或密钥。
@@ -72,6 +80,8 @@ uv pip sync --python .venv/bin/python --require-hashes requirements-full.txt
 
 ## 科学质量补充验证
 
+独立演示的第一轮 `supported` 只表示预登记的较弱比较判据成立。`D21N:K101R:I123V` 实测 3.5620，超过已锁定的荧光阈值 1.3004，但低于野生型 3.7192。这次比较无法验证提议的生化机制，也未显示候选优于野生型。第二轮仍待测，反馈收益为 `NOT EVALUABLE`。[预登记与实测状态](evidence/gfp/quality/hypothesis/status.json) · [用户审计](evidence/gfp/quality/hypothesis/audit/audit_report.md)
+
 原实验各池中有 4、0、3 条实测超过初始最佳。种子 29 的池内最高值仍比起点低 0.0803。均匀抽 15 条命中超起点变体的理论概率分别为 14.79%、0%、11.30%。这类变体从未进入 RF Top-5，24 个 LLM 实验臂中只有 3 个通过探索位看到过，均未选中。终局最佳受起点约束。新批次最佳反映少量测试找到的最亮变体，批均值反映总体推荐质量，高于野生型命中率以固定参照衡量发现频率。[零 API 诊断](evidence/gfp/quality/diagnosis/diagnosis.md)
 
 独立验证上 Ridge 的 Spearman 为 0.430，RF 为 0.342。上十分位 P@5 是 0.200 对 0.133，P@10 则是 0.133 对 0.163。RF 的树间离散度可标记相对高误差样本，±1.96 倍离散度只覆盖 75.3% 的验证值。原正式 RF 和参数继续用于冻结回放。[模型验证与全部指标](evidence/gfp/quality/model_validation/)
@@ -87,6 +97,8 @@ uv pip sync --python .venv/bin/python --require-hashes requirements-full.txt
 ~~~
 
 ## 研究与工程证据
+
+正式研究使用 ProteinGym 1.3 的 `GFP_AEQVI_Sarkisyan_2016`。官方 51,714 条变体全部通过序列重建检查，35,584 条符合 1–4 点替换范围。野生型实测为 3.7192121319。荧光采用档案的 log10 标度。[数据来源与许可](gfp-source.md) · [冻结协议](gfp_protocol.md)
 
 三轮、三个配对种子共完成 450 次 GFP 实测档案查询。种子 17、29、43 的初始最佳为 3.8670、4.0292、3.9015。核心四组的 36 个批次中，只有随机组在种子 17 的第二轮超过初始最佳，实测 3.8817。其余三组的终局最佳均持平。高起点和每臂 15 次查询令终局最佳指标在这次实验中区分力有限。[终局与四模型结果](evidence/gfp/aggregate/method_summary.csv) · [逐轮实测](evidence/gfp/formal/deepseek/rounds.csv)
 
@@ -104,4 +116,7 @@ uv pip sync --python .venv/bin/python --require-hashes requirements-full.txt
 - [预测与留出指标](evidence/gfp/benchmark/metrics.csv) · [三轮四组日志与推荐 CSV](evidence/gfp/formal/deepseek/) · [四模型与知识对照](evidence/gfp/aggregate/)
 - [GFP 决策审计](evidence/gfp/audit/audit_report.md) · [配对实测与选择变化](evidence/gfp/audit/paired_feedback_results.csv) · [AI 使用披露](disclosure.md)
 - [逐项验收与验证收据](evidence/gfp/acceptance.md) · [每条推荐的完整序列、预测与实测](evidence/gfp/aggregate/selections.csv)
-- 旧 [GB1 回顾性预测](evidence/gb1-review/acceptance.md) 和 [混凝土历史研究](historical-materials.md) 均独立归档。GFP 结论来自 GFP 实测荧光档案。
+
+## 历史研究
+
+[GB1 回顾性预测](evidence/gb1-review/acceptance.md) 和[混凝土历史研究](historical-materials.md)保留在各自的归档中。
