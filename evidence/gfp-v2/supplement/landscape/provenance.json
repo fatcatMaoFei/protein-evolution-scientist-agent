@@ -1,0 +1,59 @@
+{
+  "entry": "1GFL",
+  "chain": "A",
+  "download_url": "https://files.rcsb.org/download/1GFL.pdb",
+  "sha256": "60eb370ad1a2c7c63382399d8655e0448fc29acc2a436e1a6112a5d599390d6f",
+  "structure_doi": "10.2210/pdb1GFL/pdb",
+  "publication_doi": "10.1038/nbt1096-1246",
+  "resolution_angstrom": 1.9,
+  "assay_reference_length": 238,
+  "pdb_seqres_length": 238,
+  "pdb_ca_count": 230,
+  "mapped_residue_count": 227,
+  "reference_differences": [
+    {
+      "position": 1,
+      "assay": "M",
+      "pdb": "A"
+    },
+    {
+      "position": 64,
+      "assay": "L",
+      "pdb": "F"
+    },
+    {
+      "position": 80,
+      "assay": "Q",
+      "pdb": "R"
+    }
+  ],
+  "absent_ca_positions": [
+    231,
+    232,
+    233,
+    234,
+    235,
+    236,
+    237,
+    238
+  ],
+  "descriptor_definitions": {
+    "contact": "C\u03b1 distance \u22648 \u00c5 and sequence separation >2",
+    "centroid": "mean of the deposited C\u03b1 coordinates at positions 65\u201367",
+    "structure_prediction": "static reference only; no mutant structure estimated"
+  },
+  "assay_sha256": "05b97d36a23363331b271edc56f1496b9a539109fd006e65532f91e9903a0838",
+  "frozen_prediction_inputs_sha256": {
+    "selection.json": "9ac4d422e7c1a2f267b3c1cab081433e466acfa5311f1389b12169db7400c57e",
+    "validation_predictions.csv": "b5867fe8c063adcdd6294626a983d8ef0a5d04862a0da6b0fa14b78baf70a43f",
+    "test_predictions.csv": "649991c3de0066ae42f0732a825ee8e0dbdfe41c632182ea1384010c5b3c285e"
+  },
+  "risk_and_error_analysis": "post hoc using pre-existing held-out predictions",
+  "residual_extension": "supplementary fixed alpha=32 Ridge, trained on separate validation residuals",
+  "unit": "log10 fluorescence",
+  "wild_type": 3.7192121319,
+  "api_calls": 0,
+  "archive_genotypes_in_distribution": 35584,
+  "fully_paired_single_multi_genotypes": 30891,
+  "status": "complete"
+}

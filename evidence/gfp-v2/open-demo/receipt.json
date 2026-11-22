@@ -1,0 +1,56 @@
+{
+  "scope": "Separate workflow demonstration, not a controlled V2 acquisition block",
+  "model_recipe_note": "Pairwise Ridge was fixed for the workflow demonstration; controlled Agent V2 uses the development-selected low-budget blend.",
+  "initial_input_sha256": "1e707ddddd3574844a4ab67730537b85b9e904718d8acd9e050c5aaa217dfd28",
+  "candidate_features_sha256": "3f2ae7123728a3832a32d18aac999a5eb6c621df3a1f2a909a76147cb14eeacf",
+  "returned_measurement_sha256": "6c2ba3ba134e6c708f4e5979d379ca3532cca63f0897dd0b2fd5239bf5c3650f",
+  "replay_verified": true,
+  "rounds": [
+    {
+      "round": 1,
+      "observed": 96,
+      "pending": 5,
+      "served_model": [
+        "deepseek-ai/DeepSeek-V4.1-Flash"
+      ],
+      "provider_calls_on_accepted_attempt": 3,
+      "api_calls_during_replay": 0,
+      "selected": 5,
+      "off_menu_selected": 5,
+      "predictor": "pair_ridge",
+      "recent_evidence_cited": [],
+      "intake_sha256": "198ae8076366ffc851c42ded9d7e71695f45a06320515f03f24bfd4e46673110",
+      "trace_sha256": "d96698a83b74a324bcde16cc9717c2c09930f69243d923fe9ab1881344c44221",
+      "decision_sha256": "fec7bce74f72b2ceafb2f3b2d018b2e46ef3d6e2c5e4f59e3e1711fec69ea853",
+      "tool_results_sha256": "ca57e8b9c9476ba44e4918a842cbc7d07867c9cd032f31c567d52b1fb83eca1d",
+      "same_replayed_csv_sha256": "6adaa5a6bf9e4c38ab7f208ab841967e95d9b16ed2589567a128759ddcd83c12",
+      "same_replayed_hypothesis_audit_sha256": "32fe78085102e97b024add110cfc6ea89a281a41d041254f624ae2090a5cc692"
+    },
+    {
+      "round": 2,
+      "observed": 97,
+      "pending": 10,
+      "served_model": [
+        "deepseek-ai/DeepSeek-V4.1-Flash"
+      ],
+      "provider_calls_on_accepted_attempt": 2,
+      "api_calls_during_replay": 0,
+      "selected": 5,
+      "off_menu_selected": 0,
+      "predictor": "pair_ridge",
+      "recent_evidence_cited": [],
+      "intake_sha256": "60ac4facba07430aa25409c7ba272160f1cac03fa76f5f78ddb6b255c802fc96",
+      "trace_sha256": "8d4bd5e94776bbc175c72644d137ca93537bd994f1c380fd6ee4d39651da994f",
+      "decision_sha256": "dfec7bc1b05b9f597956206c0ca93cf29f64a4422f52744d1dcb114e19c1d85f",
+      "tool_results_sha256": "0c786e1d4784a7387d65230172481fb283f861e7d87e33c73ae3aa06a8afca46",
+      "same_replayed_csv_sha256": "55e17baad3ddd194fb957177b7bdb8f7efd80df831df2af34783c617340108c7",
+      "same_replayed_hypothesis_audit_sha256": "3bba405e98f659ed3eceed20fafed8c872a0e08eb3785ceae9b386a50d0fa4f8"
+    }
+  ],
+  "hypothesis_statuses": [
+    "PENDING",
+    "PENDING"
+  ],
+  "measured_improvement_verified": false,
+  "causal_feedback_gain": "NOT EVALUABLE"
+}

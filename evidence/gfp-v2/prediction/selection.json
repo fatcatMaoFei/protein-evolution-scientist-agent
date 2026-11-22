@@ -1,0 +1,108 @@
+{
+  "partition_sha256": "e56fc571f221620476bb79cf6a7a44cd60fbd3a91e464e0dcf0c0f8104670aaa",
+  "predictor_sha256": "1ba6835f225376d06acd0571816f6b1a01a71fdca102af882026af8e4398fbbf",
+  "benchmark_sha256": "0a35b70d66bed9387d51785ce2036884be8cee3b1ac0e7a292b97f635c04a802",
+  "model_order": [
+    "ridge",
+    "rf",
+    "physchem_ridge",
+    "pair_ridge",
+    "hist_boost",
+    "hurdle",
+    "blend"
+  ],
+  "selection_rule": "Mean development WT AP, then Spearman, then upper-decile AP, then fixed model order",
+  "selected": {
+    "low": "blend",
+    "ample": "blend"
+  },
+  "best_baseline": {
+    "low": "ridge",
+    "ample": "ridge"
+  },
+  "best_enhanced": {
+    "low": "blend",
+    "ample": "blend"
+  },
+  "development_calibration": {
+    "low": {
+      "ridge": {
+        "risk_scale": 0.774613706195147,
+        "interval_multiplier": 1.4868720505306614,
+        "calibration_n": 2048
+      },
+      "rf": {
+        "risk_scale": 0.4131464046255148,
+        "interval_multiplier": 1.6240247890207091,
+        "calibration_n": 2048
+      },
+      "physchem_ridge": {
+        "risk_scale": 0.774613706195147,
+        "interval_multiplier": 1.3989083635019033,
+        "calibration_n": 2048
+      },
+      "pair_ridge": {
+        "risk_scale": 0.774613706195147,
+        "interval_multiplier": 1.3976623716487124,
+        "calibration_n": 2048
+      },
+      "hist_boost": {
+        "risk_scale": 0.774613706195147,
+        "interval_multiplier": 1.5566442920457304,
+        "calibration_n": 2048
+      },
+      "hurdle": {
+        "risk_scale": 0.774613706195147,
+        "interval_multiplier": 1.5818922915635605,
+        "calibration_n": 2048
+      },
+      "blend": {
+        "risk_scale": 0.774613706195147,
+        "interval_multiplier": 1.484188614001846,
+        "calibration_n": 2048
+      }
+    },
+    "ample": {
+      "ridge": {
+        "risk_scale": 0.5770791923216543,
+        "interval_multiplier": 0.914527578336512,
+        "calibration_n": 2048
+      },
+      "rf": {
+        "risk_scale": 0.3661330393280743,
+        "interval_multiplier": 0.7286617950703638,
+        "calibration_n": 2048
+      },
+      "physchem_ridge": {
+        "risk_scale": 0.5770791923216543,
+        "interval_multiplier": 0.8662439792038438,
+        "calibration_n": 2048
+      },
+      "pair_ridge": {
+        "risk_scale": 0.5770791923216543,
+        "interval_multiplier": 0.8720347685876553,
+        "calibration_n": 2048
+      },
+      "hist_boost": {
+        "risk_scale": 0.5770791923216543,
+        "interval_multiplier": 1.2508614887126828,
+        "calibration_n": 2048
+      },
+      "hurdle": {
+        "risk_scale": 0.5770791923216543,
+        "interval_multiplier": 0.7724233310182103,
+        "calibration_n": 2048
+      },
+      "blend": {
+        "risk_scale": 0.5770791923216543,
+        "interval_multiplier": 0.7853727150263209,
+        "calibration_n": 2048
+      }
+    }
+  },
+  "validation_artifact_sha256": {
+    "validation_predictions.csv": "b5867fe8c063adcdd6294626a983d8ef0a5d04862a0da6b0fa14b78baf70a43f",
+    "validation_summary.csv": "c070d01b00558a9f688d7346e9e03c13a67bcb78bc8a625db04ea9bdcfe5eb50",
+    "validation_metrics.csv": "ffd94efedcd2822a12bb23436f1f1d96ec5c8e820a9023c91f70fa824182fa16"
+  }
+}

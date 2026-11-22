@@ -1,0 +1,34 @@
+{
+  "agent_run_sha256": "37238e6dda89216e5baab8efd31d0c74bf575550a16e1a25fefd4aab7f832099",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "profile": "gfp-third-party",
+  "hashes": {
+    "manifest_sha256": "e56fc571f221620476bb79cf6a7a44cd60fbd3a91e464e0dcf0c0f8104670aaa",
+    "selection_sha256": "9ac4d422e7c1a2f267b3c1cab081433e466acfa5311f1389b12169db7400c57e",
+    "protocol_sha256": "ed1ad353de381aac236763ee414f8200616b160cdfca410577f52e2a46fbb608"
+  },
+  "blocks": [
+    "2201",
+    "2202"
+  ],
+  "arms": [
+    "D_agent",
+    "E_knowledge"
+  ],
+  "round": 2,
+  "conditions": [
+    "with",
+    "without"
+  ],
+  "repeats": [
+    1,
+    2
+  ],
+  "outer_attempt_limit": 2,
+  "profile_transport": {
+    "model_id": "deepseek-ai/DeepSeek-V4.1-Flash",
+    "base_url": "https://codeflow.sh/v1",
+    "profile": "gfp-third-party"
+  },
+  "presentation": "All forks use the same lossless numeric aliases for the full closed pool."
+}

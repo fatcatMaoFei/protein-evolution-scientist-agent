@@ -1,0 +1,33 @@
+{
+  "overview": [
+    "The Sarkisyan fluorescence archive contains 35,584 eligible GFP variants with up to four substitutions. Wild type measures 3.7192. Primary metrics are average precision above WT and best newly measured score after 15 queries. Open-world predictions remain separate from verified gains."
+  ],
+  "v1": [
+    "Across 360 retired validation observations, 330 carried an allele absent from the small training set. Only 1.13% of multi-mutants had even one previously co-observed allele pair. Ridge ranked better than RF overall (Spearman 0.430 vs 0.342); among fluorescent variants the gap narrowed (0.217 vs 0.184). The data support a sparse-coverage explanation alongside an assay brightness cliff, with causal contributions unresolved.",
+    "Six of seven V1 variants that could beat the incumbent contained an unseen allele. Their best archived RF ranks extended from 30 to 359. Sequence coverage and candidate exposure both matter. The frozen V1 report retains the original formal results."
+  ],
+  "prediction": [
+    "Both budgets selected the half-weight blend of a pairwise Ridge predictor and a hurdle predictor. Features add substitution chemistry and pairwise indicators. In 6,659 retired multi-mutants with matching singles, a simple additive prediction was bright while actual fluorescence was dim in 418 cases.",
+    "At 96 observations WT precision@5 rose from 0.15 for Ridge to 0.40 for the blend. At 2,048 it fell from 0.60 to 0.35, despite better score regression. RF spread ranked errors better in both regimes; empirical coverage of the blend comes with wide intervals, especially at 96."
+  ],
+  "acquisition": [
+    "V2 returned 4.50 above-WT hits per 15 queries versus RF 3.38 and Ridge 4.00. The paired V2 minus Random difference was +2.88 [1.50, 4.00] hits. The corresponding hit intervals versus RF and Ridge included zero, as did the best-new contrasts.",
+    "In the archive, above-WT frequency across one to four substitutions was 21.0%, 18.4%, 12.1% and 6.7%. At K158 the LLM arms selected 10 variants versus 5.47 expected from roster exposure, with 7 above WT. This is an association in a chosen panel."
+  ],
+  "agent": [
+    "Nine of 48 decisions needed a lossless candidate-alias repair after rejected IDs. All 8 blocks remain in the primary comparison. In 4 blocks with no such repair, both LLM arms had mean best-new differences of -0.0228 vs the stronger non-LLM arm. This retrospective subset is descriptive.",
+    "Holding each request fixed, D missed a WT hit available to same-request greedy once and E twice. D rescued two greedy misses. Most WT-hit batches had options selected by both; these are forecast/selection diagnostics, separate from causal gain."
+  ],
+  "case": [
+    "Across 48 threshold declarations, 12 were supported and 36 refuted. In 39, the fitted forecast was at or below the comparator. Five archive-external designs remain prediction-only. A separate live graph tool retrieved a measured Y39H combination for a follow-up design; its new comparison was refuted. The one graph/rules pair tied on best measured score."
+  ],
+  "limitations": [
+    "Protein Data Bank structure 1GFL mapped 227 of 238 assay positions. An exploratory structure correction increased WT AP at 96 observations from 0.215 to 0.243 under its matched residual control. Precision@5 fell from 0.40 to 0.35. The holdout had already been opened, so prospective confirmation is required.",
+    "Illustrative prediction failures include I14V:T59N:A154V (3.3305 predicted, 1.3014 measured) and I47N:C70R:N198D:H199L (1.2553 predicted, 3.6939 measured). The assay is public and concerns one scaffold. Prior model exposure to public data was unmeasured.",
+    "Next, preregister a WT-focused ranking objective, label hypotheses that diverge from the forecast as exploratory, and repeat in more independent blocks or a second GFP assay."
+  ],
+  "reproduction": [
+    "Install the lockfile under Python 3.12. Run python run.py setup to verify a compatible API profile. Use python -m gfp_v2.open_world init or continue with mutant,fitness CSV and the chosen model. The V2 README provides the exact commands.",
+    "Replay uses archived native responses. The simulated lab interface exported batch-and-sequence IDs, validated two published returns and continued a real API workflow at 99 observations. No wet-lab experiments were performed."
+  ]
+}

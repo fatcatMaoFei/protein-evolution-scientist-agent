@@ -1,0 +1,358 @@
+{
+  "overview": [
+    "V1 established a measured three-round GFP replay, a four-model knowledge comparison, a paired audit, and 540 supplemental queries. V2 uses a separate preregistered 96/2,048-observation benchmark, a new acquisition ablation, and one instrumented DeepSeek workflow.",
+    "The Sarkisyan fluorescence archive contains 35,584 eligible GFP variants with up to four substitutions. Wild type measures 3.7192. Primary metrics are average precision above WT and best newly measured score after 15 queries. Open-world predictions remain separate from verified gains."
+  ],
+  "gates": [
+    [
+      "G1",
+      "MODIFY",
+      "Test WT AP change vs selected baseline: 96 +0.012; 2,048 -0.003."
+    ],
+    [
+      "G2",
+      "MODIFY",
+      "Predictor V2 - RF best new +0.0117; vs Ridge +0.0120."
+    ],
+    [
+      "G3",
+      "GO",
+      "Block 2208 D: E142V:D155G:Q184L, REFUTED; next decision cites its revealed score."
+    ],
+    [
+      "G4",
+      "MODIFY",
+      "D and E vs best realized non-LLM per block: -0.0211, +0.0094."
+    ],
+    [
+      "G5",
+      "GO",
+      "Clean clone installed 38 locked dependencies, ran a cold-cache no-API demo, verified native API tools, and replayed CSV import/continuation from 96 to 97 observations."
+    ]
+  ],
+  "v1": [
+    "Across 360 retired validation observations, 330 carried an allele absent from the small training set. Only 1.13% of multi-mutants had even one previously co-observed allele pair. Ridge ranked better than RF overall (Spearman 0.430 vs 0.342); among fluorescent variants the gap narrowed (0.217 vs 0.184). The data support a sparse-coverage explanation alongside an assay brightness cliff, with causal contributions unresolved.",
+    "Six of seven V1 variants that could beat the incumbent contained an unseen allele. Their best archived RF ranks extended from 30 to 359. Sequence coverage and candidate exposure both matter. The frozen V1 report retains the original formal results."
+  ],
+  "v1_comparators": [
+    [
+      "Random",
+      "3.9375",
+      "0.0049",
+      "4/45"
+    ],
+    [
+      "Model-Only",
+      "3.9326",
+      "0.0000",
+      "14/45"
+    ],
+    [
+      "LLM",
+      "3.9326",
+      "0.0000",
+      "11/45"
+    ],
+    [
+      "Knowledge-LLM",
+      "3.9326",
+      "0.0000",
+      "15/45"
+    ]
+  ],
+  "prediction_design": [
+    "The reference scaffold and fitness target were fixed before model selection. The 23,528 non-WT genotypes are disjoint across assignment blocks and absent from the retired V1 evidence. Validation WT AP selected blend at 96 observations and blend at 2,048. All independent rankings are from the same public log10 fluorescence assay."
+  ],
+  "prediction": [
+    [
+      "96 / ridge",
+      "0.197",
+      "0.400",
+      "0.447",
+      "0.715",
+      "0.666",
+      "0.100",
+      "0.125"
+    ],
+    [
+      "96 / rf",
+      "0.175",
+      "0.287",
+      "0.311",
+      "0.803",
+      "0.665",
+      "0.100",
+      "0.175"
+    ],
+    [
+      "96 / blend",
+      "0.208",
+      "0.460",
+      "0.552",
+      "0.637",
+      "0.588",
+      "0.300",
+      "0.150"
+    ],
+    [
+      "2,048 / ridge",
+      "0.394",
+      "0.780",
+      "0.833",
+      "0.279",
+      "0.389",
+      "0.600",
+      "0.525"
+    ],
+    [
+      "2,048 / rf",
+      "0.332",
+      "0.673",
+      "0.720",
+      "0.425",
+      "0.432",
+      "0.500",
+      "0.475"
+    ],
+    [
+      "2,048 / blend",
+      "0.391",
+      "0.795",
+      "0.872",
+      "0.213",
+      "0.310",
+      "0.300",
+      "0.425"
+    ]
+  ],
+  "prediction_results": [
+    "96 observations: WT AP change +0.012 [-0.023, +0.039], block bootstrap. Risk/error Spearman 0.238. Observed coverage of validation-scaled 90% intervals 90.9%.",
+    "2,048 observations: WT AP change -0.003 [-0.039, +0.028], block bootstrap. Risk/error Spearman 0.304. Observed coverage of validation-scaled 90% intervals 91.3%.",
+    "Both budgets selected the half-weight blend of a pairwise Ridge predictor and a hurdle predictor. Features add substitution chemistry and pairwise indicators. In 6,659 retired multi-mutants with matching singles, a simple additive prediction was bright while actual fluorescence was dim in 418 cases.",
+    "At 96 observations WT precision@5 rose from 0.15 for Ridge to 0.40 for the blend. At 2,048 it fell from 0.60 to 0.35, despite better score regression. RF spread ranked errors better in both regimes; empirical coverage of the blend comes with wide intervals, especially at 96."
+  ],
+  "acquisition_design": [
+    "Conventional ablation: eight paired archive blocks, equal starting data and full candidate pool, three rounds of five queries. An oracle reveals only committed IDs and each policy refits from its own feedback."
+  ],
+  "acquisition": [
+    [
+      "A Random",
+      120,
+      "3.828",
+      "2.828",
+      13,
+      "0.016"
+    ],
+    [
+      "B Random Forest",
+      120,
+      "3.855",
+      "3.509",
+      27,
+      "0.026"
+    ],
+    [
+      "C Ridge",
+      120,
+      "3.855",
+      "3.531",
+      32,
+      "0.031"
+    ],
+    [
+      "D Predictor V2",
+      120,
+      "3.867",
+      "3.546",
+      36,
+      "0.034"
+    ]
+  ],
+  "acquisition_results": [
+    "V2 - RF paired new best +0.0117 [-0.0484, +0.0870]. V2 - Ridge +0.0120 [-0.0076, +0.0309]. Intervals are descriptive across archive blocks.",
+    "V2 returned 4.50 above-WT hits per 15 queries versus RF 3.38 and Ridge 4.00. The paired V2 minus Random difference was +2.88 [1.50, 4.00] hits. The corresponding hit intervals versus RF and Ridge included zero, as did the best-new contrasts.",
+    "In the archive, above-WT frequency across one to four substitutions was 21.0%, 18.4%, 12.1% and 6.7%. At K158 the LLM arms selected 10 variants versus 5.47 expected from roster exposure, with 7 above WT. This is an association in a chosen panel."
+  ],
+  "agent_design": [
+    "All five arms see the same full 96-variant feature roster at inception and have 15 measured queries. B ranks by prediction. C adds a risk bonus. D and E use identical scoring with the same model; E receives additional observed summaries and coarse chemistry. The LLM tool scores explicit substitution strings."
+  ],
+  "agent": [
+    [
+      "A Random",
+      120,
+      "3.825",
+      "3.048",
+      20,
+      "0.006"
+    ],
+    [
+      "B Predictor V2",
+      120,
+      "3.843",
+      "3.557",
+      31,
+      "0.007"
+    ],
+    [
+      "C Predicted + risk",
+      120,
+      "3.837",
+      "3.518",
+      26,
+      "0.007"
+    ],
+    [
+      "D LLM",
+      120,
+      "3.822",
+      "3.532",
+      30,
+      "0.007"
+    ],
+    [
+      "E Knowledge-LLM",
+      120,
+      "3.853",
+      "3.543",
+      29,
+      "0.034"
+    ]
+  ],
+  "trajectory": [
+    {
+      "policy": "A Random",
+      "rounds": [
+        1,
+        2,
+        3
+      ],
+      "new_best": [
+        3.7511814251020836,
+        3.68914859528375,
+        3.75731004563625
+      ]
+    },
+    {
+      "policy": "B Predictor V2",
+      "rounds": [
+        1,
+        2,
+        3
+      ],
+      "new_best": [
+        3.7606809539425,
+        3.7778871858975,
+        3.80239954982
+      ]
+    },
+    {
+      "policy": "C Predicted + risk",
+      "rounds": [
+        1,
+        2,
+        3
+      ],
+      "new_best": [
+        3.7574312976562503,
+        3.770703960285,
+        3.74726203550375
+      ]
+    },
+    {
+      "policy": "D LLM",
+      "rounds": [
+        1,
+        2,
+        3
+      ],
+      "new_best": [
+        3.76682427706875,
+        3.753223672791875,
+        3.77140404607625
+      ]
+    },
+    {
+      "policy": "E Knowledge-LLM",
+      "rounds": [
+        1,
+        2,
+        3
+      ],
+      "new_best": [
+        3.7617032674199997,
+        3.78315613988125,
+        3.7569988965875
+      ]
+    }
+  ],
+  "contrasts": [
+    {
+      "label": "D LLM - Better of B/C",
+      "blocks": [
+        -0.0913014633199997,
+        -0.0773505073800002,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "mean": -0.0210814963375,
+      "low": -0.0500879366050001,
+      "high": 0.0
+    },
+    {
+      "label": "E Knowledge-LLM - Better of B/C",
+      "blocks": [
+        -0.0913014633199997,
+        0.0,
+        0.0,
+        0.0,
+        0.2115785892500001,
+        -0.0451662369200001,
+        0.0,
+        0.0
+      ],
+      "mean": 0.00938886112625,
+      "low": -0.0397627046749999,
+      "high": 0.07369619135375
+    },
+    {
+      "label": "E Knowledge-LLM - D LLM",
+      "blocks": [
+        0.0,
+        0.0773505073800002,
+        0.0,
+        0.0,
+        0.2115785892500001,
+        -0.0451662369200001,
+        0.0,
+        0.0
+      ],
+      "mean": 0.03047035746375,
+      "low": -0.01129155923,
+      "high": 0.0890107843912501
+    }
+  ],
+  "agent_results": [
+    "D - max(B,C) -0.0211 [-0.0501, +0.0000]. E - max(B,C) +0.0094 [-0.0398, +0.0737].",
+    "Nine of 48 decisions needed a lossless candidate-alias repair after rejected IDs. All 8 blocks remain in the primary comparison. In 4 blocks with no such repair, both LLM arms had mean best-new differences of -0.0228 vs the stronger non-LLM arm. This retrospective subset is descriptive.",
+    "Holding each request fixed, D missed a WT hit available to same-request greedy once and E twice. D rescued two greedy misses. Most WT-hit batches had options selected by both; these are forecast/selection diagnostics, separate from causal gain.",
+    "Feedback audit: 4 contexts, twice per condition. Mean set overlap was 0.54 across conditions and 0.55/0.59 within conditions. Feedback changed the best measured score by +0.0410 [-0.0078, +0.0897] on fixed forecasts. Only two independent blocks contribute."
+  ],
+  "case": [
+    "Illustrative archived case, block 2208 D, round 1: E142V:D155G:Q184L was declared before reveal against WT (3.7192). The fitted score was 3.6362; the new measured score was 3.6939. Verdict REFUTED; prediction residual +0.0577.",
+    "Round 2 cited the measurement and recorded 'shift to predicted gain'. Its new test K131E:E142V:D155G was REFUTED at measured 3.4479. Both forecasts were already below WT. This is evidence of a fulfilled decision loop and a useful challenge for scientific calibration.",
+    "Across 48 threshold declarations, 12 were supported and 36 refuted. In 39, the fitted forecast was at or below the comparator. Five archive-external designs remain prediction-only. A separate live graph tool retrieved a measured Y39H combination for a follow-up design; its new comparison was refuted. The one graph/rules pair tied on best measured score."
+  ],
+  "limitations": [
+    "Protein Data Bank structure 1GFL mapped 227 of 238 assay positions. An exploratory structure correction increased WT AP at 96 observations from 0.215 to 0.243 under its matched residual control. Precision@5 fell from 0.40 to 0.35. The holdout had already been opened, so prospective confirmation is required.",
+    "Illustrative prediction failures include I14V:T59N:A154V (3.3305 predicted, 1.3014 measured) and I47N:C70R:N198D:H199L (1.2553 predicted, 3.6939 measured). The assay is public and concerns one scaffold. Prior model exposure to public data was unmeasured.",
+    "Next, preregister a WT-focused ranking objective, label hypotheses that diverge from the forecast as exploratory, and repeat in more independent blocks or a second GFP assay."
+  ],
+  "reproduction": [
+    "Install the lockfile under Python 3.12. Run python run.py setup to verify a compatible API profile. Use python -m gfp_v2.open_world init or continue with mutant,fitness CSV and the chosen model. The V2 README provides the exact commands.",
+    "Replay uses archived native responses. The simulated lab interface exported batch-and-sequence IDs, validated two published returns and continued a real API workflow at 99 observations. No wet-lab experiments were performed."
+  ]
+}

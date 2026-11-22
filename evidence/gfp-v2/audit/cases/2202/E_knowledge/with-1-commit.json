@@ -1,0 +1,245 @@
+{
+  "block": "2202",
+  "arm": "E_knowledge",
+  "condition": "with",
+  "replicate": 1,
+  "model_log": "with-1-model-1.json",
+  "policy": {
+    "selected_ids": [
+      "K52R:T186S",
+      "K52R:N105S:N170D",
+      "D76N:H148R",
+      "K26R:N144S",
+      "V163A:N164I:I171V"
+    ],
+    "hypotheses": [
+      {
+        "candidate_id": "K52R:T186S",
+        "comparator_id": "WT",
+        "comparator_fitness": 3.7192121319,
+        "direction": "above",
+        "evidence_ids": [
+          "T49A:S208G",
+          "K52R:K107E:K156R",
+          "T108A:D190V",
+          "N23S:M153T:T186A"
+        ],
+        "forecast_fitness": 3.7189093108630833,
+        "forecast_exceeds_comparator": false,
+        "statement": "K52R:T186S will have fluorescence strictly above measured WT.",
+        "scope": "fluorescence comparison only",
+        "status": "PENDING"
+      }
+    ],
+    "designs": [
+      {
+        "id": "K52R:T186S",
+        "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGRLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNSPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+        "substitutions": [
+          "K52R",
+          "T186S"
+        ],
+        "prediction": 3.7189093108630833,
+        "risk": 0.6502119767819206,
+        "source": "shared_pool",
+        "alias": "C080",
+        "chemistry_class_changes": [
+          [
+            "K52R",
+            "basic or pH-dependent",
+            "basic or pH-dependent"
+          ],
+          [
+            "T186S",
+            "polar uncharged",
+            "polar uncharged"
+          ]
+        ]
+      },
+      {
+        "id": "T186S:T203A",
+        "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNSPIGDGPVLLPDNHYLSAQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+        "substitutions": [
+          "T186S",
+          "T203A"
+        ],
+        "prediction": 3.610430087971623,
+        "risk": 0.8264049998807955,
+        "source": "shared_pool",
+        "alias": "C056",
+        "chemistry_class_changes": [
+          [
+            "T186S",
+            "polar uncharged",
+            "polar uncharged"
+          ],
+          [
+            "T203A",
+            "polar uncharged",
+            "aliphatic"
+          ]
+        ]
+      },
+      {
+        "id": "D76N:H148R",
+        "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPNHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSRNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+        "substitutions": [
+          "D76N",
+          "H148R"
+        ],
+        "prediction": 3.522623985389008,
+        "risk": 0.8648627787674232,
+        "source": "shared_pool",
+        "alias": "C088",
+        "chemistry_class_changes": [
+          [
+            "D76N",
+            "acidic",
+            "polar uncharged"
+          ],
+          [
+            "H148R",
+            "basic or pH-dependent",
+            "basic or pH-dependent"
+          ]
+        ]
+      },
+      {
+        "id": "K52R:N105S:N170D",
+        "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGRLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGSYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHDIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+        "substitutions": [
+          "K52R",
+          "N105S",
+          "N170D"
+        ],
+        "prediction": 3.5736782157557787,
+        "risk": 0.7721541431619743,
+        "source": "shared_pool",
+        "alias": "C047",
+        "chemistry_class_changes": [
+          [
+            "K52R",
+            "basic or pH-dependent",
+            "basic or pH-dependent"
+          ],
+          [
+            "N105S",
+            "polar uncharged",
+            "polar uncharged"
+          ],
+          [
+            "N170D",
+            "polar uncharged",
+            "acidic"
+          ]
+        ]
+      },
+      {
+        "id": "V163A:N164I:I171V",
+        "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKAIFKIRHNVEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+        "substitutions": [
+          "V163A",
+          "N164I",
+          "I171V"
+        ],
+        "prediction": 3.5055878967837883,
+        "risk": 0.8307660064142363,
+        "source": "shared_pool",
+        "alias": "C070",
+        "chemistry_class_changes": [
+          [
+            "V163A",
+            "aliphatic",
+            "aliphatic"
+          ],
+          [
+            "N164I",
+            "polar uncharged",
+            "aliphatic"
+          ],
+          [
+            "I171V",
+            "aliphatic",
+            "aliphatic"
+          ]
+        ]
+      },
+      {
+        "id": "K26R:N144S",
+        "sequence": "MSKGEELFTGVVPILVELDGDVNGHRFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYSYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+        "substitutions": [
+          "K26R",
+          "N144S"
+        ],
+        "prediction": 3.4908275503468946,
+        "risk": 0.7651023594421735,
+        "source": "shared_pool",
+        "alias": "C063",
+        "chemistry_class_changes": [
+          [
+            "K26R",
+            "basic or pH-dependent",
+            "basic or pH-dependent"
+          ],
+          [
+            "N144S",
+            "polar uncharged",
+            "polar uncharged"
+          ]
+        ]
+      },
+      {
+        "id": "V68A:I136V",
+        "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGAQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNVLGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+        "substitutions": [
+          "V68A",
+          "I136V"
+        ],
+        "prediction": 3.4268292681447132,
+        "risk": 0.9877428987545129,
+        "source": "shared_pool",
+        "alias": "C046",
+        "chemistry_class_changes": [
+          [
+            "V68A",
+            "aliphatic",
+            "aliphatic"
+          ],
+          [
+            "I136V",
+            "aliphatic",
+            "aliphatic"
+          ]
+        ]
+      }
+    ],
+    "evidence": [
+      {
+        "id": "T49A:S208G",
+        "fitness": 3.4701410864199995,
+        "round": 0
+      },
+      {
+        "id": "K52R:K107E:K156R",
+        "fitness": 3.61537946676,
+        "round": 0
+      },
+      {
+        "id": "T108A:D190V",
+        "fitness": 3.71223176327,
+        "round": 0
+      },
+      {
+        "id": "N23S:M153T:T186A",
+        "fitness": 3.48334218818,
+        "round": 0
+      }
+    ],
+    "recent_evidence_used": [],
+    "strategy": "high_prediction",
+    "adaptation": "continue",
+    "mechanism_validation": "NOT EVALUABLE",
+    "prediction_only": []
+  },
+  "request_sha256": "c7647fc718693eb63704df67e15f4d49be321c212da429ce0f3f4db5477eb72f"
+}

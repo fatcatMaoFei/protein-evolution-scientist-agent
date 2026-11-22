@@ -1,0 +1,105 @@
+{
+  "format": "gfp-v2-local-platform-1",
+  "mode": "local_file_exchange_no_hardware",
+  "assay": "GFP_AEQVI_Sarkisyan_2016",
+  "scale": "log10_fluorescence",
+  "reference_sha256": "9be57dbaa8e6d8b324cd1a84684901808c38b3b84f940c08e00a0323f4215e9f",
+  "namespace": "archived-open-round-02",
+  "batch_id": "GFP-B-93d599c1abb4595d5d9350db",
+  "samples": [
+    {
+      "sample_id": "GFP-S-90543c17945e9972aca4b12e",
+      "mutant": "E235K",
+      "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDKLYK",
+      "status": "returned",
+      "fitness": 3.65279893929667,
+      "source": "public_archive",
+      "source_ref": "ProteinGym 1.3 GFP_AEQVI_Sarkisyan_2016; DOI 10.5281/zenodo.15293562"
+    },
+    {
+      "sample_id": "GFP-S-ed3791cf82009f1f951cbdcf",
+      "mutant": "K3E:A206T",
+      "sequence": "MSEGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSTLSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+      "status": "returned",
+      "fitness": 3.72281362256,
+      "source": "public_archive",
+      "source_ref": "ProteinGym 1.3 GFP_AEQVI_Sarkisyan_2016; DOI 10.5281/zenodo.15293562"
+    },
+    {
+      "sample_id": "GFP-S-6469977948bdb207c9f28789",
+      "mutant": "K166R:I167V:N185D",
+      "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFRVRHNIEDGSVQLADHYQQDTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+      "status": "pending"
+    },
+    {
+      "sample_id": "GFP-S-166411ea6bd9e44ea1bbb45f",
+      "mutant": "N23S:M153V:S208T",
+      "sequence": "MSKGEELFTGVVPILVELDGDVSGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIVADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALTKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+      "status": "pending"
+    },
+    {
+      "sample_id": "GFP-S-9f2cf3c2091884778fd06808",
+      "mutant": "E132G:S202C",
+      "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKGDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLCTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+      "status": "pending"
+    }
+  ],
+  "events": [
+    {
+      "number": 1,
+      "operation": "create",
+      "input_sha256": "55e17baad3ddd194fb957177b7bdb8f7efd80df831df2af34783c617340108c7",
+      "samples": [
+        "GFP-S-90543c17945e9972aca4b12e",
+        "GFP-S-ed3791cf82009f1f951cbdcf",
+        "GFP-S-6469977948bdb207c9f28789",
+        "GFP-S-166411ea6bd9e44ea1bbb45f",
+        "GFP-S-9f2cf3c2091884778fd06808"
+      ]
+    },
+    {
+      "number": 2,
+      "operation": "submit",
+      "samples": [
+        "GFP-S-90543c17945e9972aca4b12e",
+        "GFP-S-ed3791cf82009f1f951cbdcf"
+      ]
+    },
+    {
+      "number": 3,
+      "operation": "ingest",
+      "input_sha256": "7d6f19204ddbf031d85e19507cb802952d6b57d2cab99ccbed2c326b26d00ea5",
+      "result_rows": [
+        {
+          "batch_id": "GFP-B-93d599c1abb4595d5d9350db",
+          "sample_id": "GFP-S-90543c17945e9972aca4b12e",
+          "mutant": "E235K",
+          "status": "returned",
+          "fitness": "3.65279893929667",
+          "scale": "log10_fluorescence",
+          "source": "public_archive",
+          "source_ref": "ProteinGym 1.3 GFP_AEQVI_Sarkisyan_2016; DOI 10.5281/zenodo.15293562"
+        },
+        {
+          "batch_id": "GFP-B-93d599c1abb4595d5d9350db",
+          "sample_id": "GFP-S-ed3791cf82009f1f951cbdcf",
+          "mutant": "K3E:A206T",
+          "status": "returned",
+          "fitness": "3.72281362256",
+          "scale": "log10_fluorescence",
+          "source": "public_archive",
+          "source_ref": "ProteinGym 1.3 GFP_AEQVI_Sarkisyan_2016; DOI 10.5281/zenodo.15293562"
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "operation": "normalize",
+      "samples": [
+        "GFP-S-90543c17945e9972aca4b12e",
+        "GFP-S-ed3791cf82009f1f951cbdcf"
+      ],
+      "output_sha256": "990a736537d632ba2eb1844cdd468fe79f0af6b545b56163120ec50f3dc28cdc"
+    }
+  ]
+}

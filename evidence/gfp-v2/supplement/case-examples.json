@@ -1,0 +1,104 @@
+{
+  "scope": "Retrospective examples; illustrative extrema do not estimate frequency or causation.",
+  "prediction": {
+    "accurate_above_wt": {
+      "block": 2011,
+      "budget": "ample",
+      "train_size": 2048,
+      "model": "blend",
+      "variant_id": "D129G:I167V:M233V",
+      "measured": 3.7494467897,
+      "predicted": 3.749966651289809,
+      "risk": 0.5179471707063736,
+      "mutation_count": 3,
+      "unseen_edits": 0,
+      "unseen_sites": 0,
+      "observed_minus_prediction": -0.0005198615898089898,
+      "error": 0.0005198615898089898,
+      "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIGFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKVRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGVDELYK"
+    },
+    "largest_overestimate": {
+      "block": 2012,
+      "budget": "ample",
+      "train_size": 2048,
+      "model": "blend",
+      "variant_id": "I14V:T59N:A154V",
+      "measured": 1.3013949406299998,
+      "predicted": 3.330503300042743,
+      "risk": 0.6540608627429172,
+      "mutation_count": 3,
+      "unseen_edits": 0,
+      "unseen_sites": 0,
+      "observed_minus_prediction": -2.029108359412743,
+      "error": 2.029108359412743,
+      "sequence": "MSKGEELFTGVVPVLVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPNLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMVDKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK"
+    },
+    "largest_underestimate": {
+      "block": 2014,
+      "budget": "ample",
+      "train_size": 2048,
+      "model": "blend",
+      "variant_id": "I47N:C70R:N198D:H199L",
+      "measured": 3.69390273629,
+      "predicted": 1.255268908160807,
+      "risk": 0.6455967921496616,
+      "mutation_count": 4,
+      "unseen_edits": 0,
+      "unseen_sites": 0,
+      "observed_minus_prediction": 2.438633828129193,
+      "error": 2.438633828129193,
+      "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFNCTTGKLPVPWPTLVTTLSYGVQRFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDDLYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK"
+    }
+  },
+  "decision": {
+    "agent_beats_direct": {
+      "block": 2205,
+      "treatment": "E_knowledge",
+      "control": "B_predictor",
+      "paired_arm": "B_predictor",
+      "new_best": 0.2115785892500001,
+      "new_mean": -0.0862454029979997,
+      "above_wt": -1,
+      "incumbent_gain": 0.2115785892500001,
+      "treatment_best": {
+        "id": "K158G",
+        "round": 2,
+        "prediction": 3.510509090281888,
+        "measurement": 4.11357579525,
+        "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQGNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK"
+      },
+      "control_best": {
+        "id": "N159D:K214E",
+        "round": 2,
+        "prediction": 3.599556120727177,
+        "measurement": 3.901997206,
+        "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKDGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEERDHMVLLEFVTAAGITHGMDELYK"
+      }
+    },
+    "agent_loses_to_direct": {
+      "block": 2201,
+      "treatment": "D_agent",
+      "control": "B_predictor",
+      "paired_arm": "B_predictor",
+      "new_best": -0.0913014633199997,
+      "new_mean": -0.0526636110013334,
+      "above_wt": -1,
+      "incumbent_gain": 0.0,
+      "treatment_best": {
+        "id": "I128V:P192H",
+        "round": 1,
+        "prediction": 3.59739777781819,
+        "measurement": 3.75157406816,
+        "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGVDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGHVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK"
+      },
+      "control_best": {
+        "id": "T43A:Y237C",
+        "round": 3,
+        "prediction": 3.4803248861402665,
+        "measurement": 3.84287553148,
+        "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLALKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELCK"
+      }
+    }
+  },
+  "prospective_case": "agent-diagnostics/case-refuted-and-cited.json"
+}

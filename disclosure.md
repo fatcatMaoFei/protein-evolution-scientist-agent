@@ -1,5 +1,9 @@
 # GFP AI use and source provenance
 
+## GFP Predictor and Scientific Agent V2
+
+Codex implemented the independent predictor benchmark, acquisition runner, controlled decision policy and report. Development labels selected model recipes; the independent predictions and conventional acquisition runs used no model APIs. The archived V2 closed study, matched feedback audit, and separate open workflow used the served `deepseek-ai/DeepSeek-V4.1-Flash` model. CodeFlow response IDs, native tool calls, usage, rejected decisions, alias-only structural recovery and offline verification are recorded with the V2 evidence. New fluorescence values came from the published assay. [V2 protocol](gfp_v2/protocol.md) · [V2 evidence](evidence/gfp-v2/)
+
 ## GFP fluorescence study and compatible API onboarding
 
 The main agent experiment now uses archived GFP fluorescence measurements. The protocol fixes the GFP reference, score, paired splits, budgets, accepted outputs, and model cells. In the measured study, model output supplies explicit mutation proposals and calls native scoring tools. The fitted predictor returns estimates and the replay oracle releases only measurements for submitted IDs. Remote native model trials retain DeepSeek, Claude Sonnet and GPT served IDs; local Qwen records its pinned weight revision and actual local responses. The configured-api setup and CSV demonstration use a separately tested OpenAI-compatible native-tool transport. Example researcher input and returned values come from the public fluorescence archive. No new laboratory measurements were made.

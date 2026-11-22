@@ -1,0 +1,80 @@
+{
+  "commit_sha256": "0c355b7aa4cc1a8bbccab98945362c55e140ea7ff1c0d21d9e5706d55cb27f3a",
+  "measurements": [
+    {
+      "block": "2205",
+      "arm": "D_agent",
+      "round": 2,
+      "position": 1,
+      "id": "M153L:K156E",
+      "prediction": 3.6252195493232993,
+      "risk": 0.6614677956941036,
+      "measured_fitness": 3.6439709046900006
+    },
+    {
+      "block": "2205",
+      "arm": "D_agent",
+      "round": 2,
+      "position": 2,
+      "id": "T97A:D117V:K214E:A226S",
+      "prediction": 3.6027127360295506,
+      "risk": 0.7641560627786597,
+      "measured_fitness": 3.35873828235
+    },
+    {
+      "block": "2205",
+      "arm": "D_agent",
+      "round": 2,
+      "position": 3,
+      "id": "K140M:M153L",
+      "prediction": 3.5988209430799705,
+      "risk": 0.7036409955561951,
+      "measured_fitness": 3.5912711655300003
+    },
+    {
+      "block": "2205",
+      "arm": "D_agent",
+      "round": 2,
+      "position": 4,
+      "id": "K113R:D133G",
+      "prediction": 3.5364029302630353,
+      "risk": 0.6164159625232944,
+      "measured_fitness": 3.692950369425
+    },
+    {
+      "block": "2205",
+      "arm": "D_agent",
+      "round": 2,
+      "position": 5,
+      "id": "K45R:K79E",
+      "prediction": 3.5589244027425844,
+      "risk": 0.788521948697997,
+      "measured_fitness": 3.44575612622
+    }
+  ],
+  "verdicts": [
+    {
+      "candidate_id": "M153L:K156E",
+      "comparator_id": "WT",
+      "comparator_fitness": 3.7192121319,
+      "direction": "above",
+      "evidence_ids": [
+        "K113M:K158E",
+        "N159D:K214E",
+        "V68A:S72G:K166E",
+        "K126M:M153K"
+      ],
+      "forecast_fitness": 3.6252195493232993,
+      "forecast_exceeds_comparator": false,
+      "statement": "M153L:K156E will have fluorescence strictly above measured WT.",
+      "scope": "fluorescence comparison only",
+      "status": "REFUTED",
+      "observed_fitness": 3.6439709046900006,
+      "prediction_residual": 0.01875135536670136,
+      "above_WT": false,
+      "improves_incumbent": false,
+      "mechanism_validation": "NOT EVALUABLE",
+      "feedback_gain": "NOT EVALUABLE"
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "commit_sha256": "813f96256085640b026d93094b41bf541e5b927d388da0fc4faa555c7415ba03",
+  "measurements": [
+    {
+      "block": "2201",
+      "arm": "D_agent",
+      "round": 3,
+      "position": 1,
+      "id": "N170S:S208G",
+      "prediction": 3.5615002371593336,
+      "risk": 0.7992352936177292,
+      "measured_fitness": 3.59839767355
+    },
+    {
+      "block": "2201",
+      "arm": "D_agent",
+      "round": 3,
+      "position": 2,
+      "id": "T63A:N149S",
+      "prediction": 3.529467146349854,
+      "risk": 0.7216986787796982,
+      "measured_fitness": 3.2722005586000003
+    },
+    {
+      "block": "2201",
+      "arm": "D_agent",
+      "round": 3,
+      "position": 3,
+      "id": "Q80R:D197G",
+      "prediction": 3.503082715387854,
+      "risk": 0.7182863727663696,
+      "measured_fitness": 3.67933322051
+    },
+    {
+      "block": "2201",
+      "arm": "D_agent",
+      "round": 3,
+      "position": 4,
+      "id": "E111G:T118A",
+      "prediction": 3.441634543076762,
+      "risk": 0.7053432158265335,
+      "measured_fitness": 3.39605278939
+    },
+    {
+      "block": "2201",
+      "arm": "D_agent",
+      "round": 3,
+      "position": 5,
+      "id": "I128L:H139L",
+      "prediction": 3.42004340458695,
+      "risk": 0.7327986746155255,
+      "measured_fitness": 3.13892077863
+    }
+  ],
+  "verdicts": [
+    {
+      "candidate_id": "N170S:S208G",
+      "comparator_id": "WT",
+      "comparator_fitness": 3.7192121319,
+      "direction": "above",
+      "evidence_ids": [
+        "N149S:I188V:R215S",
+        "T118S:I167V",
+        "V93A:S205T",
+        "I47V:N159S"
+      ],
+      "forecast_fitness": 3.5615002371593336,
+      "forecast_exceeds_comparator": false,
+      "statement": "N170S:S208G will have fluorescence strictly above measured WT.",
+      "scope": "fluorescence comparison only",
+      "status": "REFUTED",
+      "observed_fitness": 3.59839767355,
+      "prediction_residual": 0.03689743639066645,
+      "above_WT": false,
+      "improves_incumbent": false,
+      "mechanism_validation": "NOT EVALUABLE",
+      "feedback_gain": "NOT EVALUABLE"
+    }
+  ]
+}

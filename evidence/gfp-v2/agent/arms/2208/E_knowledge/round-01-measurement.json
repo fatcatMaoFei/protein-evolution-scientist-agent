@@ -1,0 +1,80 @@
+{
+  "commit_sha256": "9da8abc10b0eb0e1272115510602b1aedd9db8308120180a566e916a44fefb92",
+  "measurements": [
+    {
+      "block": "2208",
+      "arm": "E_knowledge",
+      "round": 1,
+      "position": 1,
+      "id": "E142V:D155G:Q184L",
+      "prediction": 3.6361686179743855,
+      "risk": 0.829446812294237,
+      "measured_fitness": 3.69390273611
+    },
+    {
+      "block": "2208",
+      "arm": "E_knowledge",
+      "round": 1,
+      "position": 2,
+      "id": "K131E:E142V:D155G",
+      "prediction": 3.5440778383082217,
+      "risk": 0.7969067203931449,
+      "measured_fitness": 3.4478930196900004
+    },
+    {
+      "block": "2208",
+      "arm": "E_knowledge",
+      "round": 1,
+      "position": 3,
+      "id": "K126M:Y237D",
+      "prediction": 3.5467054209103894,
+      "risk": 0.8395933279383605,
+      "measured_fitness": 3.68928347915
+    },
+    {
+      "block": "2208",
+      "arm": "E_knowledge",
+      "round": 1,
+      "position": 4,
+      "id": "E34V:K140R",
+      "prediction": 3.531904043593748,
+      "risk": 0.6474100801386401,
+      "measured_fitness": 3.76562629785
+    },
+    {
+      "block": "2208",
+      "arm": "E_knowledge",
+      "round": 1,
+      "position": 5,
+      "id": "I152V:K166M:S175G:K209R",
+      "prediction": 3.504877607992149,
+      "risk": 0.9222403242297478,
+      "measured_fitness": 3.7598168377800008
+    }
+  ],
+  "verdicts": [
+    {
+      "candidate_id": "E142V:D155G:Q184L",
+      "comparator_id": "WT",
+      "comparator_fitness": 3.7192121319,
+      "direction": "above",
+      "evidence_ids": [
+        "E142V:Q157R:G174S",
+        "D155G:K158M",
+        "H77R:Y151F:K166Q:T230A",
+        "N105Y:R168C"
+      ],
+      "forecast_fitness": 3.6361686179743855,
+      "forecast_exceeds_comparator": false,
+      "statement": "E142V:D155G:Q184L will have fluorescence strictly above measured WT.",
+      "scope": "fluorescence comparison only",
+      "status": "REFUTED",
+      "observed_fitness": 3.69390273611,
+      "prediction_residual": 0.057734118135614576,
+      "above_WT": false,
+      "improves_incumbent": false,
+      "mechanism_validation": "NOT EVALUABLE",
+      "feedback_gain": "NOT EVALUABLE"
+    }
+  ]
+}

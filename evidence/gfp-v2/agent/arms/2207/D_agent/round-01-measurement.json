@@ -1,0 +1,80 @@
+{
+  "commit_sha256": "490b8adbb9935f92170c5b20f995f9b6ce816e03db5d183792fdf0b525cc9dc2",
+  "measurements": [
+    {
+      "block": "2207",
+      "arm": "D_agent",
+      "round": 1,
+      "position": 1,
+      "id": "K101M:D103G",
+      "prediction": 3.683137023600884,
+      "risk": 0.7028037223944918,
+      "measured_fitness": 3.5047941296
+    },
+    {
+      "block": "2207",
+      "arm": "D_agent",
+      "round": 1,
+      "position": 2,
+      "id": "D36V:F114L",
+      "prediction": 3.6648924196236172,
+      "risk": 0.7622976662784642,
+      "measured_fitness": 3.41314069265
+    },
+    {
+      "block": "2207",
+      "arm": "D_agent",
+      "round": 1,
+      "position": 3,
+      "id": "K26E:E115G:H148L",
+      "prediction": 3.5090962249107083,
+      "risk": 0.83505525470852,
+      "measured_fitness": 1.36543331094
+    },
+    {
+      "block": "2207",
+      "arm": "D_agent",
+      "round": 1,
+      "position": 4,
+      "id": "H25R:D103V:R109L",
+      "prediction": 3.430030486116494,
+      "risk": 0.8282621299138216,
+      "measured_fitness": 1.60550947651
+    },
+    {
+      "block": "2207",
+      "arm": "D_agent",
+      "round": 1,
+      "position": 5,
+      "id": "I98V:N159D:N164S:M233V",
+      "prediction": 3.4072871855067626,
+      "risk": 0.8909663343311159,
+      "measured_fitness": 3.7582468328
+    }
+  ],
+  "verdicts": [
+    {
+      "candidate_id": "K101M:D103G",
+      "comparator_id": "WT",
+      "comparator_fitness": 3.7192121319,
+      "direction": "above",
+      "evidence_ids": [
+        "M153V:I188N:N212D",
+        "F114L:S175R",
+        "K41E:D190G",
+        "D117N:N149D:K158R:Q204L"
+      ],
+      "forecast_fitness": 3.683137023600884,
+      "forecast_exceeds_comparator": false,
+      "statement": "K101M:D103G will have fluorescence strictly above measured WT.",
+      "scope": "fluorescence comparison only",
+      "status": "REFUTED",
+      "observed_fitness": 3.5047941296,
+      "prediction_residual": -0.17834289400088377,
+      "above_WT": false,
+      "improves_incumbent": false,
+      "mechanism_validation": "NOT EVALUABLE",
+      "feedback_gain": "NOT EVALUABLE"
+    }
+  ]
+}

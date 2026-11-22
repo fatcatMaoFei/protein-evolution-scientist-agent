@@ -1,0 +1,416 @@
+[
+  {
+    "round": 1,
+    "selection": [
+      "K214E:M233I",
+      "K126E:A227V",
+      "I128V:P192H",
+      "Y39H:S175G",
+      "K107E:N212D"
+    ],
+    "next_decision_can_see": [
+      "I128V:P192H",
+      "K107E:N212D",
+      "K126E:A227V",
+      "K214E:M233I",
+      "Y39H:S175G"
+    ],
+    "measurements": [
+      {
+        "block": "2201",
+        "arm": "D_agent",
+        "round": 1,
+        "position": 1,
+        "id": "K214E:M233I",
+        "prediction": 3.678363465722136,
+        "risk": 0.6573249657623266,
+        "measured_fitness": 3.62957390511
+      },
+      {
+        "block": "2201",
+        "arm": "D_agent",
+        "round": 1,
+        "position": 2,
+        "id": "K126E:A227V",
+        "prediction": 3.6353463263548207,
+        "risk": 0.8283951524622414,
+        "measured_fitness": 3.63593426621
+      },
+      {
+        "block": "2201",
+        "arm": "D_agent",
+        "round": 1,
+        "position": 3,
+        "id": "I128V:P192H",
+        "prediction": 3.5973977778181894,
+        "risk": 0.7305758535688422,
+        "measured_fitness": 3.75157406816
+      },
+      {
+        "block": "2201",
+        "arm": "D_agent",
+        "round": 1,
+        "position": 4,
+        "id": "Y39H:S175G",
+        "prediction": 3.5809919879241923,
+        "risk": 0.6669214582804099,
+        "measured_fitness": 3.63329668426
+      },
+      {
+        "block": "2201",
+        "arm": "D_agent",
+        "round": 1,
+        "position": 5,
+        "id": "K107E:N212D",
+        "prediction": 3.5769215295592307,
+        "risk": 0.7477682258686122,
+        "measured_fitness": 3.63369275158
+      }
+    ],
+    "cited_evidence": [
+      {
+        "id": "K214E:V224E",
+        "fitness": 3.21677102992,
+        "round": 0
+      },
+      {
+        "id": "V93A:S205T",
+        "fitness": 3.81255140901,
+        "round": 0
+      },
+      {
+        "id": "K3E:S175G",
+        "fitness": 3.68188142801,
+        "round": 0
+      },
+      {
+        "id": "I98V:T203A:T230A",
+        "fitness": 3.78365566773,
+        "round": 0
+      }
+    ],
+    "used_recent": [],
+    "hypotheses": [
+      {
+        "candidate_id": "K214E:M233I",
+        "comparator_id": "WT",
+        "comparator_fitness": 3.7192121319,
+        "direction": "above",
+        "evidence_ids": [
+          "K214E:V224E",
+          "V93A:S205T",
+          "K3E:S175G",
+          "I98V:T203A:T230A"
+        ],
+        "forecast_fitness": 3.678363465722136,
+        "forecast_exceeds_comparator": false,
+        "statement": "K214E:M233I will have fluorescence strictly above measured WT.",
+        "scope": "fluorescence comparison only",
+        "status": "PENDING"
+      }
+    ],
+    "verdicts": [
+      {
+        "candidate_id": "K214E:M233I",
+        "comparator_id": "WT",
+        "comparator_fitness": 3.7192121319,
+        "direction": "above",
+        "evidence_ids": [
+          "K214E:V224E",
+          "V93A:S205T",
+          "K3E:S175G",
+          "I98V:T203A:T230A"
+        ],
+        "forecast_fitness": 3.678363465722136,
+        "forecast_exceeds_comparator": false,
+        "statement": "K214E:M233I will have fluorescence strictly above measured WT.",
+        "scope": "fluorescence comparison only",
+        "status": "REFUTED",
+        "observed_fitness": 3.62957390511,
+        "prediction_residual": -0.04878956061213602,
+        "above_WT": false,
+        "improves_incumbent": false,
+        "mechanism_validation": "NOT EVALUABLE",
+        "feedback_gain": "NOT EVALUABLE"
+      }
+    ],
+    "strategy": "high_prediction",
+    "adaptation": "no_new_feedback"
+  },
+  {
+    "round": 2,
+    "selection": [
+      "K3E:H181R",
+      "T97S:V112A",
+      "G10E:I136V",
+      "N159S:K166Q",
+      "K162R:D190G"
+    ],
+    "next_decision_can_see": [
+      "G10E:I136V",
+      "K162R:D190G",
+      "K3E:H181R",
+      "N159S:K166Q",
+      "T97S:V112A"
+    ],
+    "measurements": [
+      {
+        "block": "2201",
+        "arm": "D_agent",
+        "round": 2,
+        "position": 1,
+        "id": "K3E:H181R",
+        "prediction": 3.6377831188043293,
+        "risk": 0.7281646205773445,
+        "measured_fitness": 1.64655309635
+      },
+      {
+        "block": "2201",
+        "arm": "D_agent",
+        "round": 2,
+        "position": 2,
+        "id": "T97S:V112A",
+        "prediction": 3.588248633634975,
+        "risk": 0.8160038843909713,
+        "measured_fitness": 3.60356321143
+      },
+      {
+        "block": "2201",
+        "arm": "D_agent",
+        "round": 2,
+        "position": 3,
+        "id": "G10E:I136V",
+        "prediction": 3.5521762292735346,
+        "risk": 0.8160038843909713,
+        "measured_fitness": 3.6848754604
+      },
+      {
+        "block": "2201",
+        "arm": "D_agent",
+        "round": 2,
+        "position": 4,
+        "id": "N159S:K166Q",
+        "prediction": 3.56254714781712,
+        "risk": 0.702304323263732,
+        "measured_fitness": 3.72035125546
+      },
+      {
+        "block": "2201",
+        "arm": "D_agent",
+        "round": 2,
+        "position": 5,
+        "id": "K162R:D190G",
+        "prediction": 3.5704174597376594,
+        "risk": 0.702304323263732,
+        "measured_fitness": 3.6891947040699993
+      }
+    ],
+    "cited_evidence": [
+      {
+        "id": "K3E:S175G",
+        "fitness": 3.68188142801,
+        "round": 0
+      },
+      {
+        "id": "V93A:S205T",
+        "fitness": 3.81255140901,
+        "round": 0
+      },
+      {
+        "id": "I98V:T203A:T230A",
+        "fitness": 3.78365566773,
+        "round": 0
+      },
+      {
+        "id": "K79R:I128T",
+        "fitness": 3.78828199777,
+        "round": 0
+      }
+    ],
+    "used_recent": [],
+    "hypotheses": [
+      {
+        "candidate_id": "K3E:H181R",
+        "comparator_id": "WT",
+        "comparator_fitness": 3.7192121319,
+        "direction": "above",
+        "evidence_ids": [
+          "K3E:S175G",
+          "V93A:S205T",
+          "I98V:T203A:T230A",
+          "K79R:I128T"
+        ],
+        "forecast_fitness": 3.6377831188043293,
+        "forecast_exceeds_comparator": false,
+        "statement": "K3E:H181R will have fluorescence strictly above measured WT.",
+        "scope": "fluorescence comparison only",
+        "status": "PENDING"
+      }
+    ],
+    "verdicts": [
+      {
+        "candidate_id": "K3E:H181R",
+        "comparator_id": "WT",
+        "comparator_fitness": 3.7192121319,
+        "direction": "above",
+        "evidence_ids": [
+          "K3E:S175G",
+          "V93A:S205T",
+          "I98V:T203A:T230A",
+          "K79R:I128T"
+        ],
+        "forecast_fitness": 3.6377831188043293,
+        "forecast_exceeds_comparator": false,
+        "statement": "K3E:H181R will have fluorescence strictly above measured WT.",
+        "scope": "fluorescence comparison only",
+        "status": "REFUTED",
+        "observed_fitness": 1.64655309635,
+        "prediction_residual": -1.9912300224543293,
+        "above_WT": false,
+        "improves_incumbent": false,
+        "mechanism_validation": "NOT EVALUABLE",
+        "feedback_gain": "NOT EVALUABLE"
+      }
+    ],
+    "strategy": "high_prediction",
+    "adaptation": "continue"
+  },
+  {
+    "round": 3,
+    "selection": [
+      "N170S:S208G",
+      "T63A:N149S",
+      "Q80R:D197G",
+      "E111G:T118A",
+      "I128L:H139L"
+    ],
+    "next_decision_can_see": [
+      "E111G:T118A",
+      "I128L:H139L",
+      "N170S:S208G",
+      "Q80R:D197G",
+      "T63A:N149S"
+    ],
+    "measurements": [
+      {
+        "block": "2201",
+        "arm": "D_agent",
+        "round": 3,
+        "position": 1,
+        "id": "N170S:S208G",
+        "prediction": 3.5615002371593336,
+        "risk": 0.7992352936177292,
+        "measured_fitness": 3.59839767355
+      },
+      {
+        "block": "2201",
+        "arm": "D_agent",
+        "round": 3,
+        "position": 2,
+        "id": "T63A:N149S",
+        "prediction": 3.529467146349854,
+        "risk": 0.7216986787796982,
+        "measured_fitness": 3.2722005586000003
+      },
+      {
+        "block": "2201",
+        "arm": "D_agent",
+        "round": 3,
+        "position": 3,
+        "id": "Q80R:D197G",
+        "prediction": 3.503082715387854,
+        "risk": 0.7182863727663696,
+        "measured_fitness": 3.67933322051
+      },
+      {
+        "block": "2201",
+        "arm": "D_agent",
+        "round": 3,
+        "position": 4,
+        "id": "E111G:T118A",
+        "prediction": 3.441634543076762,
+        "risk": 0.7053432158265335,
+        "measured_fitness": 3.39605278939
+      },
+      {
+        "block": "2201",
+        "arm": "D_agent",
+        "round": 3,
+        "position": 5,
+        "id": "I128L:H139L",
+        "prediction": 3.42004340458695,
+        "risk": 0.7327986746155255,
+        "measured_fitness": 3.13892077863
+      }
+    ],
+    "cited_evidence": [
+      {
+        "id": "N149S:I188V:R215S",
+        "fitness": 3.46824360485,
+        "round": 0
+      },
+      {
+        "id": "T118S:I167V",
+        "fitness": 3.73725943694,
+        "round": 0
+      },
+      {
+        "id": "V93A:S205T",
+        "fitness": 3.81255140901,
+        "round": 0
+      },
+      {
+        "id": "I47V:N159S",
+        "fitness": 3.683410917,
+        "round": 0
+      }
+    ],
+    "used_recent": [],
+    "hypotheses": [
+      {
+        "candidate_id": "N170S:S208G",
+        "comparator_id": "WT",
+        "comparator_fitness": 3.7192121319,
+        "direction": "above",
+        "evidence_ids": [
+          "N149S:I188V:R215S",
+          "T118S:I167V",
+          "V93A:S205T",
+          "I47V:N159S"
+        ],
+        "forecast_fitness": 3.5615002371593336,
+        "forecast_exceeds_comparator": false,
+        "statement": "N170S:S208G will have fluorescence strictly above measured WT.",
+        "scope": "fluorescence comparison only",
+        "status": "PENDING"
+      }
+    ],
+    "verdicts": [
+      {
+        "candidate_id": "N170S:S208G",
+        "comparator_id": "WT",
+        "comparator_fitness": 3.7192121319,
+        "direction": "above",
+        "evidence_ids": [
+          "N149S:I188V:R215S",
+          "T118S:I167V",
+          "V93A:S205T",
+          "I47V:N159S"
+        ],
+        "forecast_fitness": 3.5615002371593336,
+        "forecast_exceeds_comparator": false,
+        "statement": "N170S:S208G will have fluorescence strictly above measured WT.",
+        "scope": "fluorescence comparison only",
+        "status": "REFUTED",
+        "observed_fitness": 3.59839767355,
+        "prediction_residual": 0.03689743639066645,
+        "above_WT": false,
+        "improves_incumbent": false,
+        "mechanism_validation": "NOT EVALUABLE",
+        "feedback_gain": "NOT EVALUABLE"
+      }
+    ],
+    "strategy": "high_prediction",
+    "adaptation": "shift_to_predicted_gain"
+  }
+]

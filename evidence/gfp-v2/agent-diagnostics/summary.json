@@ -1,0 +1,46 @@
+{
+  "status": "complete",
+  "cases": 48,
+  "by_arm": {
+    "D_agent": {
+      "decisions": 24,
+      "recent_mentions": 4,
+      "recent_is_available": 16,
+      "mean_agent_minus_same_request_greedy_best": -0.006455074499375028,
+      "above_wt_attribution": {
+        "agent_missed_greedy_opportunity": 1,
+        "agent_rescue": 2,
+        "both_hit": 18,
+        "both_missed_eligible_opportunity": 3
+      },
+      "incumbent_attribution": {
+        "both_hit": 1,
+        "both_missed_eligible_opportunity": 11,
+        "pool_ceiling": 12
+      }
+    },
+    "E_knowledge": {
+      "decisions": 24,
+      "recent_mentions": 0,
+      "recent_is_available": 16,
+      "mean_agent_minus_same_request_greedy_best": -0.007940248081250009,
+      "above_wt_attribution": {
+        "agent_missed_greedy_opportunity": 2,
+        "both_hit": 17,
+        "both_missed_eligible_opportunity": 5
+      },
+      "incumbent_attribution": {
+        "both_hit": 2,
+        "both_missed_eligible_opportunity": 9,
+        "pool_ceiling": 13
+      }
+    }
+  },
+  "recovery_blocks": [
+    "2202",
+    "2204",
+    "2205",
+    "2206"
+  ],
+  "scope": "Retrospective common-roster ranking diagnostic, not a new acquisition policy run or causal estimate. Equal requests do not necessarily imply equal downstream states."
+}

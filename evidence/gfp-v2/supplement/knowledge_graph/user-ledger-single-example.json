@@ -1,0 +1,52 @@
+{
+  "reference": {
+    "id": "WT",
+    "fitness": 3.7192121319,
+    "source": "evidence/gfp/quality/hypothesis/round-01/imported_measurements.csv"
+  },
+  "positions": [
+    {
+      "position": 221,
+      "reference_residue": "L",
+      "reference_properties": {
+        "hydropathy": 3.8,
+        "charge": 0,
+        "size": 4,
+        "polarity": "aliphatic"
+      },
+      "single": {
+        "n": 1,
+        "above_WT": 1,
+        "mean_WT_delta_fitness": 0.005191376279999993,
+        "observations": [
+          {
+            "id": "L221R",
+            "edit": "L221R",
+            "fitness": 3.72440350818,
+            "source": "evidence/gfp/quality/hypothesis/round-01/imported_measurements.csv",
+            "WT_delta_fitness": 0.005191376279999993,
+            "scope": "single",
+            "classification": "radical_or_special"
+          }
+        ]
+      },
+      "multi_association": {
+        "n": 1,
+        "above_WT": 1,
+        "mean_WT_delta_fitness": 0.17730037917000008,
+        "observations": [
+          {
+            "id": "V93I:L221Q",
+            "edit": "L221Q",
+            "fitness": 3.89651251107,
+            "source": "evidence/gfp/quality/hypothesis/round-01/imported_measurements.csv",
+            "WT_delta_fitness": 0.17730037917000008,
+            "scope": "multi_association",
+            "classification": "radical_or_special"
+          }
+        ]
+      },
+      "interpretation": "Single contrasts are WT-background measurements; multi associations cannot assign site effects."
+    }
+  ]
+}

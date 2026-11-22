@@ -1,0 +1,80 @@
+{
+  "commit_sha256": "85b901afc368f48052a76355fe26249d6a6d4290632fe61a471beb7a7aeb0cb1",
+  "measurements": [
+    {
+      "block": "2206",
+      "arm": "D_agent",
+      "round": 3,
+      "position": 1,
+      "id": "N164D:F223L",
+      "prediction": 3.5482469694920336,
+      "risk": 0.8496655688365173,
+      "measured_fitness": 3.5641765965900003
+    },
+    {
+      "block": "2206",
+      "arm": "D_agent",
+      "round": 3,
+      "position": 2,
+      "id": "F99L:Q177L",
+      "prediction": 3.500839915556923,
+      "risk": 0.8064668683767757,
+      "measured_fitness": 3.87127290838
+    },
+    {
+      "block": "2206",
+      "arm": "D_agent",
+      "round": 3,
+      "position": 3,
+      "id": "K26R:D155G",
+      "prediction": 3.481206166958105,
+      "risk": 0.9370298251473904,
+      "measured_fitness": 3.64621131973
+    },
+    {
+      "block": "2206",
+      "arm": "D_agent",
+      "round": 3,
+      "position": 4,
+      "id": "V93I:N146I",
+      "prediction": 3.4780602008735992,
+      "risk": 0.9106293057449562,
+      "measured_fitness": 3.70931888739
+    },
+    {
+      "block": "2206",
+      "arm": "D_agent",
+      "round": 3,
+      "position": 5,
+      "id": "R73L:H169Y:E172K",
+      "prediction": 3.4638581423426764,
+      "risk": 0.9598875700839719,
+      "measured_fitness": 3.64501916546
+    }
+  ],
+  "verdicts": [
+    {
+      "candidate_id": "N164D:F223L",
+      "comparator_id": "WT",
+      "comparator_fitness": 3.7192121319,
+      "direction": "above",
+      "evidence_ids": [
+        "I171T:Y237H",
+        "D102G:I171T",
+        "S28R:S202C:L221Q",
+        "F46L:D129G:D234G"
+      ],
+      "forecast_fitness": 3.5482469694920336,
+      "forecast_exceeds_comparator": false,
+      "statement": "N164D:F223L will have fluorescence strictly above measured WT.",
+      "scope": "fluorescence comparison only",
+      "status": "REFUTED",
+      "observed_fitness": 3.5641765965900003,
+      "prediction_residual": 0.015929627097966748,
+      "above_WT": false,
+      "improves_incumbent": false,
+      "mechanism_validation": "NOT EVALUABLE",
+      "feedback_gain": "NOT EVALUABLE"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "planned_repair": "Only actions with failed canonical native-tool attempts may make a second outer decision call, using lossless exact aliases of the same full candidate roster and forecasts.",
+  "previous_failures_sha256": "49a8828b0d6544d5cf25b70d9f022aee59a5a077f4a890f12a551b4ac766a425",
+  "initial_failed_arms": [
+    {
+      "block": "2202",
+      "arm": "D_agent",
+      "error": "AgentError: A closed trial candidate must occur in its displayed pool"
+    },
+    {
+      "block": "2204",
+      "arm": "D_agent",
+      "error": "AgentError: A closed trial candidate must occur in its displayed pool"
+    },
+    {
+      "block": "2204",
+      "arm": "E_knowledge",
+      "error": "AgentError: A closed trial candidate must occur in its displayed pool"
+    },
+    {
+      "block": "2205",
+      "arm": "D_agent",
+      "error": "AgentError: A closed trial candidate must occur in its displayed pool"
+    },
+    {
+      "block": "2205",
+      "arm": "E_knowledge",
+      "error": "AgentError: A closed trial candidate must occur in its displayed pool"
+    },
+    {
+      "block": "2206",
+      "arm": "D_agent",
+      "error": "AgentError: A closed trial candidate must occur in its displayed pool"
+    },
+    {
+      "block": "2206",
+      "arm": "E_knowledge",
+      "error": "AgentError: A closed trial candidate must occur in its displayed pool"
+    }
+  ],
+  "accepted_actions_reused": true,
+  "no_outcome_used_for_failed_actions": true,
+  "audit_representation": "Use lossless aliases identically for every audit case, condition and repeat.",
+  "repair_code_sha256": {
+    "gfp_v2/policy.py": "fe3369ccc8fd80700da9e5ef21aaec8c8aeb2617f3e7fc6c51cee09e0daa186e",
+    "gfp_v2/trials.py": "0580fbfcbfc4ee8c5085ba65479a231b0ec1d3c5ee6af11b91da9a4a46a48956",
+    "gfp_v2/feedback_audit.py": "92c622bab0f5ce02b58d658489940e013e51befed80102eb5e0da039de1da4f4"
+  }
+}

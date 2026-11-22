@@ -1,0 +1,101 @@
+{
+  "status": "complete",
+  "scope": "simulated local laboratory file exchange; no hardware; no new wet-lab measurements",
+  "batches": {
+    "novel": {
+      "batch_id": "GFP-B-bc6cfaa98728085174a95909",
+      "sample_status": {
+        "failed": 5
+      },
+      "events": [
+        "create",
+        "submit",
+        "ingest"
+      ],
+      "measured": []
+    },
+    "archived": {
+      "batch_id": "GFP-B-93d599c1abb4595d5d9350db",
+      "sample_status": {
+        "returned": 2,
+        "pending": 3
+      },
+      "events": [
+        "create",
+        "submit",
+        "ingest",
+        "normalize"
+      ],
+      "measured": [
+        {
+          "id": "E235K",
+          "fitness": 3.65279893929667,
+          "source": "public_archive",
+          "source_ref": "ProteinGym 1.3 GFP_AEQVI_Sarkisyan_2016; DOI 10.5281/zenodo.15293562"
+        },
+        {
+          "id": "K3E:A206T",
+          "fitness": 3.72281362256,
+          "source": "public_archive",
+          "source_ref": "ProteinGym 1.3 GFP_AEQVI_Sarkisyan_2016; DOI 10.5281/zenodo.15293562"
+        }
+      ]
+    }
+  },
+  "no_api_demo_status": {
+    "status": "complete",
+    "scope": "published measurements formatted as user data",
+    "assay": "GFP_AEQVI_Sarkisyan_2016",
+    "initial_observations": 96,
+    "imported_after_selection": 5,
+    "total_observations": 101,
+    "second_batch_prediction_only": 5,
+    "backend": "rf"
+  },
+  "no_api_forecast": {
+    "ranked": 5,
+    "prediction_only": true,
+    "source": "round-02 prior state plus exact two normalized archival returns"
+  },
+  "live_continuation": {
+    "round": 3,
+    "observations_after_import": 99,
+    "trace_status": "accepted",
+    "selected_count": 5,
+    "latest_imported_phenotypes": 2,
+    "provider_models": [
+      "deepseek-ai/DeepSeek-V4.1-Flash"
+    ],
+    "native_tool_calls": 2,
+    "replayed": false
+  },
+  "no_api_replay": {
+    "credentials_unset": [
+      "CODEFLOW_API_KEY",
+      "OPENAI_API_KEY"
+    ],
+    "matched_byte_for_byte": [
+      "recommendations.csv",
+      "hypothesis_audit.json"
+    ]
+  },
+  "file_sha256": {
+    "agent-after-return/agent.json": "e635875e1463f8bcf90c8258581baf2a53d7241dd197f8e4af6aac652f17409a",
+    "agent-after-return/hypothesis_audit.json": "fdb96fe8421775eec39e841bd334cccb21b67e4ae39084c6c363799ab5c626c0",
+    "agent-after-return/recommendations.csv": "0b8875777a00ff3cff3c8c3d60ae7109567b3329c88242ae2a04e3e94630ed62",
+    "agent-after-return/state.json": "c8d733fdb49a29122d425d40c497c2a2f8aa889bdd09183037d6b8d559bcdfe4",
+    "archived/final.csv": "6df2eb2987826f972e80567b3f6c55e291474304c23df1ce711178c119322cfe",
+    "archived/ledger.json": "8cf7a511a55a759f57338da9a5e3e1e4c2e699366e897cad2ce425d48198ac3a",
+    "archived/normalized.csv": "990a736537d632ba2eb1844cdd468fe79f0af6b545b56163120ec50f3dc28cdc",
+    "archived/pending.csv": "1908a47b35e289ae04f08069b26960de997abf516ad81804f73b2c0e4cb2338a",
+    "archived/platform_return.csv": "7d6f19204ddbf031d85e19507cb802952d6b57d2cab99ccbed2c326b26d00ea5",
+    "archived/submitted.csv": "4979eb189e986e1b8a464d3caf6c9310cf288bd26964673e336e78d3fb5ebf29",
+    "novel/final.csv": "221fa7abdfc6e6ca1d612f19ee32345fbf4d073af78e158d126a71b060da96aa",
+    "novel/ledger.json": "3892a11a9103587ffec97de7cbe1b6c92e52b9f2e3012377f58a342d647f21ae",
+    "novel/pending.csv": "78c716d4cd0d0ee7a7ad3d517090b66d9270e16fe3dc71580a6e7f0af854ccbd",
+    "novel/platform_return.csv": "6a92025cb860c6aec6f69d7bc9fc12e4746908d8b9077b8d522fe803dc1422a9",
+    "novel/submitted.csv": "1ab9b8692595267901b184bf2a2dc001b3afa57595bbbf4861845b382f222d7a",
+    "reference.fasta": "a4ba9f47bbadd4dc80148170e36bd9dd1768e315c7b4ed36a442d42aae78e23d",
+    "top5-after-return.csv": "5148d05453279ac3b33ff37c9d7621647cbad2881708218852f3b2c35f868697"
+  }
+}

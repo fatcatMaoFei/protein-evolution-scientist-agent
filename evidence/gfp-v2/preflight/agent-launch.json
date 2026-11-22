@@ -1,0 +1,40 @@
+{
+  "status": "ready",
+  "native_smoke": "native-smoke-retry/status.json",
+  "native_first_failure_preserved": "native-smoke/model.json",
+  "profile": {
+    "model_id": "deepseek-ai/DeepSeek-V4.1-Flash",
+    "base_url": "https://codeflow.sh/v1",
+    "profile": "gfp-third-party"
+  },
+  "study": "8 paired blocks, five arms, 3 rounds, five measured candidates per round",
+  "preflight_tests": "tests/test_gfp_v2_trials.py (5 passed before launch)",
+  "retries": {
+    "stage_attempts": 3,
+    "outer_attempts": 2,
+    "retry_delays_seconds": [
+      4,
+      12
+    ]
+  },
+  "proposal_max_tokens": 3600,
+  "decision_max_tokens": 3600,
+  "paired_bootstrap": {
+    "seed": 668021,
+    "replicates": 10000,
+    "quantiles": [
+      0.025,
+      0.975
+    ]
+  },
+  "seals": {
+    "gfp_v2/protocol.md": "ed1ad353de381aac236763ee414f8200616b160cdfca410577f52e2a46fbb608",
+    "gfp_v2/partition.py": "39adb677f0c05e67071b09d858c7cb8667372bcd50719aff510c1ef2d29d8b14",
+    "gfp_v2/predictor.py": "1ba6835f225376d06acd0571816f6b1a01a71fdca102af882026af8e4398fbbf",
+    "gfp_v2/policy.py": "924e0b3aded3e86caf570d6f960a627e91ccc04ad66e0b32a2ec6009a50bd57d",
+    "gfp_v2/trials.py": "94204ee04df73b28107fa8ddea1f79d9d51c6c8bb2d20b36dc40bfe2b8f6fb09",
+    "gfp_v2/feedback_audit.py": "095c689b73f8a23ead6d874d9c7d2d1e8576960a271e37decb62d0d242bfebf3",
+    "evidence/gfp-v2/partition.json": "e56fc571f221620476bb79cf6a7a44cd60fbd3a91e464e0dcf0c0f8104670aaa",
+    "evidence/gfp-v2/prediction/selection.json": "9ac4d422e7c1a2f267b3c1cab081433e466acfa5311f1389b12169db7400c57e"
+  }
+}

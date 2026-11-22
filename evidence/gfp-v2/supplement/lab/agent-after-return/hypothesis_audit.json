@@ -1,0 +1,110 @@
+[
+  {
+    "round": 1,
+    "selected_ids": [
+      "V93I:K214E:L221Q",
+      "E6G:Y106F:N149Y:L194Q",
+      "I128N:S147C:D197V:T230A",
+      "G127C:I171V:M233K",
+      "T9S:H148R:F165L"
+    ],
+    "strategy": "high_prediction",
+    "verdicts": [
+      {
+        "candidate_id": "V93I:K214E:L221Q",
+        "comparator_id": "V93I:L221Q",
+        "comparator_fitness": 3.89651251107,
+        "direction": "above",
+        "evidence_ids": [
+          "V93I:L221Q",
+          "I171V:K209E:M233K",
+          "K107M:I229F:E235G",
+          "K52M:F99Y:N105S:K140E"
+        ],
+        "forecast_fitness": 3.708652572284585,
+        "forecast_exceeds_comparator": false,
+        "statement": "V93I:K214E:L221Q will have fluorescence strictly above measured V93I:L221Q.",
+        "scope": "fluorescence comparison only",
+        "status": "PENDING",
+        "observed_fitness": null,
+        "prediction_residual": null,
+        "above_WT": null,
+        "improves_incumbent": null,
+        "mechanism_validation": "NOT EVALUABLE",
+        "feedback_gain": "NOT EVALUABLE"
+      }
+    ]
+  },
+  {
+    "round": 2,
+    "selected_ids": [
+      "E235K",
+      "K3E:A206T",
+      "K166R:I167V:N185D",
+      "N23S:M153V:S208T",
+      "E132G:S202C"
+    ],
+    "strategy": "high_prediction",
+    "verdicts": [
+      {
+        "candidate_id": "E235K",
+        "comparator_id": "WT",
+        "comparator_fitness": 3.7192121319,
+        "direction": "above",
+        "evidence_ids": [
+          "K156E:K214E",
+          "F99L:K156R",
+          "I171V:K209E:M233K",
+          "K52M:F99Y:N105S:K140E"
+        ],
+        "forecast_fitness": 3.8059134513348307,
+        "forecast_exceeds_comparator": true,
+        "statement": "E235K will have fluorescence strictly above measured WT.",
+        "scope": "fluorescence comparison only",
+        "status": "REFUTED",
+        "observed_fitness": 3.65279893929667,
+        "prediction_residual": -0.15311451203816073,
+        "above_WT": false,
+        "improves_incumbent": false,
+        "mechanism_validation": "NOT EVALUABLE",
+        "feedback_gain": "NOT EVALUABLE"
+      }
+    ]
+  },
+  {
+    "round": 3,
+    "selected_ids": [
+      "F46I",
+      "T62P",
+      "V16A:D102G",
+      "S28G:N146D:L195Q",
+      "S147C:K156E:T230A"
+    ],
+    "strategy": "mixed",
+    "verdicts": [
+      {
+        "candidate_id": "F46I",
+        "comparator_id": "V93I:L221Q",
+        "comparator_fitness": 3.89651251107,
+        "direction": "above",
+        "evidence_ids": [
+          "I171V:K209E:M233K",
+          "V93I:L221Q",
+          "K156E:K214E",
+          "S147C:T230A"
+        ],
+        "forecast_fitness": 3.3820835244812,
+        "forecast_exceeds_comparator": false,
+        "statement": "F46I will have fluorescence strictly above measured V93I:L221Q.",
+        "scope": "fluorescence comparison only",
+        "status": "PENDING",
+        "observed_fitness": null,
+        "prediction_residual": null,
+        "above_WT": null,
+        "improves_incumbent": null,
+        "mechanism_validation": "NOT EVALUABLE",
+        "feedback_gain": "NOT EVALUABLE"
+      }
+    ]
+  }
+]

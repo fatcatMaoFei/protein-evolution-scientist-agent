@@ -1,0 +1,134 @@
+{
+  "credential_environment_unset": [
+    "CODEFLOW_API_KEY",
+    "OPENAI_API_KEY"
+  ],
+  "protocol_sha256": "ed1ad353de381aac236763ee414f8200616b160cdfca410577f52e2a46fbb608",
+  "studies": {
+    "acquisition": {
+      "matched_files_excluding_raw_provider_logs_and_execution_status": 359,
+      "archive_status": {
+        "status": "complete",
+        "paired_blocks": 8,
+        "queries": 480,
+        "policy_decisions": 0,
+        "api_mode": "none",
+        "served_models": []
+      },
+      "replay_status": {
+        "status": "complete",
+        "paired_blocks": 8,
+        "queries": 480,
+        "policy_decisions": 0,
+        "api_mode": "none",
+        "served_models": []
+      },
+      "outcomes": {},
+      "live_api_token_usage": {},
+      "archive_matching_files_sha256": {
+        "config.json": "ebb0fe8a3e47833de67bde2892b71af02edb0ccc0be1f047ca5c08c19c238aa4",
+        "contrasts.csv": "c296f26abd02a563a57516909b43add0c726eb6fc017c59c90399120231fd086",
+        "methods.csv": "499c7f28f19ca1eb107f629f75f5e746550cbb886e1d9f89087d841eafd8435d",
+        "paired.csv": "8ddab9ae1212b93f425165724e12606d43cda63f0c1209713522b66342ed2103",
+        "pool_diagnostics.csv": "cf57a9f7bd74a600047ebaffa1fcc8d464bd38d6c647ee609e6e99fe1fabaee8",
+        "rounds.csv": "d35be03fdcf5007fa618b63eb5d87d15ac2e5876c134360e1495cca0eb0acd60",
+        "selections.csv": "ad3213949e3e0ba91e18295f385eb702e38bd5a27ead0bbfce05e86698d64a63"
+      }
+    },
+    "agent": {
+      "matched_files_excluding_raw_provider_logs_and_execution_status": 447,
+      "archive_status": {
+        "status": "complete",
+        "paired_blocks": 8,
+        "queries": 600,
+        "policy_decisions": 48,
+        "api_mode": "live",
+        "served_models": [
+          "deepseek-ai/DeepSeek-V4.1-Flash"
+        ],
+        "alias_recovered_decisions": [
+          "2202/D_agent/round-01",
+          "2204/D_agent/round-01",
+          "2204/E_knowledge/round-01",
+          "2205/D_agent/round-01",
+          "2205/D_agent/round-02",
+          "2205/E_knowledge/round-02",
+          "2206/D_agent/round-01",
+          "2206/E_knowledge/round-01",
+          "2206/E_knowledge/round-02"
+        ]
+      },
+      "replay_status": {
+        "status": "complete",
+        "paired_blocks": 8,
+        "queries": 600,
+        "policy_decisions": 48,
+        "api_mode": "replay",
+        "served_models": [
+          "deepseek-ai/DeepSeek-V4.1-Flash"
+        ],
+        "alias_recovered_decisions": [
+          "2202/D_agent/round-01",
+          "2204/D_agent/round-01",
+          "2204/E_knowledge/round-01",
+          "2205/D_agent/round-01",
+          "2205/D_agent/round-02",
+          "2205/E_knowledge/round-02",
+          "2206/D_agent/round-01",
+          "2206/E_knowledge/round-01",
+          "2206/E_knowledge/round-02"
+        ]
+      },
+      "outcomes": {
+        "accepted": 48,
+        "call_errors": 53,
+        "provider_responses": 149,
+        "failed": 9
+      },
+      "live_api_token_usage": {
+        "input_tokens": 845283,
+        "output_tokens": 15380
+      },
+      "archive_matching_files_sha256": {
+        "config.json": "37238e6dda89216e5baab8efd31d0c74bf575550a16e1a25fefd4aab7f832099",
+        "contrasts.csv": "063b8e5de9d65c068101c708f6c236bb7063bb55278e3dd5be3eee20980c7cc4",
+        "methods.csv": "820083cb81c3daff3b2ea9034023d9d07c7139164d28429a6db8180b342abca3",
+        "paired.csv": "8fa8117de6a1248e550be0ad5364d996973aa32aebca5982cde3d01148f666bc",
+        "pool_diagnostics.csv": "c860829ae82fb0e8b2d42185863165a68e656eaa6d86831ec9ae41e152a1a9d0",
+        "rounds.csv": "cac947f0188e9b88582f8f841f9a7a34f25d04481050147d9e2a8865c22e7e33",
+        "selections.csv": "7ab9eb01661d19558b8a54742328560f8140b23aca7cc58825fc48394d71ae74"
+      }
+    },
+    "audit": {
+      "matched_files_excluding_raw_provider_logs_and_execution_status": 32,
+      "archive_status": {
+        "status": "complete",
+        "contexts": 4,
+        "policy_decisions": 16,
+        "api_mode": "live"
+      },
+      "replay_status": {
+        "status": "complete",
+        "contexts": 4,
+        "policy_decisions": 16,
+        "api_mode": "replay"
+      },
+      "outcomes": {
+        "accepted": 16,
+        "provider_responses": 34,
+        "call_errors": 2
+      },
+      "live_api_token_usage": {
+        "input_tokens": 197712,
+        "output_tokens": 2602
+      },
+      "archive_matching_files_sha256": {
+        "comparisons.csv": "fdfd9c5dfca2b34442a659682a940c6409742e4412827d7850517a5da0da7702",
+        "config.json": "1eed47186204f7912794566679f3b80490a01522a40256067393ba535d45c150",
+        "measurements.csv": "bce1283c62e8925b29c5ad9a9abde447ac3b85de6ff096f59fbba7d019698807",
+        "summary.json": "c671b0ddb4873d4e2fd6109c94cbd509d389b2d4e6a892b4e8dca9221a4010d3"
+      }
+    }
+  },
+  "scope": "The replay verifies every accepted policy response against the exact recreated wire and repeats scoring and chronological commit from archived measurements. Failed previous provider attempts remain archival; replay does not call a provider."
+}

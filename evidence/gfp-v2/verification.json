@@ -1,0 +1,92 @@
+{
+  "v1_baseline": "23adae08bb4929af2c82490ad010c5aa4e263200",
+  "v1_protected_blobs_sha256_confirmed": 1704,
+  "v1_protected_manifest_sha256": "4f97ec8766c0452c9fb517e5613b0db3390ef9883a586da78ed54598cebb504d",
+  "changed_historical_files": [
+    "README.md",
+    "disclosure.md"
+  ],
+  "third_party_verdict": "GO",
+  "third_party_summary": "Clean clone installed 38 locked dependencies, ran a cold-cache no-API demo, verified native API tools, and replayed CSV import/continuation from 96 to 97 observations.",
+  "clean_clone_v2_snapshot": "frozen partition commit plus checked V2 policy, predictor and open-workflow source files",
+  "cold_cache_no_api_demo": {
+    "status": "complete",
+    "scope": "published measurements formatted as user data",
+    "assay": "GFP_AEQVI_Sarkisyan_2016",
+    "initial_observations": 96,
+    "imported_after_selection": 5,
+    "total_observations": 101,
+    "second_batch_prediction_only": 5,
+    "backend": "rf"
+  },
+  "clean_clone_profile_verification": {
+    "model_id": "deepseek-ai/DeepSeek-V4.1-Flash",
+    "protocol": "openai",
+    "native_tool_call": true,
+    "tool_result_consumed": true,
+    "json_object": true,
+    "served_models": [
+      "deepseek-ai/DeepSeek-V4.1-Flash",
+      "deepseek-ai/DeepSeek-V4.1-Flash"
+    ],
+    "response_ids": [
+      "chatcmpl-b685641c-3095-40b1-9dc8-793d683e04c1",
+      "chatcmpl-11548e44-c457-47d6-ac1b-230436834e7b"
+    ]
+  },
+  "clean_clone_open_replay": {
+    "1": {
+      "observed": 96,
+      "recommendations": 5,
+      "recorded_served_model": "deepseek-ai/DeepSeek-V4.1-Flash",
+      "api_calls_in_replay": 0
+    },
+    "2": {
+      "observed": 97,
+      "recommendations": 5,
+      "recorded_served_model": "deepseek-ai/DeepSeek-V4.1-Flash",
+      "api_calls_in_replay": 0
+    }
+  },
+  "offline_reproduced": [
+    "V1 diagnosis",
+    "development selection and independent test",
+    "acquisition summaries",
+    "agent decision/measurement summaries",
+    "feedback audit",
+    "open user outputs"
+  ],
+  "core_trial_replay_receipt": "preflight/trial-replay.json",
+  "dataset_sha256": {
+    "assay": "05b97d36a23363331b271edc56f1496b9a539109fd006e65532f91e9903a0838",
+    "original": "5581230b9888f9960708a4769ce1c9b4453561f0b5f0374525445b4a984d54d5"
+  },
+  "latest_test_count": 135,
+  "automated_tests": {
+    "command": ".venv/bin/python -m pytest -q",
+    "passed": 135
+  },
+  "clean_replay_current_code_sha256": {
+    "policy.py": "fe3369ccc8fd80700da9e5ef21aaec8c8aeb2617f3e7fc6c51cee09e0daa186e",
+    "predictor.py": "1ba6835f225376d06acd0571816f6b1a01a71fdca102af882026af8e4398fbbf",
+    "open_world.py": "dc0b3aefbd6ed44f1214760dfc9d35304ae48c8a70e372f642eae8ef8fea28e6"
+  },
+  "supplement_receipts": {
+    "sites_and_structure": "supplement/landscape/provenance.json",
+    "knowledge_graph": "supplement/knowledge_graph/receipt.json",
+    "lab_platform": "supplement/lab/receipt.json",
+    "examples": "supplement/case-examples.json"
+  },
+  "report": {
+    "pages": 5,
+    "sha256": "f89d4d0ea8405f4e776bc8ba5c8765d4faee37b0c752bbbf41443ecd5229c75b",
+    "rebuild_byte_equal": true,
+    "visual_review_pages": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
+  }
+}

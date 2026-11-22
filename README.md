@@ -6,6 +6,14 @@ GFP 荧光定向进化科研智能体。从公开实测训练预测器，提出�
 
 [五页主报告](output/pdf/gfp-scientific-agent-quality.pdf) · [结果表](evidence/gfp/aggregate/method_summary.csv) · [交付验收与复现](evidence/gfp/quality/acceptance.md)
 
+## V2 科研增量
+
+V2 独立冻结了数据与协议，分开评估预测能力和 Agent 的真实采集收益。96 条训练数据下，混合模型相对 Ridge 的独立测试 Spearman 从 0.400 升至 0.460，高于野生型的 P@5 从 0.15 升至 0.40。主要 AP 指标的配对区间跨零。2,048 条下，混合模型的回归误差较低，高荧光尾部仍需改进。
+
+传统采集比较和五组 Agent 比较分别完成 480 与 600 次新档案查询。相对每块表现较好的非 LLM 策略，普通 Agent 的新测最佳值差为 −0.0211，知识组为 +0.0094，未确立稳定增量。开放研究示例可接入自己的 API，生成完整 GFP 序列并继续导入 CSV 实测。档案外设计保持待测。
+
+[V2 五页报告](output/pdf/gfp-scientific-agent-v2.pdf) · [V2 使用与复现](gfp_v2/README.md) · [原题及七项加分的验收矩阵](evidence/gfp-v2/requirement-matrix.md) · [V2 预测诊断](evidence/gfp-v2/predictor-diagnosis.md) · [V2 冻结协议](gfp_v2/protocol.md)
+
 ## 从克隆到首份 GFP 结果
 
 使用 `uv` 和 Python 3.12。以下两轮演示无需 API 密钥。首次下载的 GFP 数据会校验 SHA-256，随后使用本地缓存。

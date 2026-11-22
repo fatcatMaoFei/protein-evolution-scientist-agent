@@ -1,0 +1,138 @@
+{
+  "format": "gfp-v2-local-platform-1",
+  "mode": "local_file_exchange_no_hardware",
+  "assay": "GFP_AEQVI_Sarkisyan_2016",
+  "scale": "log10_fluorescence",
+  "reference_sha256": "9be57dbaa8e6d8b324cd1a84684901808c38b3b84f940c08e00a0323f4215e9f",
+  "namespace": "archived-open-round-01",
+  "batch_id": "GFP-B-bc6cfaa98728085174a95909",
+  "samples": [
+    {
+      "sample_id": "GFP-S-0c20e15272329df9301498e4",
+      "mutant": "V93I:K214E:L221Q",
+      "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYIQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEERDHMVLQEFVTAAGITHGMDELYK",
+      "status": "failed",
+      "fitness": null,
+      "source": "simulation",
+      "source_ref": "Simulator: submitted genotype has no matching archive record"
+    },
+    {
+      "sample_id": "GFP-S-baba458f185f8e4fbcb0d1f5",
+      "mutant": "E6G:Y106F:N149Y:L194Q",
+      "sequence": "MSKGEGLFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNFKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHYVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVQLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+      "status": "failed",
+      "fitness": null,
+      "source": "simulation",
+      "source_ref": "Simulator: submitted genotype has no matching archive record"
+    },
+    {
+      "sample_id": "GFP-S-29f9c93545a678976ad37b35",
+      "mutant": "I128N:S147C:D197V:T230A",
+      "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGNDFKEDGNILGHKLEYNYNCHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPVNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGIAHGMDELYK",
+      "status": "failed",
+      "fitness": null,
+      "source": "simulation",
+      "source_ref": "Simulator: submitted genotype has no matching archive record"
+    },
+    {
+      "sample_id": "GFP-S-62c75f6cef888510da2c4e56",
+      "mutant": "G127C:I171V:M233K",
+      "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKCIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHNVEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGKDELYK",
+      "status": "failed",
+      "fitness": null,
+      "source": "simulation",
+      "source_ref": "Simulator: submitted genotype has no matching archive record"
+    },
+    {
+      "sample_id": "GFP-S-e96784149ad7d35cd337393e",
+      "mutant": "T9S:H148R:F165L",
+      "sequence": "MSKGEELFSGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSRNVYIMADKQKNGIKVNLKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+      "status": "failed",
+      "fitness": null,
+      "source": "simulation",
+      "source_ref": "Simulator: submitted genotype has no matching archive record"
+    }
+  ],
+  "events": [
+    {
+      "number": 1,
+      "operation": "create",
+      "input_sha256": "6adaa5a6bf9e4c38ab7f208ab841967e95d9b16ed2589567a128759ddcd83c12",
+      "samples": [
+        "GFP-S-0c20e15272329df9301498e4",
+        "GFP-S-baba458f185f8e4fbcb0d1f5",
+        "GFP-S-29f9c93545a678976ad37b35",
+        "GFP-S-62c75f6cef888510da2c4e56",
+        "GFP-S-e96784149ad7d35cd337393e"
+      ]
+    },
+    {
+      "number": 2,
+      "operation": "submit",
+      "samples": [
+        "GFP-S-0c20e15272329df9301498e4",
+        "GFP-S-baba458f185f8e4fbcb0d1f5",
+        "GFP-S-29f9c93545a678976ad37b35",
+        "GFP-S-62c75f6cef888510da2c4e56",
+        "GFP-S-e96784149ad7d35cd337393e"
+      ]
+    },
+    {
+      "number": 3,
+      "operation": "ingest",
+      "input_sha256": "6a92025cb860c6aec6f69d7bc9fc12e4746908d8b9077b8d522fe803dc1422a9",
+      "result_rows": [
+        {
+          "batch_id": "GFP-B-bc6cfaa98728085174a95909",
+          "sample_id": "GFP-S-0c20e15272329df9301498e4",
+          "mutant": "V93I:K214E:L221Q",
+          "status": "failed",
+          "fitness": "",
+          "scale": "log10_fluorescence",
+          "source": "simulation",
+          "source_ref": "Simulator: submitted genotype has no matching archive record"
+        },
+        {
+          "batch_id": "GFP-B-bc6cfaa98728085174a95909",
+          "sample_id": "GFP-S-baba458f185f8e4fbcb0d1f5",
+          "mutant": "E6G:Y106F:N149Y:L194Q",
+          "status": "failed",
+          "fitness": "",
+          "scale": "log10_fluorescence",
+          "source": "simulation",
+          "source_ref": "Simulator: submitted genotype has no matching archive record"
+        },
+        {
+          "batch_id": "GFP-B-bc6cfaa98728085174a95909",
+          "sample_id": "GFP-S-29f9c93545a678976ad37b35",
+          "mutant": "I128N:S147C:D197V:T230A",
+          "status": "failed",
+          "fitness": "",
+          "scale": "log10_fluorescence",
+          "source": "simulation",
+          "source_ref": "Simulator: submitted genotype has no matching archive record"
+        },
+        {
+          "batch_id": "GFP-B-bc6cfaa98728085174a95909",
+          "sample_id": "GFP-S-62c75f6cef888510da2c4e56",
+          "mutant": "G127C:I171V:M233K",
+          "status": "failed",
+          "fitness": "",
+          "scale": "log10_fluorescence",
+          "source": "simulation",
+          "source_ref": "Simulator: submitted genotype has no matching archive record"
+        },
+        {
+          "batch_id": "GFP-B-bc6cfaa98728085174a95909",
+          "sample_id": "GFP-S-e96784149ad7d35cd337393e",
+          "mutant": "T9S:H148R:F165L",
+          "status": "failed",
+          "fitness": "",
+          "scale": "log10_fluorescence",
+          "source": "simulation",
+          "source_ref": "Simulator: submitted genotype has no matching archive record"
+        }
+      ]
+    }
+  ]
+}

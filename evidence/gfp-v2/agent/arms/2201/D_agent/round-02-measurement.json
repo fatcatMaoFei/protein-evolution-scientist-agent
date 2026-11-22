@@ -1,0 +1,80 @@
+{
+  "commit_sha256": "d5d3587907ca8e3802400555efd1b3f35cab0484d3fcbf728a8b3066d818b5cd",
+  "measurements": [
+    {
+      "block": "2201",
+      "arm": "D_agent",
+      "round": 2,
+      "position": 1,
+      "id": "K3E:H181R",
+      "prediction": 3.6377831188043293,
+      "risk": 0.7281646205773445,
+      "measured_fitness": 1.64655309635
+    },
+    {
+      "block": "2201",
+      "arm": "D_agent",
+      "round": 2,
+      "position": 2,
+      "id": "T97S:V112A",
+      "prediction": 3.588248633634975,
+      "risk": 0.8160038843909713,
+      "measured_fitness": 3.60356321143
+    },
+    {
+      "block": "2201",
+      "arm": "D_agent",
+      "round": 2,
+      "position": 3,
+      "id": "G10E:I136V",
+      "prediction": 3.5521762292735346,
+      "risk": 0.8160038843909713,
+      "measured_fitness": 3.6848754604
+    },
+    {
+      "block": "2201",
+      "arm": "D_agent",
+      "round": 2,
+      "position": 4,
+      "id": "N159S:K166Q",
+      "prediction": 3.56254714781712,
+      "risk": 0.702304323263732,
+      "measured_fitness": 3.72035125546
+    },
+    {
+      "block": "2201",
+      "arm": "D_agent",
+      "round": 2,
+      "position": 5,
+      "id": "K162R:D190G",
+      "prediction": 3.5704174597376594,
+      "risk": 0.702304323263732,
+      "measured_fitness": 3.6891947040699993
+    }
+  ],
+  "verdicts": [
+    {
+      "candidate_id": "K3E:H181R",
+      "comparator_id": "WT",
+      "comparator_fitness": 3.7192121319,
+      "direction": "above",
+      "evidence_ids": [
+        "K3E:S175G",
+        "V93A:S205T",
+        "I98V:T203A:T230A",
+        "K79R:I128T"
+      ],
+      "forecast_fitness": 3.6377831188043293,
+      "forecast_exceeds_comparator": false,
+      "statement": "K3E:H181R will have fluorescence strictly above measured WT.",
+      "scope": "fluorescence comparison only",
+      "status": "REFUTED",
+      "observed_fitness": 1.64655309635,
+      "prediction_residual": -1.9912300224543293,
+      "above_WT": false,
+      "improves_incumbent": false,
+      "mechanism_validation": "NOT EVALUABLE",
+      "feedback_gain": "NOT EVALUABLE"
+    }
+  ]
+}

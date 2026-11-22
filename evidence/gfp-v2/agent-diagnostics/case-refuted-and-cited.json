@@ -1,0 +1,287 @@
+{
+  "block": "2208",
+  "arm": "D_agent",
+  "cited_refuted": [
+    "E142V:D155G:Q184L"
+  ],
+  "previous": {
+    "round": 1,
+    "selection": [
+      "E142V:D155G:Q184L",
+      "K126M:Y237D",
+      "E34V:K140R",
+      "Y145F:V219A",
+      "I152V:K166M:S175G:K209R"
+    ],
+    "next_decision_can_see": [
+      "E142V:D155G:Q184L",
+      "E34V:K140R",
+      "I152V:K166M:S175G:K209R",
+      "K126M:Y237D",
+      "Y145F:V219A"
+    ],
+    "measurements": [
+      {
+        "block": "2208",
+        "arm": "D_agent",
+        "round": 1,
+        "position": 1,
+        "id": "E142V:D155G:Q184L",
+        "prediction": 3.6361686179743855,
+        "risk": 0.829446812294237,
+        "measured_fitness": 3.69390273611
+      },
+      {
+        "block": "2208",
+        "arm": "D_agent",
+        "round": 1,
+        "position": 2,
+        "id": "K126M:Y237D",
+        "prediction": 3.5467054209103894,
+        "risk": 0.8395933279383605,
+        "measured_fitness": 3.68928347915
+      },
+      {
+        "block": "2208",
+        "arm": "D_agent",
+        "round": 1,
+        "position": 3,
+        "id": "E34V:K140R",
+        "prediction": 3.531904043593748,
+        "risk": 0.6474100801386401,
+        "measured_fitness": 3.76562629785
+      },
+      {
+        "block": "2208",
+        "arm": "D_agent",
+        "round": 1,
+        "position": 4,
+        "id": "Y145F:V219A",
+        "prediction": 3.4590577444681,
+        "risk": 0.9259219369690262,
+        "measured_fitness": 3.37858834884
+      },
+      {
+        "block": "2208",
+        "arm": "D_agent",
+        "round": 1,
+        "position": 5,
+        "id": "I152V:K166M:S175G:K209R",
+        "prediction": 3.504877607992149,
+        "risk": 0.9222403242297478,
+        "measured_fitness": 3.7598168377800008
+      }
+    ],
+    "cited_evidence": [
+      {
+        "id": "E142V:Q157R:G174S",
+        "fitness": 3.62244389762,
+        "round": 0
+      },
+      {
+        "id": "D155G:K158M",
+        "fitness": 3.68499423506,
+        "round": 0
+      },
+      {
+        "id": "N105Y:R168C",
+        "fitness": 3.90129281522,
+        "round": 0
+      },
+      {
+        "id": "K126R:Y145C:I229N",
+        "fitness": 3.75453182529,
+        "round": 0
+      }
+    ],
+    "used_recent": [],
+    "hypotheses": [
+      {
+        "candidate_id": "E142V:D155G:Q184L",
+        "comparator_id": "WT",
+        "comparator_fitness": 3.7192121319,
+        "direction": "above",
+        "evidence_ids": [
+          "E142V:Q157R:G174S",
+          "D155G:K158M",
+          "N105Y:R168C",
+          "K126R:Y145C:I229N"
+        ],
+        "forecast_fitness": 3.6361686179743855,
+        "forecast_exceeds_comparator": false,
+        "statement": "E142V:D155G:Q184L will have fluorescence strictly above measured WT.",
+        "scope": "fluorescence comparison only",
+        "status": "PENDING"
+      }
+    ],
+    "verdicts": [
+      {
+        "candidate_id": "E142V:D155G:Q184L",
+        "comparator_id": "WT",
+        "comparator_fitness": 3.7192121319,
+        "direction": "above",
+        "evidence_ids": [
+          "E142V:Q157R:G174S",
+          "D155G:K158M",
+          "N105Y:R168C",
+          "K126R:Y145C:I229N"
+        ],
+        "forecast_fitness": 3.6361686179743855,
+        "forecast_exceeds_comparator": false,
+        "statement": "E142V:D155G:Q184L will have fluorescence strictly above measured WT.",
+        "scope": "fluorescence comparison only",
+        "status": "REFUTED",
+        "observed_fitness": 3.69390273611,
+        "prediction_residual": 0.057734118135614576,
+        "above_WT": false,
+        "improves_incumbent": false,
+        "mechanism_validation": "NOT EVALUABLE",
+        "feedback_gain": "NOT EVALUABLE"
+      }
+    ],
+    "strategy": "high_prediction",
+    "adaptation": "no_new_feedback"
+  },
+  "following": {
+    "round": 2,
+    "selection": [
+      "K131E:E142V:D155G",
+      "K26R:K140R",
+      "H25Y:I123V",
+      "E32V:T62A:K140Q",
+      "I171V:Y182C:S208C:E222G"
+    ],
+    "next_decision_can_see": [
+      "E32V:T62A:K140Q",
+      "H25Y:I123V",
+      "I171V:Y182C:S208C:E222G",
+      "K131E:E142V:D155G",
+      "K26R:K140R"
+    ],
+    "measurements": [
+      {
+        "block": "2208",
+        "arm": "D_agent",
+        "round": 2,
+        "position": 1,
+        "id": "K131E:E142V:D155G",
+        "prediction": 3.5672413826544,
+        "risk": 0.7070752690904873,
+        "measured_fitness": 3.4478930196900004
+      },
+      {
+        "block": "2208",
+        "arm": "D_agent",
+        "round": 2,
+        "position": 2,
+        "id": "K26R:K140R",
+        "prediction": 3.5433544783887365,
+        "risk": 0.6076820131062771,
+        "measured_fitness": 3.63544333008
+      },
+      {
+        "block": "2208",
+        "arm": "D_agent",
+        "round": 2,
+        "position": 3,
+        "id": "H25Y:I123V",
+        "prediction": 3.5010835568577634,
+        "risk": 0.6935355861602063,
+        "measured_fitness": 3.68617270562
+      },
+      {
+        "block": "2208",
+        "arm": "D_agent",
+        "round": 2,
+        "position": 4,
+        "id": "E32V:T62A:K140Q",
+        "prediction": 3.502038467545132,
+        "risk": 0.7845141055168029,
+        "measured_fitness": 3.66298992966
+      },
+      {
+        "block": "2208",
+        "arm": "D_agent",
+        "round": 2,
+        "position": 5,
+        "id": "I171V:Y182C:S208C:E222G",
+        "prediction": 3.441696593381624,
+        "risk": 0.835591782128403,
+        "measured_fitness": 3.13663217666
+      }
+    ],
+    "cited_evidence": [
+      {
+        "id": "E142V:D155G:Q184L",
+        "fitness": 3.69390273611,
+        "round": 1
+      },
+      {
+        "id": "D155G:K158M",
+        "fitness": 3.68499423506,
+        "round": 0
+      },
+      {
+        "id": "E142V:Q157R:G174S",
+        "fitness": 3.62244389762,
+        "round": 0
+      },
+      {
+        "id": "K126M:Y237D",
+        "fitness": 3.68928347915,
+        "round": 1
+      }
+    ],
+    "used_recent": [
+      "E142V:D155G:Q184L",
+      "K126M:Y237D"
+    ],
+    "hypotheses": [
+      {
+        "candidate_id": "K131E:E142V:D155G",
+        "comparator_id": "WT",
+        "comparator_fitness": 3.7192121319,
+        "direction": "above",
+        "evidence_ids": [
+          "E142V:D155G:Q184L",
+          "D155G:K158M",
+          "E142V:Q157R:G174S",
+          "K126M:Y237D"
+        ],
+        "forecast_fitness": 3.5672413826544,
+        "forecast_exceeds_comparator": false,
+        "statement": "K131E:E142V:D155G will have fluorescence strictly above measured WT.",
+        "scope": "fluorescence comparison only",
+        "status": "PENDING"
+      }
+    ],
+    "verdicts": [
+      {
+        "candidate_id": "K131E:E142V:D155G",
+        "comparator_id": "WT",
+        "comparator_fitness": 3.7192121319,
+        "direction": "above",
+        "evidence_ids": [
+          "E142V:D155G:Q184L",
+          "D155G:K158M",
+          "E142V:Q157R:G174S",
+          "K126M:Y237D"
+        ],
+        "forecast_fitness": 3.5672413826544,
+        "forecast_exceeds_comparator": false,
+        "statement": "K131E:E142V:D155G will have fluorescence strictly above measured WT.",
+        "scope": "fluorescence comparison only",
+        "status": "REFUTED",
+        "observed_fitness": 3.4478930196900004,
+        "prediction_residual": -0.11934836296439943,
+        "above_WT": false,
+        "improves_incumbent": false,
+        "mechanism_validation": "NOT EVALUABLE",
+        "feedback_gain": "NOT EVALUABLE"
+      }
+    ],
+    "strategy": "high_prediction",
+    "adaptation": "shift_to_predicted_gain"
+  },
+  "scope": "Descriptive selected trace, not a causal counterfactual."
+}

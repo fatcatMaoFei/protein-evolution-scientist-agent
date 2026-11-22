@@ -1,0 +1,47 @@
+{
+  "v1_only": true,
+  "score_units": "log10 fluorescence",
+  "v1_validation_rows": 360,
+  "fraction_with_unseen_training_allele": 0.9166666666666666,
+  "fraction_multimutants_with_any_initial_coobserved_pair": 0.011267605633802818,
+  "feature_collisions_by_seed": {
+    "17": {
+      "rows": 120,
+      "distinct_v1_feature_vectors": 120,
+      "rows_sharing_a_v1_feature_vector": 0
+    },
+    "29": {
+      "rows": 120,
+      "distinct_v1_feature_vectors": 119,
+      "rows_sharing_a_v1_feature_vector": 2
+    },
+    "43": {
+      "rows": 120,
+      "distinct_v1_feature_vectors": 118,
+      "rows_sharing_a_v1_feature_vector": 4
+    }
+  },
+  "mean_heldout_spearman": {
+    "rf": 0.34166690230023655,
+    "ridge": 0.43036907810014746
+  },
+  "mean_heldout_spearman_among_fluorescent": {
+    "rf": 0.18391356712687645,
+    "ridge": 0.21671289778532496
+  },
+  "original_qualifying_pool_rows": 7,
+  "missed_best_rf_rank_range": [
+    30,
+    359
+  ],
+  "qualifying_with_unknown_training_allele": 6,
+  "qualifying_above_incumbent_rf_top5_appearances": 0,
+  "nonadditivity": {
+    "retired_measured_singles": 805,
+    "retired_multi_genotypes_matchable_to_all_singles": 6659,
+    "median_measured_minus_independent_additive": -0.026124501892139662,
+    "mae_independent_additive": 0.2717116529029285,
+    "fraction_below_independent_additive": 0.5676528007208289,
+    "additive_bright_observed_dim_n": 418
+  }
+}
