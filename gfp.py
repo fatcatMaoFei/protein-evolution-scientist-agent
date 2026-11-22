@@ -237,6 +237,8 @@ def main(argv: list[str] | None = None) -> None:
     parser.add_argument("--measurements", type=Path)
     parser.add_argument("--candidate-file", type=Path)
     parser.add_argument("--use-llm", action="store_true")
+    parser.add_argument("--allow-novel", action="store_true",
+                        help="Allow new GFP substitutions outside the displayed menu in init or continue")
     parser.add_argument("--from-run", type=Path)
     parser.add_argument("--model-profile")
     parser.add_argument("--profile-dir", type=Path)
@@ -247,8 +249,17 @@ def main(argv: list[str] | None = None) -> None:
         parser.error("--workers must be positive")
     if args.output is None and args.stage != "demo":
         parser.error("--output is required outside the demo")
+    if args.allow_novel and (args.stage not in ("init", "continue") or not (args.use_llm or args.model_profile)):
+        parser.error("--allow-novel requires gfp init or continue with --model-profile or --use-llm")
     default_output = ROOT / "runs" / f"gfp-demo-{datetime.now(timezone.utc):%Y%m%dT%H%M%S%f}"
     output, run_dir = (args.output or default_output).resolve(), args.run_dir.resolve()
+    if args.stage == "audit" and args.state is not None:
+        if args.paired or args.replay_audit or args.model_profile:
+            parser.error("User study audit reads existing records and does not run paired model calls")
+        from gfp_user_audit import run_user_audit
+        run_user_audit(args.state.resolve(), output)
+        print(output)
+        return
     transport = None
     if args.model_profile:
         if args.stage not in ("smoke", "evolve", "init", "continue", "demo") or args.baseline_only:
@@ -286,7 +297,7 @@ def main(argv: list[str] | None = None) -> None:
         from gfp_continue import run_user_flow
         run_user_flow(dataset, output, stage=args.stage, measured_csv=args.input, prior_state=args.state,
                       batch_csv=args.measurements, candidate_csv=args.candidate_file, backend=args.backend,
-                      use_llm=args.use_llm or transport is not None, transport=transport)
+                      use_llm=args.use_llm or transport is not None, transport=transport, allow_novel=args.allow_novel)
         print(output)
 
 

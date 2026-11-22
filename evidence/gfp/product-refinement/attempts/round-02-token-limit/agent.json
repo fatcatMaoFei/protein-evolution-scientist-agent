@@ -1,0 +1,422 @@
+{
+  "format_version": 1,
+  "mode": "live",
+  "backend": "openai_compatible",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "domain": "gfp_fluorescence",
+  "config": {
+    "backend": "OpenAI-compatible Chat Completions",
+    "protocol": "openai",
+    "profile": "gfp-third-party",
+    "proposal_tool_choice": "forced_native",
+    "final_format": "json_object",
+    "api_base": "https://codeflow.sh/v1",
+    "proposal_max_tokens": 1024,
+    "final_max_tokens": 840,
+    "rate_limit_backoff_s": [
+      15,
+      35
+    ]
+  },
+  "seed": 17,
+  "round": 2,
+  "budget": 5,
+  "knowledge_augmented": true,
+  "input_sha256": "5b19ac9f6f688a7a8c430ab9f8136d65980575a8daa4f533909d80da8540f4fd",
+  "reference_sha256": "9be57dbaa8e6d8b324cd1a84684901808c38b3b84f940c08e00a0323f4215e9f",
+  "menu": [
+    {
+      "id": "D19V:S28R:M88V:N144S",
+      "mutations": "D19V:S28R:M88V:N144S",
+      "sequence": "MSKGEELFTGVVPILVELVGDVNGHKFRVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAVPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYSYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+      "edits": [
+        "D19V",
+        "S28R",
+        "M88V",
+        "N144S"
+      ],
+      "alias": "C01",
+      "prediction": 2.522265917761616,
+      "uncertainty": 0.7269908987948587,
+      "rank": 1,
+      "source": "rf_elite"
+    }
+  ],
+  "observed_evidence": {
+    "O1": {
+      "id": "I47V:I161V",
+      "mutations": "I47V:I161V",
+      "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFVCTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGVKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+      "edits": [
+        "I47V",
+        "I161V"
+      ],
+      "fitness": 4.02854128538
+    },
+    "O2": {
+      "id": "D21E:Y200C",
+      "mutations": "D21E:Y200C",
+      "sequence": "MSKGEELFTGVVPILVELDGEVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHCLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+      "edits": [
+        "D21E",
+        "Y200C"
+      ],
+      "fitness": 3.93920206177
+    },
+    "O3": {
+      "id": "E90D:I128F:N164H",
+      "mutations": "E90D:I128F:N164H",
+      "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPDGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGFDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKVHFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+      "edits": [
+        "E90D",
+        "I128F",
+        "N164H"
+      ],
+      "fitness": 3.8238237325
+    },
+    "O4": {
+      "id": "N121Y:D155A:V176A:Y237C",
+      "mutations": "N121Y:D155A:V176A:Y237C",
+      "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVYRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMAAKQKNGIKVNFKIRHNIEDGSAQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELCK",
+      "edits": [
+        "N121Y",
+        "D155A",
+        "V176A",
+        "Y237C"
+      ],
+      "fitness": 1.29886769766
+    },
+    "O5": {
+      "id": "V22A:T108A:I136T",
+      "mutations": "V22A:T108A:I136T",
+      "sequence": "MSKGEELFTGVVPILVELDGDANGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKARAEVKFEGDTLVNRIELKGIDFKEDGNTLGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+      "edits": [
+        "V22A",
+        "T108A",
+        "I136T"
+      ],
+      "fitness": 1.29947143344
+    },
+    "O6": {
+      "id": "E5G:T108I",
+      "mutations": "E5G:T108I",
+      "sequence": "MSKGGELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKIRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+      "edits": [
+        "E5G",
+        "T108I"
+      ],
+      "fitness": 3.18966331858
+    }
+  },
+  "latest_feedback_ids": [
+    "E5G:T108I"
+  ],
+  "calls": [
+    {
+      "stage": "proposal",
+      "attempt": 1,
+      "request": {
+        "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+        "messages": [
+          {
+            "role": "system",
+            "content": "You are analyzing historical measurements for avGFP fluorescence. Larger log brightness is better. Only observations have measured fluorescence. Menu values and tool scores are fitted predictions. Use the observed evidence, state a testable short hypothesis, and specify edits that match displayed candidate identities on the pinned GFP reference. The reference menu is optional. The scoring tool can construct and score legal off-menu edits. Do not estimate or cite measurements for candidates. Keep all text fields concise and evidence-specific."
+          },
+          {
+            "role": "user",
+            "content": "Each O row is alias, edits, measured value. Each C row is alias, edits, rounded model estimate. Call score_gfp_designs with a short analyst summary, a concrete hypothesis, 1\u20133 O evidence IDs and exactly 6 designs, e.g. a C alias and a space followed by its exact colon-delimited edits from the menu. The returned estimates resolve exact values and tool checks.\n{\"budget\":5,\"gfp_knowledge\":{\"amino_acid_classes\":{\"acidic\":\"DE\",\"aliphatic nonpolar\":\"AVILM\",\"aromatic\":\"FWY\",\"basic or protonation dependent\":\"KRH\",\"polar uncharged\":\"STNQ\",\"special\":\"CGP\"},\"coarse_conservative_edits_in_menu\":[\"M88V\",\"N144S\"],\"interpretation\":\"Conservative means the same coarse nonspecial class, not a fitness prediction. Histidine charge is pH-dependent. Scores for multi-edit GFP are context dependent. A count of overlapping edits does not give a causal effect.\",\"number_of_observed_combinations_sharing_each_listed_edit\":{\"D19V\":1,\"M88V\":2,\"N144S\":1,\"S28R\":1},\"observed_single_scores_matching_menu\":{}},\"latest_feedback_aliases\":[\"O6\"],\"menu\":[[\"C01\",\"D19V:S28R:M88V:N144S\",2.522]],\"mutation_limit\":4,\"observations\":[[\"O1\",\"I47V:I161V\",4.0285],[\"O2\",\"D21E:Y200C\",3.9392],[\"O3\",\"E90D:I128F:N164H\",3.8238],[\"O4\",\"N121Y:D155A:V176A:Y237C\",1.2989],[\"O5\",\"V22A:T108A:I136T\",1.2995],[\"O6\",\"E5G:T108I\",3.1897]],\"round\":2,\"shortlist_size\":6}\nUser discovery mode updates the design format above. Use the exact displayed edits with C aliases or use NEW followed by a space and 1 to 4 explicit substitutions against this reference: MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK. Include at least one NEW design among the 6 designs. Do not repeat these pending variants: [\"D21E:I47V:I161V\",\"I47V:I161V:Y200C\",\"I47V:M88V:I161V\",\"I47V:N144S:I161V\"]. Use the returned N aliases when selecting newly constructed designs."
+          }
+        ],
+        "tools": [
+          {
+            "type": "function",
+            "function": {
+              "name": "score_gfp_designs",
+              "description": "Build and predict GFP variants from C aliases and their exact edits, or NEW followed by off-menu colon-separated edits. The tool assigns N aliases to accepted new designs.",
+              "parameters": {
+                "type": "object",
+                "properties": {
+                  "analyst": {
+                    "type": "string"
+                  },
+                  "hypothesis": {
+                    "type": "string"
+                  },
+                  "evidence_ids": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "designs": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "required": [
+                  "analyst",
+                  "hypothesis",
+                  "evidence_ids",
+                  "designs"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        ],
+        "tool_choice": {
+          "type": "function",
+          "function": {
+            "name": "score_gfp_designs"
+          }
+        },
+        "temperature": 0.0,
+        "max_tokens": 1024
+      },
+      "request_sha256": "09439d8ced24695f6e0bc17176a35a27c87e1308a0d1ca5dddc9fea1a780d574",
+      "response": {
+        "text": "",
+        "finish_reason": "length",
+        "tool_calls": [],
+        "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+        "response_id": "chatcmpl-bf1f2fd3-8467-4fdf-a71e-973203bbf25c",
+        "id": "chatcmpl-bf1f2fd3-8467-4fdf-a71e-973203bbf25c",
+        "request_id": null,
+        "created": 1795313654,
+        "usage": {
+          "input_tokens": 1165,
+          "output_tokens": 1024
+        },
+        "provider_usage": {
+          "completion_tokens": 1024,
+          "prompt_tokens": 1165,
+          "total_tokens": 2189,
+          "completion_tokens_details": {
+            "reasoning_tokens": 1024
+          },
+          "prompt_tokens_details": {
+            "cached_tokens": 512
+          }
+        },
+        "runtime": {
+          "openai": "2.28.0"
+        }
+      },
+      "response_sha256": "0070ce49784552ecbe7fa72e84250f8c8b358e3af1868262574499d48777a0eb",
+      "elapsed_s": 5.485,
+      "parse_error": "Expected provider completion tool_calls, saw length"
+    },
+    {
+      "stage": "proposal",
+      "attempt": 2,
+      "request": {
+        "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+        "messages": [
+          {
+            "role": "system",
+            "content": "You are analyzing historical measurements for avGFP fluorescence. Larger log brightness is better. Only observations have measured fluorescence. Menu values and tool scores are fitted predictions. Use the observed evidence, state a testable short hypothesis, and specify edits that match displayed candidate identities on the pinned GFP reference. The reference menu is optional. The scoring tool can construct and score legal off-menu edits. Do not estimate or cite measurements for candidates. Keep all text fields concise and evidence-specific."
+          },
+          {
+            "role": "user",
+            "content": "Each O row is alias, edits, measured value. Each C row is alias, edits, rounded model estimate. Call score_gfp_designs with a short analyst summary, a concrete hypothesis, 1\u20133 O evidence IDs and exactly 6 designs, e.g. a C alias and a space followed by its exact colon-delimited edits from the menu. The returned estimates resolve exact values and tool checks.\n{\"budget\":5,\"gfp_knowledge\":{\"amino_acid_classes\":{\"acidic\":\"DE\",\"aliphatic nonpolar\":\"AVILM\",\"aromatic\":\"FWY\",\"basic or protonation dependent\":\"KRH\",\"polar uncharged\":\"STNQ\",\"special\":\"CGP\"},\"coarse_conservative_edits_in_menu\":[\"M88V\",\"N144S\"],\"interpretation\":\"Conservative means the same coarse nonspecial class, not a fitness prediction. Histidine charge is pH-dependent. Scores for multi-edit GFP are context dependent. A count of overlapping edits does not give a causal effect.\",\"number_of_observed_combinations_sharing_each_listed_edit\":{\"D19V\":1,\"M88V\":2,\"N144S\":1,\"S28R\":1},\"observed_single_scores_matching_menu\":{}},\"latest_feedback_aliases\":[\"O6\"],\"menu\":[[\"C01\",\"D19V:S28R:M88V:N144S\",2.522]],\"mutation_limit\":4,\"observations\":[[\"O1\",\"I47V:I161V\",4.0285],[\"O2\",\"D21E:Y200C\",3.9392],[\"O3\",\"E90D:I128F:N164H\",3.8238],[\"O4\",\"N121Y:D155A:V176A:Y237C\",1.2989],[\"O5\",\"V22A:T108A:I136T\",1.2995],[\"O6\",\"E5G:T108I\",3.1897]],\"round\":2,\"shortlist_size\":6}\nUser discovery mode updates the design format above. Use the exact displayed edits with C aliases or use NEW followed by a space and 1 to 4 explicit substitutions against this reference: MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK. Include at least one NEW design among the 6 designs. Do not repeat these pending variants: [\"D21E:I47V:I161V\",\"I47V:I161V:Y200C\",\"I47V:M88V:I161V\",\"I47V:N144S:I161V\"]. Use the returned N aliases when selecting newly constructed designs."
+          },
+          {
+            "role": "user",
+            "content": "Repair your response. Expected provider completion tool_calls, saw length."
+          }
+        ],
+        "tools": [
+          {
+            "type": "function",
+            "function": {
+              "name": "score_gfp_designs",
+              "description": "Build and predict GFP variants from C aliases and their exact edits, or NEW followed by off-menu colon-separated edits. The tool assigns N aliases to accepted new designs.",
+              "parameters": {
+                "type": "object",
+                "properties": {
+                  "analyst": {
+                    "type": "string"
+                  },
+                  "hypothesis": {
+                    "type": "string"
+                  },
+                  "evidence_ids": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "designs": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "required": [
+                  "analyst",
+                  "hypothesis",
+                  "evidence_ids",
+                  "designs"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        ],
+        "tool_choice": {
+          "type": "function",
+          "function": {
+            "name": "score_gfp_designs"
+          }
+        },
+        "temperature": 0.0,
+        "max_tokens": 1024
+      },
+      "request_sha256": "744e906d1e36e60b4ffba595af2026bd0c1aa132fb459bc3c9efd33c30482fbb",
+      "response": {
+        "text": "",
+        "finish_reason": "length",
+        "tool_calls": [],
+        "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+        "response_id": "chatcmpl-8bba68ac-aa34-4f5e-93e6-a76daf6cd638",
+        "id": "chatcmpl-8bba68ac-aa34-4f5e-93e6-a76daf6cd638",
+        "request_id": null,
+        "created": 1795313659,
+        "usage": {
+          "input_tokens": 1180,
+          "output_tokens": 1024
+        },
+        "provider_usage": {
+          "completion_tokens": 1024,
+          "prompt_tokens": 1180,
+          "total_tokens": 2204,
+          "completion_tokens_details": {
+            "reasoning_tokens": 1024
+          },
+          "prompt_tokens_details": {
+            "cached_tokens": 1024
+          }
+        },
+        "runtime": {
+          "openai": "2.28.0"
+        }
+      },
+      "response_sha256": "20040315d00be2bc9f6f157b156790ad9fc480b5869c01b670fd451560760465",
+      "elapsed_s": 4.571,
+      "parse_error": "Expected provider completion tool_calls, saw length"
+    },
+    {
+      "stage": "proposal",
+      "attempt": 3,
+      "request": {
+        "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+        "messages": [
+          {
+            "role": "system",
+            "content": "You are analyzing historical measurements for avGFP fluorescence. Larger log brightness is better. Only observations have measured fluorescence. Menu values and tool scores are fitted predictions. Use the observed evidence, state a testable short hypothesis, and specify edits that match displayed candidate identities on the pinned GFP reference. The reference menu is optional. The scoring tool can construct and score legal off-menu edits. Do not estimate or cite measurements for candidates. Keep all text fields concise and evidence-specific."
+          },
+          {
+            "role": "user",
+            "content": "Each O row is alias, edits, measured value. Each C row is alias, edits, rounded model estimate. Call score_gfp_designs with a short analyst summary, a concrete hypothesis, 1\u20133 O evidence IDs and exactly 6 designs, e.g. a C alias and a space followed by its exact colon-delimited edits from the menu. The returned estimates resolve exact values and tool checks.\n{\"budget\":5,\"gfp_knowledge\":{\"amino_acid_classes\":{\"acidic\":\"DE\",\"aliphatic nonpolar\":\"AVILM\",\"aromatic\":\"FWY\",\"basic or protonation dependent\":\"KRH\",\"polar uncharged\":\"STNQ\",\"special\":\"CGP\"},\"coarse_conservative_edits_in_menu\":[\"M88V\",\"N144S\"],\"interpretation\":\"Conservative means the same coarse nonspecial class, not a fitness prediction. Histidine charge is pH-dependent. Scores for multi-edit GFP are context dependent. A count of overlapping edits does not give a causal effect.\",\"number_of_observed_combinations_sharing_each_listed_edit\":{\"D19V\":1,\"M88V\":2,\"N144S\":1,\"S28R\":1},\"observed_single_scores_matching_menu\":{}},\"latest_feedback_aliases\":[\"O6\"],\"menu\":[[\"C01\",\"D19V:S28R:M88V:N144S\",2.522]],\"mutation_limit\":4,\"observations\":[[\"O1\",\"I47V:I161V\",4.0285],[\"O2\",\"D21E:Y200C\",3.9392],[\"O3\",\"E90D:I128F:N164H\",3.8238],[\"O4\",\"N121Y:D155A:V176A:Y237C\",1.2989],[\"O5\",\"V22A:T108A:I136T\",1.2995],[\"O6\",\"E5G:T108I\",3.1897]],\"round\":2,\"shortlist_size\":6}\nUser discovery mode updates the design format above. Use the exact displayed edits with C aliases or use NEW followed by a space and 1 to 4 explicit substitutions against this reference: MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK. Include at least one NEW design among the 6 designs. Do not repeat these pending variants: [\"D21E:I47V:I161V\",\"I47V:I161V:Y200C\",\"I47V:M88V:I161V\",\"I47V:N144S:I161V\"]. Use the returned N aliases when selecting newly constructed designs."
+          },
+          {
+            "role": "user",
+            "content": "Repair your response. Expected provider completion tool_calls, saw length."
+          }
+        ],
+        "tools": [
+          {
+            "type": "function",
+            "function": {
+              "name": "score_gfp_designs",
+              "description": "Build and predict GFP variants from C aliases and their exact edits, or NEW followed by off-menu colon-separated edits. The tool assigns N aliases to accepted new designs.",
+              "parameters": {
+                "type": "object",
+                "properties": {
+                  "analyst": {
+                    "type": "string"
+                  },
+                  "hypothesis": {
+                    "type": "string"
+                  },
+                  "evidence_ids": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "designs": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "required": [
+                  "analyst",
+                  "hypothesis",
+                  "evidence_ids",
+                  "designs"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        ],
+        "tool_choice": {
+          "type": "function",
+          "function": {
+            "name": "score_gfp_designs"
+          }
+        },
+        "temperature": 0.0,
+        "max_tokens": 1024
+      },
+      "request_sha256": "744e906d1e36e60b4ffba595af2026bd0c1aa132fb459bc3c9efd33c30482fbb",
+      "response": {
+        "text": "",
+        "finish_reason": "length",
+        "tool_calls": [],
+        "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+        "response_id": "chatcmpl-c92fb170-3b95-4a42-b3c1-07481b7971c2",
+        "id": "chatcmpl-c92fb170-3b95-4a42-b3c1-07481b7971c2",
+        "request_id": null,
+        "created": 1795313664,
+        "usage": {
+          "input_tokens": 1180,
+          "output_tokens": 1024
+        },
+        "provider_usage": {
+          "completion_tokens": 1024,
+          "prompt_tokens": 1180,
+          "total_tokens": 2204,
+          "completion_tokens_details": {
+            "reasoning_tokens": 1024
+          },
+          "prompt_tokens_details": {
+            "cached_tokens": 1024
+          }
+        },
+        "runtime": {
+          "openai": "2.28.0"
+        }
+      },
+      "response_sha256": "e6d9b83f9d5ec1483a24d9f4c2c8c5f94e94cc38ca5cdc0d374c5e3c0c7b08b5",
+      "elapsed_s": 4.802,
+      "parse_error": "Expected provider completion tool_calls, saw length"
+    }
+  ],
+  "tool_calls": [],
+  "usage": {
+    "input_tokens": 3525,
+    "output_tokens": 3072
+  },
+  "live_generation_count": 3,
+  "started_utc": "2026-11-22T02:14:13.552780+00:00",
+  "status": "error",
+  "error": "AgentError: Expected provider completion tool_calls, saw length",
+  "elapsed_s": 14.858
+}

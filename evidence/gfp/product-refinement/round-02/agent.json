@@ -1,0 +1,544 @@
+{
+  "format_version": 1,
+  "mode": "live",
+  "backend": "openai_compatible",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "domain": "gfp_fluorescence",
+  "config": {
+    "backend": "OpenAI-compatible Chat Completions",
+    "protocol": "openai",
+    "profile": "gfp-third-party",
+    "proposal_tool_choice": "forced_native",
+    "final_format": "json_object",
+    "api_base": "https://codeflow.sh/v1",
+    "proposal_max_tokens": 2304,
+    "final_max_tokens": 1400,
+    "rate_limit_backoff_s": [
+      15,
+      35
+    ]
+  },
+  "seed": 17,
+  "round": 2,
+  "budget": 5,
+  "knowledge_augmented": true,
+  "input_sha256": "5b19ac9f6f688a7a8c430ab9f8136d65980575a8daa4f533909d80da8540f4fd",
+  "reference_sha256": "9be57dbaa8e6d8b324cd1a84684901808c38b3b84f940c08e00a0323f4215e9f",
+  "menu": [
+    {
+      "id": "D19V:S28R:M88V:N144S",
+      "mutations": "D19V:S28R:M88V:N144S",
+      "sequence": "MSKGEELFTGVVPILVELVGDVNGHKFRVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAVPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYSYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+      "edits": [
+        "D19V",
+        "S28R",
+        "M88V",
+        "N144S"
+      ],
+      "alias": "C01",
+      "prediction": 2.522265917761616,
+      "uncertainty": 0.7269908987948587,
+      "rank": 1,
+      "source": "rf_elite"
+    }
+  ],
+  "observed_evidence": {
+    "O1": {
+      "id": "I47V:I161V",
+      "mutations": "I47V:I161V",
+      "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFVCTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGVKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+      "edits": [
+        "I47V",
+        "I161V"
+      ],
+      "fitness": 4.02854128538
+    },
+    "O2": {
+      "id": "D21E:Y200C",
+      "mutations": "D21E:Y200C",
+      "sequence": "MSKGEELFTGVVPILVELDGEVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHCLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+      "edits": [
+        "D21E",
+        "Y200C"
+      ],
+      "fitness": 3.93920206177
+    },
+    "O3": {
+      "id": "E90D:I128F:N164H",
+      "mutations": "E90D:I128F:N164H",
+      "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPDGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGFDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKVHFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+      "edits": [
+        "E90D",
+        "I128F",
+        "N164H"
+      ],
+      "fitness": 3.8238237325
+    },
+    "O4": {
+      "id": "N121Y:D155A:V176A:Y237C",
+      "mutations": "N121Y:D155A:V176A:Y237C",
+      "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVYRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMAAKQKNGIKVNFKIRHNIEDGSAQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELCK",
+      "edits": [
+        "N121Y",
+        "D155A",
+        "V176A",
+        "Y237C"
+      ],
+      "fitness": 1.29886769766
+    },
+    "O5": {
+      "id": "V22A:T108A:I136T",
+      "mutations": "V22A:T108A:I136T",
+      "sequence": "MSKGEELFTGVVPILVELDGDANGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKARAEVKFEGDTLVNRIELKGIDFKEDGNTLGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+      "edits": [
+        "V22A",
+        "T108A",
+        "I136T"
+      ],
+      "fitness": 1.29947143344
+    },
+    "O6": {
+      "id": "E5G:T108I",
+      "mutations": "E5G:T108I",
+      "sequence": "MSKGGELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKIRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+      "edits": [
+        "E5G",
+        "T108I"
+      ],
+      "fitness": 3.18966331858
+    }
+  },
+  "latest_feedback_ids": [
+    "E5G:T108I"
+  ],
+  "calls": [
+    {
+      "stage": "proposal",
+      "attempt": 1,
+      "request": {
+        "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+        "messages": [
+          {
+            "role": "system",
+            "content": "You are analyzing historical measurements for avGFP fluorescence. Larger log brightness is better. Only observations have measured fluorescence. Menu values and tool scores are fitted predictions. Use the observed evidence, state a testable short hypothesis, and specify edits that match displayed candidate identities on the pinned GFP reference. The reference menu is optional. The scoring tool can construct and score legal off-menu edits. Do not estimate or cite measurements for candidates. Keep all text fields concise and evidence-specific."
+          },
+          {
+            "role": "user",
+            "content": "Call score_gfp_designs immediately with a short analyst summary, a short hypothesis, 1\u20133 observed O aliases and exactly 6 designs. Write each design as a C alias followed by its exact edits, or NEW followed by a space and 1\u20134 colon-separated substitutions. Include at least one NEW design. Exclude observed IDs and pending_ids from NEW. The tool assigns N aliases to valid off-menu edits. Keep the analyst and hypothesis under 15 words each. GFP reference: MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK.\n{\"budget\":5,\"gfp_knowledge\":{\"amino_acid_classes\":{\"acidic\":\"DE\",\"aliphatic nonpolar\":\"AVILM\",\"aromatic\":\"FWY\",\"basic or protonation dependent\":\"KRH\",\"polar uncharged\":\"STNQ\",\"special\":\"CGP\"},\"coarse_conservative_edits_in_menu\":[\"M88V\",\"N144S\"],\"interpretation\":\"Conservative means the same coarse nonspecial class, not a fitness prediction. Histidine charge is pH-dependent. Scores for multi-edit GFP are context dependent. A count of overlapping edits does not give a causal effect.\",\"number_of_observed_combinations_sharing_each_listed_edit\":{\"D19V\":1,\"M88V\":2,\"N144S\":1,\"S28R\":1},\"observed_single_scores_matching_menu\":{}},\"latest_feedback_aliases\":[\"O6\"],\"menu\":[[\"C01\",\"D19V:S28R:M88V:N144S\",2.522]],\"mutation_limit\":4,\"observations\":[[\"O1\",\"I47V:I161V\",4.0285],[\"O2\",\"D21E:Y200C\",3.9392],[\"O3\",\"E90D:I128F:N164H\",3.8238],[\"O4\",\"N121Y:D155A:V176A:Y237C\",1.2989],[\"O5\",\"V22A:T108A:I136T\",1.2995],[\"O6\",\"E5G:T108I\",3.1897]],\"pending_ids\":[\"D21E:I47V:I161V\",\"I47V:I161V:Y200C\",\"I47V:M88V:I161V\",\"I47V:N144S:I161V\"],\"round\":2,\"shortlist_size\":6}"
+          }
+        ],
+        "tools": [
+          {
+            "type": "function",
+            "function": {
+              "name": "score_gfp_designs",
+              "description": "Build and predict GFP variants from C aliases and their exact edits, or NEW followed by off-menu colon-separated edits. The tool assigns N aliases to accepted new designs.",
+              "parameters": {
+                "type": "object",
+                "properties": {
+                  "analyst": {
+                    "type": "string"
+                  },
+                  "hypothesis": {
+                    "type": "string"
+                  },
+                  "evidence_ids": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "designs": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "required": [
+                  "analyst",
+                  "hypothesis",
+                  "evidence_ids",
+                  "designs"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        ],
+        "tool_choice": {
+          "type": "function",
+          "function": {
+            "name": "score_gfp_designs"
+          }
+        },
+        "temperature": 0.0,
+        "max_tokens": 2304
+      },
+      "request_sha256": "c0ed88c686f6a3f252116c15c65e0186f945b2dbfdadd9bdb5846ccf38c239f3",
+      "response": {
+        "text": "",
+        "finish_reason": "tool_calls",
+        "tool_calls": [
+          {
+            "id": "call-83c37781-6a89-4099-b02c-04f9864bac71",
+            "function": {
+              "arguments": "{\"analyst\":\"Combine top O1 core with favorable edits from O2/O3/O6.\",\"hypothesis\":\"Beneficial single-site edits add to I47V:I161V without exceeding four edits.\",\"evidence_ids\":[\"O1\",\"O2\",\"O3\"],\"designs\":[\"C01 D19V:S28R:M88V:N144S\",\"NEW I47V:I161V:E90D\",\"NEW I47V:I161V:N164H\",\"NEW I47V:I161V:T108I\",\"NEW I47V:I161V:E5G\",\"NEW I47V:I161V:D21E:Y200C\"]}",
+              "name": "score_gfp_designs"
+            },
+            "type": "function"
+          }
+        ],
+        "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+        "response_id": "chatcmpl-dd0fa600-cd84-47cb-9912-d13cdf444265",
+        "id": "chatcmpl-dd0fa600-cd84-47cb-9912-d13cdf444265",
+        "request_id": null,
+        "created": 1795313716,
+        "usage": {
+          "input_tokens": 1122,
+          "output_tokens": 1218
+        },
+        "provider_usage": {
+          "completion_tokens": 1218,
+          "prompt_tokens": 1122,
+          "total_tokens": 2340,
+          "completion_tokens_details": {
+            "reasoning_tokens": 1188
+          },
+          "prompt_tokens_details": {
+            "cached_tokens": 256
+          }
+        },
+        "runtime": {
+          "openai": "2.28.0"
+        }
+      },
+      "response_sha256": "e5f375ed31cfd2c16cb1cf67e8ca149b98782ce44fa8a9b8e135e15613a84d18",
+      "elapsed_s": 5.437,
+      "validated": true
+    },
+    {
+      "stage": "final_selection",
+      "attempt": 1,
+      "request": {
+        "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+        "messages": [
+          {
+            "role": "system",
+            "content": "You are analyzing historical measurements for avGFP fluorescence. Larger log brightness is better. Only observations have measured fluorescence. Menu values and tool scores are fitted predictions. Use the observed evidence, state a testable short hypothesis, and specify edits that match displayed candidate identities on the pinned GFP reference. The reference menu is optional. The scoring tool can construct and score legal off-menu edits. Do not estimate or cite measurements for candidates. Keep all text fields concise and evidence-specific."
+          },
+          {
+            "role": "user",
+            "content": "Call score_gfp_designs immediately with a short analyst summary, a short hypothesis, 1\u20133 observed O aliases and exactly 6 designs. Write each design as a C alias followed by its exact edits, or NEW followed by a space and 1\u20134 colon-separated substitutions. Include at least one NEW design. Exclude observed IDs and pending_ids from NEW. The tool assigns N aliases to valid off-menu edits. Keep the analyst and hypothesis under 15 words each. GFP reference: MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK.\n{\"budget\":5,\"gfp_knowledge\":{\"amino_acid_classes\":{\"acidic\":\"DE\",\"aliphatic nonpolar\":\"AVILM\",\"aromatic\":\"FWY\",\"basic or protonation dependent\":\"KRH\",\"polar uncharged\":\"STNQ\",\"special\":\"CGP\"},\"coarse_conservative_edits_in_menu\":[\"M88V\",\"N144S\"],\"interpretation\":\"Conservative means the same coarse nonspecial class, not a fitness prediction. Histidine charge is pH-dependent. Scores for multi-edit GFP are context dependent. A count of overlapping edits does not give a causal effect.\",\"number_of_observed_combinations_sharing_each_listed_edit\":{\"D19V\":1,\"M88V\":2,\"N144S\":1,\"S28R\":1},\"observed_single_scores_matching_menu\":{}},\"latest_feedback_aliases\":[\"O6\"],\"menu\":[[\"C01\",\"D19V:S28R:M88V:N144S\",2.522]],\"mutation_limit\":4,\"observations\":[[\"O1\",\"I47V:I161V\",4.0285],[\"O2\",\"D21E:Y200C\",3.9392],[\"O3\",\"E90D:I128F:N164H\",3.8238],[\"O4\",\"N121Y:D155A:V176A:Y237C\",1.2989],[\"O5\",\"V22A:T108A:I136T\",1.2995],[\"O6\",\"E5G:T108I\",3.1897]],\"pending_ids\":[\"D21E:I47V:I161V\",\"I47V:I161V:Y200C\",\"I47V:M88V:I161V\",\"I47V:N144S:I161V\"],\"round\":2,\"shortlist_size\":6}"
+          },
+          {
+            "role": "assistant",
+            "content": null,
+            "tool_calls": [
+              {
+                "id": "call-83c37781-6a89-4099-b02c-04f9864bac71",
+                "function": {
+                  "arguments": "{\"analyst\":\"Combine top O1 core with favorable edits from O2/O3/O6.\",\"hypothesis\":\"Beneficial single-site edits add to I47V:I161V without exceeding four edits.\",\"evidence_ids\":[\"O1\",\"O2\",\"O3\"],\"designs\":[\"C01 D19V:S28R:M88V:N144S\",\"NEW I47V:I161V:E90D\",\"NEW I47V:I161V:N164H\",\"NEW I47V:I161V:T108I\",\"NEW I47V:I161V:E5G\",\"NEW I47V:I161V:D21E:Y200C\"]}",
+                  "name": "score_gfp_designs"
+                },
+                "type": "function"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "tool_call_id": "call-83c37781-6a89-4099-b02c-04f9864bac71",
+            "content": "[{\"alias\":\"C01\",\"mutations\":\"D19V:S28R:M88V:N144S\",\"prediction\":2.522265917761616,\"roster_match\":true,\"uncertainty\":0.7269908987948587},{\"alias\":\"N01\",\"mutations\":\"I47V:E90D:I161V\",\"prediction\":2.875028820493268,\"roster_match\":false,\"uncertainty\":0.5130762299110491},{\"alias\":\"N02\",\"mutations\":\"I47V:I161V:N164H\",\"prediction\":3.1678362341685564,\"roster_match\":false,\"uncertainty\":0.549023433394255},{\"alias\":\"N03\",\"mutations\":\"I47V:T108I:I161V\",\"prediction\":2.767236152301291,\"roster_match\":false,\"uncertainty\":0.5348149806086233},{\"alias\":\"N04\",\"mutations\":\"E5G:I47V:I161V\",\"prediction\":2.8775265254398694,\"roster_match\":false,\"uncertainty\":0.5149915954835715},{\"alias\":\"N05\",\"mutations\":\"D21E:I47V:I161V:Y200C\",\"prediction\":2.4625180780339835,\"roster_match\":false,\"uncertainty\":0.7319433859789573}]"
+          },
+          {
+            "role": "user",
+            "content": "Return JSON with candidate_ids, critic and selection_rationale. Select exactly 5 evaluated aliases ordered by test priority. Give reasons that refer to the estimates and identify a weakness. New fluorescence measurements are unavailable until after submission. Reply with bare JSON. Limit critic and selection_rationale to 25 words each."
+          }
+        ],
+        "tools": [
+          {
+            "type": "function",
+            "function": {
+              "name": "score_gfp_designs",
+              "description": "Build and predict GFP variants from C aliases and their exact edits, or NEW followed by off-menu colon-separated edits. The tool assigns N aliases to accepted new designs.",
+              "parameters": {
+                "type": "object",
+                "properties": {
+                  "analyst": {
+                    "type": "string"
+                  },
+                  "hypothesis": {
+                    "type": "string"
+                  },
+                  "evidence_ids": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "designs": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "required": [
+                  "analyst",
+                  "hypothesis",
+                  "evidence_ids",
+                  "designs"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        ],
+        "tool_choice": "none",
+        "temperature": 0.0,
+        "max_tokens": 1400,
+        "response_format": {
+          "type": "json_object"
+        }
+      },
+      "request_sha256": "973ae55ba55557424cc25fbc3d37e90a1ae64978a15bdc28b8c16ca6dfcc2bbc",
+      "response": {
+        "text": "{\"candidate_ids\":[\"N02\",\"N01\",\"N04\",\"N03\",\"C01\"],\"critic\":\"Estimates are fitted, not measured; uncertainties overlap and C01 is high-uncertainty, so ranking is provisional.\",\"selection_rationale\":\"Prioritize N02 by highest estimate, then N01/N04 for strong estimates with lower uncertainty, then N03 and C01.\"}",
+        "finish_reason": "stop",
+        "tool_calls": [],
+        "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+        "response_id": "chatcmpl-9aaa3eb8-1d5e-414b-a01a-b3dac01399fc",
+        "id": "chatcmpl-9aaa3eb8-1d5e-414b-a01a-b3dac01399fc",
+        "request_id": null,
+        "created": 1795313721,
+        "usage": {
+          "input_tokens": 1395,
+          "output_tokens": 415
+        },
+        "provider_usage": {
+          "completion_tokens": 415,
+          "prompt_tokens": 1395,
+          "total_tokens": 1810,
+          "completion_tokens_details": {
+            "reasoning_tokens": 359
+          },
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "runtime": {
+          "openai": "2.28.0"
+        }
+      },
+      "response_sha256": "88404c095a06f1c812ce7e460fe5448d52a7da489827822c8dec13cd59043969",
+      "elapsed_s": 2.935,
+      "validated": true
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "score_gfp_designs",
+      "trigger": "model_tool_call",
+      "call_id": "call-83c37781-6a89-4099-b02c-04f9864bac71",
+      "arguments": {
+        "analyst": "Combine top O1 core with favorable edits from O2/O3/O6.",
+        "hypothesis": "Beneficial single-site edits add to I47V:I161V without exceeding four edits.",
+        "evidence_ids": [
+          "O1",
+          "O2",
+          "O3"
+        ],
+        "designs": [
+          "C01 D19V:S28R:M88V:N144S",
+          "NEW I47V:I161V:E90D",
+          "NEW I47V:I161V:N164H",
+          "NEW I47V:I161V:T108I",
+          "NEW I47V:I161V:E5G",
+          "NEW I47V:I161V:D21E:Y200C"
+        ]
+      },
+      "result": [
+        {
+          "alias": "C01",
+          "mutations": "D19V:S28R:M88V:N144S",
+          "prediction": 2.522265917761616,
+          "uncertainty": 0.7269908987948587,
+          "roster_match": true,
+          "sequence": "MSKGEELFTGVVPILVELVGDVNGHKFRVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAVPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYSYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK"
+        },
+        {
+          "alias": "N01",
+          "mutations": "I47V:E90D:I161V",
+          "prediction": 2.875028820493268,
+          "uncertainty": 0.5130762299110491,
+          "roster_match": false,
+          "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFVCTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPDGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGVKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK"
+        },
+        {
+          "alias": "N02",
+          "mutations": "I47V:I161V:N164H",
+          "prediction": 3.1678362341685564,
+          "uncertainty": 0.549023433394255,
+          "roster_match": false,
+          "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFVCTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGVKVHFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK"
+        },
+        {
+          "alias": "N03",
+          "mutations": "I47V:T108I:I161V",
+          "prediction": 2.767236152301291,
+          "uncertainty": 0.5348149806086233,
+          "roster_match": false,
+          "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFVCTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKIRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGVKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK"
+        },
+        {
+          "alias": "N04",
+          "mutations": "E5G:I47V:I161V",
+          "prediction": 2.8775265254398694,
+          "uncertainty": 0.5149915954835715,
+          "roster_match": false,
+          "sequence": "MSKGGELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFVCTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGVKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK"
+        },
+        {
+          "alias": "N05",
+          "mutations": "D21E:I47V:I161V:Y200C",
+          "prediction": 2.4625180780339835,
+          "uncertainty": 0.7319433859789573,
+          "roster_match": false,
+          "sequence": "MSKGEELFTGVVPILVELDGEVNGHKFSVSGEGEGDATYGKLTLKFVCTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGVKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHCLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK"
+        }
+      ]
+    },
+    {
+      "tool": "gfp_critic",
+      "result": {
+        "legal": true,
+        "unique": true,
+        "n": 5
+      }
+    }
+  ],
+  "usage": {
+    "input_tokens": 2517,
+    "output_tokens": 1633
+  },
+  "live_generation_count": 2,
+  "started_utc": "2026-11-22T02:15:15.561935+00:00",
+  "decision": {
+    "analyst": "Combine top O1 core with favorable edits from O2/O3/O6.",
+    "hypothesis": "Beneficial single-site edits add to I47V:I161V without exceeding four edits.",
+    "evidence_ids": [
+      "I47V:I161V",
+      "D21E:Y200C",
+      "E90D:I128F:N164H"
+    ],
+    "designs": [
+      "C01 D19V:S28R:M88V:N144S",
+      "NEW I47V:I161V:E90D",
+      "NEW I47V:I161V:N164H",
+      "NEW I47V:I161V:T108I",
+      "NEW I47V:I161V:E5G",
+      "NEW I47V:I161V:D21E:Y200C"
+    ],
+    "candidate_ids": [
+      "N02",
+      "N01",
+      "N04",
+      "N03",
+      "C01"
+    ],
+    "critic": "Estimates are fitted, not measured; uncertainties overlap and C01 is high-uncertainty, so ranking is provisional.",
+    "selection_rationale": "Prioritize N02 by highest estimate, then N01/N04 for strong estimates with lower uncertainty, then N03 and C01.",
+    "evidence_aliases": [
+      "O1",
+      "O2",
+      "O3"
+    ],
+    "selected_ids": [
+      "I47V:I161V:N164H",
+      "I47V:E90D:I161V",
+      "E5G:I47V:I161V",
+      "I47V:T108I:I161V",
+      "D19V:S28R:M88V:N144S"
+    ],
+    "selected_candidates": [
+      {
+        "alias": "N02",
+        "id": "I47V:I161V:N164H",
+        "mutations": "I47V:I161V:N164H",
+        "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFVCTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGVKVHFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+        "edits": [
+          "I47V",
+          "I161V",
+          "N164H"
+        ],
+        "prediction": 3.1678362341685564,
+        "uncertainty": 0.549023433394255,
+        "rank": null,
+        "source": "llm_off_menu"
+      },
+      {
+        "alias": "N01",
+        "id": "I47V:E90D:I161V",
+        "mutations": "I47V:E90D:I161V",
+        "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFVCTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPDGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGVKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+        "edits": [
+          "I47V",
+          "E90D",
+          "I161V"
+        ],
+        "prediction": 2.875028820493268,
+        "uncertainty": 0.5130762299110491,
+        "rank": null,
+        "source": "llm_off_menu"
+      },
+      {
+        "alias": "N04",
+        "id": "E5G:I47V:I161V",
+        "mutations": "E5G:I47V:I161V",
+        "sequence": "MSKGGELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFVCTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGVKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+        "edits": [
+          "E5G",
+          "I47V",
+          "I161V"
+        ],
+        "prediction": 2.8775265254398694,
+        "uncertainty": 0.5149915954835715,
+        "rank": null,
+        "source": "llm_off_menu"
+      },
+      {
+        "alias": "N03",
+        "id": "I47V:T108I:I161V",
+        "mutations": "I47V:T108I:I161V",
+        "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFVCTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKIRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGVKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+        "edits": [
+          "I47V",
+          "T108I",
+          "I161V"
+        ],
+        "prediction": 2.767236152301291,
+        "uncertainty": 0.5348149806086233,
+        "rank": null,
+        "source": "llm_off_menu"
+      },
+      {
+        "id": "D19V:S28R:M88V:N144S",
+        "mutations": "D19V:S28R:M88V:N144S",
+        "sequence": "MSKGEELFTGVVPILVELVGDVNGHKFRVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAVPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYSYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+        "edits": [
+          "D19V",
+          "S28R",
+          "M88V",
+          "N144S"
+        ],
+        "alias": "C01",
+        "prediction": 2.522265917761616,
+        "uncertainty": 0.7269908987948587,
+        "rank": 1,
+        "source": "rf_elite"
+      }
+    ]
+  },
+  "status": "ok",
+  "elapsed_s": 8.39
+}

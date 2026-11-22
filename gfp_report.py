@@ -65,28 +65,40 @@ def _cohort(means: pd.DataFrame, backend: str, arm: str) -> dict:
     return found.iloc[0].to_dict() if len(found) else {}
 
 
-def _trajectories(rounds: pd.DataFrame, output: Path) -> None:
+def _matched_batches(rounds: pd.DataFrame) -> pd.DataFrame:
+    metrics = ("batch_best", "batch_mean")
+    base = rounds.loc[rounds["arm"] == "B_model_only", ["seed", "round", *metrics]]
+    comparisons = rounds.merge(base, on=["seed", "round"], suffixes=("", "_rf"),
+                               validate="many_to_one", how="left")
+    if comparisons[[f"{metric}_rf" for metric in metrics]].isna().any().any():
+        raise ValueError("A GFP batch is missing its matched seed and round Model-Only result")
+    for metric in metrics:
+        comparisons[f"{metric}_delta"] = comparisons[metric] - comparisons[f"{metric}_rf"]
+    return comparisons.groupby(["arm", "round"])[
+        [*metrics, "batch_best_delta", "batch_mean_delta"]
+    ].mean()
+
+
+def _batch_figure(batches: pd.DataFrame, output: Path) -> None:
     plt.rcParams.update({
         "font.family": "DejaVu Sans", "font.size": 8.5, "axes.spines.top": False,
         "axes.spines.right": False, "axes.edgecolor": "#B0BEC5",
     })
-    figure, axes = plt.subplots(1, 3, figsize=(7.75, 2.45), sharey=True, layout="constrained")
+    figure, axes = plt.subplots(1, 2, figsize=(7.75, 2.2), layout="constrained")
     handles = [
         Line2D([0], [0], color=COLORS[arm], marker=MARKERS[arm], linestyle=LINE_STYLES[arm], label=name)
         for arm, name in ARMS.items()
     ]
-    for seed, axis in zip((17, 29, 43), axes, strict=True):
-        seed_rows = rounds[rounds["seed"] == seed]
+    for axis, metric, title in zip(axes, ("batch_best", "batch_mean"),
+                                   ("Best new measurement", "Mean of five new measurements"), strict=True):
         for arm in ARMS:
-            part = seed_rows[seed_rows["arm"] == arm].sort_values("round")
-            if not part.empty:
-                axis.step([0, *part["n_revealed_total"]], [0, *part["gain_vs_initial_best"]],
-                          where="post", color=COLORS[arm], alpha=0.91, linewidth=1.3,
-                          marker=MARKERS[arm], markersize=3.4, linestyle=LINE_STYLES[arm])
+            part = batches.loc[arm]
+            axis.plot(part.index, part[metric], color=COLORS[arm], linewidth=1.4,
+                      marker=MARKERS[arm], markersize=4, linestyle=LINE_STYLES[arm])
         axis.grid(axis="y", color="#E6ECF0", linewidth=0.7)
-        axis.set(title=f"Seed {seed}", xticks=[0, 5, 10, 15], xlabel="Measured variants")
+        axis.set(title=title, xticks=[1, 2, 3], xlabel="Round")
         axis.yaxis.set_major_locator(MaxNLocator(nbins=4))
-    axes[0].set_ylabel("Incumbent gain (log10 score)")
+    axes[0].set_ylabel("Measured fluorescence (log10)")
     figure.legend(handles=handles, loc="outside upper center", frameon=False, ncol=4, fontsize=8)
     figure.savefig(output, dpi=190)
     plt.close(figure)
@@ -111,10 +123,12 @@ def _page_benchmark(book: Manuscript, root: Path, source: dict, summary: pd.Data
     greedy = _cohort(summary, "deepseek", "B_model_only")
     headline = "The main contrast compares fluorescence discoveries with a fixed measured-query budget."
     if primary.get("seeds") == greedy.get("seeds") == 3:
-        value = primary["mean_best_so_far"] - greedy["mean_best_so_far"]
         headline = (
-            f"Across three matched initial states, the plain DeepSeek agent's mean final fluorescence "
-            f"differed from direct RF recommendation by {_delta(value, 4)} log10 units."
+            f"Across three matched initial states, mean final incumbent fluorescence was "
+            f"{_number(primary['mean_best_so_far'], 4)} for the plain DeepSeek agent and "
+            f"{_number(greedy['mean_best_so_far'], 4)} for direct RF recommendation. "
+            "High starting incumbents left few observed improvements under the 15-query budget. "
+            "Newly measured batch scores expose differences hidden by the terminal endpoint."
         )
     book.para("RA technical assessment | November 2026", "deck")
     book.para("Scientific agent for GFP<br/>fluorescence evolution", "headline")
@@ -177,24 +191,44 @@ def _page_experiment(book: Manuscript, root: Path, source: dict, figures: Path) 
         "and summaries of that arm's already measured results."
     )
     book.para(
-        "The native tool takes an explicit substitution design list. The agent code reconstructs those GFP "
-        "sequences against the fixed reference and checks them against the measured roster before returning "
-        "predictions. The final decision returns ordered proposals and evidence references. The virtual oracle "
-        "validates the entire batch, reveals only its archived measurements and updates that arm alone."
-    )
-    book.para(
-        "The LLM menu holds 24 current RF leaders and 24 seeded lower-ranked variants. The direct top five "
-        "are present in the same menu. Selection records include the overlap with the arm's own fitted "
-        "RF top five, in addition to the separate Model-Only control history."
+        "The native tool reconstructs each substitution design against the reference and scores it. "
+        "The menu holds 24 RF leaders and 24 seeded lower-ranked variants. The virtual oracle reveals "
+        "the selected batch after validation, then updates that arm alone."
     )
     if not rounds.empty:
-        plot = figures / "gfp-trajectories.png"
-        _trajectories(rounds, plot)
-        book.story.append(Image(str(plot), width=486, height=154))
+        initial = rounds[["seed", "initial_best"]].drop_duplicates().sort_values("seed")
+        entries = ", ".join(f"{row.seed} at {_number(row.initial_best, 4)}" for row in initial.itertuples())
+        improved = rounds[rounds["batch_best"] > rounds["initial_best"]]
+        observation = ""
+        if len(improved) == 1:
+            row = improved.iloc[0]
+            observation = (f" The exception was {_label(row['arm'])}, seed {row['seed']}, round {row['round']}, "
+                           f"at {_number(row['batch_best'], 4)}.")
+        book.para(
+            f"The best initial observations were already high, with seed {entries}. "
+            f"Only {len(improved)}/{len(rounds)} core batches exceeded their starting incumbent." + observation
+        )
+        batches = _matched_batches(rounds)
+        plot = figures / "gfp-measured-batches.png"
+        _batch_figure(batches, plot)
+        book.story.append(Image(str(plot), width=486, height=137))
         book.story.append(Spacer(1, 4))
         book.para(
-            "<b>Figure 1.</b> Incumbent gain from the best shared initial observation. Zero means that the "
-            "observed best has not increased. Curves come from committed GFP rounds.", "note",
+            "<b>Figure 1.</b> Three-seed means for each round of new measurements, with different vertical scales. "
+            "Source: evidence/gfp/formal/deepseek/rounds.csv.", "note",
+        )
+        batch_rows = []
+        for arm in ARMS:
+            part = batches.loc[arm]
+            batch_rows.append([_label(arm), *(
+                f"{_number(row.batch_best)} / {_number(row.batch_mean)}" for row in part.itertuples()
+            ), f"{_delta(part['batch_best_delta'].mean(), 4)} / {_delta(part['batch_mean_delta'].mean(), 4)}"])
+        book.table(["Policy", "R1 best/mean", "R2 best/mean", "R3 best/mean", "vs RF best/mean"],
+                   batch_rows, [105, 91, 91, 91, 115])
+        book.para(
+            "<b>Table 2.</b> Each cell averages the per-batch best and mean across matched seeds. "
+            "The final column averages paired differences from Model-Only at the same seed and round. "
+            "These contrasts are descriptive.", "note",
         )
     rows = []
     for arm in ARMS:
@@ -211,25 +245,19 @@ def _page_experiment(book: Manuscript, root: Path, source: dict, figures: Path) 
     book.table(["Policy", "Queries", "Final best", "Gain", "Hits > WT", "Own RF overlap"], rows,
                [134, 68, 76, 67, 67, 81])
     book.para(
-        f"<b>Table 2.</b> Final-best and gain values are seed means on the log10 score scale. "
+        f"<b>Table 3.</b> Final-best and gain values are seed means on the log10 score scale. "
         f"Hits are distinct queries above WT ({_number(source['wild_type_measurement'], 4)}) within their arms. "
         f"Completed histories {_number(state.get('arms'), 0)}/{_number(state.get('expected_arms'), 0)}. "
         "Source: evidence/gfp/formal/deepseek/method_summary.csv.", "note",
     )
-    detail = _frame(primary / "methods.csv")
-    if not detail.empty:
-        control = detail[detail["arm"] == "B_model_only"]
-        plain = detail[detail["arm"] == "C_llm"]
-        joint = plain[["seed", "best_so_far"]].merge(control[["seed", "best_so_far"]], on="seed",
-                                                     suffixes=("_agent", "_rf")).sort_values("seed")
-        if not joint.empty:
-            differences = joint["best_so_far_agent"] - joint["best_so_far_rf"]
-            book.para(
-                "The three paired contrasts compare the final best in each history, including the common "
-                "initial observations. For the observed DeepSeek OFF versus Model-Only pairs, the seed "
-                f"differences are {', '.join(_delta(value, 4) for value in differences)}.",
-                "note",
-            )
+    if not rounds.empty:
+        knowledge = batches.loc["D_knowledge_llm"]
+        book.para(
+            f"Knowledge-LLM found a stronger best per batch than Model-Only on average "
+            f"({_delta(knowledge['batch_best_delta'].mean(), 4)}), while its five-candidate mean was lower "
+            f"({_delta(knowledge['batch_mean_delta'].mean(), 4)}). The initial incumbent held in every "
+            "Knowledge-LLM history.", "note",
+        )
 
 
 def _page_factorial(book: Manuscript, root: Path, summary: pd.DataFrame) -> None:
@@ -253,7 +281,7 @@ def _page_factorial(book: Manuscript, root: Path, summary: pd.DataFrame) -> None
     book.table(["Provider / knowledge", "Seeds", "Final best", "Gain", "Hits > WT", "Own RF overlap"], rows,
                [155, 48, 72, 67, 67, 84])
     book.para(
-        "<b>Table 3.</b> Completed histories only. The two direct controls are shared across the "
+        "<b>Table 4.</b> Completed histories only. The two direct controls are shared across the "
         "provider comparison. Mean best and gain are in log10 assay units. "
         "Source: evidence/gfp/aggregate/method_summary.csv.", "note",
     )
@@ -272,7 +300,7 @@ def _page_factorial(book: Manuscript, root: Path, summary: pd.DataFrame) -> None
     book.para("Matched change from adding knowledge", "section")
     book.table(["Provider", "Seed 17", "Seed 29", "Seed 43", "Mean"], comparisons, [161, 83, 83, 83, 83])
     book.para(
-        "<b>Table 4.</b> Each entry is Knowledge ON minus OFF in final measured best. A positive "
+        "<b>Table 5.</b> Each entry is Knowledge ON minus OFF in final measured best. A positive "
         "difference favors knowledge on the tested seed. Source: evidence/gfp/aggregate/paired_effects.csv.",
         "note",
     )
@@ -293,7 +321,8 @@ def _page_factorial(book: Manuscript, root: Path, summary: pd.DataFrame) -> None
         book.para(
             f"At the shared initial state, knowledge changed the chosen set in "
             f"{int(first['set_changed'].sum())}/{len(first)} matched comparisons. "
-            f"The mean overlap was {first['overlap_at_five'].mean():.0%}."
+            f"The mean overlap was {first['overlap_at_five'].mean():.0%}. All knowledge-enabled arms retained "
+            "their starting incumbents. The changed choices establish a policy difference under this menu."
         )
     landscape = _json(root / "aggregate/landscape_summary.json")
     if landscape.get("combinations_with_all_components_measured"):
@@ -345,7 +374,7 @@ def _page_audit(book: Manuscript, root: Path, audit: dict) -> None:
             [165, 80, 83, 84, 81],
         )
         book.para(
-            "<b>Table 5.</b> Best measured score in each matched five-candidate batch. Overlap is "
+            "<b>Table 6.</b> Best measured score in each matched five-candidate batch. Overlap is "
             "the fraction of IDs shared by the two feedback conditions. "
             "Source: evidence/gfp/audit/paired_feedback_results.csv.", "note",
         )
@@ -377,7 +406,7 @@ def _page_audit(book: Manuscript, root: Path, audit: dict) -> None:
                 [177, 158, 81, 77],
             )
             book.para(
-                "<b>Table 6.</b> Top distinct LLM-selected variants by measured fluorescence. The matched full "
+                "<b>Table 7.</b> Top distinct LLM-selected variants by measured fluorescence. The matched full "
                 "GFP sequences, all rounds, forecaster estimates and revealed scores are in "
                 "evidence/gfp/aggregate/selections.csv. Agent traces retain rationales and evidence IDs.", "note",
             )
@@ -407,13 +436,17 @@ def _page_reproduction(book: Manuscript, root: Path) -> None:
     )
     examples = _frame(root / "aggregate/failure_examples.csv")
     if not examples.empty:
-        over = examples.sort_values("residual").iloc[0]
+        extrema = examples.loc[[examples["residual"].idxmin(), examples["residual"].idxmax()]]
+        book.para("Forecast failures among measured selections", "section")
+        book.table(
+            ["Variant / decision", "Predicted", "Measured", "Residual"],
+            [[f"{row.mutations} / {BACKENDS[row.backend]} {row.seed} R{row.round}",
+              _number(row.prediction, 4), _number(row.fitness, 4), _delta(row.residual, 4)]
+             for row in extrema.itertuples()], [274, 73, 73, 73],
+        )
         book.para(
-            f"A forecast failure example is <b>{escape(str(over['mutations']))}</b>. Its expected "
-            f"{_number(over['prediction'], 4)} became {_number(over['fitness'], 4)} after archived measurement "
-            f"in seed {over['seed']}, round {over['round']}, {_label(over['arm'])}. "
-            "This illustrates error at the point of selection. Full signed residual extrema appear in "
-            "evidence/gfp/aggregate/failure_examples.csv."
+            "<b>Table 8.</b> Residual is measured minus predicted. Both extremes are from Knowledge-LLM "
+            "batches. Source: evidence/gfp/aggregate/failure_examples.csv.", "note",
         )
     book.para("Executable and model receipts", "section")
     book.para(
@@ -438,7 +471,7 @@ def _page_reproduction(book: Manuscript, root: Path) -> None:
         book.table(["Provider", "Returned model identifier", "Valid decisions", "Live outputs"], usage,
                    [88, 244, 86, 75])
         book.para(
-            "<b>Table 7.</b> Formal response accounting from each backend's native traces, which "
+            "<b>Table 9.</b> Formal response accounting from each backend's native traces, which "
             "retain request hashes, tool outputs and token usage. Graphics and report drafts used "
             "Codex; the four named models generated the corresponding logged proposals. "
             "All measurements come from public GFP archives. No wet-lab experiment was performed.",

@@ -119,12 +119,15 @@ class QwenGFP(QwenTransport):
             return encoded
         payload = _payload(request)
         known = [row[0] for row in payload["observations"]]
+        format_instruction = "one C alias, a space and the exact substitutions from its menu row"
+        if "pending_ids" in payload:
+            format_instruction += " or NEW followed by legal off-menu edits, including at least one NEW design"
         encoded["assistant_prefill"] = f'<tool_call>\n{{"name":"{TOOL}","arguments":'
         encoded["structural_contract"] = (
             "Write the four argument fields analyst, hypothesis, evidence_ids, designs. "
             f"evidence_ids must be one to three distinct O aliases from {', '.join(known)}. "
-            f"designs must be exactly {payload['shortlist_size']} distinct strings, each consisting of one C alias, "
-            "a space and the exact substitutions from its menu row. Do not put a C alias in evidence_ids. "
+            f"designs must be exactly {payload['shortlist_size']} distinct strings, each consisting of "
+            f"{format_instruction}. Do not put a C alias in evidence_ids. "
             "Finish the native tool call with </tool_call>."
         )
         return encoded
@@ -174,7 +177,8 @@ def _prepare(request):
     if not isinstance(request["knowledge"], bool):
         raise AgentError("The GFP knowledge flag must be Boolean")
     observed, menu = request["observed"], request["menu"]
-    if not observed or not budget <= len(menu) <= 48:
+    allows_novel = "pending_ids" in request
+    if not observed or len(menu) > 48 or (not allows_novel and len(menu) < budget):
         raise AgentError("Insufficient GFP observation or menu data")
     for row in observed:
         _validate_record(row, observed=True, limit=limit)
@@ -196,7 +200,7 @@ def _prepare(request):
     display_ids = dict.fromkeys([*(row["id"] for row in ranked[-3:][::-1]),
                                   *(row["id"] for row in ranked[:2]), *latest_ids])
     evidence = {f"O{i}": observed_by_id[key] for i, key in enumerate(display_ids, 1)}
-    return by_alias, evidence, min(budget + 1, len(menu))
+    return by_alias, evidence, budget + 1 if allows_novel else min(budget + 1, len(menu))
 
 
 def _knowledge(observed, menu):
@@ -226,7 +230,7 @@ def _knowledge(observed, menu):
     }
 
 
-def _messages(request, menu, evidence, shortlist_size):
+def _messages(request, menu, evidence, shortlist_size, *, allow_novel=False):
     payload = {
         "budget": request["budget"],
         "shortlist_size": shortlist_size,
@@ -248,11 +252,26 @@ def _messages(request, menu, evidence, shortlist_size):
         f"and exactly {shortlist_size} designs, e.g. a C alias and a space followed by its exact "
         "colon-delimited edits from the menu. The returned estimates resolve exact values and tool checks."
     )
-    return [{"role": "system", "content": SYSTEM},
+    system = SYSTEM
+    if allow_novel:
+        system = SYSTEM.replace(
+            "All eligible candidates are from a fixed menu.",
+            "The reference menu is optional. The scoring tool can construct and score legal off-menu edits."
+        )
+        instructions = (
+            f"Call {TOOL} immediately with a short analyst summary, a short hypothesis, 1–3 observed O aliases "
+            f"and exactly {shortlist_size} designs. Write each design as a C alias followed by its exact edits, "
+            "or NEW followed by a space and 1–4 colon-separated substitutions. Include at least one NEW design. "
+            "Exclude observed IDs and pending_ids from NEW. The tool assigns N aliases to valid off-menu edits. "
+            "Keep the analyst and hypothesis under 15 words each. "
+            f"GFP reference: {GFP_WT}."
+        )
+        payload["pending_ids"] = request["pending_ids"]
+    return [{"role": "system", "content": system},
             {"role": "user", "content": instructions + "\n" + _json(payload)}]
 
 
-def _proposal(response, menu, evidence, count, limit):
+def _proposal(response, menu, evidence, count, limit, *, excluded=None):
     calls = response.get("tool_calls", [])
     if (len(calls) != 1 or calls[0].get("type") != "function" or not calls[0].get("id")
             or calls[0]["function"]["name"] != TOOL):
@@ -267,9 +286,25 @@ def _proposal(response, menu, evidence, count, limit):
     if not isinstance(designs, list) or len(designs) != count:
         raise AgentError(f"Expected exactly {count} design strings")
     aliases = []
+    novel = {}
+    novel_ids = set()
     for record in designs:
+        if excluded is not None and isinstance(record, str) and (match := re.fullmatch(r"NEW +([^\s]+)", record.strip())):
+            try:
+                variant = make_variant(match[1], max_mutations=limit)
+            except ValueError as exc:
+                raise AgentError("A NEW design must use legal substitutions on the pinned GFP sequence") from exc
+            if not variant.edits or variant.id in excluded or variant.id in novel_ids:
+                raise AgentError("A NEW design must be distinct and outside the menu, observations and pending batches")
+            alias = f"N{len(novel) + 1:02d}"
+            novel[alias] = variant
+            novel_ids.add(variant.id)
+            aliases.append(alias)
+            continue
         matched = re.fullmatch(r"(C[0-9]{2})(?: +|: *)([^\s]+)", record.strip()) if isinstance(record, str) else None
         if matched is None:
+            if excluded is not None:
+                raise AgentError("Each design needs a C alias and exact edits or NEW followed by off-menu edits")
             raise AgentError("Each design needs a C alias and the exact edit string, separated by a space or colon")
         alias, mutations = matched.groups()
         if alias not in menu:
@@ -281,8 +316,10 @@ def _proposal(response, menu, evidence, count, limit):
         if variant.sequence != menu[alias]["sequence"] or variant.edits != tuple(menu[alias]["edits"]):
             raise AgentError(f"Explicit edits do not reconstruct the displayed candidate {alias}")
         aliases.append(alias)
-    scientific_critic(aliases, set(menu), count=count)
-    return draft, aliases
+    if excluded is not None and not novel:
+        raise AgentError("Include at least one validated NEW design in the shortlist")
+    scientific_critic(aliases, menu.keys() | novel.keys(), count=count)
+    return draft, aliases, novel
 
 
 def _parse_gfp_final(text, choices, budget):
@@ -293,9 +330,20 @@ def _parse_gfp_final(text, choices, budget):
     return _parse_final(text, choices, budget)
 
 
-def select_candidates(request: dict, *, log_path: Path, backend="deepseek", replay_path=None, transport=None) -> list[str]:
+def select_candidates(request: dict, *, log_path: Path, backend="deepseek", replay_path=None,
+                      transport=None, score_novel=None) -> list[str]:
     """Use native tool calls or verify an archived GFP decision without provider use."""
     menu, evidence, shortlist_size = _prepare(request)
+    allows_novel = score_novel is not None
+    if allows_novel != ("pending_ids" in request) or (allows_novel and replay_path is not None):
+        raise AgentError("Off-menu scoring requires a user research request and a fitted predictor")
+    tools = TOOLS
+    if allows_novel:
+        function = {**TOOLS[0]["function"], "description": (
+            "Build and predict GFP variants from C aliases and their exact edits, or NEW followed by "
+            "off-menu colon-separated edits. The tool assigns N aliases to accepted new designs."
+        )}
+        tools = [{"type": "function", "function": function}]
     adapter = _transport(backend) if transport is None else transport
     log_path = Path(log_path)
     if log_path.exists():
@@ -312,6 +360,8 @@ def select_candidates(request: dict, *, log_path: Path, backend="deepseek", repl
         1024 if transport is not None else DEEPSEEK_PROPOSAL_TOKEN_CAP if backend == "deepseek" else PROPOSAL_TOKEN_CAP
     )
     final_cap = 840 if transport is not None or backend in {"deepseek", "sonnet"} else FINAL_TOKEN_CAP
+    if allows_novel:
+        proposal_cap, final_cap = (768, 440) if backend == "qwen" else (2304, 1400)
     log = {
         "format_version": 1, "mode": "replay" if archive else "live", "backend": backend,
         "model": adapter.model, "domain": "gfp_fluorescence",
@@ -333,7 +383,7 @@ def select_candidates(request: dict, *, log_path: Path, backend="deepseek", repl
             final = stage == "final_selection"
             native_choice = "none" if final else {"type": "function", "function": {"name": TOOL}}
             canonical = {
-                "model": adapter.model, "messages": messages, "tools": TOOLS, "tool_choice": native_choice,
+                "model": adapter.model, "messages": messages, "tools": tools, "tool_choice": native_choice,
                 "temperature": 0.0, "max_tokens": final_cap if final else proposal_cap,
                 "thinking": {"type": "disabled"},
             }
@@ -391,19 +441,29 @@ def select_candidates(request: dict, *, log_path: Path, backend="deepseek", repl
         raise AssertionError("unreachable")
 
     try:
-        messages = _messages(request, menu, evidence, shortlist_size)
-        proposal, native = complete("proposal", messages, lambda response: _proposal(
-            response, menu, evidence, shortlist_size, request["max_mutations"]
+        messages = _messages(request, menu, evidence, shortlist_size, allow_novel=allows_novel)
+        excluded = None
+        if allows_novel:
+            excluded = {row["id"] for row in request["observed"] + request["menu"]} | set(request["pending_ids"])
+        (draft, aliases, novel), native = complete("proposal", messages, lambda response: _proposal(
+            response, menu, evidence, shortlist_size, request["max_mutations"], excluded=excluded
         ))
-        draft, aliases = proposal
+        candidates = dict(menu)
+        if novel:
+            for (alias, variant), (score, spread) in zip(novel.items(), score_novel(list(novel.values())), strict=True):
+                if not _number(score) or not _number(spread) or spread < 0:
+                    raise AgentError("The fitted GFP predictor returned an invalid off-menu score")
+                candidates[alias] = {"alias": alias, "id": variant.id, "mutations": variant.mutant,
+                                     "sequence": variant.sequence, "edits": list(variant.edits), "prediction": score,
+                                     "uncertainty": spread, "rank": None, "source": "llm_off_menu"}
         scored = [
-            {"alias": key, "mutations": menu[key]["mutations"], "prediction": menu[key]["prediction"],
-             "uncertainty": menu[key]["uncertainty"], "roster_match": True} for key in aliases
+            {"alias": key, "mutations": candidates[key]["mutations"], "prediction": candidates[key]["prediction"],
+             "uncertainty": candidates[key]["uncertainty"], "roster_match": key in menu} for key in aliases
         ]
         tool_call = native["tool_calls"][0]
         log["tool_calls"].append({
             "tool": TOOL, "trigger": "model_tool_call", "call_id": tool_call["id"],
-            "arguments": draft, "result": [{**row, "sequence": menu[row["alias"]]["sequence"]} for row in scored],
+            "arguments": draft, "result": [{**row, "sequence": candidates[row["alias"]]["sequence"]} for row in scored],
         })
         ending = " Reply with bare JSON. Limit critic and selection_rationale to 25 words each." if transport is not None or backend in {"deepseek", "sonnet"} else ""
         final_messages = [
@@ -421,7 +481,7 @@ def select_candidates(request: dict, *, log_path: Path, backend="deepseek", repl
             lambda response: _parse_gfp_final(response["text"], set(aliases), request["budget"]),
             native=native.get("native_content"),
         )
-        selected = [menu[alias] for alias in final["candidate_ids"]]
+        selected = [candidates[alias] for alias in final["candidate_ids"]]
         resolved = [row["id"] for row in selected]
         log["tool_calls"].append({"tool": "gfp_critic", "result": {"legal": True, "unique": True, "n": len(selected)}})
         log["decision"] = {

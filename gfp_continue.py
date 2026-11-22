@@ -5,6 +5,7 @@ import csv
 import hashlib
 import json
 import math
+import os
 from dataclasses import dataclass, replace
 from pathlib import Path
 
@@ -81,12 +82,14 @@ def _load_state(path: Path) -> tuple[dict, str]:
 
 
 def _propose(dataset, output: Path, observations: dict[str, Measurement], *, prior: Path | None,
-             candidates: Path | None, backend: str, use_llm: bool, transport=None) -> dict:
+             candidates: Path | None, backend: str, use_llm: bool, transport=None, allow_novel=False) -> dict:
     from gfp_data import fit_predictor
     from gfp_evolution import build_menu, make_agent_request
 
     if output.exists() and any(output.iterdir()):
         raise FileExistsError(f"Use a fresh output directory: {output}")
+    if allow_novel and not use_llm:
+        raise ValueError("Off-menu GFP proposals require an LLM")
     previous, prior_sha = (_load_state(prior) if prior else (None, None))
     existing = ({row["mutant"]: Measurement(**row) for row in previous["observations"]} if previous else {})
     if set(existing) & set(observations):
@@ -99,17 +102,21 @@ def _propose(dataset, output: Path, observations: dict[str, Measurement], *, pri
     features = load_csv(candidates, measured=False) if candidates else dataset.variants
     excluded = set(visible) | outstanding
     eligible = {key: value for key, value in features.items() if key not in excluded}
-    budget = min(5, len(eligible))
+    budget = 5 if allow_novel else min(5, len(eligible))
     if budget == 0:
         raise ValueError("No new legal GFP candidates are eligible")
     model = fit_predictor([make_variant(k) for k in visible], [item.fitness for item in visible.values()],
                           seed=17, model="rf")
     keys = list(eligible)
     variants = list(eligible.values())
-    scores = dict(zip(keys, map(float, model.predict(variants)), strict=True))
-    uncertainty = dict(zip(keys, map(float, model.uncertainty(variants)), strict=True))
+    scores = dict(zip(keys, map(float, model.predict(variants)), strict=True)) if variants else {}
+    uncertainty = dict(zip(keys, map(float, model.uncertainty(variants)), strict=True)) if variants else {}
     round_number = (previous["round"] + 1) if previous else 1
     output.mkdir(parents=True, exist_ok=True)
+    artifacts = ["recommendations.csv", "imported_measurements.csv"]
+    source = "researcher_candidate_file" if candidates else "archive_features"
+    origins = dict.fromkeys(eligible, source)
+    selector = "rf"
     if use_llm:
         from gfp_agent import select_candidates
 
@@ -119,23 +126,43 @@ def _propose(dataset, output: Path, observations: dict[str, Measurement], *, pri
         request = make_agent_request(
             descriptors, {key: value.fitness for key, value in visible.items()}, menu,
             seed=17, round_number=round_number, budget=budget, knowledge=True,
-            latest_feedback_ids=list(observations) if previous else [],
+            latest_feedback_ids=list(observations)[:5] if previous else [],
         )
-        picks = select_candidates(request, backend="openai_compatible" if transport else backend,
-                                  log_path=output / "agent.json", transport=transport)
+        def score_novel(new_variants):
+            return zip(map(float, model.predict(new_variants)), map(float, model.uncertainty(new_variants)), strict=True)
+
+        if allow_novel:
+            request["pending_ids"] = sorted(outstanding)
+        selector = "openai_compatible" if transport else backend
+        _write_json(output / "agent_request.json", request)
+        picks = select_candidates(request, backend=selector, log_path=output / "agent.json", transport=transport,
+                                  score_novel=score_novel if allow_novel else None)
+        artifacts += ["agent_request.json", "agent.json"]
+        if allow_novel:
+            log = json.loads((output / "agent.json").read_text())
+            for row in log["decision"]["selected_candidates"]:
+                if row["source"] == "llm_off_menu":
+                    key = row["id"]
+                    eligible[key] = make_variant(row["mutations"])
+                    scores[key] = row["prediction"]
+                    origins[key] = row["source"]
     else:
         picks = sorted(eligible, key=lambda key: (-scores[key], key))[:budget]
     if len(picks) != budget or len(set(picks)) != budget or not set(picks) <= eligible.keys():
         raise ValueError("The selector returned an invalid next batch")
-    _write_csv(output / "recommendations.csv", RECOMMENDATION_COLUMNS,
-               [(key, eligible[key].sequence, scores[key], "", "prediction_only", backend if use_llm else "rf")
+    _write_csv(output / "recommendations.csv", (*RECOMMENDATION_COLUMNS, "origin"),
+               [(key, eligible[key].sequence, scores[key], "", "prediction_only", selector, origins[key])
                 for key in picks])
+    _write_csv(output / "imported_measurements.csv", MEASURED_COLUMNS,
+               [(item.mutant, item.fitness) for item in observations.values()])
     state = {
         "format": 1,
         "assay": ASSAY,
         "reference_sha256": _sha(dataset.wild_type.encode()),
         "round": round_number,
         "prior_state_sha256": prior_sha,
+        "prior_state_path": os.path.relpath(prior.resolve(), output.resolve()) if prior else None,
+        "artifacts": {name: _sha((output / name).read_bytes()) for name in artifacts},
         "observations": [{"mutant": key, "fitness": item.fitness} for key, item in visible.items()],
         "new_measurements": list(observations),
         "outstanding": sorted(outstanding | set(picks)),
@@ -178,8 +205,10 @@ def _demo(dataset, output: Path, *, backend: str, use_llm: bool, transport=None)
 
 def run_user_flow(dataset, output: Path, *, stage: str, measured_csv: Path | None,
                   prior_state: Path | None, batch_csv: Path | None, candidate_csv: Path | None,
-                  backend: str, use_llm: bool, transport=None) -> None:
+                  backend: str, use_llm: bool, transport=None, allow_novel=False) -> None:
     if stage == "demo":
+        if allow_novel:
+            raise ValueError("Use init or continue to generate off-menu GFP proposals")
         _demo(dataset, output, backend=backend, use_llm=use_llm, transport=transport)
         return
     source = measured_csv if stage == "init" else batch_csv
@@ -187,4 +216,4 @@ def run_user_flow(dataset, output: Path, *, stage: str, measured_csv: Path | Non
         raise ValueError("Supply --input for init or --state and --measurements for continue")
     _propose(dataset, output, load_csv(source, measured=True),
              prior=prior_state if stage == "continue" else None, candidates=candidate_csv,
-             backend=backend, use_llm=use_llm)
+             backend=backend, use_llm=use_llm, transport=transport, allow_novel=allow_novel)

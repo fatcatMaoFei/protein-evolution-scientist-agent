@@ -43,3 +43,7 @@ The compatibility profile used for the demonstration is stored locally. Its publ
 
 - [GFP primary study](https://doi.org/10.1038/nature17995) and [original data](https://doi.org/10.6084/m9.figshare.3102154.v1).
 - [ProteinGym 1.3 frozen release](https://doi.org/10.5281/zenodo.15293562).
+
+## GFP user workflow refinement after c594170
+
+Codex extended the optional user research policy to score off-menu GFP proposals, verified the user-state audit, and revised the report from existing batch measurements. The OpenAI-compatible user demonstration used actual DeepSeek outputs and imported one matching published GFP measurement after selection. Pending candidates have prediction values only. A response-limit failure remains in the product demonstration log. The formal experiments, original paired audit, and original report were not rerun or changed. [Product acceptance and tool records](evidence/gfp/product-refinement/acceptance.md)

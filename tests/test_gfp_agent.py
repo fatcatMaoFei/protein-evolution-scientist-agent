@@ -1,5 +1,6 @@
 import copy
 import json
+from pathlib import Path
 
 import pytest
 
@@ -96,6 +97,24 @@ def test_reject_non_gfp_target_and_hidden_labels(tmp_path):
     case["menu"][0]["fitness"] = 3.02
     with pytest.raises(AgentError, match="unexpected fields"):
         gfp_agent.select_candidates(case, log_path=tmp_path / "hidden.json")
+
+
+def test_novel_prompt_does_not_change_archived_qwen_roster_wire():
+    arm = Path(__file__).resolve().parents[1] / "evidence/gfp/formal/qwen/arms/seed-17/C_llm"
+    case = json.loads((arm / "round-01-request.json").read_text())
+    recorded = json.loads((arm / "round-01-agent.json").read_text())
+    adapter = gfp_agent.QwenGFP()
+    menu, evidence, shortlist = gfp_agent._prepare(case)
+    request = {
+        "model": adapter.model, "messages": gfp_agent._messages(case, menu, evidence, shortlist),
+        "tools": gfp_agent.TOOLS, "tool_choice": {"type": "function", "function": {"name": gfp_agent.TOOL}},
+        "max_tokens": recorded["config"]["proposal_max_tokens"],
+    }
+    assert adapter.encode(request, native_continuation=None) == recorded["calls"][0]["request"]
+
+    case["pending_ids"] = []
+    request["messages"] = gfp_agent._messages(case, menu, evidence, shortlist, allow_novel=True)
+    assert "NEW followed by legal off-menu edits" in adapter.encode(request, native_continuation=None)["structural_contract"]
 
 
 def test_tool_rejects_candidate_when_explicit_edits_disagree():
