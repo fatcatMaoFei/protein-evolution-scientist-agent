@@ -1,0 +1,35 @@
+{
+  "study": "P2 matched feedback intervention",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "model_config": {
+    "backend": "CodeFlow Chat Completions",
+    "temperature": 0.0,
+    "max_tokens": 512,
+    "thinking": {
+      "type": "disabled"
+    },
+    "api_base": "https://codeflow.sh/v1",
+    "model": "deepseek-ai/DeepSeek-V4.1-Flash"
+  },
+  "seeds": [
+    17,
+    29
+  ],
+  "arms": [
+    "C_llm",
+    "D_knowledge_llm"
+  ],
+  "round": 2,
+  "budget": 5,
+  "menu_size": 48,
+  "retrains_between_branches": false,
+  "protocol_file": "protocol-freeze.md",
+  "protocol_sha256": "ba440220fef45f853a87e1f3a38a22425b0e80998fe22bc2d4e835da06e79b18",
+  "source_sha256": "8d4b15b6fc68cd932d745cbd663d5ceae66dd54422e99c1e4865f2936ab7e2af",
+  "mode": "live",
+  "baseline_manifest": {
+    "config.json": "35af161ba68f09b3d492e18577a90f8accfbe0287be9f6a8c3df38fb7cebaf42",
+    "source.json": "f76af8041f63634f0c632281ed3a2e1f207c90aaf7d0089f71d98947afbd8ab8",
+    "status.json": "38d99b145f700439b070eddd125bac7f4334fb344c80044fd9df5d194505d494"
+  }
+}

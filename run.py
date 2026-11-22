@@ -68,11 +68,14 @@ def run_aggregate(output, archive=None):
 
 def main() -> None:
     cli = argparse.ArgumentParser(description=__doc__)
-    cli.add_argument("study", choices=("smoke", "gb1", "concrete", "report", "all", "full", "replay", "replay-full", *BACKENDS))
+    cli.add_argument("study", choices=("smoke", "gb1", "concrete", "report", "audit", "all", "full", "replay", "replay-full", *BACKENDS))
     cli.add_argument("--output", type=Path, required=True)
     cli.add_argument("--evidence", type=Path, default=ROOT / "evidence")
     cli.add_argument("--workers", type=int, default=4)
     cli.add_argument("--smoke", action="store_true", help="Use seed 7 and one round for a named add-on.")
+    audit_mode = cli.add_mutually_exclusive_group()
+    audit_mode.add_argument("--paired", action="store_true", help="Include the live paired feedback audit.")
+    audit_mode.add_argument("--replay-audit", type=Path, help="Replay already archived audit decisions.")
     args = cli.parse_args()
     output, evidence = args.output.resolve(), args.evidence.resolve()
     if args.workers < 1:
@@ -80,6 +83,11 @@ def main() -> None:
     if args.study == "report":
         from reporting import build_report
         build_report(evidence, output)
+        return
+    if args.study == "audit":
+        from decision_audit import run as run_audit
+        result = run_audit(evidence, output, paired=args.paired, replay=args.replay_audit)
+        print(result["trajectory_status"], result["paired_status"], output)
         return
     if output.exists() and any(output.iterdir()):
         cli.error(f"output directory must be empty: {output}")

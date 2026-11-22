@@ -62,3 +62,17 @@ flowchart LR
 - 运行 .venv/bin/python -m pytest -q 可执行自动测试。运行 .venv/bin/python verify.py 可从锁定材料测量和账本复核主实验。
 
 人类作者需复核任务范围、主要主张、原始出处和 AI 披露，再决定提交内容。
+
+## 科研决策审计
+
+审计器直接读取四模型的冻结轨迹，生成可追溯的实验状态、假设、候选评分、选择与下一轮记录。配对检查为独立实验，冻结 RF 权重和候选菜单，仅改变上一轮实测反馈的可见性。与同菜单的 Model-Only 贪心策略一起评分。
+
+~~~bash
+.venv/bin/python run.py audit --output runs/audit-traces
+.venv/bin/python run.py audit --output runs/audit-live --paired
+.venv/bin/python run.py audit --output runs/audit-verified --replay-audit evidence/decision-audit
+~~~
+
+第一条重建轨迹。第二条额外调用 CodeFlow DeepSeek，需要进程环境中的 CODEFLOW_API_KEY。第三条复核已归档的审计配对，无模型 API 调用。审计写入新目录并校验主实验输入哈希。
+
+[审计报告](evidence/decision-audit/audit_report.md) · [检查点协议](audit_protocol.md) · [配对结果](evidence/decision-audit/paired_feedback_results.csv) · [审计摘要](evidence/decision-audit/audit_summary.json)

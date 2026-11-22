@@ -26,3 +26,7 @@ The endpoint identifies the served model alias. The gateway does not provide ind
 - OpenAI [GPT-6 Luna](https://developers.openai.com/api/docs/models/gpt-6-luna) and [Responses API](https://developers.openai.com/api/reference/resources/responses/methods/create).
 - Alibaba Qwen [base Qwen3-4B checkpoint](https://huggingface.co/Qwen/Qwen3-4B), [pinned MLX 4-bit conversion](https://huggingface.co/mlx-community/Qwen3-4B-4bit/tree/4dcb3d101c2a062e5c1d4bb173588c54ea6c4d25) (Apache-2.0), and [MLX LM](https://github.com/ml-explore/mlx-lm).
 - Federal Highway Administration materials heuristics [FHWA-HRT-04-150 Chapter 9](https://www.fhwa.dot.gov/publications/research/infrastructure/pavements/pccp/04150/chapt9.cfm) and [FHWA-HRT-04-122 Chapter 5](https://www.fhwa.dot.gov/publications/research/infrastructure/pavements/pccp/05042/05.cfm). Observation-derived knowledge is recalculated from each arm's revealed history.
+
+## Scientific Decision Auditor
+
+The user requested a separate audit after the main model experiments. Codex implemented the archive-linked trace reconstruction, four paired DeepSeek feedback checkpoints and a model-only comparator. The auditor adapts the separation of acquired information, action changes and realized outcome studied in [LLMDictator](https://github.com/fatcatMaoFei/LLMDictator/tree/b5e221cb69d7c395d47f6f19e7a0f89bc62d6894). The audit uses the concrete benchmark's frozen artifacts and independent tool traces. Its requests and measurements are recorded separately from the 450 formal main-study queries.
