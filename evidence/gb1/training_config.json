@@ -1,0 +1,24 @@
+{
+  "seed": 1701,
+  "threads": 1,
+  "ridge_alpha": [
+    0.1,
+    1.0,
+    10.0,
+    100.0
+  ],
+  "ridge_solver": "lsqr",
+  "random_forest_min_samples_leaf": [
+    1,
+    3,
+    8
+  ],
+  "random_forest_n_estimators": 160,
+  "random_forest_max_features": 0.7,
+  "model_selection": "validation Spearman descending, MSE ascending, grid order",
+  "fit_partition": "train",
+  "selection_partition": "validation",
+  "evaluation_partition": "test",
+  "top_fraction": 0.05,
+  "high_fitness": "assay score > 1 (wild type)"
+}

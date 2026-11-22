@@ -1,0 +1,57 @@
+{
+  "fields": [
+    "sequence",
+    "target",
+    "set",
+    "validation"
+  ],
+  "rows": 8733,
+  "sequence_length": 265,
+  "variable_construct_coordinates_1_based": [
+    39,
+    40,
+    41,
+    54
+  ],
+  "observed_residue_alphabet_size": 20,
+  "duplicate_sequences": 0,
+  "missing_sequences": 0,
+  "malformed_sequences": 0,
+  "missing_or_nonfinite_targets": 0,
+  "negative_targets": 0,
+  "zero_targets": 574,
+  "wt_reference_fitness": 1.0,
+  "target_direction": "higher is greater assay enrichment relative to WT",
+  "partition_intersection_count": 0,
+  "partitions": {
+    "train": {
+      "rows": 2691,
+      "above_wt": 1359,
+      "edits": {
+        "0": 1,
+        "1": 23,
+        "2": 360,
+        "3": 2307
+      },
+      "source_row_index_sha256": "85fa4392519535e5a5eb2cc0ed5d196dd280ac3a4335e376dde72a2145e311eb"
+    },
+    "validation": {
+      "rows": 299,
+      "above_wt": 133,
+      "edits": {
+        "1": 4,
+        "2": 36,
+        "3": 259
+      },
+      "source_row_index_sha256": "d8293e0ce6765dc5c6bd6778d691c250a229f8493720b6cc6ab72a118e810211"
+    },
+    "test": {
+      "rows": 5743,
+      "above_wt": 2151,
+      "edits": {
+        "4": 5743
+      },
+      "source_row_index_sha256": "49859784bf81c5606639f8c4a0c55a85175a9a6a3810711635a77e8fdaa65337"
+    }
+  }
+}

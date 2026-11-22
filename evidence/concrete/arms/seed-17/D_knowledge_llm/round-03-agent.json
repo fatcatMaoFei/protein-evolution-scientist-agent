@@ -1,0 +1,1506 @@
+{
+  "format_version": 2,
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "config": {
+    "backend": "CodeFlow Chat Completions",
+    "temperature": 0.0,
+    "max_tokens": 512,
+    "thinking": {
+      "type": "disabled"
+    },
+    "api_base": "https://codeflow.sh/v1",
+    "model": "deepseek-ai/DeepSeek-V4.1-Flash"
+  },
+  "mode": "live",
+  "seed": 17,
+  "round": 3,
+  "knowledge_augmented": true,
+  "budget": 5,
+  "menu": [
+    {
+      "alias": "C01",
+      "id": "mix-322",
+      "source": "top_prediction",
+      "prediction": 55.6894366939484,
+      "rank": 1,
+      "inputs": {
+        "cement": 326.0,
+        "slag": 166.0,
+        "fly_ash": 0.0,
+        "water": 174.0,
+        "superplasticizer": 9.0,
+        "coarse_aggregate": 882.0,
+        "fine_aggregate": 790.0,
+        "age": 28.0
+      },
+      "rf_tree_disagreement": 9.033191915221416
+    },
+    {
+      "alias": "C02",
+      "id": "mix-299",
+      "source": "top_prediction",
+      "prediction": 50.86725520833332,
+      "rank": 2,
+      "inputs": {
+        "cement": 313.3,
+        "slag": 262.2,
+        "fly_ash": 0.0,
+        "water": 175.5,
+        "superplasticizer": 8.6,
+        "coarse_aggregate": 1046.9,
+        "fine_aggregate": 611.8,
+        "age": 28.0
+      },
+      "rf_tree_disagreement": 15.633987151262009
+    },
+    {
+      "alias": "C03",
+      "id": "mix-367",
+      "source": "top_prediction",
+      "prediction": 50.780920758928566,
+      "rank": 3,
+      "inputs": {
+        "cement": 387.0,
+        "slag": 20.0,
+        "fly_ash": 94.0,
+        "water": 157.0,
+        "superplasticizer": 13.9,
+        "coarse_aggregate": 938.0,
+        "fine_aggregate": 845.0,
+        "age": 28.0
+      },
+      "rf_tree_disagreement": 8.753384766592182
+    },
+    {
+      "alias": "C04",
+      "id": "mix-234",
+      "source": "top_prediction",
+      "prediction": 50.637455977182576,
+      "rank": 4,
+      "inputs": {
+        "cement": 277.2,
+        "slag": 97.8,
+        "fly_ash": 24.5,
+        "water": 160.7,
+        "superplasticizer": 11.2,
+        "coarse_aggregate": 1061.7,
+        "fine_aggregate": 782.5,
+        "age": 28.0
+      },
+      "rf_tree_disagreement": 6.244832774467658
+    },
+    {
+      "alias": "C05",
+      "id": "mix-392",
+      "source": "top_prediction",
+      "prediction": 50.481627759176604,
+      "rank": 5,
+      "inputs": {
+        "cement": 475.0,
+        "slag": 0.0,
+        "fly_ash": 0.0,
+        "water": 162.0,
+        "superplasticizer": 9.5,
+        "coarse_aggregate": 1044.0,
+        "fine_aggregate": 662.0,
+        "age": 28.0
+      },
+      "rf_tree_disagreement": 8.421792635148257
+    },
+    {
+      "alias": "C06",
+      "id": "mix-241",
+      "source": "top_prediction",
+      "prediction": 50.051822916666694,
+      "rank": 6,
+      "inputs": {
+        "cement": 284.0,
+        "slag": 120.0,
+        "fly_ash": 0.0,
+        "water": 168.0,
+        "superplasticizer": 7.0,
+        "coarse_aggregate": 970.0,
+        "fine_aggregate": 794.0,
+        "age": 28.0
+      },
+      "rf_tree_disagreement": 6.212024648567582
+    },
+    {
+      "alias": "C07",
+      "id": "mix-408",
+      "source": "top_prediction",
+      "prediction": 49.869359343998035,
+      "rank": 7,
+      "inputs": {
+        "cement": 520.0,
+        "slag": 0.0,
+        "fly_ash": 0.0,
+        "water": 170.0,
+        "superplasticizer": 5.2,
+        "coarse_aggregate": 855.0,
+        "fine_aggregate": 855.0,
+        "age": 28.0
+      },
+      "rf_tree_disagreement": 9.497860191279694
+    },
+    {
+      "alias": "C08",
+      "id": "mix-415",
+      "source": "top_prediction",
+      "prediction": 49.009665147569464,
+      "rank": 8,
+      "inputs": {
+        "cement": 540.0,
+        "slag": 0.0,
+        "fly_ash": 0.0,
+        "water": 162.0,
+        "superplasticizer": 2.5,
+        "coarse_aggregate": 1055.0,
+        "fine_aggregate": 676.0,
+        "age": 28.0
+      },
+      "rf_tree_disagreement": 9.729736530311119
+    },
+    {
+      "alias": "C09",
+      "id": "mix-348",
+      "source": "top_prediction",
+      "prediction": 48.424577008928566,
+      "rank": 9,
+      "inputs": {
+        "cement": 359.0,
+        "slag": 19.0,
+        "fly_ash": 141.0,
+        "water": 154.0,
+        "superplasticizer": 10.9,
+        "coarse_aggregate": 942.0,
+        "fine_aggregate": 801.0,
+        "age": 28.0
+      },
+      "rf_tree_disagreement": 9.753752950026058
+    },
+    {
+      "alias": "C10",
+      "id": "mix-398",
+      "source": "top_prediction",
+      "prediction": 47.585675936259925,
+      "rank": 10,
+      "inputs": {
+        "cement": 485.0,
+        "slag": 0.0,
+        "fly_ash": 0.0,
+        "water": 146.0,
+        "superplasticizer": 0.0,
+        "coarse_aggregate": 1120.0,
+        "fine_aggregate": 800.0,
+        "age": 28.0
+      },
+      "rf_tree_disagreement": 10.830389729054028
+    },
+    {
+      "alias": "C11",
+      "id": "mix-409",
+      "source": "top_prediction",
+      "prediction": 47.233564205109126,
+      "rank": 11,
+      "inputs": {
+        "cement": 520.0,
+        "slag": 0.0,
+        "fly_ash": 0.0,
+        "water": 175.0,
+        "superplasticizer": 5.2,
+        "coarse_aggregate": 870.0,
+        "fine_aggregate": 805.0,
+        "age": 28.0
+      },
+      "rf_tree_disagreement": 9.607249887587734
+    },
+    {
+      "alias": "C12",
+      "id": "mix-233",
+      "source": "top_prediction",
+      "prediction": 46.97320070684526,
+      "rank": 12,
+      "inputs": {
+        "cement": 277.1,
+        "slag": 0.0,
+        "fly_ash": 97.4,
+        "water": 160.6,
+        "superplasticizer": 11.8,
+        "coarse_aggregate": 973.9,
+        "fine_aggregate": 875.6,
+        "age": 28.0
+      },
+      "rf_tree_disagreement": 7.4107211997999665
+    },
+    {
+      "alias": "C13",
+      "id": "mix-246",
+      "source": "top_prediction",
+      "prediction": 46.880278335813465,
+      "rank": 13,
+      "inputs": {
+        "cement": 288.0,
+        "slag": 121.0,
+        "fly_ash": 0.0,
+        "water": 177.0,
+        "superplasticizer": 7.0,
+        "coarse_aggregate": 908.0,
+        "fine_aggregate": 829.0,
+        "age": 28.0
+      },
+      "rf_tree_disagreement": 7.127133014983931
+    },
+    {
+      "alias": "C14",
+      "id": "mix-248",
+      "source": "top_prediction",
+      "prediction": 46.79839031498013,
+      "rank": 14,
+      "inputs": {
+        "cement": 288.4,
+        "slag": 121.0,
+        "fly_ash": 0.0,
+        "water": 177.4,
+        "superplasticizer": 7.0,
+        "coarse_aggregate": 907.9,
+        "fine_aggregate": 829.5,
+        "age": 28.0
+      },
+      "rf_tree_disagreement": 7.118589205789651
+    },
+    {
+      "alias": "C15",
+      "id": "mix-253",
+      "source": "top_prediction",
+      "prediction": 46.63007006448415,
+      "rank": 15,
+      "inputs": {
+        "cement": 290.4,
+        "slag": 0.0,
+        "fly_ash": 96.2,
+        "water": 168.1,
+        "superplasticizer": 9.4,
+        "coarse_aggregate": 961.2,
+        "fine_aggregate": 865.0,
+        "age": 28.0
+      },
+      "rf_tree_disagreement": 7.950233877707167
+    },
+    {
+      "alias": "C16",
+      "id": "mix-395",
+      "source": "top_prediction",
+      "prediction": 46.21832031249996,
+      "rank": 16,
+      "inputs": {
+        "cement": 475.0,
+        "slag": 118.8,
+        "fly_ash": 0.0,
+        "water": 181.1,
+        "superplasticizer": 8.9,
+        "coarse_aggregate": 852.1,
+        "fine_aggregate": 781.5,
+        "age": 28.0
+      },
+      "rf_tree_disagreement": 7.768880664053951
+    },
+    {
+      "alias": "C17",
+      "id": "mix-199",
+      "source": "top_prediction",
+      "prediction": 46.13999088541668,
+      "rank": 17,
+      "inputs": {
+        "cement": 251.8,
+        "slag": 0.0,
+        "fly_ash": 99.9,
+        "water": 146.1,
+        "superplasticizer": 12.4,
+        "coarse_aggregate": 1006.0,
+        "fine_aggregate": 899.8,
+        "age": 28.0
+      },
+      "rf_tree_disagreement": 7.006850683045244
+    },
+    {
+      "alias": "C18",
+      "id": "mix-203",
+      "source": "top_prediction",
+      "prediction": 46.11402734375001,
+      "rank": 18,
+      "inputs": {
+        "cement": 252.3,
+        "slag": 0.0,
+        "fly_ash": 98.8,
+        "water": 146.3,
+        "superplasticizer": 14.2,
+        "coarse_aggregate": 987.8,
+        "fine_aggregate": 889.0,
+        "age": 28.0
+      },
+      "rf_tree_disagreement": 7.101603709964083
+    },
+    {
+      "alias": "C19",
+      "id": "mix-301",
+      "source": "top_prediction",
+      "prediction": 45.98736687748017,
+      "rank": 19,
+      "inputs": {
+        "cement": 314.0,
+        "slag": 0.0,
+        "fly_ash": 113.0,
+        "water": 170.0,
+        "superplasticizer": 10.0,
+        "coarse_aggregate": 925.0,
+        "fine_aggregate": 783.0,
+        "age": 28.0
+      },
+      "rf_tree_disagreement": 8.169953377637029
+    },
+    {
+      "alias": "C20",
+      "id": "mix-300",
+      "source": "top_prediction",
+      "prediction": 45.836421564980164,
+      "rank": 20,
+      "inputs": {
+        "cement": 313.8,
+        "slag": 0.0,
+        "fly_ash": 112.6,
+        "water": 169.9,
+        "superplasticizer": 10.1,
+        "coarse_aggregate": 925.3,
+        "fine_aggregate": 782.9,
+        "age": 28.0
+      },
+      "rf_tree_disagreement": 8.17464615259164
+    },
+    {
+      "alias": "C21",
+      "id": "mix-255",
+      "source": "top_prediction",
+      "prediction": 45.60528230406747,
+      "rank": 21,
+      "inputs": {
+        "cement": 295.7,
+        "slag": 0.0,
+        "fly_ash": 95.6,
+        "water": 171.5,
+        "superplasticizer": 8.9,
+        "coarse_aggregate": 955.1,
+        "fine_aggregate": 859.2,
+        "age": 28.0
+      },
+      "rf_tree_disagreement": 8.294202979426935
+    },
+    {
+      "alias": "C22",
+      "id": "mix-376",
+      "source": "top_prediction",
+      "prediction": 45.594046130952385,
+      "rank": 22,
+      "inputs": {
+        "cement": 397.0,
+        "slag": 17.2,
+        "fly_ash": 158.0,
+        "water": 167.0,
+        "superplasticizer": 20.8,
+        "coarse_aggregate": 967.0,
+        "fine_aggregate": 633.0,
+        "age": 28.0
+      },
+      "rf_tree_disagreement": 12.084200069714985
+    },
+    {
+      "alias": "C23",
+      "id": "mix-146",
+      "source": "top_prediction",
+      "prediction": 44.25303280009921,
+      "rank": 23,
+      "inputs": {
+        "cement": 194.7,
+        "slag": 0.0,
+        "fly_ash": 100.5,
+        "water": 165.6,
+        "superplasticizer": 7.5,
+        "coarse_aggregate": 1006.4,
+        "fine_aggregate": 905.9,
+        "age": 28.0
+      },
+      "rf_tree_disagreement": 10.10651669894948
+    },
+    {
+      "alias": "C24",
+      "id": "mix-175",
+      "source": "top_prediction",
+      "prediction": 43.95279774305558,
+      "rank": 24,
+      "inputs": {
+        "cement": 231.8,
+        "slag": 0.0,
+        "fly_ash": 121.6,
+        "water": 174.0,
+        "superplasticizer": 6.7,
+        "coarse_aggregate": 1056.4,
+        "fine_aggregate": 778.5,
+        "age": 28.0
+      },
+      "rf_tree_disagreement": 9.390477702768628
+    },
+    {
+      "alias": "C25",
+      "id": "mix-257",
+      "source": "seeded_sample",
+      "prediction": 27.672295324900787,
+      "rank": 125,
+      "inputs": {
+        "cement": 296.0,
+        "slag": 0.0,
+        "fly_ash": 0.0,
+        "water": 186.0,
+        "superplasticizer": 0.0,
+        "coarse_aggregate": 1090.0,
+        "fine_aggregate": 769.0,
+        "age": 28.0
+      },
+      "rf_tree_disagreement": 4.635186459601841
+    },
+    {
+      "alias": "C26",
+      "id": "mix-180",
+      "source": "seeded_sample",
+      "prediction": 35.78813439360119,
+      "rank": 69,
+      "inputs": {
+        "cement": 236.9,
+        "slag": 91.7,
+        "fly_ash": 71.5,
+        "water": 246.9,
+        "superplasticizer": 6.0,
+        "coarse_aggregate": 852.9,
+        "fine_aggregate": 695.4,
+        "age": 28.0
+      },
+      "rf_tree_disagreement": 6.409158605838823
+    },
+    {
+      "alias": "C27",
+      "id": "mix-346",
+      "source": "seeded_sample",
+      "prediction": 37.62361728050595,
+      "rank": 54,
+      "inputs": {
+        "cement": 356.0,
+        "slag": 0.0,
+        "fly_ash": 142.0,
+        "water": 193.0,
+        "superplasticizer": 11.0,
+        "coarse_aggregate": 801.0,
+        "fine_aggregate": 778.0,
+        "age": 28.0
+      },
+      "rf_tree_disagreement": 6.049574774936816
+    },
+    {
+      "alias": "C28",
+      "id": "mix-339",
+      "source": "seeded_sample",
+      "prediction": 31.37562286086309,
+      "rank": 100,
+      "inputs": {
+        "cement": 349.0,
+        "slag": 0.0,
+        "fly_ash": 0.0,
+        "water": 192.0,
+        "superplasticizer": 0.0,
+        "coarse_aggregate": 1047.0,
+        "fine_aggregate": 806.0,
+        "age": 28.0
+      },
+      "rf_tree_disagreement": 8.237560044015671
+    },
+    {
+      "alias": "C29",
+      "id": "mix-101",
+      "source": "seeded_sample",
+      "prediction": 31.586732793898804,
+      "rank": 97,
+      "inputs": {
+        "cement": 159.0,
+        "slag": 209.0,
+        "fly_ash": 161.0,
+        "water": 201.0,
+        "superplasticizer": 7.0,
+        "coarse_aggregate": 848.0,
+        "fine_aggregate": 669.0,
+        "age": 28.0
+      },
+      "rf_tree_disagreement": 10.272629355329155
+    },
+    {
+      "alias": "C30",
+      "id": "mix-195",
+      "source": "seeded_sample",
+      "prediction": 37.083092478918644,
+      "rank": 56,
+      "inputs": {
+        "cement": 250.2,
+        "slag": 166.8,
+        "fly_ash": 0.0,
+        "water": 203.5,
+        "superplasticizer": 0.0,
+        "coarse_aggregate": 977.6,
+        "fine_aggregate": 694.1,
+        "age": 28.0
+      },
+      "rf_tree_disagreement": 6.412035671046361
+    },
+    {
+      "alias": "C31",
+      "id": "mix-076",
+      "source": "seeded_sample",
+      "prediction": 19.613330543154753,
+      "rank": 163,
+      "inputs": {
+        "cement": 153.1,
+        "slag": 145.0,
+        "fly_ash": 113.0,
+        "water": 178.5,
+        "superplasticizer": 8.0,
+        "coarse_aggregate": 1001.9,
+        "fine_aggregate": 688.7,
+        "age": 28.0
+      },
+      "rf_tree_disagreement": 6.163839678336222
+    },
+    {
+      "alias": "C32",
+      "id": "mix-161",
+      "source": "seeded_sample",
+      "prediction": 43.595640438988106,
+      "rank": 26,
+      "inputs": {
+        "cement": 213.5,
+        "slag": 0.0,
+        "fly_ash": 174.2,
+        "water": 154.6,
+        "superplasticizer": 11.7,
+        "coarse_aggregate": 1052.3,
+        "fine_aggregate": 775.5,
+        "age": 28.0
+      },
+      "rf_tree_disagreement": 9.871688065764102
+    },
+    {
+      "alias": "C33",
+      "id": "mix-355",
+      "source": "seeded_sample",
+      "prediction": 34.34890070064483,
+      "rank": 77,
+      "inputs": {
+        "cement": 375.0,
+        "slag": 0.0,
+        "fly_ash": 0.0,
+        "water": 186.0,
+        "superplasticizer": 0.0,
+        "coarse_aggregate": 1038.0,
+        "fine_aggregate": 758.0,
+        "age": 28.0
+      },
+      "rf_tree_disagreement": 6.5897931909249
+    },
+    {
+      "alias": "C34",
+      "id": "mix-221",
+      "source": "seeded_sample",
+      "prediction": 36.33770489211308,
+      "rank": 65,
+      "inputs": {
+        "cement": 272.8,
+        "slag": 105.1,
+        "fly_ash": 81.8,
+        "water": 209.7,
+        "superplasticizer": 9.0,
+        "coarse_aggregate": 904.0,
+        "fine_aggregate": 679.7,
+        "age": 28.0
+      },
+      "rf_tree_disagreement": 3.907543225491227
+    },
+    {
+      "alias": "C35",
+      "id": "mix-397",
+      "source": "seeded_sample",
+      "prediction": 36.80929020957338,
+      "rank": 57,
+      "inputs": {
+        "cement": 480.0,
+        "slag": 0.0,
+        "fly_ash": 0.0,
+        "water": 192.0,
+        "superplasticizer": 0.0,
+        "coarse_aggregate": 936.2,
+        "fine_aggregate": 712.2,
+        "age": 28.0
+      },
+      "rf_tree_disagreement": 7.358582550428171
+    },
+    {
+      "alias": "C36",
+      "id": "mix-062",
+      "source": "seeded_sample",
+      "prediction": 21.81323437499999,
+      "rank": 156,
+      "inputs": {
+        "cement": 151.0,
+        "slag": 0.0,
+        "fly_ash": 184.0,
+        "water": 167.0,
+        "superplasticizer": 12.0,
+        "coarse_aggregate": 991.0,
+        "fine_aggregate": 772.0,
+        "age": 28.0
+      },
+      "rf_tree_disagreement": 10.372472207699117
+    },
+    {
+      "alias": "C37",
+      "id": "mix-216",
+      "source": "seeded_sample",
+      "prediction": 39.066932384672626,
+      "rank": 43,
+      "inputs": {
+        "cement": 265.0,
+        "slag": 111.0,
+        "fly_ash": 86.0,
+        "water": 195.0,
+        "superplasticizer": 6.0,
+        "coarse_aggregate": 833.0,
+        "fine_aggregate": 790.0,
+        "age": 28.0
+      },
+      "rf_tree_disagreement": 8.991970906896618
+    },
+    {
+      "alias": "C38",
+      "id": "mix-030",
+      "source": "seeded_sample",
+      "prediction": 23.29572721354166,
+      "rank": 153,
+      "inputs": {
+        "cement": 144.0,
+        "slag": 0.0,
+        "fly_ash": 175.0,
+        "water": 158.0,
+        "superplasticizer": 18.0,
+        "coarse_aggregate": 943.0,
+        "fine_aggregate": 844.0,
+        "age": 28.0
+      },
+      "rf_tree_disagreement": 11.79676433720499
+    },
+    {
+      "alias": "C39",
+      "id": "mix-208",
+      "source": "seeded_sample",
+      "prediction": 36.47768288070436,
+      "rank": 63,
+      "inputs": {
+        "cement": 255.5,
+        "slag": 170.3,
+        "fly_ash": 0.0,
+        "water": 185.7,
+        "superplasticizer": 0.0,
+        "coarse_aggregate": 1026.6,
+        "fine_aggregate": 724.3,
+        "age": 28.0
+      },
+      "rf_tree_disagreement": 7.566304014873911
+    },
+    {
+      "alias": "C40",
+      "id": "mix-145",
+      "source": "seeded_sample",
+      "prediction": 36.46672296626984,
+      "rank": 64,
+      "inputs": {
+        "cement": 193.5,
+        "slag": 290.2,
+        "fly_ash": 0.0,
+        "water": 185.7,
+        "superplasticizer": 0.0,
+        "coarse_aggregate": 998.2,
+        "fine_aggregate": 704.3,
+        "age": 28.0
+      },
+      "rf_tree_disagreement": 7.3795582300481115
+    },
+    {
+      "alias": "C41",
+      "id": "mix-019",
+      "source": "seeded_sample",
+      "prediction": 22.917285156250003,
+      "rank": 154,
+      "inputs": {
+        "cement": 139.9,
+        "slag": 132.6,
+        "fly_ash": 103.3,
+        "water": 200.3,
+        "superplasticizer": 7.4,
+        "coarse_aggregate": 916.0,
+        "fine_aggregate": 753.4,
+        "age": 28.0
+      },
+      "rf_tree_disagreement": 8.012258704801377
+    },
+    {
+      "alias": "C42",
+      "id": "mix-147",
+      "source": "seeded_sample",
+      "prediction": 43.62140873015874,
+      "rank": 25,
+      "inputs": {
+        "cement": 194.7,
+        "slag": 0.0,
+        "fly_ash": 100.5,
+        "water": 170.2,
+        "superplasticizer": 7.5,
+        "coarse_aggregate": 998.0,
+        "fine_aggregate": 901.8,
+        "age": 28.0
+      },
+      "rf_tree_disagreement": 10.682526673629033
+    },
+    {
+      "alias": "C43",
+      "id": "mix-237",
+      "source": "seeded_sample",
+      "prediction": 27.405807973710306,
+      "rank": 127,
+      "inputs": {
+        "cement": 281.0,
+        "slag": 0.0,
+        "fly_ash": 0.0,
+        "water": 185.0,
+        "superplasticizer": 0.0,
+        "coarse_aggregate": 1104.0,
+        "fine_aggregate": 774.0,
+        "age": 28.0
+      },
+      "rf_tree_disagreement": 4.845177380821631
+    },
+    {
+      "alias": "C44",
+      "id": "mix-136",
+      "source": "seeded_sample",
+      "prediction": 38.6888581969246,
+      "rank": 45,
+      "inputs": {
+        "cement": 182.0,
+        "slag": 45.2,
+        "fly_ash": 122.0,
+        "water": 170.2,
+        "superplasticizer": 8.2,
+        "coarse_aggregate": 1059.4,
+        "fine_aggregate": 780.7,
+        "age": 28.0
+      },
+      "rf_tree_disagreement": 13.795404587161139
+    },
+    {
+      "alias": "C45",
+      "id": "mix-070",
+      "source": "seeded_sample",
+      "prediction": 26.53834551711309,
+      "rank": 137,
+      "inputs": {
+        "cement": 153.0,
+        "slag": 102.0,
+        "fly_ash": 0.0,
+        "water": 192.0,
+        "superplasticizer": 0.0,
+        "coarse_aggregate": 888.0,
+        "fine_aggregate": 943.1,
+        "age": 28.0
+      },
+      "rf_tree_disagreement": 8.427329504236122
+    },
+    {
+      "alias": "C46",
+      "id": "mix-077",
+      "source": "seeded_sample",
+      "prediction": 19.52858035714285,
+      "rank": 164,
+      "inputs": {
+        "cement": 153.6,
+        "slag": 144.2,
+        "fly_ash": 112.3,
+        "water": 220.1,
+        "superplasticizer": 10.1,
+        "coarse_aggregate": 923.2,
+        "fine_aggregate": 657.9,
+        "age": 28.0
+      },
+      "rf_tree_disagreement": 8.563280830026658
+    },
+    {
+      "alias": "C47",
+      "id": "mix-023",
+      "source": "seeded_sample",
+      "prediction": 31.56066127232144,
+      "rank": 98,
+      "inputs": {
+        "cement": 141.9,
+        "slag": 166.6,
+        "fly_ash": 129.7,
+        "water": 173.5,
+        "superplasticizer": 10.9,
+        "coarse_aggregate": 882.6,
+        "fine_aggregate": 785.3,
+        "age": 28.0
+      },
+      "rf_tree_disagreement": 15.714799362981461
+    },
+    {
+      "alias": "C48",
+      "id": "mix-319",
+      "source": "seeded_sample",
+      "prediction": 28.76071242559523,
+      "rank": 118,
+      "inputs": {
+        "cement": 325.0,
+        "slag": 0.0,
+        "fly_ash": 0.0,
+        "water": 184.0,
+        "superplasticizer": 0.0,
+        "coarse_aggregate": 1063.0,
+        "fine_aggregate": 783.0,
+        "age": 28.0
+      },
+      "rf_tree_disagreement": 6.977194884568529
+    }
+  ],
+  "calls": [
+    {
+      "stage": "proposal",
+      "attempt": 1,
+      "request_sha256": "9d697aea197c8842bcfd6aabf5cef580fff38bb28ba713e0e354fe307d38bcf4",
+      "request": {
+        "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+        "messages": [
+          {
+            "role": "system",
+            "content": "You are running a retrospective decision experiment on measured 28-day concrete mixtures. Maximize measured compressive strength (MPa) under a fixed small batch budget. Treat model predictions as estimates and only reported observations as measured. You may choose high predictions, or use a plausible and evidence-linked reason to explore. Candidate aliases only identify entries in the displayed menu. Never invent recipes or references. Do not use remembered values for candidate recipes. Mention both uncertainty and likely upside."
+          },
+          {
+            "role": "user",
+            "content": "Act as Data Analyst, Hypothesis Generator and Recipe Designer. Write one short analysis sentence and one short, testable hypothesis. Cite 1 to 3 IDs from the observed strongest/weakest examples. Then call evaluate_concrete_shortlist with 7 distinct candidate aliases like C01 to C48. Do not output any content outside the single native tool call. Ingredients are kg/m3 and age is days. RF tree SD measures model disagreement and is not a calibrated confidence interval. After receiving your tool output, act as Scientific Critic. Explain one plausible limitation or combination risk and why your final choices merit testing. Return one JSON object only, without markdown: {\"candidate_ids\":[...],\"critic\":\"...\",\"selection_rationale\":\"...\"}. Then use exactly 5 distinct aliases from the evaluator output and order by test priority. Keep both text fields to one short sentence.\n{\"budget\":5,\"knowledge\":{\"fixed_materials_context\":[\"Water to total cementitious mass is water/(cement + slag + fly_ash). Lower ratios often correspond to higher compressive strength, conditional on workable mixes and comparability of binder, aggregates, and curing.\",\"Superplasticizer can permit workable mixes at lower water content. Its effect need not be additive with water content.\",\"Replacing cement mass with slag or fly ash changes binder hydration. Total binder mass alone cannot identify the effect of replacement at a fixed curing age.\",\"Single-column summaries confound the other ingredients, and evidence across a combination does not identify the independent effect of each change.\"],\"menu_water_to_total_binder\":{\"C01\":0.3537,\"C02\":0.305,\"C03\":0.3134,\"C04\":0.4023,\"C05\":0.3411,\"C06\":0.4158,\"C07\":0.3269,\"C08\":0.3,\"C09\":0.2967,\"C10\":0.301,\"C11\":0.3365,\"C12\":0.4288,\"C13\":0.4328,\"C14\":0.4333,\"C15\":0.4348,\"C16\":0.305,\"C17\":0.4154,\"C18\":0.4167,\"C19\":0.3981,\"C20\":0.3985,\"C21\":0.4383,\"C22\":0.2919,\"C23\":0.561,\"C24\":0.4924,\"C25\":0.6284,\"C26\":0.6171,\"C27\":0.3876,\"C28\":0.5501,\"C29\":0.38,\"C30\":0.488,\"C31\":0.4342,\"C32\":0.3988,\"C33\":0.496,\"C34\":0.4562,\"C35\":0.4,\"C36\":0.4985,\"C37\":0.4221,\"C38\":0.4953,\"C39\":0.4361,\"C40\":0.3839,\"C41\":0.533,\"C42\":0.5766,\"C43\":0.6584,\"C44\":0.4874,\"C45\":0.7529,\"C46\":0.5367,\"C47\":0.3959,\"C48\":0.5662},\"observed_ratio_and_superplasticizer_split\":{\"columns\":[\"n\",\"mean_strength_mpa\"],\"groups\":{\"higher_ratio_higher_superplasticizer\":[9,21.04],\"higher_ratio_lower_superplasticizer\":[20,28.25],\"lower_ratio_higher_superplasticizer\":[19,53.86],\"lower_ratio_lower_superplasticizer\":[10,47.41]},\"interpretation\":\"All groups use only currently revealed measurements. Descriptive, confounded comparison with potentially small cells.\",\"ratio_cut\":0.4458,\"superplasticizer_cut\":9.5},\"sources\":[\"FHWA-HRT-04-150 chapter 9, https://www.fhwa.dot.gov/publications/research/infrastructure/pavements/pccp/04150/chapt9.cfm\",\"FHWA-04-122 chapter 5, https://www.fhwa.dot.gov/publications/research/infrastructure/pavements/pccp/05042/05.cfm\"]},\"menu\":[[\"C01\",1,55.689,9.033,326.0,166.0,0.0,174.0,9.0,882.0,790.0,28.0],[\"C02\",2,50.867,15.634,313.3,262.2,0.0,175.5,8.6,1046.9,611.8,28.0],[\"C03\",3,50.781,8.753,387.0,20.0,94.0,157.0,13.9,938.0,845.0,28.0],[\"C04\",4,50.637,6.245,277.2,97.8,24.5,160.7,11.2,1061.7,782.5,28.0],[\"C05\",5,50.482,8.422,475.0,0.0,0.0,162.0,9.5,1044.0,662.0,28.0],[\"C06\",6,50.052,6.212,284.0,120.0,0.0,168.0,7.0,970.0,794.0,28.0],[\"C07\",7,49.869,9.498,520.0,0.0,0.0,170.0,5.2,855.0,855.0,28.0],[\"C08\",8,49.01,9.73,540.0,0.0,0.0,162.0,2.5,1055.0,676.0,28.0],[\"C09\",9,48.425,9.754,359.0,19.0,141.0,154.0,10.9,942.0,801.0,28.0],[\"C10\",10,47.586,10.83,485.0,0.0,0.0,146.0,0.0,1120.0,800.0,28.0],[\"C11\",11,47.234,9.607,520.0,0.0,0.0,175.0,5.2,870.0,805.0,28.0],[\"C12\",12,46.973,7.411,277.1,0.0,97.4,160.6,11.8,973.9,875.6,28.0],[\"C13\",13,46.88,7.127,288.0,121.0,0.0,177.0,7.0,908.0,829.0,28.0],[\"C14\",14,46.798,7.119,288.4,121.0,0.0,177.4,7.0,907.9,829.5,28.0],[\"C15\",15,46.63,7.95,290.4,0.0,96.2,168.1,9.4,961.2,865.0,28.0],[\"C16\",16,46.218,7.769,475.0,118.8,0.0,181.1,8.9,852.1,781.5,28.0],[\"C17\",17,46.14,7.007,251.8,0.0,99.9,146.1,12.4,1006.0,899.8,28.0],[\"C18\",18,46.114,7.102,252.3,0.0,98.8,146.3,14.2,987.8,889.0,28.0],[\"C19\",19,45.987,8.17,314.0,0.0,113.0,170.0,10.0,925.0,783.0,28.0],[\"C20\",20,45.836,8.175,313.8,0.0,112.6,169.9,10.1,925.3,782.9,28.0],[\"C21\",21,45.605,8.294,295.7,0.0,95.6,171.5,8.9,955.1,859.2,28.0],[\"C22\",22,45.594,12.084,397.0,17.2,158.0,167.0,20.8,967.0,633.0,28.0],[\"C23\",23,44.253,10.107,194.7,0.0,100.5,165.6,7.5,1006.4,905.9,28.0],[\"C24\",24,43.953,9.39,231.8,0.0,121.6,174.0,6.7,1056.4,778.5,28.0],[\"C25\",125,27.672,4.635,296.0,0.0,0.0,186.0,0.0,1090.0,769.0,28.0],[\"C26\",69,35.788,6.409,236.9,91.7,71.5,246.9,6.0,852.9,695.4,28.0],[\"C27\",54,37.624,6.05,356.0,0.0,142.0,193.0,11.0,801.0,778.0,28.0],[\"C28\",100,31.376,8.238,349.0,0.0,0.0,192.0,0.0,1047.0,806.0,28.0],[\"C29\",97,31.587,10.273,159.0,209.0,161.0,201.0,7.0,848.0,669.0,28.0],[\"C30\",56,37.083,6.412,250.2,166.8,0.0,203.5,0.0,977.6,694.1,28.0],[\"C31\",163,19.613,6.164,153.1,145.0,113.0,178.5,8.0,1001.9,688.7,28.0],[\"C32\",26,43.596,9.872,213.5,0.0,174.2,154.6,11.7,1052.3,775.5,28.0],[\"C33\",77,34.349,6.59,375.0,0.0,0.0,186.0,0.0,1038.0,758.0,28.0],[\"C34\",65,36.338,3.908,272.8,105.1,81.8,209.7,9.0,904.0,679.7,28.0],[\"C35\",57,36.809,7.359,480.0,0.0,0.0,192.0,0.0,936.2,712.2,28.0],[\"C36\",156,21.813,10.372,151.0,0.0,184.0,167.0,12.0,991.0,772.0,28.0],[\"C37\",43,39.067,8.992,265.0,111.0,86.0,195.0,6.0,833.0,790.0,28.0],[\"C38\",153,23.296,11.797,144.0,0.0,175.0,158.0,18.0,943.0,844.0,28.0],[\"C39\",63,36.478,7.566,255.5,170.3,0.0,185.7,0.0,1026.6,724.3,28.0],[\"C40\",64,36.467,7.38,193.5,290.2,0.0,185.7,0.0,998.2,704.3,28.0],[\"C41\",154,22.917,8.012,139.9,132.6,103.3,200.3,7.4,916.0,753.4,28.0],[\"C42\",25,43.621,10.683,194.7,0.0,100.5,170.2,7.5,998.0,901.8,28.0],[\"C43\",127,27.406,4.845,281.0,0.0,0.0,185.0,0.0,1104.0,774.0,28.0],[\"C44\",45,38.689,13.795,182.0,45.2,122.0,170.2,8.2,1059.4,780.7,28.0],[\"C45\",137,26.538,8.427,153.0,102.0,0.0,192.0,0.0,888.0,943.1,28.0],[\"C46\",164,19.529,8.563,153.6,144.2,112.3,220.1,10.1,923.2,657.9,28.0],[\"C47\",98,31.561,15.715,141.9,166.6,129.7,173.5,10.9,882.6,785.3,28.0],[\"C48\",118,28.761,6.977,325.0,0.0,0.0,184.0,0.0,1063.0,783.0,28.0]],\"menu_columns\":[\"alias\",\"model_rank\",\"model_prediction_mpa\",\"rf_tree_sd_mpa\",\"cement\",\"slag\",\"fly_ash\",\"water\",\"superplasticizer\",\"coarse_aggregate\",\"fine_aggregate\",\"age\"],\"observation_summary\":{\"descriptive_associations\":{\"cement\":[275.05,29,31.3,29,46.35],\"coarse_aggregate\":[944.7,30,44.19,28,33.07],\"fine_aggregate\":[770.5999999999999,29,37.51,29,40.13],\"fly_ash\":[78.15,29,42.1,29,35.55],\"slag\":[115.3,29,32.8,29,44.84],\"superplasticizer\":[9.5,30,34.64,28,43.31],\"water\":[181.85,29,47.23,29,30.42]},\"descriptive_associations_columns\":[\"feature_cut\",\"n_at_or_below\",\"mean_at_or_below_mpa\",\"n_above\",\"mean_above_mpa\"],\"observations\":58,\"strongest\":{\"mix-194\":{\"age\":28.0,\"cement\":250.0,\"coarse_aggregate\":860.0,\"fine_aggregate\":800.0,\"fly_ash\":95.0,\"slag\":180.0,\"strength\":67.87,\"superplasticizer\":9.5,\"water\":159.0},\"mix-226\":{\"age\":28.0,\"cement\":275.0,\"coarse_aggregate\":830.0,\"fine_aggregate\":765.0,\"fly_ash\":120.0,\"slag\":180.0,\"strength\":76.24,\"superplasticizer\":10.4,\"water\":162.0},\"mix-349\":{\"age\":28.0,\"cement\":362.6,\"coarse_aggregate\":944.7,\"fine_aggregate\":755.8,\"fly_ash\":0.0,\"slag\":189.0,\"strength\":71.3,\"superplasticizer\":11.6,\"water\":164.9},\"mix-370\":{\"age\":28.0,\"cement\":389.9,\"coarse_aggregate\":944.7,\"fine_aggregate\":755.8,\"fly_ash\":0.0,\"slag\":189.0,\"strength\":74.5,\"superplasticizer\":22.0,\"water\":145.9}},\"weakest\":{\"mix-027\":{\"age\":28.0,\"cement\":143.6,\"coarse_aggregate\":942.7,\"fine_aggregate\":844.5,\"fly_ash\":174.9,\"slag\":0.0,\"strength\":15.42,\"superplasticizer\":17.9,\"water\":158.4},\"mix-078\":{\"age\":28.0,\"cement\":154.0,\"coarse_aggregate\":923.0,\"fine_aggregate\":658.0,\"fly_ash\":112.0,\"slag\":144.0,\"strength\":16.5,\"superplasticizer\":10.0,\"water\":220.0},\"mix-081\":{\"age\":28.0,\"cement\":154.8,\"coarse_aggregate\":1047.4,\"fine_aggregate\":696.7,\"fly_ash\":142.8,\"slag\":0.0,\"strength\":12.46,\"superplasticizer\":9.1,\"water\":193.3},\"mix-096\":{\"age\":28.0,\"cement\":158.4,\"coarse_aggregate\":897.7,\"fine_aggregate\":712.9,\"fly_ash\":194.9,\"slag\":0.0,\"strength\":8.54,\"superplasticizer\":11.0,\"water\":219.7}}},\"round\":3}"
+          }
+        ],
+        "tools": [
+          {
+            "type": "function",
+            "function": {
+              "name": "evaluate_concrete_shortlist",
+              "description": "Return model estimates and check recipe eligibility for the proposed concrete candidate aliases. Carries your analyst findings, testable hypothesis, and cited measured example IDs.",
+              "parameters": {
+                "type": "object",
+                "properties": {
+                  "analyst": {
+                    "type": "string"
+                  },
+                  "hypothesis": {
+                    "type": "string"
+                  },
+                  "evidence_ids": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "candidate_ids": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "required": [
+                  "analyst",
+                  "hypothesis",
+                  "evidence_ids",
+                  "candidate_ids"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        ],
+        "temperature": 0.0,
+        "max_tokens": 512,
+        "thinking": {
+          "type": "disabled"
+        },
+        "tool_choice": {
+          "type": "function",
+          "function": {
+            "name": "evaluate_concrete_shortlist"
+          }
+        }
+      },
+      "response": {
+        "text": "",
+        "tool_calls": [
+          {
+            "id": "call-dbe7b6dc-385b-4e39-ab86-b5c78832231b",
+            "function": {
+              "arguments": "{\"analyst\":\"High-cement ternary mixes with moderate water reach the top of the observed range, while low-cement high-fly-ash mixes with high water collapse.\",\"hypothesis\":\"Increasing total binder (cement plus slag) while holding water near 160-175 kg/m3 and water/binder at or below ~0.35 will raise measured 28-day strength above the ~76 MPa observed best.\",\"evidence_ids\":[\"mix-226\",\"mix-370\",\"mix-081\"],\"candidate_ids\":[\"C03\",\"C07\",\"C08\",\"C09\",\"C11\",\"C22\",\"C32\"]}",
+              "name": "evaluate_concrete_shortlist"
+            },
+            "type": "function"
+          }
+        ],
+        "finish_reason": "tool_calls",
+        "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+        "response_id": "chatcmpl-5a5d43a6-93fe-48e5-9cdb-7b83a49dae21",
+        "request_id": null,
+        "created": 1795306392,
+        "usage": {
+          "input_tokens": 4452,
+          "output_tokens": 210
+        },
+        "provider_usage": {
+          "completion_tokens": 210,
+          "prompt_tokens": 4452,
+          "total_tokens": 4662,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 0,
+            "rejected_prediction_tokens": null
+          },
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cached_tokens": 768
+          }
+        },
+        "runtime": {
+          "openai": "2.28.0"
+        }
+      },
+      "response_sha256": "28892dde7482662421fc21beba1152b8f3539b12f984d6702b43444014e26921",
+      "elapsed_s": 1.32,
+      "parsed": {
+        "analyst": "High-cement ternary mixes with moderate water reach the top of the observed range, while low-cement high-fly-ash mixes with high water collapse.",
+        "hypothesis": "Increasing total binder (cement plus slag) while holding water near 160-175 kg/m3 and water/binder at or below ~0.35 will raise measured 28-day strength above the ~76 MPa observed best.",
+        "evidence_ids": [
+          "mix-226",
+          "mix-370",
+          "mix-081"
+        ],
+        "candidate_ids": [
+          "C03",
+          "C07",
+          "C08",
+          "C09",
+          "C11",
+          "C22",
+          "C32"
+        ]
+      }
+    },
+    {
+      "stage": "final_selection",
+      "attempt": 1,
+      "request_sha256": "9a49490308c2b17c9a1faeb33f7832260f069c2a00bd2bcec89b386749fca5ad",
+      "request": {
+        "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+        "messages": [
+          {
+            "role": "system",
+            "content": "You are running a retrospective decision experiment on measured 28-day concrete mixtures. Maximize measured compressive strength (MPa) under a fixed small batch budget. Treat model predictions as estimates and only reported observations as measured. You may choose high predictions, or use a plausible and evidence-linked reason to explore. Candidate aliases only identify entries in the displayed menu. Never invent recipes or references. Do not use remembered values for candidate recipes. Mention both uncertainty and likely upside."
+          },
+          {
+            "role": "user",
+            "content": "Act as Data Analyst, Hypothesis Generator and Recipe Designer. Write one short analysis sentence and one short, testable hypothesis. Cite 1 to 3 IDs from the observed strongest/weakest examples. Then call evaluate_concrete_shortlist with 7 distinct candidate aliases like C01 to C48. Do not output any content outside the single native tool call. Ingredients are kg/m3 and age is days. RF tree SD measures model disagreement and is not a calibrated confidence interval. After receiving your tool output, act as Scientific Critic. Explain one plausible limitation or combination risk and why your final choices merit testing. Return one JSON object only, without markdown: {\"candidate_ids\":[...],\"critic\":\"...\",\"selection_rationale\":\"...\"}. Then use exactly 5 distinct aliases from the evaluator output and order by test priority. Keep both text fields to one short sentence.\n{\"budget\":5,\"knowledge\":{\"fixed_materials_context\":[\"Water to total cementitious mass is water/(cement + slag + fly_ash). Lower ratios often correspond to higher compressive strength, conditional on workable mixes and comparability of binder, aggregates, and curing.\",\"Superplasticizer can permit workable mixes at lower water content. Its effect need not be additive with water content.\",\"Replacing cement mass with slag or fly ash changes binder hydration. Total binder mass alone cannot identify the effect of replacement at a fixed curing age.\",\"Single-column summaries confound the other ingredients, and evidence across a combination does not identify the independent effect of each change.\"],\"menu_water_to_total_binder\":{\"C01\":0.3537,\"C02\":0.305,\"C03\":0.3134,\"C04\":0.4023,\"C05\":0.3411,\"C06\":0.4158,\"C07\":0.3269,\"C08\":0.3,\"C09\":0.2967,\"C10\":0.301,\"C11\":0.3365,\"C12\":0.4288,\"C13\":0.4328,\"C14\":0.4333,\"C15\":0.4348,\"C16\":0.305,\"C17\":0.4154,\"C18\":0.4167,\"C19\":0.3981,\"C20\":0.3985,\"C21\":0.4383,\"C22\":0.2919,\"C23\":0.561,\"C24\":0.4924,\"C25\":0.6284,\"C26\":0.6171,\"C27\":0.3876,\"C28\":0.5501,\"C29\":0.38,\"C30\":0.488,\"C31\":0.4342,\"C32\":0.3988,\"C33\":0.496,\"C34\":0.4562,\"C35\":0.4,\"C36\":0.4985,\"C37\":0.4221,\"C38\":0.4953,\"C39\":0.4361,\"C40\":0.3839,\"C41\":0.533,\"C42\":0.5766,\"C43\":0.6584,\"C44\":0.4874,\"C45\":0.7529,\"C46\":0.5367,\"C47\":0.3959,\"C48\":0.5662},\"observed_ratio_and_superplasticizer_split\":{\"columns\":[\"n\",\"mean_strength_mpa\"],\"groups\":{\"higher_ratio_higher_superplasticizer\":[9,21.04],\"higher_ratio_lower_superplasticizer\":[20,28.25],\"lower_ratio_higher_superplasticizer\":[19,53.86],\"lower_ratio_lower_superplasticizer\":[10,47.41]},\"interpretation\":\"All groups use only currently revealed measurements. Descriptive, confounded comparison with potentially small cells.\",\"ratio_cut\":0.4458,\"superplasticizer_cut\":9.5},\"sources\":[\"FHWA-HRT-04-150 chapter 9, https://www.fhwa.dot.gov/publications/research/infrastructure/pavements/pccp/04150/chapt9.cfm\",\"FHWA-04-122 chapter 5, https://www.fhwa.dot.gov/publications/research/infrastructure/pavements/pccp/05042/05.cfm\"]},\"menu\":[[\"C01\",1,55.689,9.033,326.0,166.0,0.0,174.0,9.0,882.0,790.0,28.0],[\"C02\",2,50.867,15.634,313.3,262.2,0.0,175.5,8.6,1046.9,611.8,28.0],[\"C03\",3,50.781,8.753,387.0,20.0,94.0,157.0,13.9,938.0,845.0,28.0],[\"C04\",4,50.637,6.245,277.2,97.8,24.5,160.7,11.2,1061.7,782.5,28.0],[\"C05\",5,50.482,8.422,475.0,0.0,0.0,162.0,9.5,1044.0,662.0,28.0],[\"C06\",6,50.052,6.212,284.0,120.0,0.0,168.0,7.0,970.0,794.0,28.0],[\"C07\",7,49.869,9.498,520.0,0.0,0.0,170.0,5.2,855.0,855.0,28.0],[\"C08\",8,49.01,9.73,540.0,0.0,0.0,162.0,2.5,1055.0,676.0,28.0],[\"C09\",9,48.425,9.754,359.0,19.0,141.0,154.0,10.9,942.0,801.0,28.0],[\"C10\",10,47.586,10.83,485.0,0.0,0.0,146.0,0.0,1120.0,800.0,28.0],[\"C11\",11,47.234,9.607,520.0,0.0,0.0,175.0,5.2,870.0,805.0,28.0],[\"C12\",12,46.973,7.411,277.1,0.0,97.4,160.6,11.8,973.9,875.6,28.0],[\"C13\",13,46.88,7.127,288.0,121.0,0.0,177.0,7.0,908.0,829.0,28.0],[\"C14\",14,46.798,7.119,288.4,121.0,0.0,177.4,7.0,907.9,829.5,28.0],[\"C15\",15,46.63,7.95,290.4,0.0,96.2,168.1,9.4,961.2,865.0,28.0],[\"C16\",16,46.218,7.769,475.0,118.8,0.0,181.1,8.9,852.1,781.5,28.0],[\"C17\",17,46.14,7.007,251.8,0.0,99.9,146.1,12.4,1006.0,899.8,28.0],[\"C18\",18,46.114,7.102,252.3,0.0,98.8,146.3,14.2,987.8,889.0,28.0],[\"C19\",19,45.987,8.17,314.0,0.0,113.0,170.0,10.0,925.0,783.0,28.0],[\"C20\",20,45.836,8.175,313.8,0.0,112.6,169.9,10.1,925.3,782.9,28.0],[\"C21\",21,45.605,8.294,295.7,0.0,95.6,171.5,8.9,955.1,859.2,28.0],[\"C22\",22,45.594,12.084,397.0,17.2,158.0,167.0,20.8,967.0,633.0,28.0],[\"C23\",23,44.253,10.107,194.7,0.0,100.5,165.6,7.5,1006.4,905.9,28.0],[\"C24\",24,43.953,9.39,231.8,0.0,121.6,174.0,6.7,1056.4,778.5,28.0],[\"C25\",125,27.672,4.635,296.0,0.0,0.0,186.0,0.0,1090.0,769.0,28.0],[\"C26\",69,35.788,6.409,236.9,91.7,71.5,246.9,6.0,852.9,695.4,28.0],[\"C27\",54,37.624,6.05,356.0,0.0,142.0,193.0,11.0,801.0,778.0,28.0],[\"C28\",100,31.376,8.238,349.0,0.0,0.0,192.0,0.0,1047.0,806.0,28.0],[\"C29\",97,31.587,10.273,159.0,209.0,161.0,201.0,7.0,848.0,669.0,28.0],[\"C30\",56,37.083,6.412,250.2,166.8,0.0,203.5,0.0,977.6,694.1,28.0],[\"C31\",163,19.613,6.164,153.1,145.0,113.0,178.5,8.0,1001.9,688.7,28.0],[\"C32\",26,43.596,9.872,213.5,0.0,174.2,154.6,11.7,1052.3,775.5,28.0],[\"C33\",77,34.349,6.59,375.0,0.0,0.0,186.0,0.0,1038.0,758.0,28.0],[\"C34\",65,36.338,3.908,272.8,105.1,81.8,209.7,9.0,904.0,679.7,28.0],[\"C35\",57,36.809,7.359,480.0,0.0,0.0,192.0,0.0,936.2,712.2,28.0],[\"C36\",156,21.813,10.372,151.0,0.0,184.0,167.0,12.0,991.0,772.0,28.0],[\"C37\",43,39.067,8.992,265.0,111.0,86.0,195.0,6.0,833.0,790.0,28.0],[\"C38\",153,23.296,11.797,144.0,0.0,175.0,158.0,18.0,943.0,844.0,28.0],[\"C39\",63,36.478,7.566,255.5,170.3,0.0,185.7,0.0,1026.6,724.3,28.0],[\"C40\",64,36.467,7.38,193.5,290.2,0.0,185.7,0.0,998.2,704.3,28.0],[\"C41\",154,22.917,8.012,139.9,132.6,103.3,200.3,7.4,916.0,753.4,28.0],[\"C42\",25,43.621,10.683,194.7,0.0,100.5,170.2,7.5,998.0,901.8,28.0],[\"C43\",127,27.406,4.845,281.0,0.0,0.0,185.0,0.0,1104.0,774.0,28.0],[\"C44\",45,38.689,13.795,182.0,45.2,122.0,170.2,8.2,1059.4,780.7,28.0],[\"C45\",137,26.538,8.427,153.0,102.0,0.0,192.0,0.0,888.0,943.1,28.0],[\"C46\",164,19.529,8.563,153.6,144.2,112.3,220.1,10.1,923.2,657.9,28.0],[\"C47\",98,31.561,15.715,141.9,166.6,129.7,173.5,10.9,882.6,785.3,28.0],[\"C48\",118,28.761,6.977,325.0,0.0,0.0,184.0,0.0,1063.0,783.0,28.0]],\"menu_columns\":[\"alias\",\"model_rank\",\"model_prediction_mpa\",\"rf_tree_sd_mpa\",\"cement\",\"slag\",\"fly_ash\",\"water\",\"superplasticizer\",\"coarse_aggregate\",\"fine_aggregate\",\"age\"],\"observation_summary\":{\"descriptive_associations\":{\"cement\":[275.05,29,31.3,29,46.35],\"coarse_aggregate\":[944.7,30,44.19,28,33.07],\"fine_aggregate\":[770.5999999999999,29,37.51,29,40.13],\"fly_ash\":[78.15,29,42.1,29,35.55],\"slag\":[115.3,29,32.8,29,44.84],\"superplasticizer\":[9.5,30,34.64,28,43.31],\"water\":[181.85,29,47.23,29,30.42]},\"descriptive_associations_columns\":[\"feature_cut\",\"n_at_or_below\",\"mean_at_or_below_mpa\",\"n_above\",\"mean_above_mpa\"],\"observations\":58,\"strongest\":{\"mix-194\":{\"age\":28.0,\"cement\":250.0,\"coarse_aggregate\":860.0,\"fine_aggregate\":800.0,\"fly_ash\":95.0,\"slag\":180.0,\"strength\":67.87,\"superplasticizer\":9.5,\"water\":159.0},\"mix-226\":{\"age\":28.0,\"cement\":275.0,\"coarse_aggregate\":830.0,\"fine_aggregate\":765.0,\"fly_ash\":120.0,\"slag\":180.0,\"strength\":76.24,\"superplasticizer\":10.4,\"water\":162.0},\"mix-349\":{\"age\":28.0,\"cement\":362.6,\"coarse_aggregate\":944.7,\"fine_aggregate\":755.8,\"fly_ash\":0.0,\"slag\":189.0,\"strength\":71.3,\"superplasticizer\":11.6,\"water\":164.9},\"mix-370\":{\"age\":28.0,\"cement\":389.9,\"coarse_aggregate\":944.7,\"fine_aggregate\":755.8,\"fly_ash\":0.0,\"slag\":189.0,\"strength\":74.5,\"superplasticizer\":22.0,\"water\":145.9}},\"weakest\":{\"mix-027\":{\"age\":28.0,\"cement\":143.6,\"coarse_aggregate\":942.7,\"fine_aggregate\":844.5,\"fly_ash\":174.9,\"slag\":0.0,\"strength\":15.42,\"superplasticizer\":17.9,\"water\":158.4},\"mix-078\":{\"age\":28.0,\"cement\":154.0,\"coarse_aggregate\":923.0,\"fine_aggregate\":658.0,\"fly_ash\":112.0,\"slag\":144.0,\"strength\":16.5,\"superplasticizer\":10.0,\"water\":220.0},\"mix-081\":{\"age\":28.0,\"cement\":154.8,\"coarse_aggregate\":1047.4,\"fine_aggregate\":696.7,\"fly_ash\":142.8,\"slag\":0.0,\"strength\":12.46,\"superplasticizer\":9.1,\"water\":193.3},\"mix-096\":{\"age\":28.0,\"cement\":158.4,\"coarse_aggregate\":897.7,\"fine_aggregate\":712.9,\"fly_ash\":194.9,\"slag\":0.0,\"strength\":8.54,\"superplasticizer\":11.0,\"water\":219.7}}},\"round\":3}"
+          },
+          {
+            "role": "assistant",
+            "content": null,
+            "tool_calls": [
+              {
+                "id": "call-dbe7b6dc-385b-4e39-ab86-b5c78832231b",
+                "function": {
+                  "arguments": "{\"analyst\":\"High-cement ternary mixes with moderate water reach the top of the observed range, while low-cement high-fly-ash mixes with high water collapse.\",\"hypothesis\":\"Increasing total binder (cement plus slag) while holding water near 160-175 kg/m3 and water/binder at or below ~0.35 will raise measured 28-day strength above the ~76 MPa observed best.\",\"evidence_ids\":[\"mix-226\",\"mix-370\",\"mix-081\"],\"candidate_ids\":[\"C03\",\"C07\",\"C08\",\"C09\",\"C11\",\"C22\",\"C32\"]}",
+                  "name": "evaluate_concrete_shortlist"
+                },
+                "type": "function"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "tool_call_id": "call-dbe7b6dc-385b-4e39-ab86-b5c78832231b",
+            "content": "[{\"alias\":\"C03\",\"changed_ingredients_vs_nearest\":7,\"eligible\":true,\"nearest_observed_example\":\"mix-021\",\"prediction_mpa\":50.781,\"prediction_rank\":3,\"recipe\":{\"age\":28.0,\"cement\":387.0,\"coarse_aggregate\":938.0,\"fine_aggregate\":845.0,\"fly_ash\":94.0,\"slag\":20.0,\"superplasticizer\":13.9,\"water\":157.0},\"rf_tree_disagreement_mpa\":8.753},{\"alias\":\"C07\",\"changed_ingredients_vs_nearest\":5,\"eligible\":true,\"nearest_observed_example\":\"mix-230\",\"prediction_mpa\":49.869,\"prediction_rank\":7,\"recipe\":{\"age\":28.0,\"cement\":520.0,\"coarse_aggregate\":855.0,\"fine_aggregate\":855.0,\"fly_ash\":0.0,\"slag\":0.0,\"superplasticizer\":5.2,\"water\":170.0},\"rf_tree_disagreement_mpa\":9.498},{\"alias\":\"C08\",\"changed_ingredients_vs_nearest\":5,\"eligible\":true,\"nearest_observed_example\":\"mix-230\",\"prediction_mpa\":49.01,\"prediction_rank\":8,\"recipe\":{\"age\":28.0,\"cement\":540.0,\"coarse_aggregate\":1055.0,\"fine_aggregate\":676.0,\"fly_ash\":0.0,\"slag\":0.0,\"superplasticizer\":2.5,\"water\":162.0},\"rf_tree_disagreement_mpa\":9.73},{\"alias\":\"C09\",\"changed_ingredients_vs_nearest\":6,\"eligible\":true,\"nearest_observed_example\":\"mix-344\",\"prediction_mpa\":48.425,\"prediction_rank\":9,\"recipe\":{\"age\":28.0,\"cement\":359.0,\"coarse_aggregate\":942.0,\"fine_aggregate\":801.0,\"fly_ash\":141.0,\"slag\":19.0,\"superplasticizer\":10.9,\"water\":154.0},\"rf_tree_disagreement_mpa\":9.754},{\"alias\":\"C11\",\"changed_ingredients_vs_nearest\":5,\"eligible\":true,\"nearest_observed_example\":\"mix-230\",\"prediction_mpa\":47.234,\"prediction_rank\":11,\"recipe\":{\"age\":28.0,\"cement\":520.0,\"coarse_aggregate\":870.0,\"fine_aggregate\":805.0,\"fly_ash\":0.0,\"slag\":0.0,\"superplasticizer\":5.2,\"water\":175.0},\"rf_tree_disagreement_mpa\":9.607},{\"alias\":\"C22\",\"changed_ingredients_vs_nearest\":6,\"eligible\":true,\"nearest_observed_example\":\"mix-344\",\"prediction_mpa\":45.594,\"prediction_rank\":22,\"recipe\":{\"age\":28.0,\"cement\":397.0,\"coarse_aggregate\":967.0,\"fine_aggregate\":633.0,\"fly_ash\":158.0,\"slag\":17.2,\"superplasticizer\":20.8,\"water\":167.0},\"rf_tree_disagreement_mpa\":12.084},{\"alias\":\"C32\",\"changed_ingredients_vs_nearest\":3,\"eligible\":true,\"nearest_observed_example\":\"mix-162\",\"prediction_mpa\":43.596,\"prediction_rank\":26,\"recipe\":{\"age\":28.0,\"cement\":213.5,\"coarse_aggregate\":1052.3,\"fine_aggregate\":775.5,\"fly_ash\":174.2,\"slag\":0.0,\"superplasticizer\":11.7,\"water\":154.6},\"rf_tree_disagreement_mpa\":9.872}]"
+          }
+        ],
+        "tools": [
+          {
+            "type": "function",
+            "function": {
+              "name": "evaluate_concrete_shortlist",
+              "description": "Return model estimates and check recipe eligibility for the proposed concrete candidate aliases. Carries your analyst findings, testable hypothesis, and cited measured example IDs.",
+              "parameters": {
+                "type": "object",
+                "properties": {
+                  "analyst": {
+                    "type": "string"
+                  },
+                  "hypothesis": {
+                    "type": "string"
+                  },
+                  "evidence_ids": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "candidate_ids": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "required": [
+                  "analyst",
+                  "hypothesis",
+                  "evidence_ids",
+                  "candidate_ids"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        ],
+        "temperature": 0.0,
+        "max_tokens": 512,
+        "thinking": {
+          "type": "disabled"
+        },
+        "tool_choice": "none",
+        "response_format": {
+          "type": "json_object"
+        }
+      },
+      "response": {
+        "text": "{\"candidate_ids\":[\"C08\",\"C03\",\"C09\",\"C07\",\"C22\"],\"critic\":\"High-cement C07/C08 lack slag and fly ash, so heat and shrinkage at 520-540 kg/m3 cement may limit field strength gain, and C08's low 2.5 kg/m3 superplasticizer at 0.30 w/b risks stiff, poorly consolidated mixes; tree disagreement (8.8-12.1 MPa) shows these predictions are estimates, not measured.\",\"selection_rationale\":\"C08 and C03 combine low water-to-binder with moderate superplasticizer, closest to the observed strongest mixes, so they merit first testing despite modest predicted upside.\"}",
+        "tool_calls": [],
+        "finish_reason": "stop",
+        "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+        "response_id": "chatcmpl-54d9b4b3-3a17-4e6b-a802-23b532a430d9",
+        "request_id": null,
+        "created": 1795306393,
+        "usage": {
+          "input_tokens": 5232,
+          "output_tokens": 149
+        },
+        "provider_usage": {
+          "completion_tokens": 149,
+          "prompt_tokens": 5232,
+          "total_tokens": 5381,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 0,
+            "rejected_prediction_tokens": null
+          },
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cached_tokens": 256
+          }
+        },
+        "runtime": {
+          "openai": "2.28.0"
+        }
+      },
+      "response_sha256": "067ec26fbf4915c65ba560d029f44d405f82877dac0f9c567d70b93b82c348dd",
+      "elapsed_s": 1.33,
+      "parsed": {
+        "candidate_ids": [
+          "C08",
+          "C03",
+          "C09",
+          "C07",
+          "C22"
+        ],
+        "critic": "High-cement C07/C08 lack slag and fly ash, so heat and shrinkage at 520-540 kg/m3 cement may limit field strength gain, and C08's low 2.5 kg/m3 superplasticizer at 0.30 w/b risks stiff, poorly consolidated mixes; tree disagreement (8.8-12.1 MPa) shows these predictions are estimates, not measured.",
+        "selection_rationale": "C08 and C03 combine low water-to-binder with moderate superplasticizer, closest to the observed strongest mixes, so they merit first testing despite modest predicted upside."
+      }
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "data_analyst",
+      "trigger": "pipeline",
+      "result": {
+        "observations": 58,
+        "strongest": {
+          "mix-226": {
+            "cement": 275.0,
+            "slag": 180.0,
+            "fly_ash": 120.0,
+            "water": 162.0,
+            "superplasticizer": 10.4,
+            "coarse_aggregate": 830.0,
+            "fine_aggregate": 765.0,
+            "age": 28.0,
+            "strength": 76.24
+          },
+          "mix-370": {
+            "cement": 389.9,
+            "slag": 189.0,
+            "fly_ash": 0.0,
+            "water": 145.9,
+            "superplasticizer": 22.0,
+            "coarse_aggregate": 944.7,
+            "fine_aggregate": 755.8,
+            "age": 28.0,
+            "strength": 74.5
+          },
+          "mix-349": {
+            "cement": 362.6,
+            "slag": 189.0,
+            "fly_ash": 0.0,
+            "water": 164.9,
+            "superplasticizer": 11.6,
+            "coarse_aggregate": 944.7,
+            "fine_aggregate": 755.8,
+            "age": 28.0,
+            "strength": 71.3
+          },
+          "mix-194": {
+            "cement": 250.0,
+            "slag": 180.0,
+            "fly_ash": 95.0,
+            "water": 159.0,
+            "superplasticizer": 9.5,
+            "coarse_aggregate": 860.0,
+            "fine_aggregate": 800.0,
+            "age": 28.0,
+            "strength": 67.87
+          }
+        },
+        "weakest": {
+          "mix-096": {
+            "cement": 158.4,
+            "slag": 0.0,
+            "fly_ash": 194.9,
+            "water": 219.7,
+            "superplasticizer": 11.0,
+            "coarse_aggregate": 897.7,
+            "fine_aggregate": 712.9,
+            "age": 28.0,
+            "strength": 8.54
+          },
+          "mix-081": {
+            "cement": 154.8,
+            "slag": 0.0,
+            "fly_ash": 142.8,
+            "water": 193.3,
+            "superplasticizer": 9.1,
+            "coarse_aggregate": 1047.4,
+            "fine_aggregate": 696.7,
+            "age": 28.0,
+            "strength": 12.46
+          },
+          "mix-027": {
+            "cement": 143.6,
+            "slag": 0.0,
+            "fly_ash": 174.9,
+            "water": 158.4,
+            "superplasticizer": 17.9,
+            "coarse_aggregate": 942.7,
+            "fine_aggregate": 844.5,
+            "age": 28.0,
+            "strength": 15.42
+          },
+          "mix-078": {
+            "cement": 154.0,
+            "slag": 144.0,
+            "fly_ash": 112.0,
+            "water": 220.0,
+            "superplasticizer": 10.0,
+            "coarse_aggregate": 923.0,
+            "fine_aggregate": 658.0,
+            "age": 28.0,
+            "strength": 16.5
+          }
+        },
+        "descriptive_associations_columns": [
+          "feature_cut",
+          "n_at_or_below",
+          "mean_at_or_below_mpa",
+          "n_above",
+          "mean_above_mpa"
+        ],
+        "descriptive_associations": {
+          "cement": [
+            275.05,
+            29,
+            31.3,
+            29,
+            46.35
+          ],
+          "slag": [
+            115.3,
+            29,
+            32.8,
+            29,
+            44.84
+          ],
+          "fly_ash": [
+            78.15,
+            29,
+            42.1,
+            29,
+            35.55
+          ],
+          "water": [
+            181.85,
+            29,
+            47.23,
+            29,
+            30.42
+          ],
+          "superplasticizer": [
+            9.5,
+            30,
+            34.64,
+            28,
+            43.31
+          ],
+          "coarse_aggregate": [
+            944.7,
+            30,
+            44.19,
+            28,
+            33.07
+          ],
+          "fine_aggregate": [
+            770.5999999999999,
+            29,
+            37.51,
+            29,
+            40.13
+          ]
+        }
+      }
+    },
+    {
+      "tool": "evaluate_concrete_shortlist",
+      "trigger": "model_tool_call",
+      "call_id": "call-dbe7b6dc-385b-4e39-ab86-b5c78832231b",
+      "arguments": {
+        "analyst": "High-cement ternary mixes with moderate water reach the top of the observed range, while low-cement high-fly-ash mixes with high water collapse.",
+        "hypothesis": "Increasing total binder (cement plus slag) while holding water near 160-175 kg/m3 and water/binder at or below ~0.35 will raise measured 28-day strength above the ~76 MPa observed best.",
+        "evidence_ids": [
+          "mix-226",
+          "mix-370",
+          "mix-081"
+        ],
+        "candidate_ids": [
+          "C03",
+          "C07",
+          "C08",
+          "C09",
+          "C11",
+          "C22",
+          "C32"
+        ]
+      },
+      "result": [
+        {
+          "alias": "C03",
+          "eligible": true,
+          "prediction_mpa": 50.781,
+          "prediction_rank": 3,
+          "rf_tree_disagreement_mpa": 8.753,
+          "nearest_observed_example": "mix-021",
+          "changed_ingredients_vs_nearest": 7,
+          "recipe": {
+            "cement": 387.0,
+            "slag": 20.0,
+            "fly_ash": 94.0,
+            "water": 157.0,
+            "superplasticizer": 13.9,
+            "coarse_aggregate": 938.0,
+            "fine_aggregate": 845.0,
+            "age": 28.0
+          }
+        },
+        {
+          "alias": "C07",
+          "eligible": true,
+          "prediction_mpa": 49.869,
+          "prediction_rank": 7,
+          "rf_tree_disagreement_mpa": 9.498,
+          "nearest_observed_example": "mix-230",
+          "changed_ingredients_vs_nearest": 5,
+          "recipe": {
+            "cement": 520.0,
+            "slag": 0.0,
+            "fly_ash": 0.0,
+            "water": 170.0,
+            "superplasticizer": 5.2,
+            "coarse_aggregate": 855.0,
+            "fine_aggregate": 855.0,
+            "age": 28.0
+          }
+        },
+        {
+          "alias": "C08",
+          "eligible": true,
+          "prediction_mpa": 49.01,
+          "prediction_rank": 8,
+          "rf_tree_disagreement_mpa": 9.73,
+          "nearest_observed_example": "mix-230",
+          "changed_ingredients_vs_nearest": 5,
+          "recipe": {
+            "cement": 540.0,
+            "slag": 0.0,
+            "fly_ash": 0.0,
+            "water": 162.0,
+            "superplasticizer": 2.5,
+            "coarse_aggregate": 1055.0,
+            "fine_aggregate": 676.0,
+            "age": 28.0
+          }
+        },
+        {
+          "alias": "C09",
+          "eligible": true,
+          "prediction_mpa": 48.425,
+          "prediction_rank": 9,
+          "rf_tree_disagreement_mpa": 9.754,
+          "nearest_observed_example": "mix-344",
+          "changed_ingredients_vs_nearest": 6,
+          "recipe": {
+            "cement": 359.0,
+            "slag": 19.0,
+            "fly_ash": 141.0,
+            "water": 154.0,
+            "superplasticizer": 10.9,
+            "coarse_aggregate": 942.0,
+            "fine_aggregate": 801.0,
+            "age": 28.0
+          }
+        },
+        {
+          "alias": "C11",
+          "eligible": true,
+          "prediction_mpa": 47.234,
+          "prediction_rank": 11,
+          "rf_tree_disagreement_mpa": 9.607,
+          "nearest_observed_example": "mix-230",
+          "changed_ingredients_vs_nearest": 5,
+          "recipe": {
+            "cement": 520.0,
+            "slag": 0.0,
+            "fly_ash": 0.0,
+            "water": 175.0,
+            "superplasticizer": 5.2,
+            "coarse_aggregate": 870.0,
+            "fine_aggregate": 805.0,
+            "age": 28.0
+          }
+        },
+        {
+          "alias": "C22",
+          "eligible": true,
+          "prediction_mpa": 45.594,
+          "prediction_rank": 22,
+          "rf_tree_disagreement_mpa": 12.084,
+          "nearest_observed_example": "mix-344",
+          "changed_ingredients_vs_nearest": 6,
+          "recipe": {
+            "cement": 397.0,
+            "slag": 17.2,
+            "fly_ash": 158.0,
+            "water": 167.0,
+            "superplasticizer": 20.8,
+            "coarse_aggregate": 967.0,
+            "fine_aggregate": 633.0,
+            "age": 28.0
+          }
+        },
+        {
+          "alias": "C32",
+          "eligible": true,
+          "prediction_mpa": 43.596,
+          "prediction_rank": 26,
+          "rf_tree_disagreement_mpa": 9.872,
+          "nearest_observed_example": "mix-162",
+          "changed_ingredients_vs_nearest": 3,
+          "recipe": {
+            "cement": 213.5,
+            "slag": 0.0,
+            "fly_ash": 174.2,
+            "water": 154.6,
+            "superplasticizer": 11.7,
+            "coarse_aggregate": 1052.3,
+            "fine_aggregate": 775.5,
+            "age": 28.0
+          }
+        }
+      ]
+    },
+    {
+      "tool": "scientific_critic",
+      "trigger": "pipeline",
+      "result": {
+        "eligible_unique_budget_verified": true,
+        "evidence_ids": [
+          "mix-226",
+          "mix-370",
+          "mix-081"
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "input_tokens": 9684,
+    "output_tokens": 359
+  },
+  "live_generation_count": 2,
+  "started_utc": "2026-11-22T00:13:12.303333+00:00",
+  "decision": {
+    "analyst": "High-cement ternary mixes with moderate water reach the top of the observed range, while low-cement high-fly-ash mixes with high water collapse.",
+    "hypothesis": "Increasing total binder (cement plus slag) while holding water near 160-175 kg/m3 and water/binder at or below ~0.35 will raise measured 28-day strength above the ~76 MPa observed best.",
+    "evidence_ids": [
+      "mix-226",
+      "mix-370",
+      "mix-081"
+    ],
+    "candidate_ids": [
+      "C08",
+      "C03",
+      "C09",
+      "C07",
+      "C22"
+    ],
+    "critic": "High-cement C07/C08 lack slag and fly ash, so heat and shrinkage at 520-540 kg/m3 cement may limit field strength gain, and C08's low 2.5 kg/m3 superplasticizer at 0.30 w/b risks stiff, poorly consolidated mixes; tree disagreement (8.8-12.1 MPa) shows these predictions are estimates, not measured.",
+    "selection_rationale": "C08 and C03 combine low water-to-binder with moderate superplasticizer, closest to the observed strongest mixes, so they merit first testing despite modest predicted upside.",
+    "selected_ids": [
+      "mix-415",
+      "mix-367",
+      "mix-348",
+      "mix-408",
+      "mix-376"
+    ]
+  },
+  "status": "ok",
+  "elapsed_s": 2.651
+}

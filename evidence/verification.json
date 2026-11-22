@@ -1,0 +1,50 @@
+{
+  "smoke": {
+    "measured_queries": 20,
+    "codeflow_response_models": [
+      "deepseek-ai/DeepSeek-V4.1-Flash"
+    ],
+    "llm_usage": {
+      "input_tokens": 17932,
+      "output_tokens": 784,
+      "http_responses": 4,
+      "decisions": 2
+    },
+    "selection_diagnostics": {
+      "C_llm": {
+        "selected": 5,
+        "selected_outside_greedy_top_five": 2,
+        "selected_from_non_elite_menu": 0
+      },
+      "D_knowledge_llm": {
+        "selected": 5,
+        "selected_outside_greedy_top_five": 2,
+        "selected_from_non_elite_menu": 0
+      }
+    }
+  },
+  "formal": {
+    "measured_queries": 180,
+    "codeflow_response_models": [
+      "deepseek-ai/DeepSeek-V4.1-Flash"
+    ],
+    "llm_usage": {
+      "input_tokens": 161294,
+      "output_tokens": 6548,
+      "http_responses": 36,
+      "decisions": 18
+    },
+    "selection_diagnostics": {
+      "C_llm": {
+        "selected": 45,
+        "selected_outside_greedy_top_five": 14,
+        "selected_from_non_elite_menu": 0
+      },
+      "D_knowledge_llm": {
+        "selected": 45,
+        "selected_outside_greedy_top_five": 17,
+        "selected_from_non_elite_menu": 0
+      }
+    }
+  }
+}
