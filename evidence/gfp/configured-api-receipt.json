@@ -1,0 +1,61 @@
+{
+  "protocol": "openai",
+  "test_base_url": "https://codeflow.sh/v1",
+  "provider_model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "profile_credential_mode": "environment_variable",
+  "interactive_wizard": true,
+  "native_probe": {
+    "native_tool_call": true,
+    "tool_result_consumed": true,
+    "json_object": true,
+    "served_models": [
+      "deepseek-ai/DeepSeek-V4.1-Flash",
+      "deepseek-ai/DeepSeek-V4.1-Flash"
+    ],
+    "response_ids": [
+      "chatcmpl-3f1d655c-12a6-49ca-bbf7-898c6406937f",
+      "chatcmpl-2deddd3a-66d8-414e-a37d-54fad7aa40a7"
+    ]
+  },
+  "api_demo_result": {
+    "status": "complete",
+    "scope": "published measurements formatted as user data",
+    "assay": "GFP_AEQVI_Sarkisyan_2016",
+    "initial_observations": 96,
+    "imported_after_selection": 5,
+    "total_observations": 101,
+    "second_batch_prediction_only": 5,
+    "backend": "openai_compatible"
+  },
+  "api_demo_live_model_responses": 6,
+  "single_configured_model_smoke": {
+    "status": "complete",
+    "mode": "smoke",
+    "arms": 4,
+    "expected_arms": 4,
+    "measurements": 20,
+    "partial_measurements": 0,
+    "failed": 0
+  },
+  "no_api_controls_smoke": {
+    "status": "complete",
+    "mode": "smoke",
+    "arms": 2,
+    "expected_arms": 2,
+    "measurements": 10,
+    "partial_measurements": 0,
+    "failed": 0
+  },
+  "novel_variants_prediction_only": {
+    "status": "complete",
+    "novel_nonarchive_candidates": 5,
+    "measured_outcomes": 0,
+    "backend": "RF prediction only"
+  },
+  "single_configured_model_replay": {
+    "tables_verified": 5,
+    "decisions_replayed": 2,
+    "live_model_responses": 0,
+    "key_environment_unset": true
+  }
+}

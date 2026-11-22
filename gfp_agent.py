@@ -308,8 +308,10 @@ def select_candidates(request: dict, *, log_path: Path, backend="deepseek", repl
     ):
         raise AgentError("Archived GFP decision does not match backend or frozen inputs")
     endpoint = adapter.endpoint if archive is None else archive["config"]["api_base"]
-    proposal_cap = DEEPSEEK_PROPOSAL_TOKEN_CAP if backend == "deepseek" else PROPOSAL_TOKEN_CAP
-    final_cap = REMOTE_FINAL_TOKEN_CAP if backend in {"deepseek", "sonnet"} else FINAL_TOKEN_CAP
+    proposal_cap = (
+        1024 if transport is not None else DEEPSEEK_PROPOSAL_TOKEN_CAP if backend == "deepseek" else PROPOSAL_TOKEN_CAP
+    )
+    final_cap = 840 if transport is not None or backend in {"deepseek", "sonnet"} else FINAL_TOKEN_CAP
     log = {
         "format_version": 1, "mode": "replay" if archive else "live", "backend": backend,
         "model": adapter.model, "domain": "gfp_fluorescence",
@@ -403,7 +405,7 @@ def select_candidates(request: dict, *, log_path: Path, backend="deepseek", repl
             "tool": TOOL, "trigger": "model_tool_call", "call_id": tool_call["id"],
             "arguments": draft, "result": [{**row, "sequence": menu[row["alias"]]["sequence"]} for row in scored],
         })
-        ending = " Reply with bare JSON. Limit critic and selection_rationale to 25 words each." if backend in {"deepseek", "sonnet"} else ""
+        ending = " Reply with bare JSON. Limit critic and selection_rationale to 25 words each." if transport is not None or backend in {"deepseek", "sonnet"} else ""
         final_messages = [
             *messages,
             {"role": "assistant", "content": native["text"] or None, "tool_calls": [tool_call]},

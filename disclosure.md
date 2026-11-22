@@ -34,3 +34,12 @@ The user requested a separate audit after the main model experiments. Codex impl
 ## GB1 retrospective verification at review baseline 0e52dd8
 
 Codex audited the fixed FLIP data provenance, reran the existing regression benchmark, and drafted a standalone GB1 retrospective report from aggregate outputs. The verification ran no LLM providers and collected no new measurements. All previous model-adapter logs, materials results, decision audit outputs, and GB1 benchmark artifacts were retained. The acceptance record specifies the boundary of the GB1 evidence and distinguishes it from the historical materials results. [Frozen baseline](evidence/gb1-review/base_snapshot.json) · [Verification receipt](evidence/gb1-review/verification.json)
+
+## GFP fluorescence study and compatible API onboarding
+
+The main agent experiment now uses archived GFP fluorescence measurements. The protocol fixes the GFP reference, score, paired splits, budgets, accepted outputs, and model cells. In the measured study, model output supplies explicit mutation proposals and calls native scoring tools. The fitted predictor returns estimates and the replay oracle releases only measurements for submitted IDs. Remote native model trials retain DeepSeek, Claude Sonnet and GPT served IDs; local Qwen records its pinned weight revision and actual local responses. The configured-api setup and CSV demonstration use a separately tested OpenAI-compatible native-tool transport. Example researcher input and returned values come from the public fluorescence archive. No new laboratory measurements were made.
+
+The compatibility profile used for the demonstration is stored locally. Its public verification receipt shows served model and response identifiers and confirms tool execution. It contains no API key. The formal measurements, compatibility demonstration and separate paired feedback audit have separate directories and logs. Frozen formal code hashes refer to the native experiment implementation in commit 47d1b789, prior to the optional adapter's increased response budget.
+
+- [GFP primary study](https://doi.org/10.1038/nature17995) and [original data](https://doi.org/10.6084/m9.figshare.3102154.v1).
+- [ProteinGym 1.3 frozen release](https://doi.org/10.5281/zenodo.15293562).

@@ -1,0 +1,124 @@
+{
+  "status": "passed",
+  "frozen_code_commit": "47d1b7893f714694da537361d400967a7919ac97",
+  "frozen_code_files_verified": [
+    "gfp_protocol.md",
+    "gfp_data.py",
+    "gfp_evolution.py",
+    "gfp_agent.py",
+    "llm_agent.py",
+    "sonnet_transport.py",
+    "gpt_transport.py",
+    "qwen_transport.py",
+    "requirements-full.txt"
+  ],
+  "historical_archives_unchanged": true,
+  "local_tests": {
+    "command": ".venv/bin/python -m pytest -q",
+    "passed": 54,
+    "failed": 0,
+    "portable_lock_tests": {
+      "passed": 53,
+      "skipped": 1,
+      "reason": "Optional Anthropic SDK omitted"
+    }
+  },
+  "portable_no_api_replay": {
+    "command": "python run.py gfp replay --from-run evidence/gfp --output runs/gfp-replay",
+    "api_credentials_unset": true,
+    "replayed_formal_and_smoke_tables": {
+      "matched": [
+        "smoke/deepseek/rounds.csv",
+        "smoke/deepseek/selections.csv",
+        "smoke/deepseek/methods.csv",
+        "smoke/deepseek/method_summary.csv",
+        "smoke/deepseek/predictive.csv",
+        "formal/deepseek/rounds.csv",
+        "formal/deepseek/selections.csv",
+        "formal/deepseek/methods.csv",
+        "formal/deepseek/method_summary.csv",
+        "formal/deepseek/predictive.csv",
+        "smoke/sonnet/rounds.csv",
+        "smoke/sonnet/selections.csv",
+        "smoke/sonnet/methods.csv",
+        "smoke/sonnet/method_summary.csv",
+        "smoke/sonnet/predictive.csv",
+        "formal/sonnet/rounds.csv",
+        "formal/sonnet/selections.csv",
+        "formal/sonnet/methods.csv",
+        "formal/sonnet/method_summary.csv",
+        "formal/sonnet/predictive.csv",
+        "smoke/gpt/rounds.csv",
+        "smoke/gpt/selections.csv",
+        "smoke/gpt/methods.csv",
+        "smoke/gpt/method_summary.csv",
+        "smoke/gpt/predictive.csv",
+        "formal/gpt/rounds.csv",
+        "formal/gpt/selections.csv",
+        "formal/gpt/methods.csv",
+        "formal/gpt/method_summary.csv",
+        "formal/gpt/predictive.csv",
+        "smoke/qwen/rounds.csv",
+        "smoke/qwen/selections.csv",
+        "smoke/qwen/methods.csv",
+        "smoke/qwen/method_summary.csv",
+        "smoke/qwen/predictive.csv",
+        "formal/qwen/rounds.csv",
+        "formal/qwen/selections.csv",
+        "formal/qwen/methods.csv",
+        "formal/qwen/method_summary.csv",
+        "formal/qwen/predictive.csv"
+      ],
+      "count": 40
+    },
+    "additional_aggregate_and_benchmark_tables": [
+      "benchmark/metrics.csv",
+      "aggregate/method_summary.csv",
+      "aggregate/rounds.csv",
+      "aggregate/selections.csv",
+      "aggregate/knowledge_selection_overlap.csv"
+    ],
+    "paired_audit_tables": 2,
+    "paired_audit_live_generations": 0,
+    "comparison_absolute_and_relative_float_tolerance": 1e-10
+  },
+  "model_only_and_random_cli": {
+    "status": "complete",
+    "mode": "formal",
+    "arms": 6,
+    "expected_arms": 6,
+    "measurements": 90,
+    "partial_measurements": 0,
+    "failed": 0
+  },
+  "prediction_only_demo_cli": {
+    "status": "complete",
+    "scope": "published measurements formatted as user data",
+    "assay": "GFP_AEQVI_Sarkisyan_2016",
+    "initial_observations": 96,
+    "imported_after_selection": 5,
+    "total_observations": 101,
+    "second_batch_prediction_only": 5,
+    "backend": "rf"
+  },
+  "pdf": {
+    "path": "output/pdf/gfp-scientific-agent.pdf",
+    "sha256": "71716d35d70a6b6d5091dd1f2ed9d8dff39a9c43e83325fffed16c8141f852ea",
+    "pages": 5,
+    "rendered_dpi": 92,
+    "visually_checked_pages": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "page_render_hashes": {
+      "page-1.png": "2bb1e3cc79a18383e7f11ea0785f75a1da0b74bd009ade1d90fa00b71b0e5958",
+      "page-2.png": "5017885a572308ddcc454474f5b9ddcf7576b1244eeacd330e65c2713df39daa",
+      "page-3.png": "81b7fa0d12dbe87ae24a7d53e56f57ae54a443337d406b07dc1a55a49b47abf4",
+      "page-4.png": "0b3fa881768339bdac82c5d99238a9e8d270950e93e2e57c9ce86e03ae019867",
+      "page-5.png": "b8f56e979145f007bfa66a9e38778cabfe670549c17bfaf2226b24f23745bc12"
+    }
+  }
+}

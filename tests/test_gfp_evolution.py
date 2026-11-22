@@ -99,3 +99,38 @@ def test_failed_second_round_preserves_only_already_committed_feedback(
     assert (failed_arm / "round-01.json").is_file()
     assert not (failed_arm / "round-02.json").exists()
     assert (pd.read_csv(output / "partial_selections.csv")["round"] == 1).all()
+
+
+def test_gfp_audit_freezes_scoring_and_only_adds_revealed_feedback(
+    tmp_path: Path, fixture_catalog: GFPDataset,
+) -> None:
+    from gfp_audit import _checkpoints, _score_pair
+
+    def select(request, *, log_path):
+        return [row["id"] for row in request["menu"][:request["budget"]]]
+
+    result = run_evolution(fixture_catalog, tmp_path, selector=select, seeds=(17, 29), rounds=1,
+                           budget=5, arms=LLM_ARMS, workers=2)
+    assert result["status"] == "complete"
+    for point in _checkpoints(fixture_catalog, tmp_path):
+        before, after = point["no_feedback"], point["with_feedback"]
+        fixed = set(before) - {"observed", "latest_feedback_ids"}
+        assert {key: before[key] for key in fixed} == {key: after[key] for key in fixed}
+        previous = {row["id"] for row in before["observed"]}
+        revealed = {row["id"] for row in after["observed"]} - previous
+        assert len(revealed) == 5
+        assert revealed == set(after["latest_feedback_ids"])
+        menu = after["menu"]
+        assert not revealed & {row["id"] for row in menu}
+        assert all("fitness" not in row for row in menu)
+
+        greedy = point["model_only"]
+        alternate = [row["id"] for row in menu if row["id"] not in greedy][:5]
+        summary, outcomes = _score_pair(fixture_catalog, point, [
+            (greedy, {"decision": {"evidence_ids": []}}),
+            (alternate, {"decision": {"evidence_ids": sorted(revealed)}}),
+        ])
+        assert summary["set_changed"] and summary["top_k_overlap"] == 0
+        assert summary["no_feedback_regret"] == summary["model_only_regret"]
+        assert len(outcomes) == 15
+        assert all(row["fitness"] == fixture_catalog.scores[row["id"]] for row in outcomes)

@@ -1,0 +1,1426 @@
+{
+  "format_version": 1,
+  "mode": "live",
+  "backend": "gpt",
+  "model": "gpt-6-luna",
+  "domain": "gfp_fluorescence",
+  "config": {
+    "backend": "CodeFlow OpenAI Responses",
+    "max_output_tokens": 512,
+    "reasoning": {
+      "effort": "none"
+    },
+    "store": false,
+    "parallel_tool_calls": false,
+    "final_format": "strict_json_schema",
+    "api_base": "https://codeflow.sh/v1",
+    "proposal_max_tokens": 440,
+    "final_max_tokens": 280,
+    "rate_limit_backoff_s": [
+      15,
+      35
+    ]
+  },
+  "seed": 17,
+  "round": 3,
+  "budget": 5,
+  "knowledge_augmented": false,
+  "input_sha256": "3b3cb912c5045b9e4acb0d83325d0427434f6cdc801624b56c0d9c2f3c7cc4e0",
+  "reference_sha256": "9be57dbaa8e6d8b324cd1a84684901808c38b3b84f940c08e00a0323f4215e9f",
+  "menu": [
+    {
+      "id": "N23S:V163A",
+      "mutations": "N23S:V163A",
+      "sequence": "MSKGEELFTGVVPILVELDGDVSGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKANFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+      "edits": [
+        "N23S",
+        "V163A"
+      ],
+      "alias": "C01",
+      "prediction": 3.524749571294672,
+      "uncertainty": 0.13555285463631436,
+      "rank": 61,
+      "source": "seeded_non_elite"
+    },
+    {
+      "id": "T38A:D102G:K113Q:E213G",
+      "mutations": "T38A:D102G:K113Q:E213G",
+      "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDAAYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKGDGNYKTRAEVQFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNGKRDHMVLLEFVTAAGITHGMDELYK",
+      "edits": [
+        "T38A",
+        "D102G",
+        "K113Q",
+        "E213G"
+      ],
+      "alias": "C02",
+      "prediction": 2.2901143507830977,
+      "uncertainty": 0.6360995402321794,
+      "rank": 341,
+      "source": "seeded_non_elite"
+    },
+    {
+      "id": "D129V:K131R:E235V",
+      "mutations": "D129V:K131R:E235V",
+      "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIVFREDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDVLYK",
+      "edits": [
+        "D129V",
+        "K131R",
+        "E235V"
+      ],
+      "alias": "C03",
+      "prediction": 3.0741063359790854,
+      "uncertainty": 0.43080324476290566,
+      "rank": 188,
+      "source": "seeded_non_elite"
+    },
+    {
+      "id": "K45R:F84L",
+      "mutations": "K45R:F84L",
+      "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLRFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFLKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+      "edits": [
+        "K45R",
+        "F84L"
+      ],
+      "alias": "C04",
+      "prediction": 3.197545306023066,
+      "uncertainty": 0.5174291048566865,
+      "rank": 149,
+      "source": "seeded_non_elite"
+    },
+    {
+      "id": "I47T:K52E:N144Y:Q184R",
+      "mutations": "I47T:K52E:N144Y:Q184R",
+      "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFTCTTGELPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYYYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQRNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+      "edits": [
+        "I47T",
+        "K52E",
+        "N144Y",
+        "Q184R"
+      ],
+      "alias": "C05",
+      "prediction": 2.313704914333119,
+      "uncertainty": 0.674015176405439,
+      "rank": 299,
+      "source": "seeded_non_elite"
+    },
+    {
+      "id": "K131E:I152V",
+      "mutations": "K131E:I152V",
+      "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFEEDGNILGHKLEYNYNSHNVYVMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+      "edits": [
+        "K131E",
+        "I152V"
+      ],
+      "alias": "C06",
+      "prediction": 2.871737348333854,
+      "uncertainty": 0.9690633675934028,
+      "rank": 256,
+      "source": "seeded_non_elite"
+    },
+    {
+      "id": "E124G:K126E:K131Q:N149D",
+      "mutations": "E124G:K126E:K131Q:N149D",
+      "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIGLEGIDFQEDGNILGHKLEYNYNSHDVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+      "edits": [
+        "E124G",
+        "K126E",
+        "K131Q",
+        "N149D"
+      ],
+      "alias": "C07",
+      "prediction": 2.2901143507830977,
+      "uncertainty": 0.6360995402321794,
+      "rank": 327,
+      "source": "seeded_non_elite"
+    },
+    {
+      "id": "E6K",
+      "mutations": "E6K",
+      "sequence": "MSKGEKLFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+      "edits": [
+        "E6K"
+      ],
+      "alias": "C08",
+      "prediction": 3.348491943991204,
+      "uncertainty": 0.23611369985430822,
+      "rank": 120,
+      "source": "seeded_non_elite"
+    },
+    {
+      "id": "T62S:P192T",
+      "mutations": "T62S:P192T",
+      "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVSTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGTVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+      "edits": [
+        "T62S",
+        "P192T"
+      ],
+      "alias": "C09",
+      "prediction": 3.527887876524191,
+      "uncertainty": 0.1331330488162615,
+      "rank": 19,
+      "source": "rf_elite"
+    },
+    {
+      "id": "N159I:D190G",
+      "mutations": "N159I:D190G",
+      "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKIGIKVNFKIRHNIEDGSVQLADHYQQNTPIGGGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+      "edits": [
+        "N159I",
+        "D190G"
+      ],
+      "alias": "C10",
+      "prediction": 3.5009366208195054,
+      "uncertainty": 0.22533400507749532,
+      "rank": 94,
+      "source": "seeded_non_elite"
+    },
+    {
+      "id": "D76G:F84L:D133N:D197G",
+      "mutations": "D76G:F84L:D133N:D197G",
+      "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPGHMKQHDFLKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKENGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPGNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+      "edits": [
+        "D76G",
+        "F84L",
+        "D133N",
+        "D197G"
+      ],
+      "alias": "C11",
+      "prediction": 2.2687692290485773,
+      "uncertainty": 0.6171424814538241,
+      "rank": 354,
+      "source": "seeded_non_elite"
+    },
+    {
+      "id": "E17K:N144S",
+      "mutations": "E17K:N144S",
+      "sequence": "MSKGEELFTGVVPILVKLDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYSYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+      "edits": [
+        "E17K",
+        "N144S"
+      ],
+      "alias": "C12",
+      "prediction": 3.562747342998779,
+      "uncertainty": 0.09790950879579556,
+      "rank": 4,
+      "source": "rf_elite"
+    },
+    {
+      "id": "G228R",
+      "mutations": "G228R",
+      "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAARITHGMDELYK",
+      "edits": [
+        "G228R"
+      ],
+      "alias": "C13",
+      "prediction": 3.348491943991204,
+      "uncertainty": 0.23611369985430822,
+      "rank": 122,
+      "source": "seeded_non_elite"
+    },
+    {
+      "id": "N23S:H81R:F84S:N144D",
+      "mutations": "N23S:H81R:F84S:N144D",
+      "sequence": "MSKGEELFTGVVPILVELDGDVSGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQRDFSKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYDYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+      "edits": [
+        "N23S",
+        "H81R",
+        "F84S",
+        "N144D"
+      ],
+      "alias": "C14",
+      "prediction": 2.326366673403353,
+      "uncertainty": 0.6853919317556504,
+      "rank": 295,
+      "source": "seeded_non_elite"
+    },
+    {
+      "id": "V93I:E132G",
+      "mutations": "V93I:E132G",
+      "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYIQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKGDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+      "edits": [
+        "V93I",
+        "E132G"
+      ],
+      "alias": "C15",
+      "prediction": 3.525969769352659,
+      "uncertainty": 0.1355718112214642,
+      "rank": 22,
+      "source": "rf_elite"
+    },
+    {
+      "id": "N105D:K156E",
+      "mutations": "N105D:K156E",
+      "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGDYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADEQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+      "edits": [
+        "N105D",
+        "K156E"
+      ],
+      "alias": "C16",
+      "prediction": 3.530017602329412,
+      "uncertainty": 0.1325945420730077,
+      "rank": 14,
+      "source": "rf_elite"
+    },
+    {
+      "id": "A179T:I229F",
+      "mutations": "A179T:I229F",
+      "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLTDHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGFTHGMDELYK",
+      "edits": [
+        "A179T",
+        "I229F"
+      ],
+      "alias": "C17",
+      "prediction": 3.524749571294672,
+      "uncertainty": 0.13555285463631436,
+      "rank": 23,
+      "source": "rf_elite"
+    },
+    {
+      "id": "N135S:M153V",
+      "mutations": "N135S:M153V",
+      "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGSILGHKLEYNYNSHNVYIVADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+      "edits": [
+        "N135S",
+        "M153V"
+      ],
+      "alias": "C18",
+      "prediction": 3.5350019683788156,
+      "uncertainty": 0.12291562889959648,
+      "rank": 10,
+      "source": "rf_elite"
+    },
+    {
+      "id": "D117G:H148R",
+      "mutations": "D117G:H148R",
+      "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGGTLVNRIELKGIDFKEDGNILGHKLEYNYNSRNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+      "edits": [
+        "D117G",
+        "H148R"
+      ],
+      "alias": "C19",
+      "prediction": 3.5372314682132293,
+      "uncertainty": 0.12765763730554275,
+      "rank": 6,
+      "source": "rf_elite"
+    },
+    {
+      "id": "K79E:N105Y",
+      "mutations": "K79E:N105Y",
+      "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMEQHDFFKSAMPEGYVQERTIFFKDDGYYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+      "edits": [
+        "K79E",
+        "N105Y"
+      ],
+      "alias": "C20",
+      "prediction": 3.5532481640352978,
+      "uncertainty": 0.11119966046395886,
+      "rank": 5,
+      "source": "rf_elite"
+    },
+    {
+      "id": "K3R:D117G:V163A",
+      "mutations": "K3R:D117G:V163A",
+      "sequence": "MSRGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGGTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKANFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+      "edits": [
+        "K3R",
+        "D117G",
+        "V163A"
+      ],
+      "alias": "C21",
+      "prediction": 3.129732564931963,
+      "uncertainty": 0.4459124132770624,
+      "rank": 167,
+      "source": "seeded_non_elite"
+    },
+    {
+      "id": "T50A:T97S:F223Y",
+      "mutations": "T50A:T97S:F223Y",
+      "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTAGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERSIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEYVTAAGITHGMDELYK",
+      "edits": [
+        "T50A",
+        "T97S",
+        "F223Y"
+      ],
+      "alias": "C22",
+      "prediction": 3.0722600942713068,
+      "uncertainty": 0.43290207681531917,
+      "rank": 221,
+      "source": "seeded_non_elite"
+    },
+    {
+      "id": "N23S:F84Y",
+      "mutations": "N23S:F84Y",
+      "sequence": "MSKGEELFTGVVPILVELDGDVSGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFYKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+      "edits": [
+        "N23S",
+        "F84Y"
+      ],
+      "alias": "C23",
+      "prediction": 3.5264553474094615,
+      "uncertainty": 0.13462545565259287,
+      "rank": 21,
+      "source": "rf_elite"
+    },
+    {
+      "id": "K107T:K140Q",
+      "mutations": "K107T:K140Q",
+      "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYTTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHQLEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+      "edits": [
+        "K107T",
+        "K140Q"
+      ],
+      "alias": "C24",
+      "prediction": 3.5284642107150157,
+      "uncertainty": 0.13196454301643923,
+      "rank": 16,
+      "source": "rf_elite"
+    },
+    {
+      "id": "D173G:T225I",
+      "mutations": "D173G:T225I",
+      "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEGGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVIAAGITHGMDELYK",
+      "edits": [
+        "D173G",
+        "T225I"
+      ],
+      "alias": "C25",
+      "prediction": 3.524749571294672,
+      "uncertainty": 0.13555285463631436,
+      "rank": 24,
+      "source": "rf_elite"
+    },
+    {
+      "id": "W57R:V68A:I167V",
+      "mutations": "W57R:V68A:I167V",
+      "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPRPTLVTTLSYGAQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKVRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+      "edits": [
+        "W57R",
+        "V68A",
+        "I167V"
+      ],
+      "alias": "C26",
+      "prediction": 2.7823838274912265,
+      "uncertainty": 0.631147000370933,
+      "rank": 265,
+      "source": "seeded_non_elite"
+    },
+    {
+      "id": "T43A:M78V",
+      "mutations": "T43A:M78V",
+      "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLALKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHVKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+      "edits": [
+        "T43A",
+        "M78V"
+      ],
+      "alias": "C27",
+      "prediction": 3.566358824796398,
+      "uncertainty": 0.1215857490112419,
+      "rank": 3,
+      "source": "rf_elite"
+    },
+    {
+      "id": "L64P:F83L:I128T",
+      "mutations": "L64P:F83L:I128T",
+      "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTPSYGVQCFSRYPDHMKQHDLFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGTDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+      "edits": [
+        "L64P",
+        "F83L",
+        "I128T"
+      ],
+      "alias": "C28",
+      "prediction": 2.9489998279548097,
+      "uncertainty": 0.49199343190715444,
+      "rank": 250,
+      "source": "seeded_non_elite"
+    },
+    {
+      "id": "H25L:I136T",
+      "mutations": "H25L:I136T",
+      "sequence": "MSKGEELFTGVVPILVELDGDVNGLKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNTLGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+      "edits": [
+        "H25L",
+        "I136T"
+      ],
+      "alias": "C29",
+      "prediction": 3.524749571294672,
+      "uncertainty": 0.13555285463631436,
+      "rank": 41,
+      "source": "seeded_non_elite"
+    },
+    {
+      "id": "E5G:K26R:L178P",
+      "mutations": "E5G:K26R:L178P",
+      "sequence": "MSKGGELFTGVVPILVELDGDVNGHRFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQPADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+      "edits": [
+        "E5G",
+        "K26R",
+        "L178P"
+      ],
+      "alias": "C30",
+      "prediction": 3.1996587483020003,
+      "uncertainty": 0.4606136137223992,
+      "rank": 147,
+      "source": "seeded_non_elite"
+    },
+    {
+      "id": "V163A:L221Q:M233T",
+      "mutations": "V163A:L221Q:M233T",
+      "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKANFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLQEFVTAAGITHGTDELYK",
+      "edits": [
+        "V163A",
+        "L221Q",
+        "M233T"
+      ],
+      "alias": "C31",
+      "prediction": 3.068570464302445,
+      "uncertainty": 0.4343472451546028,
+      "rank": 223,
+      "source": "seeded_non_elite"
+    },
+    {
+      "id": "F83L:N105Y",
+      "mutations": "F83L:N105Y",
+      "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDLFKSAMPEGYVQERTIFFKDDGYYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+      "edits": [
+        "F83L",
+        "N105Y"
+      ],
+      "alias": "C32",
+      "prediction": 3.530017602329412,
+      "uncertainty": 0.1325945420730077,
+      "rank": 13,
+      "source": "rf_elite"
+    },
+    {
+      "id": "K140R:L236P",
+      "mutations": "K140R:L236P",
+      "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHRLEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDEPYK",
+      "edits": [
+        "K140R",
+        "L236P"
+      ],
+      "alias": "C33",
+      "prediction": 3.5284642107150157,
+      "uncertainty": 0.13196454301643923,
+      "rank": 17,
+      "source": "rf_elite"
+    },
+    {
+      "id": "V11L",
+      "mutations": "V11L",
+      "sequence": "MSKGEELFTGLVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+      "edits": [
+        "V11L"
+      ],
+      "alias": "C34",
+      "prediction": 3.348491943991204,
+      "uncertainty": 0.23611369985430822,
+      "rank": 128,
+      "source": "seeded_non_elite"
+    },
+    {
+      "id": "E34G:M153V",
+      "mutations": "E34G:M153V",
+      "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGGGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIVADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+      "edits": [
+        "E34G",
+        "M153V"
+      ],
+      "alias": "C35",
+      "prediction": 3.5350019683788156,
+      "uncertainty": 0.12291562889959648,
+      "rank": 8,
+      "source": "rf_elite"
+    },
+    {
+      "id": "V11A:R168H",
+      "mutations": "V11A:R168H",
+      "sequence": "MSKGEELFTGAVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKIHHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+      "edits": [
+        "V11A",
+        "R168H"
+      ],
+      "alias": "C36",
+      "prediction": 3.529200730927581,
+      "uncertainty": 0.13540518256593173,
+      "rank": 15,
+      "source": "rf_elite"
+    },
+    {
+      "id": "T43A:Y151C",
+      "mutations": "T43A:Y151C",
+      "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLALKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVCIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+      "edits": [
+        "T43A",
+        "Y151C"
+      ],
+      "alias": "C37",
+      "prediction": 3.578629179301129,
+      "uncertainty": 0.12186436284732186,
+      "rank": 2,
+      "source": "rf_elite"
+    },
+    {
+      "id": "T59I:K140E",
+      "mutations": "T59I:K140E",
+      "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPILVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHELEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+      "edits": [
+        "T59I",
+        "K140E"
+      ],
+      "alias": "C38",
+      "prediction": 3.5284642107150157,
+      "uncertainty": 0.13196454301643923,
+      "rank": 18,
+      "source": "rf_elite"
+    },
+    {
+      "id": "K101R:T203A",
+      "mutations": "K101R:T203A",
+      "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFRDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSAQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+      "edits": [
+        "K101R",
+        "T203A"
+      ],
+      "alias": "C39",
+      "prediction": 3.5318505963638174,
+      "uncertainty": 0.1416932404563631,
+      "rank": 12,
+      "source": "rf_elite"
+    },
+    {
+      "id": "K156M:N198G",
+      "mutations": "K156M:N198G",
+      "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADMQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDGHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+      "edits": [
+        "K156M",
+        "N198G"
+      ],
+      "alias": "C40",
+      "prediction": 3.5817946763249937,
+      "uncertainty": 0.12137244880576194,
+      "rank": 1,
+      "source": "rf_elite"
+    },
+    {
+      "id": "K26E:I171T:N212I:F223Y",
+      "mutations": "K26E:I171T:N212I:F223Y",
+      "sequence": "MSKGEELFTGVVPILVELDGDVNGHEFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHNTEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPIEKRDHMVLLEYVTAAGITHGMDELYK",
+      "edits": [
+        "K26E",
+        "I171T",
+        "N212I",
+        "F223Y"
+      ],
+      "alias": "C41",
+      "prediction": 2.290972546127811,
+      "uncertainty": 0.5581697080397099,
+      "rank": 320,
+      "source": "seeded_non_elite"
+    },
+    {
+      "id": "F84L:E111V",
+      "mutations": "F84L:E111V",
+      "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFLKSAMPEGYVQERTIFFKDDGNYKTRAVVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+      "edits": [
+        "F84L",
+        "E111V"
+      ],
+      "alias": "C42",
+      "prediction": 3.5264553474094615,
+      "uncertainty": 0.13462545565259287,
+      "rank": 20,
+      "source": "rf_elite"
+    },
+    {
+      "id": "H81Q:G189D:D197A:I229V",
+      "mutations": "H81Q:G189D:D197A:I229V",
+      "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQQDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIDDGPVLLPANHYLSTQSALSKDPNEKRDHMVLLEFVTAAGVTHGMDELYK",
+      "edits": [
+        "H81Q",
+        "G189D",
+        "D197A",
+        "I229V"
+      ],
+      "alias": "C43",
+      "prediction": 2.2901143507830977,
+      "uncertainty": 0.6360995402321794,
+      "rank": 333,
+      "source": "seeded_non_elite"
+    },
+    {
+      "id": "I98V:M153T",
+      "mutations": "I98V:M153T",
+      "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTVFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYITADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+      "edits": [
+        "I98V",
+        "M153T"
+      ],
+      "alias": "C44",
+      "prediction": 3.5350019683788156,
+      "uncertainty": 0.12291562889959648,
+      "rank": 9,
+      "source": "rf_elite"
+    },
+    {
+      "id": "V112E:D173G:I188A",
+      "mutations": "V112E:D173G:I188A",
+      "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEEKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEGGSVQLADHYQQNTPAGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+      "edits": [
+        "V112E",
+        "D173G",
+        "I188A"
+      ],
+      "alias": "C45",
+      "prediction": 3.087558977984006,
+      "uncertainty": 0.42677619511332715,
+      "rank": 176,
+      "source": "seeded_non_elite"
+    },
+    {
+      "id": "K52R:E95V",
+      "mutations": "K52R:E95V",
+      "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGRLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQVRTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+      "edits": [
+        "K52R",
+        "E95V"
+      ],
+      "alias": "C46",
+      "prediction": 3.3102775716069424,
+      "uncertainty": 0.4807274170144959,
+      "rank": 135,
+      "source": "seeded_non_elite"
+    },
+    {
+      "id": "D21V:L60P",
+      "mutations": "D21V:L60P",
+      "sequence": "MSKGEELFTGVVPILVELDGVVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTPVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+      "edits": [
+        "D21V",
+        "L60P"
+      ],
+      "alias": "C47",
+      "prediction": 3.532181415149297,
+      "uncertainty": 0.1253051583714878,
+      "rank": 11,
+      "source": "rf_elite"
+    },
+    {
+      "id": "K158R:Y200C",
+      "mutations": "K158R:Y200C",
+      "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQRNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHCLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+      "edits": [
+        "K158R",
+        "Y200C"
+      ],
+      "alias": "C48",
+      "prediction": 3.535950037922406,
+      "uncertainty": 0.13450166223207882,
+      "rank": 7,
+      "source": "rf_elite"
+    }
+  ],
+  "observed_evidence": {
+    "O1": {
+      "id": "R73H:E90V:D117G",
+      "mutations": "R73H:E90V:D117G",
+      "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSHYPDHMKQHDFFKSAMPVGYVQERTIFFKDDGNYKTRAEVKFEGGTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+      "edits": [
+        "R73H",
+        "E90V",
+        "D117G"
+      ],
+      "fitness": 3.86700614934
+    },
+    "O2": {
+      "id": "E95G:E172V",
+      "mutations": "E95G:E172V",
+      "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQGRTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHNIVDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+      "edits": [
+        "E95G",
+        "E172V"
+      ],
+      "fitness": 3.85554527214
+    },
+    "O3": {
+      "id": "K26R:F84Y",
+      "mutations": "K26R:F84Y",
+      "sequence": "MSKGEELFTGVVPILVELDGDVNGHRFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFYKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+      "edits": [
+        "K26R",
+        "F84Y"
+      ],
+      "fitness": 3.813742463480002
+    },
+    "O4": {
+      "id": "K45R:S65P:V68A",
+      "mutations": "K45R:S65P:V68A",
+      "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLRFICTTGKLPVPWPTLVTTLPYGAQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+      "edits": [
+        "K45R",
+        "S65P",
+        "V68A"
+      ],
+      "fitness": 1.29955805501
+    },
+    "O5": {
+      "id": "S30P:N170D",
+      "mutations": "S30P:N170D",
+      "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVPGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHDIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+      "edits": [
+        "S30P",
+        "N170D"
+      ],
+      "fitness": 1.30102963126
+    },
+    "O6": {
+      "id": "K41R:N198D",
+      "mutations": "K41R:N198D",
+      "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGRLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDDHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+      "edits": [
+        "K41R",
+        "N198D"
+      ],
+      "fitness": 3.77161762625
+    },
+    "O7": {
+      "id": "K41T:T43A",
+      "mutations": "K41T:T43A",
+      "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGTLALKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+      "edits": [
+        "K41T",
+        "T43A"
+      ],
+      "fitness": 3.69798858706
+    },
+    "O8": {
+      "id": "D76N:N144D",
+      "mutations": "D76N:N144D",
+      "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPNHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYDYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+      "edits": [
+        "D76N",
+        "N144D"
+      ],
+      "fitness": 3.77150170272
+    },
+    "O9": {
+      "id": "M78T:N144D",
+      "mutations": "M78T:N144D",
+      "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHTKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYDYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+      "edits": [
+        "M78T",
+        "N144D"
+      ],
+      "fitness": 3.5042366917300005
+    }
+  },
+  "latest_feedback_ids": [
+    "K41R:N198D",
+    "K41T:T43A",
+    "D76N:N144D",
+    "M78T:N144D",
+    "K26R:F84Y"
+  ],
+  "calls": [
+    {
+      "stage": "proposal",
+      "attempt": 1,
+      "request": {
+        "model": "gpt-6-luna",
+        "instructions": "You are analyzing historical measurements for avGFP fluorescence. Larger log brightness is better. Only observations have measured fluorescence. Menu values and tool scores are fitted predictions. Use the observed evidence, state a testable short hypothesis, and specify edits that match displayed candidate identities on the pinned GFP reference. All eligible candidates are from a fixed menu. Do not estimate or cite measurements for candidates. Keep all text fields concise and evidence-specific.",
+        "input": [
+          {
+            "role": "user",
+            "content": "Each O row is alias, edits, measured value. Each C row is alias, edits, rounded model estimate. Call score_gfp_designs with a short analyst summary, a concrete hypothesis, 1\u20133 O evidence IDs and exactly 6 designs, e.g. a C alias and a space followed by its exact colon-delimited edits from the menu. The returned estimates resolve exact values and tool checks.\n{\"budget\":5,\"latest_feedback_aliases\":[\"O3\",\"O6\",\"O7\",\"O8\",\"O9\"],\"menu\":[[\"C01\",\"N23S:V163A\",3.525],[\"C02\",\"T38A:D102G:K113Q:E213G\",2.29],[\"C03\",\"D129V:K131R:E235V\",3.074],[\"C04\",\"K45R:F84L\",3.198],[\"C05\",\"I47T:K52E:N144Y:Q184R\",2.314],[\"C06\",\"K131E:I152V\",2.872],[\"C07\",\"E124G:K126E:K131Q:N149D\",2.29],[\"C08\",\"E6K\",3.348],[\"C09\",\"T62S:P192T\",3.528],[\"C10\",\"N159I:D190G\",3.501],[\"C11\",\"D76G:F84L:D133N:D197G\",2.269],[\"C12\",\"E17K:N144S\",3.563],[\"C13\",\"G228R\",3.348],[\"C14\",\"N23S:H81R:F84S:N144D\",2.326],[\"C15\",\"V93I:E132G\",3.526],[\"C16\",\"N105D:K156E\",3.53],[\"C17\",\"A179T:I229F\",3.525],[\"C18\",\"N135S:M153V\",3.535],[\"C19\",\"D117G:H148R\",3.537],[\"C20\",\"K79E:N105Y\",3.553],[\"C21\",\"K3R:D117G:V163A\",3.13],[\"C22\",\"T50A:T97S:F223Y\",3.072],[\"C23\",\"N23S:F84Y\",3.526],[\"C24\",\"K107T:K140Q\",3.528],[\"C25\",\"D173G:T225I\",3.525],[\"C26\",\"W57R:V68A:I167V\",2.782],[\"C27\",\"T43A:M78V\",3.566],[\"C28\",\"L64P:F83L:I128T\",2.949],[\"C29\",\"H25L:I136T\",3.525],[\"C30\",\"E5G:K26R:L178P\",3.2],[\"C31\",\"V163A:L221Q:M233T\",3.069],[\"C32\",\"F83L:N105Y\",3.53],[\"C33\",\"K140R:L236P\",3.528],[\"C34\",\"V11L\",3.348],[\"C35\",\"E34G:M153V\",3.535],[\"C36\",\"V11A:R168H\",3.529],[\"C37\",\"T43A:Y151C\",3.579],[\"C38\",\"T59I:K140E\",3.528],[\"C39\",\"K101R:T203A\",3.532],[\"C40\",\"K156M:N198G\",3.582],[\"C41\",\"K26E:I171T:N212I:F223Y\",2.291],[\"C42\",\"F84L:E111V\",3.526],[\"C43\",\"H81Q:G189D:D197A:I229V\",2.29],[\"C44\",\"I98V:M153T\",3.535],[\"C45\",\"V112E:D173G:I188A\",3.088],[\"C46\",\"K52R:E95V\",3.31],[\"C47\",\"D21V:L60P\",3.532],[\"C48\",\"K158R:Y200C\",3.536]],\"mutation_limit\":4,\"observations\":[[\"O1\",\"R73H:E90V:D117G\",3.867],[\"O2\",\"E95G:E172V\",3.8555],[\"O3\",\"K26R:F84Y\",3.8137],[\"O4\",\"K45R:S65P:V68A\",1.2996],[\"O5\",\"S30P:N170D\",1.301],[\"O6\",\"K41R:N198D\",3.7716],[\"O7\",\"K41T:T43A\",3.698],[\"O8\",\"D76N:N144D\",3.7715],[\"O9\",\"M78T:N144D\",3.5042]],\"round\":3,\"shortlist_size\":6}"
+          }
+        ],
+        "tools": [
+          {
+            "type": "function",
+            "name": "score_gfp_designs",
+            "description": "Construct and score candidate GFP fluorescence sequences. Each design string is a menu alias followed by one space and its explicit colon-separated substitutions.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "analyst": {
+                  "type": "string"
+                },
+                "hypothesis": {
+                  "type": "string"
+                },
+                "evidence_ids": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "designs": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "required": [
+                "analyst",
+                "hypothesis",
+                "evidence_ids",
+                "designs"
+              ],
+              "additionalProperties": false
+            },
+            "strict": true
+          }
+        ],
+        "tool_choice": {
+          "type": "function",
+          "name": "score_gfp_designs"
+        },
+        "parallel_tool_calls": false,
+        "max_output_tokens": 440,
+        "reasoning": {
+          "effort": "none"
+        },
+        "store": false
+      },
+      "request_sha256": "f98dafe22c54f61a7433957e4934532b56012cf848aaa5f47863061b393e9be5",
+      "response": {
+        "text": "",
+        "tool_calls": [
+          {
+            "id": "call_c1f8044ba55a4b2fa33a9c62d5d258c7",
+            "type": "function",
+            "function": {
+              "name": "score_gfp_designs",
+              "arguments": "{\"analyst\":\"Observed bright examples include K26R:F84Y and K41R:T43A; N144D is context-dependent, bright with D76N but weaker with M78T. Prioritize menu variants with established bright-associated positions and avoid proline/known low-performing contexts.\",\"designs\":[\"C23 N23S:F84Y\",\"C27 T43A:M78V\",\"C42 F84L:E111V\",\"C18 N135S:M153V\",\"C19 D117G:H148R\",\"C37 T43A:Y151C\"],\"evidence_ids\":[\"O3\",\"O7\",\"O8\"],\"hypothesis\":\"F84Y or T43A substitutions can support high fluorescence in suitable sequence backgrounds, while N144D's effect depends on its partner mutation; menu candidates carrying these related substitutions should retain strong fluorescence unless a destabilizing partner counteracts them.\"}"
+            }
+          }
+        ],
+        "finish_reason": "tool_calls",
+        "native_content": [
+          {
+            "arguments": "{\"analyst\":\"Observed bright examples include K26R:F84Y and K41R:T43A; N144D is context-dependent, bright with D76N but weaker with M78T. Prioritize menu variants with established bright-associated positions and avoid proline/known low-performing contexts.\",\"designs\":[\"C23 N23S:F84Y\",\"C27 T43A:M78V\",\"C42 F84L:E111V\",\"C18 N135S:M153V\",\"C19 D117G:H148R\",\"C37 T43A:Y151C\"],\"evidence_ids\":[\"O3\",\"O7\",\"O8\"],\"hypothesis\":\"F84Y or T43A substitutions can support high fluorescence in suitable sequence backgrounds, while N144D's effect depends on its partner mutation; menu candidates carrying these related substitutions should retain strong fluorescence unless a destabilizing partner counteracts them.\"}",
+            "call_id": "call_c1f8044ba55a4b2fa33a9c62d5d258c7",
+            "name": "score_gfp_designs",
+            "type": "function_call",
+            "id": "fc_00179a1affce5635016b0247d1c67887d0b53e63218087de9b",
+            "status": "completed"
+          }
+        ],
+        "provider_status": "completed",
+        "model": "gpt-6-luna",
+        "response_id": "resp_00179a1affce5635016b0247d0bcac87d0aa134e8d8eddc79b",
+        "request_id": null,
+        "usage": {
+          "input_tokens": 1318,
+          "output_tokens": 200
+        },
+        "provider_usage": {
+          "input_tokens": 1318,
+          "input_tokens_details": {
+            "cached_tokens": 0,
+            "cache_write_tokens": 0,
+            "cache_write_tokens_details": {
+              "ttl_30m_tokens": 0,
+              "ttl_12h_tokens": 0
+            }
+          },
+          "output_tokens": 200,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 1518,
+          "attribution": {
+            "items": {
+              "at_00179a1affce5635016b0247d0be1c87d0a2b2e34f258f6c1e": {
+                "input_tokens": 154,
+                "cached_tokens": 0,
+                "cache_write_tokens": 0,
+                "output_tokens": 0
+              },
+              "fc_00179a1affce5635016b0247d1c67887d0b53e63218087de9b": {
+                "input_tokens": 2,
+                "cached_tokens": 0,
+                "cache_write_tokens": 0,
+                "output_tokens": 200
+              },
+              "msg_00179a1affce5635016b0247d0be1c87d0990502fd4ffdb51e": {
+                "input_tokens": 1073,
+                "cached_tokens": 0,
+                "cache_write_tokens": 0,
+                "output_tokens": 0,
+                "content": [
+                  {
+                    "input_tokens": 1073,
+                    "cached_tokens": 0,
+                    "cache_write_tokens": 0,
+                    "output_tokens": 0
+                  }
+                ]
+              }
+            },
+            "request_fields": {
+              "instructions": {
+                "input_tokens": 89,
+                "cached_tokens": 0,
+                "cache_write_tokens": 0,
+                "output_tokens": 0
+              }
+            }
+          }
+        },
+        "runtime": {
+          "openai": "2.28.0"
+        }
+      },
+      "response_sha256": "3384d4cef00b80af2ff11fe2bc7386787ce3a982e850b6fa7ec65f013549185f",
+      "elapsed_s": 5.04,
+      "validated": true
+    },
+    {
+      "stage": "final_selection",
+      "attempt": 1,
+      "request": {
+        "model": "gpt-6-luna",
+        "instructions": "You are analyzing historical measurements for avGFP fluorescence. Larger log brightness is better. Only observations have measured fluorescence. Menu values and tool scores are fitted predictions. Use the observed evidence, state a testable short hypothesis, and specify edits that match displayed candidate identities on the pinned GFP reference. All eligible candidates are from a fixed menu. Do not estimate or cite measurements for candidates. Keep all text fields concise and evidence-specific.",
+        "input": [
+          {
+            "role": "user",
+            "content": "Each O row is alias, edits, measured value. Each C row is alias, edits, rounded model estimate. Call score_gfp_designs with a short analyst summary, a concrete hypothesis, 1\u20133 O evidence IDs and exactly 6 designs, e.g. a C alias and a space followed by its exact colon-delimited edits from the menu. The returned estimates resolve exact values and tool checks.\n{\"budget\":5,\"latest_feedback_aliases\":[\"O3\",\"O6\",\"O7\",\"O8\",\"O9\"],\"menu\":[[\"C01\",\"N23S:V163A\",3.525],[\"C02\",\"T38A:D102G:K113Q:E213G\",2.29],[\"C03\",\"D129V:K131R:E235V\",3.074],[\"C04\",\"K45R:F84L\",3.198],[\"C05\",\"I47T:K52E:N144Y:Q184R\",2.314],[\"C06\",\"K131E:I152V\",2.872],[\"C07\",\"E124G:K126E:K131Q:N149D\",2.29],[\"C08\",\"E6K\",3.348],[\"C09\",\"T62S:P192T\",3.528],[\"C10\",\"N159I:D190G\",3.501],[\"C11\",\"D76G:F84L:D133N:D197G\",2.269],[\"C12\",\"E17K:N144S\",3.563],[\"C13\",\"G228R\",3.348],[\"C14\",\"N23S:H81R:F84S:N144D\",2.326],[\"C15\",\"V93I:E132G\",3.526],[\"C16\",\"N105D:K156E\",3.53],[\"C17\",\"A179T:I229F\",3.525],[\"C18\",\"N135S:M153V\",3.535],[\"C19\",\"D117G:H148R\",3.537],[\"C20\",\"K79E:N105Y\",3.553],[\"C21\",\"K3R:D117G:V163A\",3.13],[\"C22\",\"T50A:T97S:F223Y\",3.072],[\"C23\",\"N23S:F84Y\",3.526],[\"C24\",\"K107T:K140Q\",3.528],[\"C25\",\"D173G:T225I\",3.525],[\"C26\",\"W57R:V68A:I167V\",2.782],[\"C27\",\"T43A:M78V\",3.566],[\"C28\",\"L64P:F83L:I128T\",2.949],[\"C29\",\"H25L:I136T\",3.525],[\"C30\",\"E5G:K26R:L178P\",3.2],[\"C31\",\"V163A:L221Q:M233T\",3.069],[\"C32\",\"F83L:N105Y\",3.53],[\"C33\",\"K140R:L236P\",3.528],[\"C34\",\"V11L\",3.348],[\"C35\",\"E34G:M153V\",3.535],[\"C36\",\"V11A:R168H\",3.529],[\"C37\",\"T43A:Y151C\",3.579],[\"C38\",\"T59I:K140E\",3.528],[\"C39\",\"K101R:T203A\",3.532],[\"C40\",\"K156M:N198G\",3.582],[\"C41\",\"K26E:I171T:N212I:F223Y\",2.291],[\"C42\",\"F84L:E111V\",3.526],[\"C43\",\"H81Q:G189D:D197A:I229V\",2.29],[\"C44\",\"I98V:M153T\",3.535],[\"C45\",\"V112E:D173G:I188A\",3.088],[\"C46\",\"K52R:E95V\",3.31],[\"C47\",\"D21V:L60P\",3.532],[\"C48\",\"K158R:Y200C\",3.536]],\"mutation_limit\":4,\"observations\":[[\"O1\",\"R73H:E90V:D117G\",3.867],[\"O2\",\"E95G:E172V\",3.8555],[\"O3\",\"K26R:F84Y\",3.8137],[\"O4\",\"K45R:S65P:V68A\",1.2996],[\"O5\",\"S30P:N170D\",1.301],[\"O6\",\"K41R:N198D\",3.7716],[\"O7\",\"K41T:T43A\",3.698],[\"O8\",\"D76N:N144D\",3.7715],[\"O9\",\"M78T:N144D\",3.5042]],\"round\":3,\"shortlist_size\":6}"
+          },
+          {
+            "arguments": "{\"analyst\":\"Observed bright examples include K26R:F84Y and K41R:T43A; N144D is context-dependent, bright with D76N but weaker with M78T. Prioritize menu variants with established bright-associated positions and avoid proline/known low-performing contexts.\",\"designs\":[\"C23 N23S:F84Y\",\"C27 T43A:M78V\",\"C42 F84L:E111V\",\"C18 N135S:M153V\",\"C19 D117G:H148R\",\"C37 T43A:Y151C\"],\"evidence_ids\":[\"O3\",\"O7\",\"O8\"],\"hypothesis\":\"F84Y or T43A substitutions can support high fluorescence in suitable sequence backgrounds, while N144D's effect depends on its partner mutation; menu candidates carrying these related substitutions should retain strong fluorescence unless a destabilizing partner counteracts them.\"}",
+            "call_id": "call_c1f8044ba55a4b2fa33a9c62d5d258c7",
+            "name": "score_gfp_designs",
+            "type": "function_call",
+            "id": "fc_00179a1affce5635016b0247d1c67887d0b53e63218087de9b",
+            "status": "completed"
+          },
+          {
+            "type": "function_call_output",
+            "call_id": "call_c1f8044ba55a4b2fa33a9c62d5d258c7",
+            "output": "[{\"alias\":\"C23\",\"mutations\":\"N23S:F84Y\",\"prediction\":3.5264553474094615,\"roster_match\":true,\"uncertainty\":0.13462545565259287},{\"alias\":\"C27\",\"mutations\":\"T43A:M78V\",\"prediction\":3.566358824796398,\"roster_match\":true,\"uncertainty\":0.1215857490112419},{\"alias\":\"C42\",\"mutations\":\"F84L:E111V\",\"prediction\":3.5264553474094615,\"roster_match\":true,\"uncertainty\":0.13462545565259287},{\"alias\":\"C18\",\"mutations\":\"N135S:M153V\",\"prediction\":3.5350019683788156,\"roster_match\":true,\"uncertainty\":0.12291562889959648},{\"alias\":\"C19\",\"mutations\":\"D117G:H148R\",\"prediction\":3.5372314682132293,\"roster_match\":true,\"uncertainty\":0.12765763730554275},{\"alias\":\"C37\",\"mutations\":\"T43A:Y151C\",\"prediction\":3.578629179301129,\"roster_match\":true,\"uncertainty\":0.12186436284732186}]"
+          },
+          {
+            "role": "user",
+            "content": "Return JSON with candidate_ids, critic and selection_rationale. Select exactly 5 evaluated aliases ordered by test priority. Give reasons that refer to the estimates and identify a weakness. New fluorescence measurements are unavailable until after submission."
+          }
+        ],
+        "tools": [
+          {
+            "type": "function",
+            "name": "score_gfp_designs",
+            "description": "Construct and score candidate GFP fluorescence sequences. Each design string is a menu alias followed by one space and its explicit colon-separated substitutions.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "analyst": {
+                  "type": "string"
+                },
+                "hypothesis": {
+                  "type": "string"
+                },
+                "evidence_ids": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "designs": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "required": [
+                "analyst",
+                "hypothesis",
+                "evidence_ids",
+                "designs"
+              ],
+              "additionalProperties": false
+            },
+            "strict": true
+          }
+        ],
+        "tool_choice": "none",
+        "parallel_tool_calls": false,
+        "max_output_tokens": 280,
+        "reasoning": {
+          "effort": "none"
+        },
+        "store": false,
+        "text": {
+          "format": {
+            "type": "json_schema",
+            "name": "gfp_final",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "candidate_ids": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "critic": {
+                  "type": "string"
+                },
+                "selection_rationale": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "candidate_ids",
+                "critic",
+                "selection_rationale"
+              ],
+              "additionalProperties": false
+            },
+            "strict": true
+          }
+        }
+      },
+      "request_sha256": "f9e6e5df97c9091d4275fdecb8a6d37fe21c0fe6e9687fecc8baf5162d0386f9",
+      "response": {
+        "text": "{\"candidate_ids\":[\"C37\",\"C27\",\"C23\",\"C19\",\"C18\"],\"critic\":\"Only O rows are measured; the tool estimates are predictions, not fluorescence observations. Evidence is sparse and mutation effects may depend on background.\",\"selection_rationale\":\"Prioritize C37 (estimate 3.579) and C27 (3.566), which share T43A with observed O7; C23 (3.526) carries F84Y as in bright O3. C19 (3.537) and C18 (3.535) round out the set with similarly high estimates. Testable hypothesis: T43A- or F84Y-bearing candidates will tend to retain high brightness, while outcomes may vary with partner substitutions. Weakness: these candidates do not reproduce the observed mutation backgrounds, so estimates and shared substitutions do not establish measured performance.\"}",
+        "tool_calls": [],
+        "finish_reason": "stop",
+        "native_content": [
+          {
+            "id": "msg_00179a1affce5635016b0247d5c37087d08638dedcf769e2ed",
+            "content": [
+              {
+                "annotations": [],
+                "text": "{\"candidate_ids\":[\"C37\",\"C27\",\"C23\",\"C19\",\"C18\"],\"critic\":\"Only O rows are measured; the tool estimates are predictions, not fluorescence observations. Evidence is sparse and mutation effects may depend on background.\",\"selection_rationale\":\"Prioritize C37 (estimate 3.579) and C27 (3.566), which share T43A with observed O7; C23 (3.526) carries F84Y as in bright O3. C19 (3.537) and C18 (3.535) round out the set with similarly high estimates. Testable hypothesis: T43A- or F84Y-bearing candidates will tend to retain high brightness, while outcomes may vary with partner substitutions. Weakness: these candidates do not reproduce the observed mutation backgrounds, so estimates and shared substitutions do not establish measured performance.\"}",
+                "type": "output_text",
+                "logprobs": []
+              }
+            ],
+            "role": "assistant",
+            "status": "completed",
+            "type": "message",
+            "phase": "final_answer"
+          }
+        ],
+        "provider_status": "completed",
+        "model": "gpt-6-luna",
+        "response_id": "resp_00179a1affce5635016b0247d5464887d09bf5f47d5490761e",
+        "request_id": null,
+        "usage": {
+          "input_tokens": 1897,
+          "output_tokens": 186
+        },
+        "provider_usage": {
+          "input_tokens": 1897,
+          "input_tokens_details": {
+            "cached_tokens": 0,
+            "cache_write_tokens": 0,
+            "cache_write_tokens_details": {
+              "ttl_30m_tokens": 0,
+              "ttl_12h_tokens": 0
+            }
+          },
+          "output_tokens": 186,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 2083,
+          "attribution": {
+            "items": {
+              "at_00179a1affce5635016b0247d5472887d085586daebdc7a20f": {
+                "input_tokens": 154,
+                "cached_tokens": 0,
+                "cache_write_tokens": 0,
+                "output_tokens": 0
+              },
+              "fc_00179a1affce5635016b0247d1c67887d0b53e63218087de9b": {
+                "input_tokens": 202,
+                "cached_tokens": 0,
+                "cache_write_tokens": 0,
+                "output_tokens": 0
+              },
+              "fc_00179a1affce5635016b0247d5472887d0aa950d873be9807d": {
+                "input_tokens": 282,
+                "cached_tokens": 0,
+                "cache_write_tokens": 0,
+                "output_tokens": 0,
+                "content": [
+                  {
+                    "input_tokens": 282,
+                    "cached_tokens": 0,
+                    "cache_write_tokens": 0,
+                    "output_tokens": 0
+                  }
+                ]
+              },
+              "msg_00179a1affce5635016b0247d5472887d08474119182f4731e": {
+                "input_tokens": 48,
+                "cached_tokens": 0,
+                "cache_write_tokens": 0,
+                "output_tokens": 0,
+                "content": [
+                  {
+                    "input_tokens": 48,
+                    "cached_tokens": 0,
+                    "cache_write_tokens": 0,
+                    "output_tokens": 0
+                  }
+                ]
+              },
+              "msg_00179a1affce5635016b0247d5472887d0924bf2f419f5242b": {
+                "input_tokens": 1073,
+                "cached_tokens": 0,
+                "cache_write_tokens": 0,
+                "output_tokens": 0,
+                "content": [
+                  {
+                    "input_tokens": 1073,
+                    "cached_tokens": 0,
+                    "cache_write_tokens": 0,
+                    "output_tokens": 0
+                  }
+                ]
+              },
+              "msg_00179a1affce5635016b0247d5c37087d08638dedcf769e2ed": {
+                "input_tokens": 2,
+                "cached_tokens": 0,
+                "cache_write_tokens": 0,
+                "output_tokens": 186,
+                "content": [
+                  {
+                    "input_tokens": 2,
+                    "cached_tokens": 0,
+                    "cache_write_tokens": 0,
+                    "output_tokens": 186
+                  }
+                ]
+              }
+            },
+            "request_fields": {
+              "instructions": {
+                "input_tokens": 89,
+                "cached_tokens": 0,
+                "cache_write_tokens": 0,
+                "output_tokens": 0
+              },
+              "text.format": {
+                "input_tokens": 47,
+                "cached_tokens": 0,
+                "cache_write_tokens": 0,
+                "output_tokens": 0
+              }
+            }
+          }
+        },
+        "runtime": {
+          "openai": "2.28.0"
+        }
+      },
+      "response_sha256": "8c82b19c5c772239c93cc0ec010e5f528358c339c1b00942264226de6783fdb7",
+      "elapsed_s": 3.533,
+      "validated": true
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "score_gfp_designs",
+      "trigger": "model_tool_call",
+      "call_id": "call_c1f8044ba55a4b2fa33a9c62d5d258c7",
+      "arguments": {
+        "analyst": "Observed bright examples include K26R:F84Y and K41R:T43A; N144D is context-dependent, bright with D76N but weaker with M78T. Prioritize menu variants with established bright-associated positions and avoid proline/known low-performing contexts.",
+        "designs": [
+          "C23 N23S:F84Y",
+          "C27 T43A:M78V",
+          "C42 F84L:E111V",
+          "C18 N135S:M153V",
+          "C19 D117G:H148R",
+          "C37 T43A:Y151C"
+        ],
+        "evidence_ids": [
+          "O3",
+          "O7",
+          "O8"
+        ],
+        "hypothesis": "F84Y or T43A substitutions can support high fluorescence in suitable sequence backgrounds, while N144D's effect depends on its partner mutation; menu candidates carrying these related substitutions should retain strong fluorescence unless a destabilizing partner counteracts them."
+      },
+      "result": [
+        {
+          "alias": "C23",
+          "mutations": "N23S:F84Y",
+          "prediction": 3.5264553474094615,
+          "uncertainty": 0.13462545565259287,
+          "roster_match": true,
+          "sequence": "MSKGEELFTGVVPILVELDGDVSGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFYKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK"
+        },
+        {
+          "alias": "C27",
+          "mutations": "T43A:M78V",
+          "prediction": 3.566358824796398,
+          "uncertainty": 0.1215857490112419,
+          "roster_match": true,
+          "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLALKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHVKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK"
+        },
+        {
+          "alias": "C42",
+          "mutations": "F84L:E111V",
+          "prediction": 3.5264553474094615,
+          "uncertainty": 0.13462545565259287,
+          "roster_match": true,
+          "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFLKSAMPEGYVQERTIFFKDDGNYKTRAVVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK"
+        },
+        {
+          "alias": "C18",
+          "mutations": "N135S:M153V",
+          "prediction": 3.5350019683788156,
+          "uncertainty": 0.12291562889959648,
+          "roster_match": true,
+          "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGSILGHKLEYNYNSHNVYIVADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK"
+        },
+        {
+          "alias": "C19",
+          "mutations": "D117G:H148R",
+          "prediction": 3.5372314682132293,
+          "uncertainty": 0.12765763730554275,
+          "roster_match": true,
+          "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGGTLVNRIELKGIDFKEDGNILGHKLEYNYNSRNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK"
+        },
+        {
+          "alias": "C37",
+          "mutations": "T43A:Y151C",
+          "prediction": 3.578629179301129,
+          "uncertainty": 0.12186436284732186,
+          "roster_match": true,
+          "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLALKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVCIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK"
+        }
+      ]
+    },
+    {
+      "tool": "gfp_critic",
+      "result": {
+        "legal": true,
+        "unique": true,
+        "n": 5
+      }
+    }
+  ],
+  "usage": {
+    "input_tokens": 3215,
+    "output_tokens": 386
+  },
+  "live_generation_count": 2,
+  "started_utc": "2026-11-22T01:39:27.578075+00:00",
+  "decision": {
+    "analyst": "Observed bright examples include K26R:F84Y and K41R:T43A; N144D is context-dependent, bright with D76N but weaker with M78T. Prioritize menu variants with established bright-associated positions and avoid proline/known low-performing contexts.",
+    "designs": [
+      "C23 N23S:F84Y",
+      "C27 T43A:M78V",
+      "C42 F84L:E111V",
+      "C18 N135S:M153V",
+      "C19 D117G:H148R",
+      "C37 T43A:Y151C"
+    ],
+    "evidence_ids": [
+      "K26R:F84Y",
+      "K41T:T43A",
+      "D76N:N144D"
+    ],
+    "hypothesis": "F84Y or T43A substitutions can support high fluorescence in suitable sequence backgrounds, while N144D's effect depends on its partner mutation; menu candidates carrying these related substitutions should retain strong fluorescence unless a destabilizing partner counteracts them.",
+    "candidate_ids": [
+      "C37",
+      "C27",
+      "C23",
+      "C19",
+      "C18"
+    ],
+    "critic": "Only O rows are measured; the tool estimates are predictions, not fluorescence observations. Evidence is sparse and mutation effects may depend on background.",
+    "selection_rationale": "Prioritize C37 (estimate 3.579) and C27 (3.566), which share T43A with observed O7; C23 (3.526) carries F84Y as in bright O3. C19 (3.537) and C18 (3.535) round out the set with similarly high estimates. Testable hypothesis: T43A- or F84Y-bearing candidates will tend to retain high brightness, while outcomes may vary with partner substitutions. Weakness: these candidates do not reproduce the observed mutation backgrounds, so estimates and shared substitutions do not establish measured performance.",
+    "evidence_aliases": [
+      "O3",
+      "O7",
+      "O8"
+    ],
+    "selected_ids": [
+      "T43A:Y151C",
+      "T43A:M78V",
+      "N23S:F84Y",
+      "D117G:H148R",
+      "N135S:M153V"
+    ],
+    "selected_candidates": [
+      {
+        "id": "T43A:Y151C",
+        "mutations": "T43A:Y151C",
+        "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLALKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVCIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+        "edits": [
+          "T43A",
+          "Y151C"
+        ],
+        "alias": "C37",
+        "prediction": 3.578629179301129,
+        "uncertainty": 0.12186436284732186,
+        "rank": 2,
+        "source": "rf_elite"
+      },
+      {
+        "id": "T43A:M78V",
+        "mutations": "T43A:M78V",
+        "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLALKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHVKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+        "edits": [
+          "T43A",
+          "M78V"
+        ],
+        "alias": "C27",
+        "prediction": 3.566358824796398,
+        "uncertainty": 0.1215857490112419,
+        "rank": 3,
+        "source": "rf_elite"
+      },
+      {
+        "id": "N23S:F84Y",
+        "mutations": "N23S:F84Y",
+        "sequence": "MSKGEELFTGVVPILVELDGDVSGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFYKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+        "edits": [
+          "N23S",
+          "F84Y"
+        ],
+        "alias": "C23",
+        "prediction": 3.5264553474094615,
+        "uncertainty": 0.13462545565259287,
+        "rank": 21,
+        "source": "rf_elite"
+      },
+      {
+        "id": "D117G:H148R",
+        "mutations": "D117G:H148R",
+        "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGGTLVNRIELKGIDFKEDGNILGHKLEYNYNSRNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+        "edits": [
+          "D117G",
+          "H148R"
+        ],
+        "alias": "C19",
+        "prediction": 3.5372314682132293,
+        "uncertainty": 0.12765763730554275,
+        "rank": 6,
+        "source": "rf_elite"
+      },
+      {
+        "id": "N135S:M153V",
+        "mutations": "N135S:M153V",
+        "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGSILGHKLEYNYNSHNVYIVADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+        "edits": [
+          "N135S",
+          "M153V"
+        ],
+        "alias": "C18",
+        "prediction": 3.5350019683788156,
+        "uncertainty": 0.12291562889959648,
+        "rank": 10,
+        "source": "rf_elite"
+      }
+    ]
+  },
+  "status": "ok",
+  "elapsed_s": 8.574
+}

@@ -1,0 +1,61 @@
+{
+  "status": "complete",
+  "providers": {
+    "deepseek": {
+      "status": "complete",
+      "mode": "formal",
+      "arms": 12,
+      "expected_arms": 12,
+      "measurements": 180,
+      "partial_measurements": 0,
+      "failed": 0
+    },
+    "sonnet": {
+      "status": "complete",
+      "mode": "formal",
+      "arms": 6,
+      "expected_arms": 6,
+      "measurements": 90,
+      "partial_measurements": 0,
+      "failed": 0
+    },
+    "gpt": {
+      "status": "complete",
+      "mode": "formal",
+      "arms": 6,
+      "expected_arms": 6,
+      "measurements": 90,
+      "partial_measurements": 0,
+      "failed": 0
+    },
+    "qwen": {
+      "status": "complete",
+      "mode": "formal",
+      "arms": 6,
+      "expected_arms": 6,
+      "measurements": 90,
+      "partial_measurements": 0,
+      "failed": 0
+    }
+  },
+  "records": 450,
+  "shared_config": {
+    "seeds": [
+      17,
+      29,
+      43
+    ],
+    "rounds": 3,
+    "budget": 5,
+    "split_counts": {
+      "initial": 96,
+      "validation": 120,
+      "pool": 384,
+      "test": 120
+    },
+    "menu": {
+      "rf_elite": 24,
+      "seeded_non_elite": 24
+    }
+  }
+}

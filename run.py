@@ -67,6 +67,11 @@ def run_aggregate(output, archive=None):
 
 
 def main() -> None:
+    if sys.argv[1:2] in (["gfp"], ["setup"], ["demo"]):
+        from gfp import main as run_gfp
+        command, *args = sys.argv[1:]
+        run_gfp(args if command == "gfp" else [command, *args])
+        return
     cli = argparse.ArgumentParser(description=__doc__)
     cli.add_argument("study", choices=("smoke", "gb1", "concrete", "report", "audit", "all", "full", "replay", "replay-full", *BACKENDS))
     cli.add_argument("--output", type=Path, required=True)
